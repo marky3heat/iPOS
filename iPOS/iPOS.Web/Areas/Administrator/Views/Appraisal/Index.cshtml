@@ -1,0 +1,192 @@
+﻿@{
+    ViewBag.Tag = "APPRAISAL";
+    ViewBag.Title = "Appraisal List";
+}
+
+<div data-bind="visible: isItemListShowed" class="panel panel-flat">
+    <div class="panel-heading">
+        <h6 class="panel-title">Appraised Item List</h6>
+        <div class="heading-elements">            
+            @*<a data-bind="" href="#" class="btn border-teal text-teal btn-flat btn-rounded btn-icon btn-xs valign-text-bottom"><i class="icon-plus3"></i></a>*@
+            <button data-bind="click: addItem" type="submit" class="btn bg-orange-400 btn-labeled btn-labeled-right ml-10"><b><i class="icon-plus3"></i></b>Appraise Item</button>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <input type="hidden" id="search-item" />
+        <table class="table text-nowrap">
+            <thead>
+            <tr>
+                <th>Appraisal No</th>
+                <th>Date</th>
+                <th>Customer Name</th>
+                <th>Item Description</th>
+                <th>Appraised Value</th>
+                <th>Status</th>
+                <th class="text-center"><i class="icon-arrow-down12"></i></th>
+            </tr>
+            </thead>			
+            <tbody data-bind="foreach: items">
+            <tr>         
+                <td data-bind="text: AppraiseNo" class="text-semibold"></td>
+                <td data-bind="text: moment(AppraiseDate()).format('L')" class="text-semibold"></td>
+                <td class="text-semibold"><!--ko text: CustomerFirstName--><!--/ko--> <!--ko text: CustomerLastName--><!--/ko--></td>
+                <td>
+                    <div class="">
+                        <div class="text-semibold"><!--ko text: ItemName--><!--/ko--></div>
+                        <div class="text-muted text-size-small">
+                            <span class="status-mark border-success"></span> <!--ko text: ItemDescription--><!--/ko-->
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <h6 class="text-semibold" data-bind="text: AppraisedValue"></h6>
+                </td>
+                <!--ko if: IsPawned() === true-->
+                <td><span class="label bg-success">Pawned</span></td>
+                <!--/ko-->
+                <!--ko if: IsPawned() === false-->
+                <td><span class="label bg-danger">On Process</span></td>   
+                <!--/ko--> 
+                <td>
+                    <ul class="icons-list">
+                        <li><a href="#" data-bind="click: $root.viewItem"><i class="icon-menu7"></i></a></li>
+                    </ul>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div data-bind="visible: isManageItemShowed" class="sidebar-xs has-detached-left">
+    <!-- Detached sidebar -->
+    <div class="sidebar-detached">
+        <div class="sidebar sidebar-default sidebar-separate">
+            <div class="sidebar-content">
+                <!-- Item details -->
+                <div class="content-group">
+                    <div class="panel-body bg-indigo-400 border-radius-top text-center" style="background-image: url(http://demo.interface.club/limitless/assets/images/bg.png); background-size: contain;">
+                        <div class="content-group-sm">
+                            <h6 class="text-semibold no-margin-bottom">
+                                
+                            </h6>
+                            <span class="display-block"></span>
+                        </div>
+                        <a href="#" class="display-inline-block content-group-sm">
+                            <img src="~/Assets/images/ring1.jpg" class="img-circle img-responsive" alt="" style="width: 110px; height: 110px;">
+                        </a>
+                    </div>
+                    <div class="panel no-border-top no-border-radius-top">
+                        <ul class="navigation">
+                            <li class="navigation-header"></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /Item details -->
+            </div>
+        </div>
+    </div>
+    <!-- /Detached sidebar -->
+
+
+    <!-- Detached content -->
+    <div class="container-detached">
+        <div class="content-detached">
+            <!-- Tab content -->
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="profile">
+                    <!-- Item info -->
+                    <div class="panel panel-flat">
+                        <div class="panel-heading">
+                            <h6 class="panel-title text-semibold">Item information</h6>                     
+                        </div>
+                        <div class="panel-body">
+                            <form action="#">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Appraisal #</label>
+                                            <input type="text" data-bind="textinput: item.AppraiseNo" class="form-control" id="AppraiseNo">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Date</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="icon-calendar22"></i></span>
+                                                <input type="text" data-bind="textinput: item.AppraiseDate" class="form-control daterange-single" id="AppraiseDate">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Item category</label>
+                                            <select required data-bind="options: itemCategory, optionsValue: 'ItemCategoryId', optionsText: 'ItemCategoryName', optionsCaption: '--Select Category--', optionsSelected: item.ItemCategoryId" class="form-control" id="ItemCategory"></select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Item name</label>
+                                            <input type="text" data-bind="textinput: item.ItemName" class="form-control" id="ItemName">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label>Item description</label>
+                                            <textarea data-bind="textinput: item.ItemDescription" class="form-control" row="5" col="5" id="ItemDescription"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Appraise Value</label>
+                                            <input type="number" data-bind="textinput: item.AppraisedValue" class="form-control" id="AppraisedValue">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Market Value</label>
+                                            <input type="number" data-bind="textinput: item.MarketValue" class="form-control" id="MarketValue">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <br><h6 class="panel-title text-semibold">Customer Information</h6><br>
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>First Name</label>
+                                            <input type="text" data-bind="textinput: item.CustomerFirstName" class="form-control" id="CustomerFirstName">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Last Name</label>
+                                            <input type="text" data-bind="textinput: item.CustomerLastName" class="form-control" id="CustomerLastName">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="text-right">
+                                    <button data-bind="click: backToAppraisedItemList" type="submit" class="btn btn-link"><i class="icon-arrow-left13 position-left"></i> Back to appraised item list</button>
+                                    <button data-bind="click: saveItem, visible: isSaveButtonShowed" type="submit" class="btn bg-success btn-labeled btn-labeled-right ml-10"><b><i class="icon-plus3"></i></b><!--ko text: buttonCaption--><!--/ko--></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /Profile info -->
+                </div>
+            </div>
+            <!-- /Tab content -->
+        </div>
+    </div>
+    <!-- /Detached content -->
+</div>
+
+@section scripts{
+    <!--Page KOJS-->
+    <script src="~/Scripts/inifiniteScroll.js"></script>
+
+    <script type="text/javascript" src="~/Assets/js/plugins/forms/styling/switchery.min.js"></script>
+
+    <script src="~/Areas/Administrator/Assets/model/appraisal.model.js"></script>
+    <script src="~/Areas/Administrator/Assets/viewmodel/appraisal.viewmodel.js"></script>
+}

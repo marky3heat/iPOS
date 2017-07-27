@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbpawnshopModelStoreContainer" CdmEntityContainer="dbpawnshopEntities">
+    <EntitySetMapping Name="customers">
+      <EntityTypeMapping TypeName="dbpawnshopModel.customer">
+        <MappingFragment StoreEntitySet="customer">
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="MiddleInitial" ColumnName="MiddleInitial" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbldepartments">
+      <EntityTypeMapping TypeName="dbpawnshopModel.tbldepartment">
+        <MappingFragment StoreEntitySet="tbldepartment">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblroles">
+      <EntityTypeMapping TypeName="dbpawnshopModel.tblrole">
+        <MappingFragment StoreEntitySet="tblrole">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblusers">
+      <EntityTypeMapping TypeName="dbpawnshopModel.tbluser">
+        <MappingFragment StoreEntitySet="tbluser">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+          <ScalarProperty Name="LockOut" ColumnName="LockOut" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="itemcategories">
+      <EntityTypeMapping TypeName="dbpawnshopModel.itemcategory">
+        <MappingFragment StoreEntitySet="itemcategory">
+          <ScalarProperty Name="ItemCategoryName" ColumnName="ItemCategoryName" />
+          <ScalarProperty Name="ItemCategoryId" ColumnName="ItemCategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="apraiseditems">
+      <EntityTypeMapping TypeName="dbpawnshopModel.apraiseditem">
+        <MappingFragment StoreEntitySet="apraiseditem">
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="IsPawned" ColumnName="IsPawned" />
+          <ScalarProperty Name="CustomerLastName" ColumnName="CustomerLastName" />
+          <ScalarProperty Name="CustomerFirstName" ColumnName="CustomerFirstName" />
+          <ScalarProperty Name="MarketValue" ColumnName="MarketValue" />
+          <ScalarProperty Name="AppraisedValue" ColumnName="AppraisedValue" />
+          <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ItemCategoryId" ColumnName="ItemCategoryId" />
+          <ScalarProperty Name="AppraiseNo" ColumnName="AppraiseNo" />
+          <ScalarProperty Name="AppraiseDate" ColumnName="AppraiseDate" />
+          <ScalarProperty Name="AppraiseId" ColumnName="AppraiseId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

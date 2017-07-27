@@ -1,0 +1,46 @@
+﻿<div class="sidebar-content ">
+    <!-- User menu -->
+    <div class="sidebar-user">
+        <div class="category-content">
+            <div class="media">
+                <a href="#" class="media-left"><img src="~/Assets/images/default.jpg" class="img-circle img-sm" alt=""></a>
+                <div class="media-body">
+                    <span class="media-heading text-semibold">Administrator</span>
+                    <div class="text-size-mini text-muted">
+                        Administrator
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /user menu -->
+    
+    @if (ViewBag.CurrentUser == "")
+    {
+        
+    }
+    <!-- Main navigation -->
+    <div class="sidebar-category sidebar-category-visible">
+        <div class="category-content no-padding">
+            <ul class="navigation navigation-main navigation-accordion">
+                <!-- Main -->
+                <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main"></i></li>
+                <li class="@ViewBag.activeDashboard"><a href="#"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
+                <li class="@ViewBag.activeAppraisal"><a href="~/administrator/appraisal"><i class="icon-balance"></i> <span>Appraisal</span></a></li>
+                <li class="@ViewBag.activePawning"><a href="#"><i class="icon-price-tags"></i> <span>Pawning and Lay-away</span></a></li>
+                <li class="@ViewBag.activeCollection"><a href="#"><i class="icon-price-tag"></i> <span>Sales and Cash Collection</span></a></li>
+                <!-- /main -->
+                <!-- System Reference -->
+                <li class="navigation-header"><span>System Reference</span> <i class="icon-menu" title="System Maintenance"></i></li>
+                <li class="@ViewBag.activeCustomerProfile"><a href="~/administrator/customer"><i class="icon-user-plus"></i> <span>Customer Profile</span></a></li>
+                <li class="@ViewBag.activeItemCategory"><a href="#"><i class="icon-stack3"></i> <span>Item Category</span></a></li>
+                <!-- /system Reference -->
+                <!-- System Maintenance -->
+                <li class="navigation-header"><span>System Maintenance</span> <i class="icon-menu" title="System Maintenance"></i></li>
+                <li class="@ViewBag.activeUserAccount"><a href="#"><i class="icon-user-plus"></i> <span>User Account</span></a></li>
+                <!-- /system maintenance -->
+            </ul>
+        </div>
+    </div>
+    <!-- /main navigation -->
+</div>

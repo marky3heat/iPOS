@@ -1,0 +1,59 @@
+﻿<div class="page-header-content">
+    <div class="page-title">
+        @if (ViewBag.Tag == "HOME DASHBOARD")
+        {
+            <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">@ViewBag.Controller</span> - @ViewBag.Action</h4>
+        }
+
+        @if (ViewBag.Tag == "ADMINISTRATOR DASHBOARD")
+        {
+            <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Administrator</span> - Dashboard</h4>
+        }
+
+        @if (ViewBag.Tag == "USER ACCOUNT")
+        {
+            <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Administrator</span> - User Account</h4>
+        }
+
+        @if (ViewBag.Tag == "CUSTOMER PROFILE")
+        {
+            <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">@ViewBag.Controller</span> - @ViewBag.Action</h4>
+        }
+        @if (ViewBag.Tag == "APPRAISAL")
+        {
+            <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">@ViewBag.Controller</span> - @ViewBag.Action</h4>
+        }
+    </div>
+</div>
+<div class="breadcrumb-line">
+    <ul class="breadcrumb">
+        @if (ViewBag.Tag == "HOME DASHBOARD")
+        {
+            <li><a href="#"><i class="icon-home2 position-left"></i> @ViewBag.Controller</a></li>
+            <li class="active">@ViewBag.Action</li>
+        }
+
+        @if (ViewBag.Tag == "ADMINISTRATOR DASHBOARD")
+        {
+            <li><a href="/administrator/dashboard"><i class="icon-home2 position-left"></i> Home</a></li>
+            <li class="active">Dashboard</li>
+        }
+
+        @if (ViewBag.Tag == "USER ACCOUNT")
+        {
+            <li><a href="/administrator/dashboard"><i class="icon-home2 position-left"></i> Home</a></li>
+            <li class="active">User Account</li>
+        }
+
+        @if (ViewBag.Tag == "CUSTOMER PROFILE")
+        {
+            <li><a href="/administrator/dashboard"><i class="icon-home2 position-left"></i> @ViewBag.Controller</a></li>
+            <li class="active">@ViewBag.Action</li>
+        }
+        @if (ViewBag.Tag == "APPRAISAL")
+        {
+            <li><a href="/administrator/dashboard"><i class="icon-home2 position-left"></i> @ViewBag.Controller</a></li>
+            <li class="active">@ViewBag.Action</li>
+        }
+    </ul>
+</div>

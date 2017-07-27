@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbpawnshopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MiddleInitial" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="ContactNo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbldepartment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Department" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblrole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbluser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PassWord" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="RoleId" Type="Int32" />
+    <Property Name="DepartmentId" Type="Int32" />
+    <Property Name="LockOut" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="dbpawnshopEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="customers" EntityType="Self.customer" />
+    <EntitySet Name="tbldepartments" EntityType="Self.tbldepartment" />
+    <EntitySet Name="tblroles" EntityType="Self.tblrole" />
+    <EntitySet Name="tblusers" EntityType="Self.tbluser" />
+    <EntitySet Name="itemcategories" EntityType="dbpawnshopModel.itemcategory" />
+    <EntitySet Name="apraiseditems" EntityType="dbpawnshopModel.apraiseditem" />
+  </EntityContainer>
+  <EntityType Name="itemcategory">
+    <Key>
+      <PropertyRef Name="ItemCategoryId" />
+    </Key>
+    <Property Name="ItemCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="apraiseditem">
+    <Key>
+      <PropertyRef Name="AppraiseId" />
+    </Key>
+    <Property Name="AppraiseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AppraiseDate" Type="DateTime" />
+    <Property Name="AppraiseNo" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+    <Property Name="ItemCategoryId" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+    <Property Name="ItemName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="ItemDescription" Type="String" MaxLength="124" FixedLength="false" Unicode="false" />
+    <Property Name="AppraisedValue" Type="Decimal" />
+    <Property Name="MarketValue" Type="Decimal" />
+    <Property Name="CustomerFirstName" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerLastName" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+    <Property Name="IsPawned" Type="Boolean" />
+    <Property Name="CreatedAt" Type="DateTime" />
+    <Property Name="CreatedBy" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>
