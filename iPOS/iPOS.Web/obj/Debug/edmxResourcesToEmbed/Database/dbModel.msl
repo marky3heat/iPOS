@@ -42,27 +42,27 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="itemcategories">
-      <EntityTypeMapping TypeName="dbpawnshopModel.itemcategory">
-        <MappingFragment StoreEntitySet="itemcategory">
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="apraiseditems">
       <EntityTypeMapping TypeName="dbpawnshopModel.apraiseditem">
         <MappingFragment StoreEntitySet="apraiseditem">
-          <ScalarProperty Name="isPawned" ColumnName="isPawned" />
-          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
           <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="IsPawned" ColumnName="IsPawned" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
           <ScalarProperty Name="AppraisedValue" ColumnName="AppraisedValue" />
           <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
           <ScalarProperty Name="ItemCategoryId" ColumnName="ItemCategoryId" />
           <ScalarProperty Name="AppraiseNo" ColumnName="AppraiseNo" />
+          <ScalarProperty Name="AppraiseDate" ColumnName="AppraiseDate" />
+          <ScalarProperty Name="AppraiseId" ColumnName="AppraiseId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="itemcategories">
+      <EntityTypeMapping TypeName="dbpawnshopModel.itemcategory">
+        <MappingFragment StoreEntitySet="itemcategory">
+          <ScalarProperty Name="ItemCategoryName" ColumnName="ItemCategoryName" />
+          <ScalarProperty Name="ItemCategoryId" ColumnName="ItemCategoryId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

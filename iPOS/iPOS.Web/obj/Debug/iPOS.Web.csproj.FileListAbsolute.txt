@@ -117,3 +117,6 @@ D:\MLGS\Work\System\iPOS\iPOS.Web\bin\Microsoft.AspNet.Identity.Owin.xml
 D:\MLGS\Work\System\iPOS\iPOS.Web\bin\Microsoft.AspNet.Identity.EntityFramework.xml
 D:\MLGS\Work\System\iPOS\iPOS.Web\obj\Debug\iPOS.Web.dll
 D:\MLGS\Work\System\iPOS\iPOS.Web\obj\Debug\iPOS.Web.pdb
+D:\Work\Repository\iPOS\iPOS\iPOS.Web\obj\Debug\iPOS.Web.csprojResolveAssemblyReference.cache
+D:\Work\Repository\iPOS\iPOS\iPOS.Web\obj\Debug\iPOS.Web.dll
+D:\Work\Repository\iPOS\iPOS\iPOS.Web\obj\Debug\iPOS.Web.pdb

@@ -18,18 +18,14 @@ namespace iPOS.Web.Database
         public Nullable<System.DateTime> AppraiseDate { get; set; }
         public string AppraiseNo { get; set; }
         public string ItemCategoryId { get; set; }
-        public string ItemName { get; set; }
         public string ItemDescription { get; set; }
+        public string ItemName { get; set; }
         public Nullable<decimal> AppraisedValue { get; set; }
-        public Nullable<decimal> MarketValue { get; set; }
         public string CustomerFirstName { get; set; }
         public string CustomerLastName { get; set; }
         public Nullable<bool> IsPawned { get; set; }
         public Nullable<System.DateTime> CreatedAt { get; set; }
         public string CreatedBy { get; set; }
-        public int Id { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
-        public string CustomerId { get; set; }
-        public Nullable<bool> isPawned { get; set; }
+        public Nullable<decimal> MarketValue { get; set; }
     }
 }

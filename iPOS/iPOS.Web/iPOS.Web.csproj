@@ -251,6 +251,9 @@
     <Compile Include="Database\itemcategory.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Database\itemtype.cs">
+      <DependentUpon>dbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\tbldepartment.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>

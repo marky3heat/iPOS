@@ -42,40 +42,29 @@
     <EntitySet Name="tbldepartments" EntityType="Self.tbldepartment" />
     <EntitySet Name="tblroles" EntityType="Self.tblrole" />
     <EntitySet Name="tblusers" EntityType="Self.tbluser" />
-    <EntitySet Name="itemcategories" EntityType="dbpawnshopModel.itemcategory" />
     <EntitySet Name="apraiseditems" EntityType="dbpawnshopModel.apraiseditem" />
+    <EntitySet Name="itemcategories" EntityType="dbpawnshopModel.itemcategory" />
   </EntityContainer>
-  <EntityType Name="itemcategory">
-    <Key>
-      <PropertyRef Name="ItemCategoryId" />
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="ItemCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ItemCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-  </EntityType>
   <EntityType Name="apraiseditem">
     <Key>
       <PropertyRef Name="AppraiseId" />
-      <PropertyRef Name="Id" />
     </Key>
     <Property Name="AppraiseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="AppraiseDate" Type="DateTime" />
     <Property Name="AppraiseNo" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
     <Property Name="ItemCategoryId" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
-    <Property Name="ItemName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
     <Property Name="ItemDescription" Type="String" MaxLength="124" FixedLength="false" Unicode="false" />
     <Property Name="AppraisedValue" Type="Decimal" />
-    <Property Name="MarketValue" Type="Decimal" />
-    <Property Name="CustomerFirstName" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
-    <Property Name="CustomerLastName" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerId" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
     <Property Name="IsPawned" Type="Boolean" />
     <Property Name="CreatedAt" Type="DateTime" />
     <Property Name="CreatedBy" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Date" Type="DateTime" />
-    <Property Name="CustomerId" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
-    <Property Name="isPawned" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="itemcategory">
+    <Key>
+      <PropertyRef Name="ItemCategoryId" />
+    </Key>
+    <Property Name="ItemCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

@@ -29,7 +29,8 @@ namespace iPOS.Web.Database
         public virtual DbSet<tbldepartment> tbldepartments { get; set; }
         public virtual DbSet<tblrole> tblroles { get; set; }
         public virtual DbSet<tbluser> tblusers { get; set; }
-        public virtual DbSet<itemcategory> itemcategories { get; set; }
         public virtual DbSet<apraiseditem> apraiseditems { get; set; }
+        public virtual DbSet<itemcategory> itemcategories { get; set; }
+        public virtual DbSet<itemtype> itemtypes { get; set; }
     }
 }
