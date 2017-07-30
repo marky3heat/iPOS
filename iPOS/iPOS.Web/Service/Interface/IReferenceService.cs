@@ -16,7 +16,7 @@ namespace iPOS.Web.Service.Interface
 
         Task<bool> UpdateItemCategory(itemcategory model);
 
-        Task<bool> DeleteItemCategory(int id);
+        Task<bool> DeleteItemCategory(string id);
         #endregion
 
         #region ItemType
@@ -28,7 +28,7 @@ namespace iPOS.Web.Service.Interface
 
         Task<bool> UpdateItemType(itemtype model);
 
-        Task<bool> DeleteItemType(int id);
+        Task<bool> DeleteItemType(string id);
         #endregion
     }
 }

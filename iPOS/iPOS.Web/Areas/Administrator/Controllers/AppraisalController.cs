@@ -15,9 +15,9 @@ namespace iPOS.Web.Areas.Administrator.Controllers
 {
     public class AppraisalController : Controller
     {
+        #region PUBLIC CONSTRUCTOR
         private readonly IAppraisalService _appraisalService;
 
-        #region PUBLIC CONSTRUCTOR
         public AppraisalController(IAppraisalService customerService)
         {
             _appraisalService = customerService;

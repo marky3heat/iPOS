@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace iPOS.Web.Service
 {
-    public class ReferenceService
+    public class ReferenceService : IReferenceService
     {
         #region PRIVATE MEMBER VARIABLES
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;

@@ -295,8 +295,12 @@
   <ItemGroup>
     <Content Include="Areas\Administrator\Assets\Model\appraisal.model.js" />
     <Content Include="Areas\Administrator\Assets\Model\customer.model.js" />
+    <Content Include="Areas\Administrator\Assets\Model\pawning.model.js" />
+    <Content Include="Areas\Administrator\Assets\Model\reference.model.js" />
     <Content Include="Areas\Administrator\Assets\ViewModel\appraisal.viewmodel.js" />
     <Content Include="Areas\Administrator\Assets\ViewModel\customer.viewmodel.js" />
+    <Content Include="Areas\Administrator\Assets\ViewModel\pawning.viewmodel.js" />
+    <Content Include="Areas\Administrator\Assets\ViewModel\reference.viewmodel.js" />
     <Content Include="Assets\css\bootstrap.css" />
     <Content Include="Assets\css\bootstrap.min.css" />
     <Content Include="Assets\css\colors.css" />
@@ -2779,6 +2783,7 @@
     <Content Include="Content\toastr.less" />
     <Content Include="Areas\Administrator\Views\Appraisal\Index.cshtml" />
     <Content Include="Areas\Administrator\Views\Reference\Index.cshtml" />
+    <Content Include="Areas\Administrator\Views\Pawning\Index.cshtml" />
     <None Include="Properties\PublishProfiles\iPOS.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\inifiniteScroll.js" />
@@ -2855,7 +2860,6 @@
     <Folder Include="Areas\Administrator\Models\" />
     <Folder Include="Areas\Administrator\Views\Base\" />
     <Folder Include="Areas\Administrator\Views\Dashboard\" />
-    <Folder Include="Areas\Administrator\Views\Pawning\" />
     <Folder Include="Areas\Administrator\Views\SalesAndCollection\" />
     <Folder Include="Areas\Administrator\Views\Shared\" />
     <Folder Include="Areas\Administrator\Views\UserAccount\" />
