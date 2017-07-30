@@ -7,18 +7,13 @@ namespace iPOS.Web.Repository.Interface
 {
     public interface IUnitOfWork : IDisposable
     {
-        //IRepository<AspNetUser> AspNetUsersRepository { get; }
-        //IRepository<AspNetUserRole> AspNetUserRolesRepository { get; }
-        //IRepository<AspNetRole> AspNetRolesRepository { get; }
-        //IRepository<User> UsersRepository { get; }
-        //IRepository<Project> ProjectsRepository { get; }
-        //IRepository<ProjectTask> ProjectTasksRepository { get; }
-        //IRepository<ProjectDocument> ProjectDocumentsRepository { get; }
-        //IRepository<SagePM.Data.Models.Task> TasksRepository { get; }
         IRepository<customer> CustomerRepository { get; }
         IRepository<AppraisalViewModel> AppraisalModelRepository { get; }
         IRepository<apraiseditem> AppraisedItemRepository { get; }
         IRepository<itemcategory> ItemCategoryRepository { get; }
+        IRepository<itemtype> ItemTypeRepository { get; }
+        IRepository<pawneditem> PawnedItemRepository { get; }
+
         void SaveChanges();
         Task SaveChangesAsync();
 

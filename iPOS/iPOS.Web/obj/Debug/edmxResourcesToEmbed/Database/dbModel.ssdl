@@ -6,11 +6,14 @@
     </Key>
     <Property Name="AppraiseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="AppraiseDate" Type="date" />
-    <Property Name="AppraiseNo" Type="varchar" MaxLength="24" />
-    <Property Name="ItemCategoryId" Type="varchar" MaxLength="24" />
-    <Property Name="ItemDescription" Type="varchar" MaxLength="124" />
+    <Property Name="AppraiseNo" Type="varchar" MaxLength="32" />
+    <Property Name="ItemCategoryId" Type="varchar" MaxLength="32" />
+    <Property Name="ItemDescription" Type="varchar" MaxLength="128" />
+    <Property Name="ItemName" Type="varchar" MaxLength="64" />
+    <Property Name="MarketValue" Type="decimal" Precision="15" Scale="2" />
     <Property Name="AppraisedValue" Type="decimal" Precision="15" Scale="2" />
-    <Property Name="CustomerId" Type="varchar" MaxLength="24" />
+    <Property Name="CustomerFirstName" Type="varchar" MaxLength="32" />
+    <Property Name="CustomerLastName" Type="varchar" MaxLength="32" />
     <Property Name="IsPawned" Type="bool" />
     <Property Name="CreatedAt" Type="datetime" Precision="0" />
     <Property Name="CreatedBy" Type="varchar" MaxLength="24" />
@@ -33,6 +36,30 @@
     </Key>
     <Property Name="ItemCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ItemCategoryName" Type="varchar" MaxLength="50" />
+    <Property Name="ItemTypeId" Type="int" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="32" />
+    <Property Name="CreatedAt" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="itemtype">
+    <Key>
+      <PropertyRef Name="ItemTypeId" />
+    </Key>
+    <Property Name="ItemTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemTypeName" Type="varchar" MaxLength="64" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="32" />
+    <Property Name="CreatedAt" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="pawneditem">
+    <Key>
+      <PropertyRef Name="PawnedItemId" />
+    </Key>
+    <Property Name="PawnedItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="releaseditem">
+    <Key>
+      <PropertyRef Name="ReleasedItemId" />
+    </Key>
+    <Property Name="ReleasedItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <EntityType Name="tbldepartment">
     <Key>
@@ -63,6 +90,9 @@
     <EntitySet Name="apraiseditem" EntityType="Self.apraiseditem" Schema="dbpawnshop" store:Type="Tables" />
     <EntitySet Name="customer" EntityType="Self.customer" Schema="dbpawnshop" store:Type="Tables" />
     <EntitySet Name="itemcategory" EntityType="Self.itemcategory" Schema="dbpawnshop" store:Type="Tables" />
+    <EntitySet Name="itemtype" EntityType="Self.itemtype" Schema="dbpawnshop" store:Type="Tables" />
+    <EntitySet Name="pawneditem" EntityType="Self.pawneditem" Schema="dbpawnshop" store:Type="Tables" />
+    <EntitySet Name="releaseditem" EntityType="Self.releaseditem" Schema="dbpawnshop" store:Type="Tables" />
     <EntitySet Name="tbldepartment" EntityType="Self.tbldepartment" Schema="dbpawnshop" store:Type="Tables" />
     <EntitySet Name="tblrole" EntityType="Self.tblrole" Schema="dbpawnshop" store:Type="Tables" />
     <EntitySet Name="tbluser" EntityType="Self.tbluser" Schema="dbpawnshop" store:Type="Tables" />

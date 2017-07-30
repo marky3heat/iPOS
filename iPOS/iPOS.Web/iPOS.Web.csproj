@@ -222,6 +222,7 @@
     <Compile Include="Areas\Administrator\Controllers\CustomerController.cs" />
     <Compile Include="Areas\Administrator\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Administrator\Controllers\PawningController.cs" />
+    <Compile Include="Areas\Administrator\Controllers\ReferenceController.cs" />
     <Compile Include="Areas\Administrator\Controllers\SalesAndCollectionController.cs" />
     <Compile Include="Areas\Administrator\Controllers\UserAccountController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -254,6 +255,12 @@
     <Compile Include="Database\itemtype.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Database\pawneditem.cs">
+      <DependentUpon>dbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\releaseditem.cs">
+      <DependentUpon>dbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\tbldepartment.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
@@ -281,6 +288,8 @@
     <Compile Include="Service\CustomerService.cs" />
     <Compile Include="Service\Interface\IAppraisalService.cs" />
     <Compile Include="Service\Interface\ICustomerService.cs" />
+    <Compile Include="Service\Interface\IReferenceService.cs" />
+    <Compile Include="Service\ReferenceService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2769,6 +2778,7 @@
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
     <Content Include="Areas\Administrator\Views\Appraisal\Index.cshtml" />
+    <Content Include="Areas\Administrator\Views\Reference\Index.cshtml" />
     <None Include="Properties\PublishProfiles\iPOS.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\inifiniteScroll.js" />

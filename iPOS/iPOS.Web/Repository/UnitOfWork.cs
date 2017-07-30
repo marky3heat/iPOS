@@ -20,7 +20,11 @@ namespace iPOS.Web.Repository
         private Repository<customer> _customerRepository;
         private Repository<AppraisalViewModel> _appraisalModelRepository;
         private Repository<apraiseditem> _appraisedItemsRepository;
+
         private Repository<itemcategory> _itemCategoryRepository;
+        private Repository<itemtype> _itemTypeRepository;
+        private Repository<pawneditem> _pawnedItemRepository;
+
         //#region PUBLIC MEMBER METHODS
         public IRepository<customer> CustomerRepository
         {
@@ -56,6 +60,24 @@ namespace iPOS.Web.Repository
                 if (_itemCategoryRepository == null)
                     _itemCategoryRepository = new Repository<itemcategory>(_dbContext);
                 return _itemCategoryRepository;
+            }
+        }
+        public IRepository<itemtype> ItemTypeRepository
+        {
+            get
+            {
+                if (_itemTypeRepository == null)
+                    _itemTypeRepository = new Repository<itemtype>(_dbContext);
+                return _itemTypeRepository;
+            }
+        }
+        public IRepository<pawneditem> PawnedItemRepository
+        {
+            get
+            {
+                if (_pawnedItemRepository == null)
+                    _pawnedItemRepository = new Repository<pawneditem>(_dbContext);
+                return _pawnedItemRepository;
             }
         }
 

@@ -45,11 +45,14 @@
     <EntitySetMapping Name="apraiseditems">
       <EntityTypeMapping TypeName="dbpawnshopModel.apraiseditem">
         <MappingFragment StoreEntitySet="apraiseditem">
+          <ScalarProperty Name="MarketValue" ColumnName="MarketValue" />
           <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
           <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
           <ScalarProperty Name="IsPawned" ColumnName="IsPawned" />
-          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="CustomerLastName" ColumnName="CustomerLastName" />
+          <ScalarProperty Name="CustomerFirstName" ColumnName="CustomerFirstName" />
           <ScalarProperty Name="AppraisedValue" ColumnName="AppraisedValue" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
           <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
           <ScalarProperty Name="ItemCategoryId" ColumnName="ItemCategoryId" />
           <ScalarProperty Name="AppraiseNo" ColumnName="AppraiseNo" />
@@ -61,8 +64,35 @@
     <EntitySetMapping Name="itemcategories">
       <EntityTypeMapping TypeName="dbpawnshopModel.itemcategory">
         <MappingFragment StoreEntitySet="itemcategory">
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
           <ScalarProperty Name="ItemCategoryName" ColumnName="ItemCategoryName" />
           <ScalarProperty Name="ItemCategoryId" ColumnName="ItemCategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pawneditems">
+      <EntityTypeMapping TypeName="dbpawnshopModel.pawneditem">
+        <MappingFragment StoreEntitySet="pawneditem">
+          <ScalarProperty Name="PawnedItemId" ColumnName="PawnedItemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="itemtypes">
+      <EntityTypeMapping TypeName="dbpawnshopModel.itemtype">
+        <MappingFragment StoreEntitySet="itemtype">
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ItemTypeName" ColumnName="ItemTypeName" />
+          <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="releaseditems">
+      <EntityTypeMapping TypeName="dbpawnshopModel.releaseditem">
+        <MappingFragment StoreEntitySet="releaseditem">
+          <ScalarProperty Name="ReleasedItemId" ColumnName="ReleasedItemId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

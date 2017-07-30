@@ -5,13 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="e055333e879940bb93b171c9ac0fb58f" Name="Diagram1" ZoomLevel="85">
-        <EntityTypeShape EntityType="dbpawnshopModel.customer" Width="1.5" PointX="8.125" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbpawnshopModel.tbldepartment" Width="1.5" PointX="6.25" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbpawnshopModel.tblrole" Width="1.5" PointX="6.25" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbpawnshopModel.tbluser" Width="1.5" PointX="4.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbpawnshopModel.customer" Width="1.5" PointX="16.375" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbpawnshopModel.tbldepartment" Width="1.5" PointX="14.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbpawnshopModel.tblrole" Width="1.5" PointX="16.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbpawnshopModel.tbluser" Width="1.5" PointX="14.75" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="dbpawnshopModel.apraiseditem" Width="1.5" PointX="0.625" PointY="0.5" />
-        <EntityTypeShape EntityType="dbpawnshopModel.itemcategory" Width="1.5" PointX="2.125" PointY="0.5" />
-        <EntityTypeShape EntityType="dbpawnshopModel.itemtype" Width="1.5" PointX="2.125" PointY="2.5" />
+        <EntityTypeShape EntityType="dbpawnshopModel.itemcategory" Width="1.5" PointX="7.5" PointY="0.5" />
+        <EntityTypeShape EntityType="dbpawnshopModel.pawneditem" Width="1.5" PointX="2.5" PointY="0.5" />
+        <EntityTypeShape EntityType="dbpawnshopModel.itemtype" Width="1.5" PointX="9" PointY="0.5" />
+        <EntityTypeShape EntityType="dbpawnshopModel.releaseditem" Width="1.5" PointX="4.125" PointY="0.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
