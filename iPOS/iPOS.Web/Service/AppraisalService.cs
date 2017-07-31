@@ -61,7 +61,14 @@ namespace iPOS.Web.Service
                 using (var uow = _unitOfWorkFactory.Create())
                 {
                     var result = uow.AppraisedItemRepository.All;
-                    return result.Max(a => a.AppraiseId);
+                    if (result.Count() != 0)
+                    {
+                        return result.Max(a => a.AppraiseId);
+                    }
+                    else
+                    {
+                        return 0;
+                    }           
                 }
             }
             catch (Exception ex)
@@ -170,6 +177,21 @@ namespace iPOS.Web.Service
         #endregion
 
         #region OTHERS
+        public async Task<List<itemtype>> GetItemTypeList()
+        {
+            try
+            {
+                using (var uow = _unitOfWorkFactory.Create())
+                {
+                    var list = await uow.ItemTypeRepository.AllWithAsync(null);
+                    return list.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public async Task<List<itemcategory>> GetItemCategoryList()
         {
             try
@@ -178,6 +200,21 @@ namespace iPOS.Web.Service
                 {
                     var list = await uow.ItemCategoryRepository.AllWithAsync(null);
                     return list.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public async Task<List<itemcategory>> GetItemCategoryByItemTypeId(int ItemTypeId)
+        {
+            try
+            {
+                using (var uow = _unitOfWorkFactory.Create())
+                {
+                    var result = await uow.ItemCategoryRepository.AllWithAsync(u => u.ItemTypeId == ItemTypeId);
+                    return result.ToList();
                 }
             }
             catch (Exception ex)

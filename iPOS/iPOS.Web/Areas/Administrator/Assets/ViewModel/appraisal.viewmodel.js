@@ -1,14 +1,17 @@
 ﻿app.vm = (function () {
     //"use strict";
-    var item = new app.createAppraisalModel();
+    var appraisedItem = new app.addAppraisedItemModel();
 
     // #region CONTROLS                
-    var isItemListShowed = ko.observable(true);
-    var isManageItemShowed = ko.observable(false);
+    var isAppraisedItemListShowed = ko.observable(true);
+    var isManageAppraisedItemShowed = ko.observable(false);
     var isSaveButtonShowed = ko.observable(true);
 
     var buttonCaption = ko.observable("");
+
+    var itemType = ko.observableArray();
     var itemCategory = ko.observableArray();
+
     var serverDate = ko.observableArray();
     var appraisalNo = ko.observableArray();
 
@@ -22,6 +25,36 @@
     });
 
     // #endregion
+
+    var vm = {
+        items: items,
+
+        isAppraisedItemListShowed: isAppraisedItemListShowed,
+        isManageAppraisedItemShowed: isManageAppraisedItemShowed,
+
+        itemType: itemType,
+        itemCategory: itemCategory,
+
+        isSaveButtonShowed: isSaveButtonShowed,
+
+        backToAppraisedItemList: backToAppraisedItemList,
+
+        buttonCaption: buttonCaption,
+        recordCountItemList: recordCountItemList,
+        isLoadData: isLoadData,
+
+        appraisedItem: appraisedItem,
+
+        addItem: addItem,
+        saveItem: saveItem,
+        viewItem: viewItem,
+        activate: activate,
+
+        getItemCategory: getItemCategory,
+        getItemType: getItemType
+    };
+    return vm;
+
 
     // #region BEHAVIORS
     // initializers
@@ -76,59 +109,77 @@
     }
 
     function clearControls() {
-        item.AppraiseId("");
-        item.AppraiseId("");
-        item.AppraiseDate("");
-        item.AppraiseNo("");
-        item.ItemName("");
-        item.ItemDescription("");
-        item.AppraisedValue("");
-        item.MarketValue("");
-        item.IsPawned("");
+        appraisedItem.AppraiseId("");
+        appraisedItem.AppraiseDate("");
+        appraisedItem.AppraiseNo("");
 
-        item.CustomerFirstName("");
-        item.CustomerLastName("");
+        appraisedItem.ItemTypeId("");
+        appraisedItem.ItemCategoryId("");
 
-        item.ItemCategoryId("");
+        appraisedItem.ItemName("");
+        appraisedItem.Weight("");
+        appraisedItem.AppraisedValue("");
+        appraisedItem.Remarks("");
+        appraisedItem.CustomerFirstName("");
+        appraisedItem.CustomerLastName("");
+        appraisedItem.IsPawned("");
+
+        appraisedItem.CreatedBy("");
+        appraisedItem.CreatedAt("");
     }
 
     function addItem() {
         buttonCaption(" Appraise Item");
         clearControls();
         SetInitialDate();
+
+        getItemType();
         getItemCategory();
+
         GetAppraiseNo();
         getServerDate();
 
-        isItemListShowed(false);
-        isManageItemShowed(true);
+        isAppraisedItemListShowed(false);
+        isManageAppraisedItemShowed(true);
     }
     function viewItem(arg) {
         loaderApp.showPleaseWait();
         buttonCaption("");
         clearControls();
+
         getItemCategory();
 
-        item.AppraiseId(arg.AppraiseId());
-        item.AppraiseNo(arg.AppraiseNo());
-        item.AppraiseDate(arg.AppraiseDate());
-        item.ItemCategoryId(arg.ItemCategoryId());
-        item.ItemName(arg.ItemName());
-        item.ItemDescription(arg.ItemDescription());
-        item.AppraisedValue(arg.AppraisedValue());
-        item.MarketValue(arg.MarketValue());
-        item.CustomerFirstName(arg.CustomerFirstName());
-        item.CustomerLastName(arg.CustomerLastName());
+        appraisedItem.AppraiseId(arg.AppraiseId());
+        appraisedItem.AppraiseDate(arg.AppraiseDate());
+        appraisedItem.AppraiseNo(arg.AppraiseNo());
+
+        appraisedItem.ItemTypeId(arg.ItemTypeId());
+        appraisedItem.ItemCategoryId(arg.ItemCategoryId());
+        appraisedItem.ItemName(arg.ItemName());
+        appraisedItem.Weight(arg.Weight());
+        appraisedItem.AppraisedValue(arg.AppraisedValue());
+        appraisedItem.Remarks(arg.Remarks());
+        appraisedItem.CustomerFirstName(arg.CustomerFirstName());
+        appraisedItem.CustomerLastName(arg.CustomerLastName());
+        appraisedItem.IsPawned(arg.IsPawned());
+
+        appraisedItem.CreatedBy(arg.CreatedBy());
+        appraisedItem.CreatedAt(arg.CreatedAt());
 
         isItemListShowed(false);
+
         isManageItemShowed(true);
         isSaveButtonShowed(false);
+
+        isAppraisedItemListShowed(true);
+        isManageAppraisedItemShowed(false);
+
         loaderApp.hidePleaseWait();
     }
 
     function backToAppraisedItemList() {
-        isItemListShowed(true);
-        isManageItemShowed(false);
+        isAppraisedItemListShowed(true);
+        isManageAppraisedItemShowed(false);
     }
 
     function saveItem() {
@@ -158,8 +209,8 @@
                     isLoadData = "true";
                     //--------
 
-                    isItemListShowed(true);
-                    isManageItemShowed(false);
+                    isAppraisedItemListShowed(true);
+                    isManageAppraisedItemShowed(false);
 
                     loaderApp.hidePleaseWait();
                 } else {
@@ -172,23 +223,29 @@
             }
         });
     }
+
+    function getItemType() {
+        $.getJSON(RootUrl + "/Administrator/Appraisal/GetItemType", function (result) {
+            itemType.removeAll();
+            itemType(result);
+        });
+    }
     function getItemCategory() {
-        $.getJSON(RootUrl + "/Administrator/Appraisal/GetItemCategory", function (result) {
+        var ItemTypeId = $("#ItemTypeId option:selected").val();
+
+        $.getJSON(RootUrl + "/Administrator/Appraisal/GetItemCategory?ItemTypeId=" + ItemTypeId, function (result) {
             itemCategory.removeAll();
             itemCategory(result);
         });
     }
     function getServerDate() {
         $.getJSON(RootUrl + "/Administrator/Appraisal/GetServerDate", function (result) {
-            //var resultDate = new Date(result);
-            //var newDate = resultDate.toString();
-            //item.AppraiseDate(newDate);
-            item.AppraiseDate(result);
+            appraisedItem.AppraiseDate(result);
         });
     }
     function GetAppraiseNo() {
         $.getJSON(RootUrl + "/Administrator/Appraisal/GetAppraiseNo", function (result) {
-            item.AppraiseNo(result);
+            appraisedItem.AppraiseNo(result);
         });
     }
 
@@ -199,23 +256,7 @@
     }
 
     // #endregion
-    var vm = {
-        items: items,
-        isItemListShowed: isItemListShowed,
-        isManageItemShowed: isManageItemShowed,
-        isSaveButtonShowed: isSaveButtonShowed,
-        backToAppraisedItemList:backToAppraisedItemList,
-        buttonCaption: buttonCaption,
-        recordCountItemList: recordCountItemList,
-        isLoadData: isLoadData,
-        itemCategory: itemCategory,
-        item: item,
-        addItem: addItem,
-        saveItem: saveItem,
-        viewItem: viewItem,
-        activate: activate
-    };
-    return vm;
+
 })();
 
 $(function () {

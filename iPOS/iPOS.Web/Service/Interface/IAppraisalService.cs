@@ -24,7 +24,10 @@ namespace iPOS.Web.Service.Interface
         #endregion
 
         #region Others
+        Task<List<itemtype>> GetItemTypeList();
         Task<List<itemcategory>> GetItemCategoryList();
+        Task<List<itemcategory>> GetItemCategoryByItemTypeId(int ItemTypeId);
+
         Task<List<customer>> GetCustomerList();
         #endregion
 

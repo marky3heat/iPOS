@@ -12,10 +12,11 @@
           <Property Name="AppraiseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AppraiseDate" Type="date" />
           <Property Name="AppraiseNo" Type="varchar" MaxLength="32" />
-          <Property Name="ItemCategoryId" Type="varchar" MaxLength="32" />
-          <Property Name="ItemDescription" Type="varchar" MaxLength="128" />
+          <Property Name="ItemTypeId" Type="int" />
+          <Property Name="ItemCategoryId" Type="int" />
           <Property Name="ItemName" Type="varchar" MaxLength="64" />
-          <Property Name="MarketValue" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Weight" Type="varchar" MaxLength="32" />
+          <Property Name="Remarks" Type="varchar" MaxLength="128" />
           <Property Name="AppraisedValue" Type="decimal" Precision="15" Scale="2" />
           <Property Name="CustomerFirstName" Type="varchar" MaxLength="32" />
           <Property Name="CustomerLastName" Type="varchar" MaxLength="32" />
@@ -148,30 +149,12 @@
           <EntitySet Name="tbldepartments" EntityType="Self.tbldepartment" />
           <EntitySet Name="tblroles" EntityType="Self.tblrole" />
           <EntitySet Name="tblusers" EntityType="Self.tbluser" />
-          <EntitySet Name="apraiseditems" EntityType="dbpawnshopModel.apraiseditem" />
           <EntitySet Name="itemcategories" EntityType="dbpawnshopModel.itemcategory" />
           <EntitySet Name="pawneditems" EntityType="dbpawnshopModel.pawneditem" />
           <EntitySet Name="itemtypes" EntityType="dbpawnshopModel.itemtype" />
           <EntitySet Name="releaseditems" EntityType="dbpawnshopModel.releaseditem" />
+          <EntitySet Name="apraiseditems" EntityType="dbpawnshopModel.apraiseditem" />
         </EntityContainer>
-        <EntityType Name="apraiseditem">
-          <Key>
-            <PropertyRef Name="AppraiseId" />
-          </Key>
-          <Property Name="AppraiseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AppraiseDate" Type="DateTime" />
-          <Property Name="AppraiseNo" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="ItemCategoryId" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="ItemDescription" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
-          <Property Name="ItemName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Name="AppraisedValue" Type="Decimal" />
-          <Property Name="CustomerFirstName" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="CustomerLastName" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="IsPawned" Type="Boolean" />
-          <Property Name="CreatedAt" Type="DateTime" />
-          <Property Name="CreatedBy" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
-          <Property Name="MarketValue" Type="Decimal" />
-        </EntityType>
         <EntityType Name="itemcategory">
           <Key>
             <PropertyRef Name="ItemCategoryId" />
@@ -202,6 +185,25 @@
             <PropertyRef Name="ReleasedItemId" />
           </Key>
           <Property Name="ReleasedItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="apraiseditem">
+          <Key>
+            <PropertyRef Name="AppraiseId" />
+          </Key>
+          <Property Name="AppraiseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppraiseDate" Type="DateTime" />
+          <Property Name="AppraiseNo" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="ItemTypeId" Type="Int32" />
+          <Property Name="ItemCategoryId" Type="Int32" />
+          <Property Name="ItemName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Weight" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="AppraisedValue" Type="Decimal" />
+          <Property Name="CustomerFirstName" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerLastName" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="IsPawned" Type="Boolean" />
+          <Property Name="CreatedAt" Type="DateTime" />
+          <Property Name="CreatedBy" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -250,25 +252,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="apraiseditems">
-            <EntityTypeMapping TypeName="dbpawnshopModel.apraiseditem">
-              <MappingFragment StoreEntitySet="apraiseditem">
-                <ScalarProperty Name="MarketValue" ColumnName="MarketValue" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-                <ScalarProperty Name="IsPawned" ColumnName="IsPawned" />
-                <ScalarProperty Name="CustomerLastName" ColumnName="CustomerLastName" />
-                <ScalarProperty Name="CustomerFirstName" ColumnName="CustomerFirstName" />
-                <ScalarProperty Name="AppraisedValue" ColumnName="AppraisedValue" />
-                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
-                <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
-                <ScalarProperty Name="ItemCategoryId" ColumnName="ItemCategoryId" />
-                <ScalarProperty Name="AppraiseNo" ColumnName="AppraiseNo" />
-                <ScalarProperty Name="AppraiseDate" ColumnName="AppraiseDate" />
-                <ScalarProperty Name="AppraiseId" ColumnName="AppraiseId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="itemcategories">
             <EntityTypeMapping TypeName="dbpawnshopModel.itemcategory">
               <MappingFragment StoreEntitySet="itemcategory">
@@ -301,6 +284,26 @@
             <EntityTypeMapping TypeName="dbpawnshopModel.releaseditem">
               <MappingFragment StoreEntitySet="releaseditem">
                 <ScalarProperty Name="ReleasedItemId" ColumnName="ReleasedItemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="apraiseditems">
+            <EntityTypeMapping TypeName="dbpawnshopModel.apraiseditem">
+              <MappingFragment StoreEntitySet="apraiseditem">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="IsPawned" ColumnName="IsPawned" />
+                <ScalarProperty Name="CustomerLastName" ColumnName="CustomerLastName" />
+                <ScalarProperty Name="CustomerFirstName" ColumnName="CustomerFirstName" />
+                <ScalarProperty Name="AppraisedValue" ColumnName="AppraisedValue" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ItemCategoryId" ColumnName="ItemCategoryId" />
+                <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+                <ScalarProperty Name="AppraiseNo" ColumnName="AppraiseNo" />
+                <ScalarProperty Name="AppraiseDate" ColumnName="AppraiseDate" />
+                <ScalarProperty Name="AppraiseId" ColumnName="AppraiseId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

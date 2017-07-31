@@ -3,7 +3,7 @@
     ViewBag.Title = "Appraisal List";
 }
 
-<div data-bind="visible: isItemListShowed" class="panel panel-flat">
+<div data-bind="visible: isAppraisedItemListShowed" class="panel panel-flat">
     <div class="panel-heading">
         <h6 class="panel-title">Appraised Item List</h6>
         <div class="heading-elements">            
@@ -58,7 +58,7 @@
         </table>
     </div>
 </div>
-<div data-bind="visible: isManageItemShowed" class="sidebar-xs has-detached-left">
+<div data-bind="visible: isManageAppraisedItemShowed" class="sidebar-xs has-detached-left">
     <!-- Detached sidebar -->
     <div class="sidebar-detached">
         <div class="sidebar sidebar-default sidebar-separate">
@@ -106,13 +106,13 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label>Appraisal #</label>
-                                            <input type="text" data-bind="textinput: item.AppraiseNo" class="form-control" id="AppraiseNo">
+                                            <input type="text" data-bind="textinput: appraisedItem.AppraiseNo" class="form-control" id="AppraiseNo">
                                         </div>
                                         <div class="col-md-6">
                                             <label>Date</label>
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="icon-calendar22"></i></span>
-                                                <input type="text" data-bind="textinput: item.AppraiseDate" class="form-control daterange-single" id="AppraiseDate">
+                                                <input type="text" data-bind="textinput: appraisedItem.AppraiseDate" class="form-control daterange-single" id="AppraiseDate">
                                             </div>
                                         </div>
                                     </div>
@@ -121,34 +121,15 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label>Item category</label>
-                                            <select required data-bind="options: itemCategory, optionsValue: 'ItemCategoryId', optionsText: 'ItemCategoryName', optionsCaption: '--Select Category--', optionsSelected: item.ItemCategoryId" class="form-control" id="ItemCategory"></select>
+                                            <select required data-bind="options: itemType, optionsValue: 'ItemTypeId', optionsText: 'ItemTypeName', optionsCaption: '--Select item type--', optionsSelected: appraisedItem.ItemTypeId, event:{ change: getItemCategory}" class="form-control" id="ItemTypeId"></select>
                                         </div>
                                         <div class="col-md-6">
-                                            <label>Item name</label>
-                                            <input type="text" data-bind="textinput: item.ItemName" class="form-control" id="ItemName">
+                                            <label>Item category</label>
+                                            <select required data-bind="options: itemCategory, optionsValue: 'ItemCategoryId', optionsText: 'ItemCategoryName', optionsCaption: '--Select item category--', optionsSelected: appraisedItem.ItemCategoryId" class="form-control" id="ItemCategoryId"></select>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <label>Item description</label>
-                                            <textarea data-bind="textinput: item.ItemDescription" class="form-control" row="5" col="5" id="ItemDescription"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Appraise Value</label>
-                                            <input type="number" data-bind="textinput: item.AppraisedValue" class="form-control" id="AppraisedValue">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label>Market Value</label>
-                                            <input type="number" data-bind="textinput: item.MarketValue" class="form-control" id="MarketValue">
-                                        </div>
-                                    </div>
-                                </div>
+
                                 
                                 <br><h6 class="panel-title text-semibold">Customer Information</h6><br>
 
@@ -156,11 +137,11 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label>First Name</label>
-                                            <input type="text" data-bind="textinput: item.CustomerFirstName" class="form-control" id="CustomerFirstName">
+                                            <input type="text" data-bind="textinput: appraisedItem.CustomerFirstName" class="form-control" id="CustomerFirstName">
                                         </div>
                                         <div class="col-md-6">
                                             <label>Last Name</label>
-                                            <input type="text" data-bind="textinput: item.CustomerLastName" class="form-control" id="CustomerLastName">
+                                            <input type="text" data-bind="textinput: appraisedItem.CustomerLastName" class="form-control" id="CustomerLastName">
                                         </div>
                                     </div>
                                 </div>

@@ -50,32 +50,35 @@ namespace iPOS.Web.Areas.Administrator.Controllers
 
             var result =
                 from a in listAppraisedItem
-                join i in listItemCategory on a.ItemCategoryId equals i.ItemCategoryId.ToString()
                 select new
                 {
                     a.AppraiseId,
                     a.AppraiseDate,
                     a.AppraiseNo,
-                    a.ItemName,
-                    a.ItemDescription,
-                    a.MarketValue,
-                    a.AppraisedValue,
-                    a.IsPawned,
-                    a.CustomerFirstName,
-                    a.CustomerLastName,
-                    a.ItemCategoryId,
-                    i.ItemCategoryName
+                    a.IsPawned
                 };
 
             return Json(new { data = result.OrderByDescending(d => d.AppraiseDate).ThenBy(s => s.IsPawned), noMoreData = result.Count() < pageSize, recordCount = result.Count() }, JsonRequestBehavior.AllowGet);
         }
-        public async Task<JsonResult> GetItemCategory()
+        public async Task<JsonResult> GetItemType()
         {
-            var list = await _appraisalService.GetItemCategoryList();
+            var list = await _appraisalService.GetItemTypeList();
+            var result = list.Select(item => new itemtype()
+            {
+                ItemTypeId = item.ItemTypeId,
+                ItemTypeName = item.ItemTypeName
+            });
+
+            return Json(result.OrderBy(o => o.ItemTypeName), JsonRequestBehavior.AllowGet);
+        }
+        public async Task<JsonResult> GetItemCategory(int ItemTypeId)
+        {
+            var list = await _appraisalService.GetItemCategoryByItemTypeId(ItemTypeId);
             var result = list.Select(item => new itemcategory()
             {
                 ItemCategoryId = item.ItemCategoryId,
-                ItemCategoryName = item.ItemCategoryName
+                ItemCategoryName = item.ItemCategoryName,
+                ItemTypeId = item.ItemTypeId
             });
 
             return Json(result.OrderBy(o => o.ItemCategoryName), JsonRequestBehavior.AllowGet);
@@ -110,13 +113,7 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                     model = new apraiseditem();
                     model.AppraiseDate = DateTime.Parse(item.AppraiseDate);
                     model.AppraiseNo = item.AppraiseNo;
-                    model.ItemCategoryId = item.ItemCategoryId;
-                    model.ItemName = item.ItemName;
-                    model.ItemDescription = item.ItemDescription;
-                    model.AppraisedValue = item.AppraisedValue;
-                    model.MarketValue = item.MarketValue;
-                    model.CustomerFirstName = item.CustomerFirstName;
-                    model.CustomerLastName = item.CustomerLastName;
+
                     model.IsPawned = false;
                     model.CreatedAt = DateTime.Now;
                     model.CreatedBy = "";
@@ -137,13 +134,6 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                     model = await _appraisalService.FindById(item.AppraiseId);
                     model.AppraiseDate = DateTime.Parse(item.AppraiseDate);
                     model.AppraiseNo = item.AppraiseNo;
-                    model.ItemCategoryId = item.ItemCategoryId;
-                    model.ItemName = item.ItemName;
-                    model.ItemDescription = item.ItemDescription;
-                    model.AppraisedValue = item.AppraisedValue;
-                    model.MarketValue = item.MarketValue;
-                    model.CustomerFirstName = item.CustomerFirstName;
-                    model.CustomerLastName = item.CustomerLastName;
                     model.IsPawned = false;
                     model.CreatedAt = DateTime.Now;
                     model.CreatedBy = "";
