@@ -11,13 +11,13 @@
     <Property Name="ItemCategoryId" Type="int" />
     <Property Name="ItemName" Type="varchar" MaxLength="64" />
     <Property Name="Weight" Type="varchar" MaxLength="32" />
-    <Property Name="Remarks" Type="varchar" MaxLength="128" />
     <Property Name="AppraisedValue" Type="decimal" Precision="15" Scale="2" />
+    <Property Name="Remarks" Type="varchar" MaxLength="128" />
     <Property Name="CustomerFirstName" Type="varchar" MaxLength="32" />
     <Property Name="CustomerLastName" Type="varchar" MaxLength="32" />
     <Property Name="IsPawned" Type="bool" />
-    <Property Name="CreatedAt" Type="datetime" Precision="0" />
     <Property Name="CreatedBy" Type="varchar" MaxLength="24" />
+    <Property Name="CreatedAt" Type="datetime" Precision="0" />
   </EntityType>
   <EntityType Name="customer">
     <Key>

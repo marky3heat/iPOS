@@ -87,19 +87,24 @@
         var data = result.data;
         var temp = allItems();
         data.forEach(function (o) {
-            var appraisalModel = new app.appraisalModel(
+            var appraisalModel = new app.appraisedItemModel(
                 o.AppraiseId,
                 o.AppraiseDate,
                 o.AppraiseNo,
+                o.ItemTypeId,
+                o.ItemCategoryId,
                 o.ItemName,
-                o.ItemDescription,
-                o.MarketValue.toFixed(2),
-                o.AppraisedValue.toFixed(2),
-                o.IsPawned,
+                o.Weight,
+                o.AppraisedValue,
+                o.Remarks,
                 o.CustomerFirstName,
                 o.CustomerLastName,
-                o.ItemCategoryId,
-                o.ItemCategoryName);
+                o.IsPawned,
+                o.CreatedBy,
+                o.CreatedAt,
+                o.ItemTypeName,
+                o.ItemCategoryName
+            );
             temp.push(appraisalModel);
         });
         isViewLoadMoreData(noMoreData);
@@ -166,9 +171,9 @@
         appraisedItem.CreatedBy(arg.CreatedBy());
         appraisedItem.CreatedAt(arg.CreatedAt());
 
-        isItemListShowed(false);
+        isAppraisedItemListShowed(false);
+        isManageAppraisedItemShowed(true);
 
-        isManageItemShowed(true);
         isSaveButtonShowed(false);
 
         isAppraisedItemListShowed(true);
@@ -193,7 +198,7 @@
         /*VALIDATIONS -END*/
         
         loaderApp.showPleaseWait();
-        var param = ko.toJS(item);
+        var param = ko.toJS(appraisedItem);
         var url = RootUrl + "/Administrator/Appraisal/SaveAppraisedItem";
         $.ajax({
             type: 'POST',
@@ -233,10 +238,12 @@
     function getItemCategory() {
         var ItemTypeId = $("#ItemTypeId option:selected").val();
 
-        $.getJSON(RootUrl + "/Administrator/Appraisal/GetItemCategory?ItemTypeId=" + ItemTypeId, function (result) {
-            itemCategory.removeAll();
-            itemCategory(result);
-        });
+        if (ItemTypeId !== "") {
+            $.getJSON(RootUrl + "/Administrator/Appraisal/GetItemCategory?ItemTypeId=" + ItemTypeId, function (result) {
+                itemCategory.removeAll();
+                itemCategory(result);
+            });
+        }
     }
     function getServerDate() {
         $.getJSON(RootUrl + "/Administrator/Appraisal/GetServerDate", function (result) {

@@ -35,7 +35,7 @@
                     <div class="">
                         <div class="text-semibold"><!--ko text: ItemName--><!--/ko--></div>
                         <div class="text-muted text-size-small">
-                            <span class="status-mark border-success"></span> <!--ko text: ItemDescription--><!--/ko-->
+                            <span class="status-mark border-success"></span> <!--ko text: Weight--><!--/ko-->
                         </div>
                     </div>
                 </td>
@@ -120,7 +120,7 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label>Item category</label>
+                                            <label>Item type</label>
                                             <select required data-bind="options: itemType, optionsValue: 'ItemTypeId', optionsText: 'ItemTypeName', optionsCaption: '--Select item type--', optionsSelected: appraisedItem.ItemTypeId, event:{ change: getItemCategory}" class="form-control" id="ItemTypeId"></select>
                                         </div>
                                         <div class="col-md-6">
@@ -129,8 +129,31 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Item Name</label>
+                                            <input type="text" data-bind="textinput: appraisedItem.ItemName" class="form-control" id="ItemName">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Weight</label>
+                                            <input type="text" data-bind="textinput: appraisedItem.Weight" class="form-control" id="Weight">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Appraised value</label>
+                                            <input type="text" data-bind="textinput: appraisedItem.AppraisedValue" class="form-control" id="AppraisedValue">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label>Remarks</label>
+                                            <textarea data-bind="textinput: appraisedItem.Remarks" class="form-control" row="5" col="5" id="Remarks"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                      
                                 <br><h6 class="panel-title text-semibold">Customer Information</h6><br>
 
                                 <div class="form-group">

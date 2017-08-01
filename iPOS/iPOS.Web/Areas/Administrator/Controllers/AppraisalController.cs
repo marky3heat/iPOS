@@ -44,18 +44,32 @@ namespace iPOS.Web.Areas.Administrator.Controllers
         [Route("Administrator/Customer/GetCustomerList")]
         public async Task<JsonResult> GetAppraisedItemList(int page, int pageSize)
         {
+            var listItemType = await _appraisalService.GetItemTypeList();
             var listItemCategory = await _appraisalService.GetItemCategoryList();
-            var listCustomer = await _appraisalService.GetCustomerList();
             var listAppraisedItem = await _appraisalService.GetList(page, pageSize);
 
             var result =
                 from a in listAppraisedItem
+                join b in listItemCategory on a.ItemCategoryId equals b.ItemCategoryId
+                join c in listItemType on a.ItemTypeId equals c.ItemTypeId
                 select new
                 {
                     a.AppraiseId,
                     a.AppraiseDate,
                     a.AppraiseNo,
-                    a.IsPawned
+                    a.ItemTypeId,
+                    a.ItemCategoryId,
+                    a.ItemName,
+                    a.Weight,
+                    a.AppraisedValue,
+                    a.Remarks,
+                    a.CustomerFirstName,
+                    a.CustomerLastName,
+                    a.IsPawned,
+                    a.CreatedBy,
+                    a.CreatedAt,
+                    b.ItemCategoryName,
+                    c.ItemTypeName
                 };
 
             return Json(new { data = result.OrderByDescending(d => d.AppraiseDate).ThenBy(s => s.IsPawned), noMoreData = result.Count() < pageSize, recordCount = result.Count() }, JsonRequestBehavior.AllowGet);
