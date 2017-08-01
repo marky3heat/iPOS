@@ -17,11 +17,12 @@ namespace iPOS.Web.Models
         public int AppraiseId { get; set; }
         public string AppraiseDate { get; set; }
         public string AppraiseNo { get; set; }
-        public string ItemCategoryId { get; set; }
+        public int ItemTypeId { get; set; }
+        public int ItemCategoryId { get; set; }
         public string ItemName { get; set; }
-        public string ItemDescription { get; set; }
+        public string Weight { get; set; }
+        public string Remarks { get; set; }
         public decimal AppraisedValue { get; set; }
-        public decimal MarketValue { get; set; }
         public string CustomerFirstName { get; set; }
         public string CustomerLastName { get; set; }
         public bool IsPawned { get; set; }

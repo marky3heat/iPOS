@@ -127,7 +127,14 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                     model = new apraiseditem();
                     model.AppraiseDate = DateTime.Parse(item.AppraiseDate);
                     model.AppraiseNo = item.AppraiseNo;
-
+                    model.ItemTypeId = item.ItemTypeId;
+                    model.ItemCategoryId = item.ItemCategoryId;
+                    model.ItemName = item.ItemName;
+                    model.Weight = item.Weight;
+                    model.AppraisedValue = item.AppraisedValue;
+                    model.Remarks = item.Remarks;
+                    model.CustomerFirstName = item.CustomerFirstName;
+                    model.CustomerLastName = item.CustomerLastName;
                     model.IsPawned = false;
                     model.CreatedAt = DateTime.Now;
                     model.CreatedBy = "";
@@ -146,11 +153,14 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                 else
                 {
                     model = await _appraisalService.FindById(item.AppraiseId);
-                    model.AppraiseDate = DateTime.Parse(item.AppraiseDate);
-                    model.AppraiseNo = item.AppraiseNo;
-                    model.IsPawned = false;
-                    model.CreatedAt = DateTime.Now;
-                    model.CreatedBy = "";
+                    model.ItemTypeId = item.ItemTypeId;
+                    model.ItemCategoryId = item.ItemCategoryId;
+                    model.ItemName = item.ItemName;
+                    model.Weight = item.Weight;
+                    model.AppraisedValue = item.AppraisedValue;
+                    model.Remarks = item.Remarks;
+                    model.CustomerFirstName = item.CustomerFirstName;
+                    model.CustomerLastName = item.CustomerLastName;
 
                     var result = await _appraisalService.Update(model);
                     success = result;

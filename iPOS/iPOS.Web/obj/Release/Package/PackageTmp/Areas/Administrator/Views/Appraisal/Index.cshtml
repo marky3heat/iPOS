@@ -3,7 +3,7 @@
     ViewBag.Title = "Appraisal List";
 }
 
-<div data-bind="visible: isItemListShowed" class="panel panel-flat">
+<div data-bind="visible: isAppraisedItemListShowed" class="panel panel-flat">
     <div class="panel-heading">
         <h6 class="panel-title">Appraised Item List</h6>
         <div class="heading-elements">            
@@ -32,10 +32,10 @@
                 <td data-bind="text: moment(AppraiseDate()).format('L')" class="text-semibold"></td>
                 <td class="text-semibold"><!--ko text: CustomerFirstName--><!--/ko--> <!--ko text: CustomerLastName--><!--/ko--></td>
                 <td>
-                    <div class="media-left">
+                    <div class="">
                         <div class="text-semibold"><!--ko text: ItemName--><!--/ko--></div>
                         <div class="text-muted text-size-small">
-                            <span class="status-mark border-success position-left"></span><!--ko text: ItemDescription--><!--/ko-->
+                            <span class="status-mark border-success"></span> <!--ko text: Weight--><!--/ko-->
                         </div>
                     </div>
                 </td>
@@ -50,7 +50,7 @@
                 <!--/ko--> 
                 <td>
                     <ul class="icons-list">
-                        <li><a href="#"><i class="icon-file-eye2"></i></a></li>
+                        <li><a href="#" data-bind="click: $root.viewItem"><i class="icon-menu7"></i></a></li>
                     </ul>
                 </td>
             </tr>
@@ -58,7 +58,7 @@
         </table>
     </div>
 </div>
-<div data-bind="visible: isManageItemShowed" class="sidebar-xs has-detached-left">
+<div data-bind="visible: isManageAppraisedItemShowed" class="sidebar-xs has-detached-left">
     <!-- Detached sidebar -->
     <div class="sidebar-detached">
         <div class="sidebar sidebar-default sidebar-separate">
@@ -101,18 +101,18 @@
                             <h6 class="panel-title text-semibold">Item information</h6>                     
                         </div>
                         <div class="panel-body">
-                            <form action="#">
+                            <form class="form-horizontal form-validate-jquery" action="#">
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label>Appraisal #</label>
-                                            <input type="text" data-bind="textinput: item.AppraiseNo" class="form-control" id="AppraiseNo">
+                                            <input type="text" data-bind="textinput: appraisedItem.AppraiseNo" class="form-control" id="AppraiseNo">
                                         </div>
                                         <div class="col-md-6">
                                             <label>Date</label>
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="icon-calendar22"></i></span>
-                                                <input type="text" data-bind="textinput: item.AppraiseDate" class="form-control daterange-single" id="AppraiseDate">
+                                                <input type="text" data-bind="textinput: appraisedItem.AppraiseDate" class="form-control daterange-single" id="AppraiseDate">
                                             </div>
                                         </div>
                                     </div>
@@ -120,54 +120,58 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label>Item category</label>
-                                            <select required data-bind="options: itemCategory, optionsValue: 'ItemCategoryId', optionsText: 'ItemCategoryName', optionsCaption: '--Select Category--', value: item.ItemCategoryId" class="form-control" id="ItemCategory"></select>
+                                            <label>Item type<span class="text-danger">*</span></label>
+                                            <select required data-bind="options: itemType, optionsValue: 'ItemTypeId', optionsText: 'ItemTypeName', optionsCaption: '--Select item type--', value: appraisedItem.ItemTypeId, value: appraisedItem.ItemTypeId, optionsSelected: appraisedItem.ItemTypeId, event:{ change: getItemCategory('')}" class="form-control" id="role"></select>
                                         </div>
                                         <div class="col-md-6">
-                                            <label>Item name</label>
-                                            <input type="text" data-bind="textinput: item.ItemName" class="form-control" id="ItemName">
+                                            <label>Item category<span class="text-danger">*</span></label>
+                                            <select required data-bind="options: itemCategory, optionsValue: 'ItemCategoryId', optionsText: 'ItemCategoryName', optionsCaption: '--Select item category--', value: appraisedItem.ItemCategoryId" class="form-control" id="ItemCategoryId"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Item Name<span class="text-danger">*</span></label>
+                                            <input type="text" required="required" data-bind="textinput: appraisedItem.ItemName" class="form-control" id="ItemName">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Weight<span class="text-danger">*</span></label>
+                                            <input type="text" required="required" data-bind="textinput: appraisedItem.Weight" class="form-control" id="Weight">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Appraised value<span class="text-danger">*</span></label>
+                                            <input type="text" required="required" data-bind="textinput: appraisedItem.AppraisedValue" class="form-control" id="AppraisedValue">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <label>Item description</label>
-                                            <textarea data-bind="textinput: item.ItemDescription" class="form-control" row="5" col="5" id="ItemDescription"></textarea>
+                                            <label>Remarks</label>
+                                            <textarea data-bind="textinput: appraisedItem.Remarks" class="form-control" row="5" col="5" id="Remarks"></textarea>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Appraise Value</label>
-                                            <input type="number" data-bind="textinput: item.AppraisedValue" class="form-control" id="AppraisedValue">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label>Market Value</label>
-                                            <input type="number" data-bind="textinput: item.MarketValue" class="form-control" id="MarketValue">
-                                        </div>
-                                    </div>
-                                </div>
-                                
+                      
                                 <br><h6 class="panel-title text-semibold">Customer Information</h6><br>
 
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label>First Name</label>
-                                            <input type="text" data-bind="textinput: item.CustomerFirstName" class="form-control" id="CustomerFirstName">
+                                            <label>First Name<span class="text-danger">*</span></label>
+                                            <input required="required" type="text" data-bind="textinput: appraisedItem.CustomerFirstName" class="form-control" id="CustomerFirstName">
                                         </div>
                                         <div class="col-md-6">
-                                            <label>Last Name</label>
-                                            <input type="text" data-bind="textinput: item.CustomerLastName" class="form-control" id="CustomerLastName">
+                                            <label>Last Name<span class="text-danger">*</span></label>
+                                            <input required="required" type="text" data-bind="textinput: appraisedItem.CustomerLastName" class="form-control" id="CustomerLastName">
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="text-right">
                                     <button data-bind="click: backToAppraisedItemList" type="submit" class="btn btn-link"><i class="icon-arrow-left13 position-left"></i> Back to appraised item list</button>
-                                    <button data-bind="click: saveItem" type="submit" class="btn bg-success btn-labeled btn-labeled-right ml-10"><b><i class="icon-plus3"></i></b><!--ko text: buttonCaption--><!--/ko--></button>
+                                    <button type="submit" data-bind="click: saveItem, visible: isSaveButtonShowed" class="btn bg-success btn-labeled btn-labeled-right ml-10"><b><i class="icon-plus3"></i></b><!--ko text: buttonCaption--><!--/ko--></button>
                                 </div>
                             </form>
                         </div>
@@ -186,6 +190,12 @@
     <script src="~/Scripts/inifiniteScroll.js"></script>
 
     <script type="text/javascript" src="~/Assets/js/plugins/forms/styling/switchery.min.js"></script>
+
+    <script type="text/javascript" src="~/Assets/js/plugins/forms/validation/validate.min.js"></script>
+    <script type="text/javascript" src="~/Assets/js/plugins/forms/inputs/touchspin.min.js"></script>
+    <script type="text/javascript" src="~/Assets/js/plugins/forms/selects/select2.min.js"></script>
+
+    <script type="text/javascript" src="~/Assets/js/pages/form_validation.js"></script>
 
     <script src="~/Areas/Administrator/Assets/model/appraisal.model.js"></script>
     <script src="~/Areas/Administrator/Assets/viewmodel/appraisal.viewmodel.js"></script>

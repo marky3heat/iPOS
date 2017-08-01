@@ -45,8 +45,35 @@
     <EntitySetMapping Name="itemcategories">
       <EntityTypeMapping TypeName="dbpawnshopModel.itemcategory">
         <MappingFragment StoreEntitySet="itemcategory">
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
           <ScalarProperty Name="ItemCategoryName" ColumnName="ItemCategoryName" />
           <ScalarProperty Name="ItemCategoryId" ColumnName="ItemCategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pawneditems">
+      <EntityTypeMapping TypeName="dbpawnshopModel.pawneditem">
+        <MappingFragment StoreEntitySet="pawneditem">
+          <ScalarProperty Name="PawnedItemId" ColumnName="PawnedItemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="itemtypes">
+      <EntityTypeMapping TypeName="dbpawnshopModel.itemtype">
+        <MappingFragment StoreEntitySet="itemtype">
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ItemTypeName" ColumnName="ItemTypeName" />
+          <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="releaseditems">
+      <EntityTypeMapping TypeName="dbpawnshopModel.releaseditem">
+        <MappingFragment StoreEntitySet="releaseditem">
+          <ScalarProperty Name="ReleasedItemId" ColumnName="ReleasedItemId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -58,11 +85,12 @@
           <ScalarProperty Name="IsPawned" ColumnName="IsPawned" />
           <ScalarProperty Name="CustomerLastName" ColumnName="CustomerLastName" />
           <ScalarProperty Name="CustomerFirstName" ColumnName="CustomerFirstName" />
-          <ScalarProperty Name="MarketValue" ColumnName="MarketValue" />
           <ScalarProperty Name="AppraisedValue" ColumnName="AppraisedValue" />
-          <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
           <ScalarProperty Name="ItemName" ColumnName="ItemName" />
           <ScalarProperty Name="ItemCategoryId" ColumnName="ItemCategoryId" />
+          <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
           <ScalarProperty Name="AppraiseNo" ColumnName="AppraiseNo" />
           <ScalarProperty Name="AppraiseDate" ColumnName="AppraiseDate" />
           <ScalarProperty Name="AppraiseId" ColumnName="AppraiseId" />

@@ -5,6 +5,7 @@
     // #region CONTROLS                
     var isAppraisedItemListShowed = ko.observable(true);
     var isManageAppraisedItemShowed = ko.observable(false);
+    var isViewAppraisedItemShowed = ko.observable(false);
     var isSaveButtonShowed = ko.observable(true);
 
     var buttonCaption = ko.observable("");
@@ -26,40 +27,12 @@
 
     // #endregion
 
-    var vm = {
-        items: items,
-
-        isAppraisedItemListShowed: isAppraisedItemListShowed,
-        isManageAppraisedItemShowed: isManageAppraisedItemShowed,
-
-        itemType: itemType,
-        itemCategory: itemCategory,
-
-        isSaveButtonShowed: isSaveButtonShowed,
-
-        backToAppraisedItemList: backToAppraisedItemList,
-
-        buttonCaption: buttonCaption,
-        recordCountItemList: recordCountItemList,
-        isLoadData: isLoadData,
-
-        appraisedItem: appraisedItem,
-
-        addItem: addItem,
-        saveItem: saveItem,
-        viewItem: viewItem,
-        activate: activate,
-
-        getItemCategory: getItemCategory,
-        getItemType: getItemType
-    };
-    return vm;
-
-
     // #region BEHAVIORS
     // initializers
     function activate() {
         setInfiteScrollGetItemList();
+        SetInitialDate();
+        getItemType();
     }
 
     function setInfiteScrollGetItemList() {
@@ -136,30 +109,36 @@
     function addItem() {
         buttonCaption(" Appraise Item");
         clearControls();
-        SetInitialDate();
-
-        getItemType();
-        getItemCategory();
 
         GetAppraiseNo();
         getServerDate();
 
         isAppraisedItemListShowed(false);
         isManageAppraisedItemShowed(true);
+
+        isSaveButtonShowed(true);
     }
     function viewItem(arg) {
+        debugger;
         loaderApp.showPleaseWait();
+
+        isAppraisedItemListShowed(false);
+        isManageAppraisedItemShowed(true);
+
         buttonCaption("");
         clearControls();
 
-        getItemCategory();
-
         appraisedItem.AppraiseId(arg.AppraiseId());
-        appraisedItem.AppraiseDate(arg.AppraiseDate());
-        appraisedItem.AppraiseNo(arg.AppraiseNo());
+        appraisedItem.AppraiseDate(moment(arg.AppraiseDate()).format('L'));
 
+        appraisedItem.AppraiseNo(arg.AppraiseNo());
         appraisedItem.ItemTypeId(arg.ItemTypeId());
-        appraisedItem.ItemCategoryId(arg.ItemCategoryId());
+
+        getItemCategory(arg.ItemTypeId());
+        setTimeout(function () {
+            appraisedItem.ItemCategoryId(arg.ItemCategoryId());
+        }, 300);
+
         appraisedItem.ItemName(arg.ItemName());
         appraisedItem.Weight(arg.Weight());
         appraisedItem.AppraisedValue(arg.AppraisedValue());
@@ -171,13 +150,7 @@
         appraisedItem.CreatedBy(arg.CreatedBy());
         appraisedItem.CreatedAt(arg.CreatedAt());
 
-        isAppraisedItemListShowed(false);
-        isManageAppraisedItemShowed(true);
-
         isSaveButtonShowed(false);
-
-        isAppraisedItemListShowed(true);
-        isManageAppraisedItemShowed(false);
 
         loaderApp.hidePleaseWait();
     }
@@ -188,13 +161,62 @@
     }
 
     function saveItem() {
+        debugger;
         /*VALIDATIONS -START*/
-        //if (customer.FirstName().trim() === "") {
-        //    toastr.error("FirstName is required.");
-        //    customer.FirstName("");
-        //    document.getElementById("FirstName").focus();
-        //    return false;
-        //}
+        if (appraisedItem.AppraiseDate().trim() === "") {
+            toastr.error("Date is required.");
+            appraisedItem.AppraiseDate("");
+            document.getElementById("AppraiseDate").focus();
+            return false;
+        }
+        if (appraisedItem.AppraiseNo() === "") {
+            toastr.error("Appraise no is required.");
+            appraisedItem.AppraiseNo("");
+            document.getElementById("AppraiseNo").focus();
+            return false;
+        }
+        if (appraisedItem.ItemTypeId() === "" || appraisedItem.ItemTypeId() === undefined) {
+            toastr.error("Item type is required.");
+            appraisedItem.ItemTypeId("");
+            document.getElementById("ItemTypeId").focus();
+            return false;
+        }
+        if (appraisedItem.ItemCategoryId() === "" || appraisedItem.ItemCategoryId() === undefined) {
+            toastr.error("Item category is required.");
+            appraisedItem.ItemCategoryId("");
+            document.getElementById("ItemCategoryId").focus();
+            return false;
+        }
+        if (appraisedItem.ItemName().trim() === "") {
+            toastr.error("Item name is required.");
+            appraisedItem.ItemName("");
+            document.getElementById("ItemName").focus();
+            return false;
+        }
+        if (appraisedItem.Weight().trim() === "") {
+            toastr.error("Weight is required.");
+            appraisedItem.Weight("");
+            document.getElementById("Weight").focus();
+            return false;
+        }
+        if (appraisedItem.AppraisedValue().trim() === "") {
+            toastr.error("Value is required.");
+            appraisedItem.AppraisedValue("");
+            document.getElementById("AppraisedValue").focus();
+            return false;
+        }
+        if (appraisedItem.CustomerFirstName().trim() === "") {
+            toastr.error("First name is required.");
+            appraisedItem.CustomerFirstName("");
+            document.getElementById("CustomerFirstName").focus();
+            return false;
+        }
+        if (appraisedItem.CustomerLastName().trim() === "") {
+            toastr.error("Last name is required.");
+            appraisedItem.CustomerLastName("");
+            document.getElementById("CustomerLastName").focus();
+            return false;
+        }
         /*VALIDATIONS -END*/
         
         loaderApp.showPleaseWait();
@@ -235,11 +257,16 @@
             itemType(result);
         });
     }
-    function getItemCategory() {
-        var ItemTypeId = $("#ItemTypeId option:selected").val();
+    function getItemCategory(arg) {
+        var itemTypeId = "";
+        if (arg !== "") {
+            itemTypeId = arg;
+        } else {
+            itemTypeId = appraisedItem.ItemTypeId();
+        }
 
-        if (ItemTypeId !== "") {
-            $.getJSON(RootUrl + "/Administrator/Appraisal/GetItemCategory?ItemTypeId=" + ItemTypeId, function (result) {
+        if (itemTypeId !== "") {
+            $.getJSON(RootUrl + "/Administrator/Appraisal/GetItemCategory?ItemTypeId=" + itemTypeId, function (result) {
                 itemCategory.removeAll();
                 itemCategory(result);
             });
@@ -264,6 +291,34 @@
 
     // #endregion
 
+    var vm = {
+        items: items,
+
+        isAppraisedItemListShowed: isAppraisedItemListShowed,
+        isManageAppraisedItemShowed: isManageAppraisedItemShowed,
+
+        itemType: itemType,
+        itemCategory: itemCategory,
+
+        isSaveButtonShowed: isSaveButtonShowed,
+
+        backToAppraisedItemList: backToAppraisedItemList,
+
+        buttonCaption: buttonCaption,
+        recordCountItemList: recordCountItemList,
+        isLoadData: isLoadData,
+
+        appraisedItem: appraisedItem,
+
+        addItem: addItem,
+        saveItem: saveItem,
+        viewItem: viewItem,
+        activate: activate,
+
+        getItemCategory: getItemCategory,
+        getItemType: getItemType
+    };
+    return vm;
 })();
 
 $(function () {
