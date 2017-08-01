@@ -184,7 +184,8 @@ $(function() {
 
 
     // Reset form
-    $('#reset').on('click', function() {
+    $('#reset').on('click', function () {
+        debugger;
         validator.resetForm();
     });
 

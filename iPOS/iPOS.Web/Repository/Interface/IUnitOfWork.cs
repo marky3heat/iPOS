@@ -10,9 +10,10 @@ namespace iPOS.Web.Repository.Interface
         IRepository<customer> CustomerRepository { get; }
         IRepository<AppraisalViewModel> AppraisalModelRepository { get; }
         IRepository<apraiseditem> AppraisedItemRepository { get; }
+        IRepository<pawneditem> PawnedItemRepository { get; }
+        IRepository<releaseditem> ReleasedItemRepository { get; }
         IRepository<itemcategory> ItemCategoryRepository { get; }
         IRepository<itemtype> ItemTypeRepository { get; }
-        IRepository<pawneditem> PawnedItemRepository { get; }
 
         void SaveChanges();
         Task SaveChangesAsync();

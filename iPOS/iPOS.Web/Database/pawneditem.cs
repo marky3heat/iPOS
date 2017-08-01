@@ -15,5 +15,25 @@ namespace iPOS.Web.Database
     public partial class pawneditem
     {
         public int PawnedItemId { get; set; }
+        public string PawnedItemNo { get; set; }
+        public Nullable<System.DateTime> PawnedDate { get; set; }
+        public Nullable<int> AppraiseId { get; set; }
+        public Nullable<int> CustomerId { get; set; }
+        public string PawnedItemContractNo { get; set; }
+        public Nullable<decimal> LoanableAmount { get; set; }
+        public Nullable<decimal> InterestRate { get; set; }
+        public Nullable<decimal> InterestAmount { get; set; }
+        public Nullable<decimal> InitialPayment { get; set; }
+        public Nullable<decimal> ServiceCharge { get; set; }
+        public Nullable<decimal> Others { get; set; }
+        public Nullable<bool> IsInterestDeducted { get; set; }
+        public Nullable<decimal> NetCashOut { get; set; }
+        public string TermsId { get; set; }
+        public string ScheduleOfPayment { get; set; }
+        public Nullable<int> NoOfPayments { get; set; }
+        public Nullable<System.DateTime> DueDateStart { get; set; }
+        public Nullable<System.DateTime> DueDateEnd { get; set; }
+        public string CreatedBy { get; set; }
+        public Nullable<System.DateTime> CreatedAt { get; set; }
     }
 }

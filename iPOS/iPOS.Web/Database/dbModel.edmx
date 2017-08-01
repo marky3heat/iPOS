@@ -60,6 +60,26 @@
             <PropertyRef Name="PawnedItemId" />
           </Key>
           <Property Name="PawnedItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PawnedItemNo" Type="varchar" MaxLength="32" />
+          <Property Name="PawnedDate" Type="date" />
+          <Property Name="AppraiseId" Type="int" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="PawnedItemContractNo" Type="varchar" MaxLength="32" />
+          <Property Name="LoanableAmount" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="InterestRate" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="InterestAmount" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="InitialPayment" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="ServiceCharge" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Others" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="IsInterestDeducted" Type="bool" />
+          <Property Name="NetCashOut" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="TermsId" Type="varchar" MaxLength="64" />
+          <Property Name="ScheduleOfPayment" Type="varchar" MaxLength="64" />
+          <Property Name="NoOfPayments" Type="int" />
+          <Property Name="DueDateStart" Type="date" />
+          <Property Name="DueDateEnd" Type="date" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="32" />
+          <Property Name="CreatedAt" Type="datetime" Precision="0" />
         </EntityType>
         <EntityType Name="releaseditem">
           <Key>
@@ -150,10 +170,10 @@
           <EntitySet Name="tblroles" EntityType="Self.tblrole" />
           <EntitySet Name="tblusers" EntityType="Self.tbluser" />
           <EntitySet Name="itemcategories" EntityType="dbpawnshopModel.itemcategory" />
-          <EntitySet Name="pawneditems" EntityType="dbpawnshopModel.pawneditem" />
           <EntitySet Name="itemtypes" EntityType="dbpawnshopModel.itemtype" />
           <EntitySet Name="releaseditems" EntityType="dbpawnshopModel.releaseditem" />
           <EntitySet Name="apraiseditems" EntityType="dbpawnshopModel.apraiseditem" />
+          <EntitySet Name="pawneditems" EntityType="dbpawnshopModel.pawneditem" />
         </EntityContainer>
         <EntityType Name="itemcategory">
           <Key>
@@ -164,12 +184,6 @@
           <Property Name="ItemTypeId" Type="Int32" />
           <Property Name="CreatedBy" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
           <Property Name="CreatedAt" Type="DateTime" />
-        </EntityType>
-        <EntityType Name="pawneditem">
-          <Key>
-            <PropertyRef Name="PawnedItemId" />
-          </Key>
-          <Property Name="PawnedItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="itemtype">
           <Key>
@@ -204,6 +218,32 @@
           <Property Name="IsPawned" Type="Boolean" />
           <Property Name="CreatedAt" Type="DateTime" />
           <Property Name="CreatedBy" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="pawneditem">
+          <Key>
+            <PropertyRef Name="PawnedItemId" />
+          </Key>
+          <Property Name="PawnedItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PawnedItemNo" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="PawnedDate" Type="DateTime" />
+          <Property Name="AppraiseId" Type="Int32" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="PawnedItemContractNo" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="LoanableAmount" Type="Decimal" />
+          <Property Name="InterestRate" Type="Decimal" />
+          <Property Name="InterestAmount" Type="Decimal" />
+          <Property Name="InitialPayment" Type="Decimal" />
+          <Property Name="ServiceCharge" Type="Decimal" />
+          <Property Name="Others" Type="Decimal" />
+          <Property Name="IsInterestDeducted" Type="Boolean" />
+          <Property Name="NetCashOut" Type="Decimal" />
+          <Property Name="TermsId" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="ScheduleOfPayment" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="NoOfPayments" Type="Int32" />
+          <Property Name="DueDateStart" Type="DateTime" />
+          <Property Name="DueDateEnd" Type="DateTime" />
+          <Property Name="CreatedBy" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="DateTime" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -263,13 +303,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="pawneditems">
-            <EntityTypeMapping TypeName="dbpawnshopModel.pawneditem">
-              <MappingFragment StoreEntitySet="pawneditem">
-                <ScalarProperty Name="PawnedItemId" ColumnName="PawnedItemId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="itemtypes">
             <EntityTypeMapping TypeName="dbpawnshopModel.itemtype">
               <MappingFragment StoreEntitySet="itemtype">
@@ -304,6 +337,33 @@
                 <ScalarProperty Name="AppraiseNo" ColumnName="AppraiseNo" />
                 <ScalarProperty Name="AppraiseDate" ColumnName="AppraiseDate" />
                 <ScalarProperty Name="AppraiseId" ColumnName="AppraiseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pawneditems">
+            <EntityTypeMapping TypeName="dbpawnshopModel.pawneditem">
+              <MappingFragment StoreEntitySet="pawneditem">
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DueDateEnd" ColumnName="DueDateEnd" />
+                <ScalarProperty Name="DueDateStart" ColumnName="DueDateStart" />
+                <ScalarProperty Name="NoOfPayments" ColumnName="NoOfPayments" />
+                <ScalarProperty Name="ScheduleOfPayment" ColumnName="ScheduleOfPayment" />
+                <ScalarProperty Name="TermsId" ColumnName="TermsId" />
+                <ScalarProperty Name="NetCashOut" ColumnName="NetCashOut" />
+                <ScalarProperty Name="IsInterestDeducted" ColumnName="IsInterestDeducted" />
+                <ScalarProperty Name="Others" ColumnName="Others" />
+                <ScalarProperty Name="ServiceCharge" ColumnName="ServiceCharge" />
+                <ScalarProperty Name="InitialPayment" ColumnName="InitialPayment" />
+                <ScalarProperty Name="InterestAmount" ColumnName="InterestAmount" />
+                <ScalarProperty Name="InterestRate" ColumnName="InterestRate" />
+                <ScalarProperty Name="LoanableAmount" ColumnName="LoanableAmount" />
+                <ScalarProperty Name="PawnedItemContractNo" ColumnName="PawnedItemContractNo" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="AppraiseId" ColumnName="AppraiseId" />
+                <ScalarProperty Name="PawnedDate" ColumnName="PawnedDate" />
+                <ScalarProperty Name="PawnedItemNo" ColumnName="PawnedItemNo" />
+                <ScalarProperty Name="PawnedItemId" ColumnName="PawnedItemId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

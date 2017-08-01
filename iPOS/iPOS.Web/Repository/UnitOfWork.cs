@@ -19,11 +19,14 @@ namespace iPOS.Web.Repository
         //#region PRIVATE MEMBER VARIABLES
         private Repository<customer> _customerRepository;
         private Repository<AppraisalViewModel> _appraisalModelRepository;
+
         private Repository<apraiseditem> _appraisedItemsRepository;
+        private Repository<pawneditem> _pawnedItemRepository;
+        private Repository<releaseditem> _releasedItemRepository;
 
         private Repository<itemcategory> _itemCategoryRepository;
         private Repository<itemtype> _itemTypeRepository;
-        private Repository<pawneditem> _pawnedItemRepository;
+
 
         //#region PUBLIC MEMBER METHODS
         public IRepository<customer> CustomerRepository
@@ -53,6 +56,24 @@ namespace iPOS.Web.Repository
                 return _appraisedItemsRepository;
             }
         }
+        public IRepository<pawneditem> PawnedItemRepository
+        {
+            get
+            {
+                if (_pawnedItemRepository == null)
+                    _pawnedItemRepository = new Repository<pawneditem>(_dbContext);
+                return _pawnedItemRepository;
+            }
+        }
+        public IRepository<releaseditem> ReleasedItemRepository
+        {
+            get
+            {
+                if (_releasedItemRepository == null)
+                    _releasedItemRepository = new Repository<releaseditem>(_dbContext);
+                return _releasedItemRepository;
+            }
+        }
         public IRepository<itemcategory> ItemCategoryRepository
         {
             get
@@ -71,16 +92,6 @@ namespace iPOS.Web.Repository
                 return _itemTypeRepository;
             }
         }
-        public IRepository<pawneditem> PawnedItemRepository
-        {
-            get
-            {
-                if (_pawnedItemRepository == null)
-                    _pawnedItemRepository = new Repository<pawneditem>(_dbContext);
-                return _pawnedItemRepository;
-            }
-        }
-
         public void Dispose()
         {
             _dbContext.Dispose();

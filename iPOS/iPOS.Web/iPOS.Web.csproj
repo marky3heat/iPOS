@@ -288,7 +288,9 @@
     <Compile Include="Service\CustomerService.cs" />
     <Compile Include="Service\Interface\IAppraisalService.cs" />
     <Compile Include="Service\Interface\ICustomerService.cs" />
+    <Compile Include="Service\Interface\IPawningService.cs" />
     <Compile Include="Service\Interface\IReferenceService.cs" />
+    <Compile Include="Service\PawningService.cs" />
     <Compile Include="Service\ReferenceService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
