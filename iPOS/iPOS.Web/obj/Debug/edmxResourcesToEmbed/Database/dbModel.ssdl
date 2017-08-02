@@ -73,6 +73,9 @@
     <Property Name="NoOfPayments" Type="int" />
     <Property Name="DueDateStart" Type="date" />
     <Property Name="DueDateEnd" Type="date" />
+    <Property Name="IsReleased" Type="bool" />
+    <Property Name="ReviewedBy" Type="varchar" MaxLength="32" />
+    <Property Name="ApprovedBy" Type="varchar" MaxLength="32" />
     <Property Name="CreatedBy" Type="varchar" MaxLength="32" />
     <Property Name="CreatedAt" Type="datetime" Precision="0" />
   </EntityType>

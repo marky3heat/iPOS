@@ -117,5 +117,8 @@
     <Property Name="DueDateEnd" Type="DateTime" />
     <Property Name="CreatedBy" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
     <Property Name="CreatedAt" Type="DateTime" />
+    <Property Name="IsReleased" Type="Boolean" />
+    <Property Name="ReviewedBy" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="ApprovedBy" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

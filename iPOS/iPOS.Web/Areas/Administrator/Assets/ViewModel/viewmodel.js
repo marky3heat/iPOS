@@ -1,17 +1,36 @@
 ﻿app.vm = (function () {
     //"use strict";
-    var pawnedItemModel = new app.addPawnedItemModel();
+    var appraisedItem = new app.addAppraisedItemModel();
 
     // #region CONTROLS                
-    var isPawnedItemListShowed = ko.observable(true);
-    var isManagePawnedItemShowed = ko.observable(false);
+    var isAppraisedItemListShowed = ko.observable(true);
+    var isManageAppraisedItemShowed = ko.observable(false);
+    var isViewAppraisedItemShowed = ko.observable(false);
+    var isSaveButtonShowed = ko.observable(true);
+
+    var buttonCaption = ko.observable("");
+
+    var itemType = ko.observableArray();
+    var itemCategory = ko.observableArray();
+
+    var serverDate = ko.observableArray();
+    var appraisalNo = ko.observableArray();
+
+    var isLoadData = "false";
+    var recordCountItemList = ko.observable();
+    var isViewLoadMoreData = ko.observable(false);
+
+    var allItems = ko.observableArray([]);
+    var items = ko.pureComputed(function () {
+        return allItems();
+    });
 
     // #endregion
 
     // #region BEHAVIORS
     // initializers
     function activate() {
-        //setInfiteScrollGetItemList();
+        setInfiteScrollGetItemList();
         SetInitialDate();
     }
 
@@ -56,8 +75,7 @@
     }
 
     function addItem() {
-        isPawnedItemListShowed(false);
-        isManagePawnedItemShowed(true);
+
     }
 
     function viewItem(arg) {
@@ -71,6 +89,7 @@
     }
 
     function saveItem() {
+        debugger;
         /*VALIDATIONS -START*/
         if (appraisedItem.AppraiseDate().trim() === "") {
             toastr.error("Date is required.");
@@ -114,19 +133,13 @@
     // #endregion
 
     var vm = {
-        activate: activate,
         addItem: addItem,
         saveItem: saveItem,
         viewItem: viewItem,
-
-        isPawnedItemListShowed: isPawnedItemListShowed,
-        isManagePawnedItemShowed: isManagePawnedItemShowed
+        activate: activate
     };
-
     return vm;
-
 })();
-
 $(function () {
     "use strict";
 

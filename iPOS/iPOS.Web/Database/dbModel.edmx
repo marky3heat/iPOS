@@ -78,6 +78,9 @@
           <Property Name="NoOfPayments" Type="int" />
           <Property Name="DueDateStart" Type="date" />
           <Property Name="DueDateEnd" Type="date" />
+          <Property Name="IsReleased" Type="bool" />
+          <Property Name="ReviewedBy" Type="varchar" MaxLength="32" />
+          <Property Name="ApprovedBy" Type="varchar" MaxLength="32" />
           <Property Name="CreatedBy" Type="varchar" MaxLength="32" />
           <Property Name="CreatedAt" Type="datetime" Precision="0" />
         </EntityType>
@@ -244,6 +247,9 @@
           <Property Name="DueDateEnd" Type="DateTime" />
           <Property Name="CreatedBy" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
           <Property Name="CreatedAt" Type="DateTime" />
+          <Property Name="IsReleased" Type="Boolean" />
+          <Property Name="ReviewedBy" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="ApprovedBy" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -343,6 +349,9 @@
           <EntitySetMapping Name="pawneditems">
             <EntityTypeMapping TypeName="dbpawnshopModel.pawneditem">
               <MappingFragment StoreEntitySet="pawneditem">
+                <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+                <ScalarProperty Name="ReviewedBy" ColumnName="ReviewedBy" />
+                <ScalarProperty Name="IsReleased" ColumnName="IsReleased" />
                 <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="DueDateEnd" ColumnName="DueDateEnd" />

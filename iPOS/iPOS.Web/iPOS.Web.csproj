@@ -297,6 +297,7 @@
   <ItemGroup>
     <Content Include="Areas\Administrator\Assets\Model\appraisal.model.js" />
     <Content Include="Areas\Administrator\Assets\Model\customer.model.js" />
+    <Content Include="Areas\Administrator\Assets\Model\model.js" />
     <Content Include="Areas\Administrator\Assets\Model\pawning.model.js" />
     <Content Include="Areas\Administrator\Assets\Model\reference.model.js" />
     <Content Include="Areas\Administrator\Assets\Model\release.model.js" />
@@ -305,6 +306,7 @@
     <Content Include="Areas\Administrator\Assets\ViewModel\pawning.viewmodel.js" />
     <Content Include="Areas\Administrator\Assets\ViewModel\reference.viewmodel.js" />
     <Content Include="Areas\Administrator\Assets\ViewModel\release.viewmodel.js" />
+    <Content Include="Areas\Administrator\Assets\ViewModel\viewmodel.js" />
     <Content Include="Assets\css\bootstrap.css" />
     <Content Include="Assets\css\bootstrap.min.css" />
     <Content Include="Assets\css\colors.css" />
@@ -326,6 +328,7 @@
     <Content Include="Assets\demo_data\wizard\json.html" />
     <Content Include="Assets\demo_data\wizard\personal_data.html" />
     <Content Include="Assets\demo_data\wizard\store_in_database.html" />
+    <Content Include="Assets\images\blank_144x144.png" />
     <Content Include="Assets\images\logo_ibest_ipos.png" />
     <Content Include="Assets\images\logo_ibest_light.png" />
     <Content Include="Assets\images\backgrounds\boxed_bg.png" />

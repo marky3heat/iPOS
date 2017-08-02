@@ -55,6 +55,29 @@
       <PropertyRef Name="PawnedItemId" />
     </Key>
     <Property Name="PawnedItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PawnedItemNo" Type="varchar" MaxLength="32" />
+    <Property Name="PawnedDate" Type="date" />
+    <Property Name="AppraiseId" Type="int" />
+    <Property Name="CustomerId" Type="int" />
+    <Property Name="PawnedItemContractNo" Type="varchar" MaxLength="32" />
+    <Property Name="LoanableAmount" Type="decimal" Precision="15" Scale="2" />
+    <Property Name="InterestRate" Type="decimal" Precision="15" Scale="2" />
+    <Property Name="InterestAmount" Type="decimal" Precision="15" Scale="2" />
+    <Property Name="InitialPayment" Type="decimal" Precision="15" Scale="2" />
+    <Property Name="ServiceCharge" Type="decimal" Precision="15" Scale="2" />
+    <Property Name="Others" Type="decimal" Precision="15" Scale="2" />
+    <Property Name="IsInterestDeducted" Type="bool" />
+    <Property Name="NetCashOut" Type="decimal" Precision="15" Scale="2" />
+    <Property Name="TermsId" Type="varchar" MaxLength="64" />
+    <Property Name="ScheduleOfPayment" Type="varchar" MaxLength="64" />
+    <Property Name="NoOfPayments" Type="int" />
+    <Property Name="DueDateStart" Type="date" />
+    <Property Name="DueDateEnd" Type="date" />
+    <Property Name="IsReleased" Type="bool" />
+    <Property Name="ReviewedBy" Type="varchar" MaxLength="32" />
+    <Property Name="ApprovedBy" Type="varchar" MaxLength="32" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="32" />
+    <Property Name="CreatedAt" Type="datetime" Precision="0" />
   </EntityType>
   <EntityType Name="releaseditem">
     <Key>

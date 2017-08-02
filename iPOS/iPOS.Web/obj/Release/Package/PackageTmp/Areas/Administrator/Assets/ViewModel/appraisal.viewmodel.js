@@ -119,7 +119,6 @@
         isSaveButtonShowed(true);
     }
     function viewItem(arg) {
-        debugger;
         loaderApp.showPleaseWait();
 
         isAppraisedItemListShowed(false);
