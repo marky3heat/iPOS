@@ -5,15 +5,15 @@ using iPOS.Web.Models;
 
 namespace iPOS.Web.Service.Interface
 {
-    interface IPawningService
+    public interface IPawningService
     {
         #region Pawning
 
-        Task<apraiseditem> FindById(int id);
-        Task<apraiseditem> FindByAppraiseNo(string appraiseNo);
-        Task<List<apraiseditem>> GetList(int pageIndex = 0, int pageSize = 100);
-        Task<bool> Save(apraiseditem model);
-        Task<bool> Update(apraiseditem model);
+        Task<pawneditem> FindById(int id);
+        Task<pawneditem> FindByPawnNo(string pawnedItemNo);
+        Task<List<pawneditem>> GetList(int pageIndex = 0, int pageSize = 100);
+        Task<bool> Save(pawneditem model);
+        Task<bool> Update(pawneditem model);
         Task<bool> Delete(string id);
 
         #endregion

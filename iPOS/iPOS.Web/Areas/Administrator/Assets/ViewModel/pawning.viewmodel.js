@@ -105,6 +105,10 @@
         });
     }
 
+    function getAppraisedItem() {
+        
+    }
+
     function SetInitialDate() {
         $('.daterange-single').daterangepicker({
             singleDatePicker: true
