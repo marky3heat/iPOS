@@ -9,7 +9,7 @@ namespace iPOS.Web.Repository.Interface
     {
         IRepository<customer> CustomerRepository { get; }
         IRepository<AppraisalViewModel> AppraisalModelRepository { get; }
-        IRepository<apraiseditem> AppraisedItemRepository { get; }
+        IRepository<appraiseditem> AppraisedItemRepository { get; }
         IRepository<pawneditem> PawnedItemRepository { get; }
         IRepository<releaseditem> ReleasedItemRepository { get; }
         IRepository<itemcategory> ItemCategoryRepository { get; }

@@ -17,14 +17,23 @@ namespace iPOS.Web.Areas.Administrator.Controllers
     {
         #region PUBLIC CONSTRUCTOR
         private readonly IPawningService _pawningService;
+        private readonly IAppraisalService _appraisalService;
+        private readonly ICustomerService _customerService;
 
-        public PawningController(IPawningService pawningService)
+        public PawningController(
+            IPawningService pawningService,
+            IAppraisalService appraisalService,
+            ICustomerService customerServic)
         {
             _pawningService = pawningService;
+            _appraisalService = appraisalService;
+            _customerService = customerServic;
         }
         public PawningController()
         {
             _pawningService = new PawningService(new UnitOfWorkFactory());
+            _appraisalService = new AppraisalService(new UnitOfWorkFactory());
+            _customerService = new CustomerService(new UnitOfWorkFactory());
         }
         #endregion
 
@@ -46,36 +55,44 @@ namespace iPOS.Web.Areas.Administrator.Controllers
         [Route("Administrator/Customer/GetCustomerList")]
         public async Task<JsonResult> GetPawnedItems(int page, int pageSize)
         {
-            var listItemType = await _appraisalService.GetItemTypeList();
-            var listItemCategory = await _appraisalService.GetItemCategoryList();
-            var listAppraisedItem = await _appraisalService.GetList(page, pageSize);
-
+            var listPawnedItem = await _pawningService.GetList(page, pageSize);
             var result =
-                from a in listAppraisedItem
-                join b in listItemCategory on a.ItemCategoryId equals b.ItemCategoryId
-                join c in listItemType on a.ItemTypeId equals c.ItemTypeId
+                from a in listPawnedItem
                 select new
                 {
-                    a.AppraiseId,
-                    a.AppraiseDate,
-                    a.AppraiseNo,
-                    a.ItemTypeId,
-                    a.ItemCategoryId,
-                    a.ItemName,
-                    a.Weight,
-                    a.AppraisedValue,
-                    a.Remarks,
-                    a.CustomerFirstName,
-                    a.CustomerLastName,
-                    a.IsPawned,
-                    a.CreatedBy,
-                    a.CreatedAt,
-                    b.ItemCategoryName,
-                    c.ItemTypeName
+                    a.PawnedItemId,
+                    a.PawnedItemNo,
+                    a.PawnedDate,
+                    a.IsReleased
                 };
 
-            return Json(new { data = result.OrderByDescending(d => d.AppraiseDate).ThenBy(s => s.IsPawned), noMoreData = result.Count() < pageSize, recordCount = result.Count() }, JsonRequestBehavior.AllowGet);
+            return Json(new { data = result.OrderByDescending(d => d.PawnedDate).ThenBy(s => s.IsReleased), noMoreData = result.Count() < pageSize, recordCount = result.Count() }, JsonRequestBehavior.AllowGet);
         }
+
+        public async Task<JsonResult> GetAppraisedItem(int ItemTypeId)
+        {
+            var listAppraisedItem = await _appraisalService.GetList();
+            var result = listAppraisedItem.Select(item => new appraiseditem
+            {
+                
+            });
+
+            return Json(result.OrderBy(o => o.), JsonRequestBehavior.AllowGet);
+        }
+
+        public async Task<JsonResult> GetItemCategory(int ItemTypeId)
+        {
+            var list = await _appraisalService.GetItemCategoryByItemTypeId(ItemTypeId);
+            var result = list.Select(item => new itemcategory()
+            {
+                ItemCategoryId = item.ItemCategoryId,
+                ItemCategoryName = item.ItemCategoryName,
+                ItemTypeId = item.ItemTypeId
+            });
+
+            return Json(result.OrderBy(o => o.ItemCategoryName), JsonRequestBehavior.AllowGet);
+        }
+
         #endregion
     }
 }

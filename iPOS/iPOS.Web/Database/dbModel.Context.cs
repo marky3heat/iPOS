@@ -32,7 +32,7 @@ namespace iPOS.Web.Database
         public virtual DbSet<itemcategory> itemcategories { get; set; }
         public virtual DbSet<itemtype> itemtypes { get; set; }
         public virtual DbSet<releaseditem> releaseditems { get; set; }
-        public virtual DbSet<apraiseditem> apraiseditems { get; set; }
         public virtual DbSet<pawneditem> pawneditems { get; set; }
+        public virtual DbSet<appraiseditem> appraiseditems { get; set; }
     }
 }

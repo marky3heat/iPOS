@@ -8,17 +8,17 @@ namespace iPOS.Web.Service.Interface
     public interface IAppraisalService
     {
         #region Appraisal
-        Task<apraiseditem> FindById(int id);
+        Task<appraiseditem> FindById(int id);
 
-        Task<apraiseditem> FindByAppraiseNo(string appraiseNo);
+        Task<appraiseditem> FindByAppraiseNo(string appraiseNo);
 
         int GetAppraiseNo();
 
-        Task<List<apraiseditem>> GetList(int pageIndex = 0, int pageSize = 100);
+        Task<List<appraiseditem>> GetList(int pageIndex = 0, int pageSize = 100);
 
-        Task<bool> Save(apraiseditem model);
+        Task<bool> Save(appraiseditem model);
 
-        Task<bool> Update(apraiseditem model);
+        Task<bool> Update(appraiseditem model);
 
         Task<bool> Delete(string id);
         #endregion

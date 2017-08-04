@@ -20,7 +20,7 @@ namespace iPOS.Web.Repository
         private Repository<customer> _customerRepository;
         private Repository<AppraisalViewModel> _appraisalModelRepository;
 
-        private Repository<apraiseditem> _appraisedItemsRepository;
+        private Repository<appraiseditem> _appraisedItemsRepository;
         private Repository<pawneditem> _pawnedItemRepository;
         private Repository<releaseditem> _releasedItemRepository;
 
@@ -47,12 +47,12 @@ namespace iPOS.Web.Repository
                 return _appraisalModelRepository;
             }
         }
-        public IRepository<apraiseditem> AppraisedItemRepository
+        public IRepository<appraiseditem> AppraisedItemRepository
         {
             get
             {
                 if (_appraisedItemsRepository == null)
-                    _appraisedItemsRepository = new Repository<apraiseditem>(_dbContext);
+                    _appraisedItemsRepository = new Repository<appraiseditem>(_dbContext);
                 return _appraisedItemsRepository;
             }
         }

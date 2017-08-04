@@ -46,11 +46,11 @@
         <form class="form-horizontal steps-validation" action="#">
             <h6>Select item</h6>
             <fieldset>
-                <div class="col-md-9">
+                <div class="col-lg-9">
                     <div class="form-group">
-                        <label class="control-label col-lg-3">Select appraised item<span class="text-danger"> *</span></label>
+                        <label class="control-label col-lg-3">Appraised item<span class="text-danger"> *</span></label>
                         <div class="col-lg-9">
-                            <select name="location" data-placeholder="Select position" class="select required"></select>
+                            <select name="location" data-placeholder="Select item" class="select"></select>
                         </div>
                     </div>
 
@@ -91,7 +91,7 @@
 
                 </div>
                 @*<div class="col-md-1"></div>*@
-                <div class="col-md-3">
+                <div class="col-lg-3">
 
 
                     <div class="thumbnail">
@@ -118,7 +118,93 @@
             </fieldset>
 
             <h6>Customer profiling</h6>
-            <fieldset></fieldset>
+            <fieldset>
+                <div class="col-lg-9">
+                    <div class="form-group">
+                        <label class="control-label col-lg-3">Customer name<span class="text-danger"> *</span></label>
+                        <div class="col-lg-6">
+                            <select name="location" data-placeholder="Select customer" class="select"></select>
+                        </div>
+                        <div class="col-lg-3">
+                            <button type="button" class="btn bg-warning-400 access-open">Create new customer</button>
+                        </div>        
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3">Address</label>
+                        <div class="col-lg-9">
+                            <input type="text" data-bind="" class="form-control" id="" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3">Barangay</label>
+                        <div class="col-lg-9">
+                            <input type="text" data-bind="" class="form-control" id="" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3">Town/City</label>
+                        <div class="col-lg-9">
+                            <input type="text" data-bind="" class="form-control" id="" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3">Landline no</label>
+                        <div class="col-lg-9">
+                            <input type="text" data-bind="" class="form-control" id="" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3">Mobile no</label>
+                        <div class="col-lg-9">
+                            <input type="text" data-bind="" class="form-control" id="" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3">Spouse</label>
+                        <div class="col-lg-9">
+                            <input type="text" data-bind="" class="form-control" id="" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3">Spouse mobile no</label>
+                        <div class="col-lg-9">
+                            <input type="text" data-bind="" class="form-control" id="" readonly>
+                        </div>
+                    </div>
+                </div>
+                @*<div class="col-md-1"></div>*@
+                <div class="col-lg-3">
+
+
+                    <div class="thumbnail">
+                        <div class="thumb thumb-rounded thumb-slide">
+                            <img src="~/Assets/images/blank_144x144.png" alt="">
+                            <div class="caption">
+                                @*<span>
+                            <a href="#" class="btn bg-success-400 btn-icon btn-xs" data-popup="lightbox"><i class="icon-plus2"></i></a>
+                            <a href="user_pages_profile.html" class="btn bg-success-400 btn-icon btn-xs"><i class="icon-link"></i></a>
+                        </span>*@
+                            </div>
+                        </div>
+
+                        <div class="caption text-center">
+                            <h6 class="text-semibold no-margin">Customer name</h6>
+                            @*<ul class="icons-list mt-15">
+                        <li><a href="#" data-popup="tooltip" title="Google Drive"><i class="icon-google-drive"></i></a></li>
+                        <li><a href="#" data-popup="tooltip" title="Twitter"><i class="icon-twitter"></i></a></li>
+                        <li><a href="#" data-popup="tooltip" title="Github"><i class="icon-github"></i></a></li>
+                    </ul>*@
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
 
             <h6>Payment terms & Schedule</h6>
             <fieldset></fieldset>

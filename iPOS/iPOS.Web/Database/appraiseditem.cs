@@ -12,7 +12,7 @@ namespace iPOS.Web.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class apraiseditem
+    public partial class appraiseditem
     {
         public int AppraiseId { get; set; }
         public Nullable<System.DateTime> AppraiseDate { get; set; }
@@ -21,12 +21,12 @@ namespace iPOS.Web.Database
         public Nullable<int> ItemCategoryId { get; set; }
         public string ItemName { get; set; }
         public string Weight { get; set; }
-        public string Remarks { get; set; }
         public Nullable<decimal> AppraisedValue { get; set; }
+        public string Remarks { get; set; }
         public string CustomerFirstName { get; set; }
         public string CustomerLastName { get; set; }
         public Nullable<bool> IsPawned { get; set; }
-        public Nullable<System.DateTime> CreatedAt { get; set; }
         public string CreatedBy { get; set; }
+        public Nullable<System.DateTime> CreatedAt { get; set; }
     }
 }

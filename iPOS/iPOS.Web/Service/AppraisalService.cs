@@ -25,7 +25,7 @@ namespace iPOS.Web.Service
         #endregion
 
         #region PUBLIC MEMBER METHODS (APPRAISED ITEMS)
-        public async Task<apraiseditem> FindById(int id)
+        public async Task<appraiseditem> FindById(int id)
         {
             try
             {
@@ -39,7 +39,7 @@ namespace iPOS.Web.Service
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<apraiseditem> FindByAppraiseNo(string appraiseNo)
+        public async Task<appraiseditem> FindByAppraiseNo(string appraiseNo)
         {
             try
             {
@@ -76,7 +76,7 @@ namespace iPOS.Web.Service
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<List<apraiseditem>> GetList(
+        public async Task<List<appraiseditem>> GetList(
             int pageIndex = 0,
             int pageSize = 100)
         {
@@ -84,13 +84,13 @@ namespace iPOS.Web.Service
             {
                 using (var uow = _unitOfWorkFactory.Create())
                 {
-                    var customerlist = await uow.AppraisedItemRepository.AllWithAsync(null);
+                    var appraiselist = await uow.AppraisedItemRepository.AllWithAsync(null);
 
-                    customerlist = customerlist
+                    appraiselist = appraiselist
                         .Skip(pageSize * pageIndex)
                         .Take(pageSize).ToList();
 
-                    return customerlist.ToList();
+                    return appraiselist.ToList();
                 }
 
 
@@ -101,7 +101,7 @@ namespace iPOS.Web.Service
             }
         }
 
-        public async Task<bool> Save(apraiseditem model)
+        public async Task<bool> Save(appraiseditem model)
         {
             try
             {
@@ -126,7 +126,7 @@ namespace iPOS.Web.Service
             }
         }
 
-        public async Task<bool> Update(apraiseditem model)
+        public async Task<bool> Update(appraiseditem model)
         {
             try
             {
