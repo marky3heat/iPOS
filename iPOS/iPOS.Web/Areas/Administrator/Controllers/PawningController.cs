@@ -72,13 +72,20 @@ namespace iPOS.Web.Areas.Administrator.Controllers
         public async Task<JsonResult> GetAppraisedItem(int ItemTypeId)
         {
             var listAppraisedItem = await _appraisalService.GetList();
-            var result = listAppraisedItem.Select(item => new appraiseditem
-            {
-                AppraiseId = item.AppraiseId,
+            var result = 
+                from a in listAppraisedItem
+                where a.IsPawned.Equals(false)
+                select new
+                {
 
-            });
+                }
 
-            return Json(result.OrderBy(o => o.), JsonRequestBehavior.AllowGet);
+            //var result = listAppraisedItem.Select(item => new appraiseditem
+            //{
+            //    AppraiseId = item.AppraiseId,
+            //});
+
+            return Json(result.OrderBy(o => o.AppraiseDate), JsonRequestBehavior.AllowGet);
         }
 
         public async Task<JsonResult> GetItemCategory(int ItemTypeId)
