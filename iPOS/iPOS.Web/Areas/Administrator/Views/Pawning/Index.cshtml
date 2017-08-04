@@ -50,7 +50,7 @@
                     <div class="form-group">
                         <label class="control-label col-lg-3">Appraised item<span class="text-danger"> *</span></label>
                         <div class="col-lg-9">
-                            <select name="location" data-placeholder="Select item" class="select"></select>
+                            <select name="location" data-bind="options: appraisedItem, optionsValue: 'AppraiseId', optionsText: 'ItemName', optionsCaption: '', value: appraisedItem.AppraisedItemId" data-placeholder="Select item" class="select required"></select>
                         </div>
                     </div>
 

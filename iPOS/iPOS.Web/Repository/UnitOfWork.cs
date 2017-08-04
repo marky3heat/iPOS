@@ -109,7 +109,7 @@ namespace iPOS.Web.Repository
 
         public System.Threading.Tasks.Task MaxAsync()
         {
-            return _dbContext.apraiseditems.MaxAsync(a => a.AppraiseId);
+            return _dbContext.appraiseditems.MaxAsync(a => a.AppraiseId);
         }
         //#endregion        
     }

@@ -63,42 +63,58 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                     a.PawnedItemId,
                     a.PawnedItemNo,
                     a.PawnedDate,
-                    a.IsReleased
+                    a.AppraiseId,
+                    a.CustomerId,
+                    a.PawnedItemContractNo,
+                    a.LoanableAmount,
+                    a.InterestRate,
+                    a.InterestAmount,
+                    a.InitialPayment,
+                    a.ServiceCharge,
+                    a.Others,
+                    a.IsInterestDeducted,
+                    a.NetCashOut,
+                    a.TermsId,
+                    a.ScheduleOfPayment,
+                    a.NoOfPayments,
+                    a.DueDateStart,
+                    a.DueDateEnd,
+                    a.IsReleased,
+                    a.ReviewedBy,
+                    a.ApprovedBy,
+                    a.CreatedBy,
+                    a.CreatedAt
                 };
 
             return Json(new { data = result.OrderByDescending(d => d.PawnedDate).ThenBy(s => s.IsReleased), noMoreData = result.Count() < pageSize, recordCount = result.Count() }, JsonRequestBehavior.AllowGet);
         }
 
-        public async Task<JsonResult> GetAppraisedItem(int ItemTypeId)
+        public async Task<JsonResult> GetAppraisedItem()
         {
             var listAppraisedItem = await _appraisalService.GetList();
-            var result = 
+            var result =
                 from a in listAppraisedItem
                 where a.IsPawned.Equals(false)
                 select new
                 {
+                    a.AppraiseId,
+                    a.ItemName
+                };
 
-                }
-
-            //var result = listAppraisedItem.Select(item => new appraiseditem
-            //{
-            //    AppraiseId = item.AppraiseId,
-            //});
-
-            return Json(result.OrderBy(o => o.AppraiseDate), JsonRequestBehavior.AllowGet);
+            return Json(result.OrderBy(o => o.ItemName), JsonRequestBehavior.AllowGet);
         }
 
-        public async Task<JsonResult> GetItemCategory(int ItemTypeId)
+        public async Task<JsonResult> GetCustomer()
         {
-            var list = await _appraisalService.GetItemCategoryByItemTypeId(ItemTypeId);
-            var result = list.Select(item => new itemcategory()
+            var listCustomer = await _customerService.GetCustomerList();
+            var result = listCustomer.Select(item => new customer()
             {
-                ItemCategoryId = item.ItemCategoryId,
-                ItemCategoryName = item.ItemCategoryName,
-                ItemTypeId = item.ItemTypeId
+                Id = item.Id,
+                FirstName = item.FirstName + " " + item.LastName,
+                LastName = item.LastName
             });
 
-            return Json(result.OrderBy(o => o.ItemCategoryName), JsonRequestBehavior.AllowGet);
+            return Json(result.OrderBy(o => o.LastName), JsonRequestBehavior.AllowGet);
         }
 
         #endregion

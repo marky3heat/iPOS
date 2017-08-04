@@ -115,7 +115,7 @@ namespace iPOS.Web.Areas.Administrator.Controllers
         {
             try
             {
-                apraiseditem model = null;
+                appraiseditem model = null;
 
                 bool success = false;
                 string message = "";
@@ -124,7 +124,7 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                 {
                     //DateTime dt = DateTime.ParseExact(item.AppraiseDate, "yyyy/MM/dd", CultureInfo.InvariantCulture);
 
-                    model = new apraiseditem();
+                    model = new appraiseditem();
                     model.AppraiseDate = DateTime.Parse(item.AppraiseDate);
                     model.AppraiseNo = item.AppraiseNo;
                     model.ItemTypeId = item.ItemTypeId;
