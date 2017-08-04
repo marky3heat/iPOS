@@ -74,7 +74,8 @@ namespace iPOS.Web.Areas.Administrator.Controllers
             var listAppraisedItem = await _appraisalService.GetList();
             var result = listAppraisedItem.Select(item => new appraiseditem
             {
-                
+                AppraiseId = item.AppraiseId,
+
             });
 
             return Json(result.OrderBy(o => o.), JsonRequestBehavior.AllowGet);
