@@ -55,6 +55,63 @@
         self.CreatedAt = ko.observable(createdat);
         // #endregion
     };
+app.appraisedItemModel =
+    function (appraiseid,
+        appraisedate,
+        appraiseno,
+        itemtypeid,
+        itemcategoryid,
+        itemname,
+        weight,
+        appraisedvalue,
+        remarks,
+        customerfirstname,
+        customerlastname,
+        ispawned,
+        createdby,
+        createdat,
+        itemcategoryname,
+        itemtypename) {
+        "use strict";
+
+        var self = this;
+
+        // #region MODEL TO BE MAP
+        self.AppraiseId = ko.observable(appraiseid);
+        self.AppraiseDate = ko.observable(appraisedate);
+        self.AppraiseNo = ko.observable(appraiseno);
+        self.ItemTypeId = ko.observable(itemtypeid);
+        self.ItemCategoryId = ko.observable(itemcategoryid);
+        self.ItemName = ko.observable(itemname);
+        self.Weight = ko.observable(weight);
+        self.AppraisedValue = ko.observable(appraisedvalue);
+        self.Remarks = ko.observable(remarks);
+        self.CustomerFirstName = ko.observable(customerfirstname);
+        self.CustomerLastName = ko.observable(customerlastname);
+        self.IsPawned = ko.observable(ispawned);
+        self.CreatedBy = ko.observable(createdby);
+        self.CreatedAt = ko.observable(createdat);
+
+        self.ItemCategoryName = ko.observable(itemcategoryname);
+        self.ItemTypeName = ko.observable(itemtypename);
+        // #endregion
+    };
+app.customerModel = function (id, firstname, lastname, middlename, middleinitial, address, contactno) {
+    "use strict";
+
+    var self = this;
+
+    // #region MODEL TO BE MAP
+    self.Id = ko.observable(id);
+    self.FirstName = ko.observable(firstname);
+    self.LastName = ko.observable(lastname);
+    self.MiddleName = ko.observable(middlename);
+    self.MiddleInitial = ko.observable(middleinitial);
+    self.Address = ko.observable(address);
+    self.ContactNo = ko.observable(contactno);
+    // #endregion
+};
+
 app.addPawnedItemModel = function () {
     "use strict";
 

@@ -9,6 +9,7 @@ namespace iPOS.Web.Service.Interface
     {
         #region Appraisal
         Task<appraiseditem> FindById(int id);
+        Task<List<appraiseditem>> FindByIdList(int id);
 
         Task<appraiseditem> FindByAppraiseNo(string appraiseNo);
 

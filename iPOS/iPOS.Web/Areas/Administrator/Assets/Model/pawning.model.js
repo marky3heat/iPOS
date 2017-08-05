@@ -55,6 +55,48 @@
         self.CreatedAt = ko.observable(createdat);
         // #endregion
     };
+app.appraisedItemModel =
+    function () {
+        "use strict";
+
+        var self = this;
+
+        // #region MODEL TO BE MAP
+        self.AppraiseId = ko.observable();
+        self.AppraiseDate = ko.observable();
+        self.AppraiseNo = ko.observable();
+        self.ItemTypeId = ko.observable();
+        self.ItemCategoryId = ko.observable();
+        self.ItemName = ko.observable();
+        self.Weight = ko.observable();
+        self.AppraisedValue = ko.observable();
+        self.Remarks = ko.observable();
+        self.CustomerFirstName = ko.observable();
+        self.CustomerLastName = ko.observable();
+        self.IsPawned = ko.observable();
+        self.CreatedBy = ko.observable();
+        self.CreatedAt = ko.observable();
+
+        self.ItemCategoryName = ko.observable();
+        self.ItemTypeName = ko.observable();
+        // #endregion
+    };
+app.customerModel = function () {
+    "use strict";
+
+    var self = this;
+
+    // #region MODEL TO BE MAP
+    self.Id = ko.observable();
+    self.FirstName = ko.observable();
+    self.LastName = ko.observable();
+    self.MiddleName = ko.observable();
+    self.MiddleInitial = ko.observable();
+    self.Address = ko.observable();
+    self.ContactNo = ko.observable();
+    // #endregion
+};
+
 app.addPawnedItemModel = function () {
     "use strict";
 

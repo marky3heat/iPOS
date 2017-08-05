@@ -19,21 +19,25 @@ namespace iPOS.Web.Areas.Administrator.Controllers
         private readonly IPawningService _pawningService;
         private readonly IAppraisalService _appraisalService;
         private readonly ICustomerService _customerService;
+        private readonly IReferenceService _referenceService;
 
         public PawningController(
             IPawningService pawningService,
             IAppraisalService appraisalService,
-            ICustomerService customerServic)
+            ICustomerService customerServic,
+            IReferenceService referenceService)
         {
             _pawningService = pawningService;
             _appraisalService = appraisalService;
             _customerService = customerServic;
+            _referenceService = referenceService;
         }
         public PawningController()
         {
             _pawningService = new PawningService(new UnitOfWorkFactory());
             _appraisalService = new AppraisalService(new UnitOfWorkFactory());
             _customerService = new CustomerService(new UnitOfWorkFactory());
+            _referenceService = new ReferenceService(new UnitOfWorkFactory());
         }
         #endregion
 
@@ -115,6 +119,36 @@ namespace iPOS.Web.Areas.Administrator.Controllers
             });
 
             return Json(result.OrderBy(o => o.LastName), JsonRequestBehavior.AllowGet);
+        }
+
+        public async Task<JsonResult> GetAppraisedItemById(int AppraisedItemId)
+        {
+            var listAppraisedItem = await _appraisalService.FindByIdList(AppraisedItemId);
+            var listItemType = await _referenceService.GetItemTypeList();
+            var listItemCategory = await _referenceService.GetItemCategoryList();
+
+            var result = from a in listAppraisedItem
+            join b in listItemType on a.ItemTypeId equals b.ItemTypeId
+            join c in listItemCategory on a.ItemCategoryId equals c.ItemCategoryId
+            where a.IsPawned.Equals(false)
+            select new
+            {
+                a.AppraiseId,
+                b.ItemTypeName,
+                c.ItemCategoryName,
+                a.Weight,
+                a.AppraisedValue,
+                a.Remarks
+            };
+
+            return Json(new { data = result.ToList() }, JsonRequestBehavior.AllowGet);
+        }
+
+        public async Task<JsonResult> GetCustomerById(int CustomerId)
+        {
+            var listCustomer = await _customerService.FindByIdCustomer(CustomerId);
+
+            return Json(listCustomer, JsonRequestBehavior.AllowGet);
         }
 
         #endregion

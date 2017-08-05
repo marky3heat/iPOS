@@ -1,6 +1,8 @@
 ﻿app.vm = (function () {
     //"use strict";
     var pawnedItemModel = new app.addPawnedItemModel();
+    var appraisedItemModel = new app.appraisedItemModel();
+    var customerModel = new app.customerModel();
 
     // #region CONTROLS                
     var isPawnedItemListShowed = ko.observable(true);
@@ -125,6 +127,31 @@
         });
     }
 
+    function getAppraisedItemById() {
+        var AppraisedItemId = $('#AppraiseId').val();
+        $.getJSON(RootUrl + "/Administrator/Pawning/GetAppraisedItemById?AppraisedItemId=" + AppraisedItemId, function (result, data) {
+            appraisedItemModel.AppraiseId(result.data[0].AppraiseId);
+            appraisedItemModel.ItemTypeName(result.data[0].ItemTypeName)
+            appraisedItemModel.ItemCategoryName(result.data[0].ItemCategoryName)
+            appraisedItemModel.Weight(result.data[0].Weight)
+            appraisedItemModel.AppraisedValue(result.data[0].AppraisedValue)
+            appraisedItemModel.Remarks(result.data[0].Remarks)
+        });
+    }
+
+    function getCustomerById() {
+        var CustomerId = $('#CustomerId').val();
+        $.getJSON(RootUrl + "/Administrator/Pawning/GetCustomerById?CustomerId=" + CustomerId, function (result) {
+            customerModel.Id(result.Id);
+            customerModel.FirstName(result.FirstName);
+            customerModel.LastName(result.LastName);
+            customerModel.MiddleName(result.MiddleName);
+            customerModel.MiddleInitial(result.MiddleInitial);
+            customerModel.Address(result.Address);
+            customerModel.ContactNo(result.ContactNo);
+        });
+    }
+
     function SetInitialDate() {
         $('.daterange-single').daterangepicker({
             singleDatePicker: true
@@ -141,10 +168,16 @@
 
         isPawnedItemListShowed: isPawnedItemListShowed,
         isManagePawnedItemShowed: isManagePawnedItemShowed,
-        backToAppraisedItemList,
+        backToAppraisedItemList: backToAppraisedItemList,
 
-        appraisedItem,
-        customer
+        appraisedItem: appraisedItem,
+        customer: customer,
+
+        appraisedItemModel: appraisedItemModel,
+        customerModel: customerModel,
+
+        getAppraisedItemById: getAppraisedItemById,
+        getCustomerById: getCustomerById
     };
 
     return vm;

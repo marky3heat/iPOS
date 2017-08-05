@@ -6,6 +6,9 @@
     var isPawnedItemListShowed = ko.observable(true);
     var isManagePawnedItemShowed = ko.observable(false);
 
+    var appraisedItem = ko.observableArray();
+    var customer = ko.observableArray();
+
     // #endregion
 
     // #region BEHAVIORS
@@ -13,6 +16,8 @@
     function activate() {
         //setInfiteScrollGetItemList();
         SetInitialDate();
+        getAppraisedItem();
+        getCustomer();
     }
 
     function setInfiteScrollGetItemList() {
@@ -67,17 +72,18 @@
     }
 
     function backToAppraisedItemList() {
-
+        isPawnedItemListShowed(true);
+        isManagePawnedItemShowed(false);
     }
 
     function saveItem() {
         /*VALIDATIONS -START*/
-        if (appraisedItem.AppraiseDate().trim() === "") {
-            toastr.error("Date is required.");
-            appraisedItem.AppraiseDate("");
-            document.getElementById("AppraiseDate").focus();
-            return false;
-        }
+        //if (appraisedItem.AppraiseDate().trim() === "") {
+        //    toastr.error("Date is required.");
+        //    appraisedItem.AppraiseDate("");
+        //    document.getElementById("AppraiseDate").focus();
+        //    return false;
+        //}
 
         /*VALIDATIONS -END*/
 
@@ -106,7 +112,33 @@
     }
 
     function getAppraisedItem() {
-        
+        $.getJSON(RootUrl + "/Administrator/Pawning/GetAppraisedItem", function (result) {
+            appraisedItem.removeAll();
+            appraisedItem(result);
+        });
+    }
+
+    function getCustomer() {
+        $.getJSON(RootUrl + "/Administrator/Pawning/GetCustomer", function (result) {
+            customer.removeAll();
+            customer(result);
+        });
+    }
+
+    function getAppraisedItemById() {
+        var AppraisedItemId = $('#AppraiseId').val();
+        $.getJSON(RootUrl + "/Administrator/Pawning/GetAppraisedItem?AppraisedItemId=" + AppraisedItemId, function (result) {
+            app.appraisedItemModel.removeAll();
+            app.appraisedItemModel(result);
+        });
+    }
+
+    function getCustomerById() {
+        var CustomerId = $('#CustomerId').val();
+        $.getJSON(RootUrl + "/Administrator/Pawning/GetCustomer?CustomerId=" + CustomerId, function (result) {
+            app.customerModel.removeAll();
+            app.customerModel(result);
+        });
     }
 
     function SetInitialDate() {
@@ -124,7 +156,14 @@
         viewItem: viewItem,
 
         isPawnedItemListShowed: isPawnedItemListShowed,
-        isManagePawnedItemShowed: isManagePawnedItemShowed
+        isManagePawnedItemShowed: isManagePawnedItemShowed,
+        backToAppraisedItemList,
+
+        appraisedItem,
+        customer,
+
+        getAppraisedItemById,
+        getCustomerById
     };
 
     return vm;

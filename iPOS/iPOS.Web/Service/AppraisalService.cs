@@ -39,6 +39,22 @@ namespace iPOS.Web.Service
                 throw new Exception(ex.Message);
             }
         }
+        
+        public async Task<List<appraiseditem>> FindByIdList(int id)
+        {
+            try
+            {
+                using (var uow = _unitOfWorkFactory.Create())
+                {
+                    var result = await uow.AppraisedItemRepository.AllWithAsync(u => u.AppraiseId == id);
+                    return result.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public async Task<appraiseditem> FindByAppraiseNo(string appraiseNo)
         {
             try
