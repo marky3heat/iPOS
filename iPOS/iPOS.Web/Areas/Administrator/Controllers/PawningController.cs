@@ -151,6 +151,20 @@ namespace iPOS.Web.Areas.Administrator.Controllers
             return Json(listCustomer, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult GetItemCode()
+        {
+            var result = _pawningService.GetItemCode();
+
+            return Json(result + 1, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetContractNo()
+        {
+            var result = _pawningService.GetContractNo();
+
+            return Json(result + 1, JsonRequestBehavior.AllowGet);
+        }
+
         public async Task<JsonResult> SaveCustomer(customer list)
         {
             try

@@ -15,6 +15,8 @@ namespace iPOS.Web.Service.Interface
         Task<bool> Save(pawneditem model);
         Task<bool> Update(pawneditem model);
         Task<bool> Delete(string id);
+        int GetItemCode();
+        int GetContractNo();
 
         #endregion
     }

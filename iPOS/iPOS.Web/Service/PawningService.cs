@@ -54,28 +54,6 @@ namespace iPOS.Web.Service
                 throw new Exception(ex.Message);
             }
         }
-        public int GetAppraiseNo()
-        {
-            try
-            {
-                using (var uow = _unitOfWorkFactory.Create())
-                {
-                    var result = uow.PawnedItemRepository.All;
-                    if (result.Count() != 0)
-                    {
-                        return result.Max(a => a.PawnedItemId);
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
         public async Task<List<pawneditem>> GetList(
             int pageIndex = 0,
             int pageSize = 100)
@@ -100,7 +78,6 @@ namespace iPOS.Web.Service
                 throw new Exception(ex.Message);
             }
         }
-
         public async Task<bool> Save(pawneditem model)
         {
             try
@@ -125,7 +102,6 @@ namespace iPOS.Web.Service
                 throw new Exception(ex.Message);
             }
         }
-
         public async Task<bool> Update(pawneditem model)
         {
             try
@@ -150,7 +126,6 @@ namespace iPOS.Web.Service
                 throw new Exception(ex.Message);
             }
         }
-
         public async Task<bool> Delete(string id)
         {
             try
@@ -166,6 +141,51 @@ namespace iPOS.Web.Service
                     else
                     {
                         return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public int GetItemCode()
+        {
+            try
+            {
+                using (var uow = _unitOfWorkFactory.Create())
+                {
+                    var result = uow.PawnedItemRepository.All;
+                    if (result.Count() != 0)
+                    {
+                        return result.Max(a => a.PawnedItemId);
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public int GetContractNo()
+        {
+            try
+            {
+                using (var uow = _unitOfWorkFactory.Create())
+                {
+                    var result = uow.PawnedItemRepository.All;
+                    if (result.Count() != 0)
+                    {
+                        return result.Max(a => a.PawnedItemId);
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
