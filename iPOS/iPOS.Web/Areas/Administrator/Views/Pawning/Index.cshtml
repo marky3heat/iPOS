@@ -126,7 +126,7 @@
                             <select name="location" data-bind="options: customer, optionsValue: 'Id', optionsText: 'FirstName', optionsCaption: '', event:{ change: getCustomerById}" data-placeholder="Select customer" class="select" id="CustomerId"></select>
                         </div>
                         <div class="col-lg-3">
-                            <button type="button" class="btn bg-warning-400 access-open">Create new customer</button>
+                            <button type="button" class="btn bg-warning-400 access-open" id="mlgs_test_form">Create new customer</button>
                         </div>        
                     </div>
 
@@ -223,6 +223,12 @@
     <script type="text/javascript" src="~/Assets/js/plugins/forms/wizards/steps.min.js"></script>
     <script type="text/javascript" src="~/Assets/js/plugins/forms/selects/select2.min.js"></script>
     <script type="text/javascript" src="~/Assets/js/pages/wizard_steps.js"></script>
+
+    <!-- For Modals -->
+    <script type="text/javascript" src="~/Assets/js/plugins/notifications/bootbox.min.js"></script>
+    @*<script type="text/javascript" src="~/Assets/js/plugins/notifications/sweet_alert.min.js"></script>*@
+    <script type="text/javascript" src="~/Assets/js/pages/components_modals.js"></script>
+    <!-- /For Modals -->
 
     <script src="~/Areas/Administrator/Assets/Model/pawning.model.js"></script>
     <script src="~/Areas/Administrator/Assets/ViewModel/pawning.viewmodel.js"></script>

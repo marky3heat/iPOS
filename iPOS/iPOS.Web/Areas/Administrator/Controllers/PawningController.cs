@@ -151,6 +151,64 @@ namespace iPOS.Web.Areas.Administrator.Controllers
             return Json(listCustomer, JsonRequestBehavior.AllowGet);
         }
 
+        public async Task<JsonResult> SaveCustomer(customer list)
+        {
+            try
+            {
+                customer model = null;
+
+                bool success = false;
+                string message = "";
+
+                if (string.IsNullOrEmpty(list.Id.ToString()) || list.Id.ToString() == "0")
+                {
+                    //DateTime dt = DateTime.ParseExact(item.AppraiseDate, "yyyy/MM/dd", CultureInfo.InvariantCulture);
+
+                    model = new customer();
+                    model.FirstName = list.FirstName;
+                    model.LastName = list.LastName;
+                    model.MiddleName = list.MiddleName;
+                    model.Address = list.Address;
+                    model.ContactNo = list.ContactNo;
+
+                    var result = await _customerService.SaveCustomer(model);
+                    success = result;
+                    if (result)
+                    {
+                        message = "Successfully saved.";
+                    }
+                    else
+                    {
+                        message = "Error saving data. Duplicate entry.";
+                    }
+                }
+                else
+                {
+                    model = await _customerService.FindByIdCustomer(list.Id);
+                    model.FirstName = list.FirstName;
+                    model.LastName = list.LastName;
+                    model.MiddleName = list.MiddleName;
+                    model.Address = list.Address;
+                    model.ContactNo = list.ContactNo;
+
+                    var result = await _customerService.UpdateCustomer(model);
+                    success = result;
+                    if (result)
+                    {
+                        message = "Successfully updated.";
+                    }
+                    else
+                        message = "Error saving data. Please contact administrator.";
+                }
+
+                return Json(new { success = success, message = message });
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         #endregion
     }
 }

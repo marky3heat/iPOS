@@ -97,6 +97,22 @@ app.customerModel = function () {
     // #endregion
 };
 
+app.createCustomerModel = function () {
+    "use strict";
+
+    var self = this;
+
+    // #region MODEL TO BE MAP
+    self.Id = ko.observable();
+    self.FirstName = ko.observable();
+    self.LastName = ko.observable();
+    self.MiddleName = ko.observable();
+    self.MiddleInitial = ko.observable();
+    self.Address = ko.observable();
+    self.ContactNo = ko.observable();
+    // #endregion
+};
+
 app.addPawnedItemModel = function () {
     "use strict";
 

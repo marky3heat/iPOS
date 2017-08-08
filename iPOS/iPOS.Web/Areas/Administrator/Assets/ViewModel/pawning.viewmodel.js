@@ -3,6 +3,7 @@
     var pawnedItemModel = new app.addPawnedItemModel();
     var appraisedItemModel = new app.appraisedItemModel();
     var customerModel = new app.customerModel();
+    var ccustomerModel = new app.createCustomerModel();
 
     // #region CONTROLS                
     var isPawnedItemListShowed = ko.observable(true);
@@ -113,6 +114,42 @@
         });
     }
 
+    function SaveCustomer(firstname, lastname, middlename, address, contactno) {
+        /*VALIDATIONS -START*/
+
+        ccustomerModel.FirstName(firstname);
+        ccustomerModel.LastName(lastname);
+        ccustomerModel.MiddleName(middlename);
+        ccustomerModel.Address(address);
+        ccustomerModel.ContactNo(contactno);
+
+        /*VALIDATIONS -END*/
+        debugger;
+        loaderApp.showPleaseWait();
+        var param = ko.toJS(ccustomerModel);
+        var url = RootUrl + "/Administrator/Pawning/SaveCustomer";
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: ko.utils.stringifyJson(param),
+            contentType: 'application/json; charset=utf-8',
+            success: function (result) {
+                if (result.success) {
+                    swal("Success", result.message, "success");
+                    getCustomer();
+
+                    loaderApp.hidePleaseWait();
+                } else {
+                    loaderApp.hidePleaseWait();
+
+                    swal("Error", result.message, "error");
+
+                    clearControls();
+                }
+            }
+        });
+    }
+
     function getAppraisedItem() {
         $.getJSON(RootUrl + "/Administrator/Pawning/GetAppraisedItem", function (result) {
             appraisedItem.removeAll();
@@ -175,9 +212,12 @@
 
         appraisedItemModel: appraisedItemModel,
         customerModel: customerModel,
+        ccustomerModel: ccustomerModel,
 
         getAppraisedItemById: getAppraisedItemById,
-        getCustomerById: getCustomerById
+        getCustomerById: getCustomerById,
+
+        SaveCustomer: SaveCustomer
     };
 
     return vm;
@@ -199,6 +239,88 @@ $(function () {
     var switches = Array.prototype.slice.call(document.querySelectorAll('.switchery'));
     switches.forEach(function (html) {
         var switchery = new Switchery(html, { color: '#4CAF50' });
+    });
+
+    // Custom bootbox dialog with form
+    $('#mlgs_test_form').on('click', function () {
+        bootbox.dialog({
+            title: "Create a new customer.",
+            message: '<div class="row">  ' +
+                '<div class="col-md-12">' +
+                    '<form class="form-horizontal">' +
+                        '<div class="form-group">' +
+                            '<label class="col-md-4 control-label">First name</label>' +
+                            '<div class="col-md-8">' +
+                                '<input id="cFirstName" data-bind="textinput: ccustomerModel.FirstName" name="FirstName" type="text" placeholder="First name" class="form-control">' +
+                            '</div>' +
+                        '</div>' +
+                        '<div class="form-group">' +
+                            '<label class="col-md-4 control-label">Last name</label>' +
+                            '<div class="col-md-8">' +
+                                '<input id="cLastName" data-bind="textinput: ccustomerModel.LastName" name="LastName" type="text" placeholder="Last name" class="form-control">' +
+                            '</div>' +
+                        '</div>' +
+                        '<div class="form-group">' +
+                            '<label class="col-md-4 control-label">Middle name</label>' +
+                            '<div class="col-md-8">' +
+                                '<input id="cMiddleName" data-bind="textinput: ccustomerModel.MiddleName" name="MiddleName" type="text" placeholder="Middle name" class="form-control">' +
+                            '</div>' +
+                        '</div>' +
+                        '<div class="form-group">' +
+                            '<label class="col-md-4 control-label">Address</label>' +
+                            '<div class="col-md-8">' +
+                                '<input id="cAddress" data-bind="textinput: ccustomerModel.Address" name="Address" type="text" placeholder="Address" class="form-control">' +
+                            '</div>' +
+                        '</div>' +
+                        '<div class="form-group">' +
+                            '<label class="col-md-4 control-label">Contact no.</label>' +
+                            '<div class="col-md-8">' +
+                                '<input id="cContactNo" data-bind="textinput: ccustomerModel.ContactNo" name="ContactNo" type="text" placeholder="Contact no." class="form-control">' +
+                            '</div>' +
+                        '</div>' +
+                    '</form>' +
+                '</div>' +
+                '</div>',
+            buttons: {
+                success: {
+                    label: "Save",
+                    className: "btn-success",
+                    callback: function () {
+                        if ($('#cFirstName').val() === "") {
+                            toastr.error("First name is required.");
+                            app.vm.customerModel.FirstName("");
+                            document.getElementById("FirstName").focus();
+                            return false;
+                        }
+                        var firstname = $('#cFirstName').val();
+                        var lastname = $('#cFirstName').val();
+                        var middlename = $('#cFirstName').val();
+                        var address = $('#cFirstName').val();
+                        var contactno = $('#cFirstName').val();
+
+                        app.vm.SaveCustomer(
+                            firstname,
+                            lastname,
+                            middlename,
+                            address,
+                            contactno
+                            );
+
+                        //var name = $('#cFirstName').val();
+                        //var answer = $("input[name='awesomeness']:checked").val()
+                        //bootbox.alert("Hello " + name + ". You've chosen <b>" + answer + "</b>");
+                    }
+                },
+                danger: {
+                    label: "Cancel",
+                    className: "btn-danger",
+                    callback: function () {
+                            
+                    }
+                }
+            }
+        }
+        );
     });
 
     ko.applyBindings(app.vm);
