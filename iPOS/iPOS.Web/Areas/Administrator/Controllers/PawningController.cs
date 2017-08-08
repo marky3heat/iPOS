@@ -56,12 +56,16 @@ namespace iPOS.Web.Areas.Administrator.Controllers
         #region JSON REQUEST METHODS
         // GET
         [HttpGet]
-        [Route("Administrator/Customer/GetCustomerList")]
-        public async Task<JsonResult> GetPawnedItems(int page, int pageSize)
+        public async Task<JsonResult> GetPawnedItems()
         {
-            var listPawnedItem = await _pawningService.GetList(page, pageSize);
+            var listPawnedItem = await _pawningService.GetNormalList();
+            var listAppraisedItem = await _appraisalService.GetList();
+            var listCustomer = await _customerService.GetCustomerList();
+
             var result =
                 from a in listPawnedItem
+                join b in listAppraisedItem on a.AppraiseId equals b.AppraiseId
+                join c in listCustomer on a.CustomerId equals  c.Id
                 select new
                 {
                     a.PawnedItemId,
@@ -83,14 +87,18 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                     a.NoOfPayments,
                     a.DueDateStart,
                     a.DueDateEnd,
+                    a.Status,
                     a.IsReleased,
                     a.ReviewedBy,
                     a.ApprovedBy,
                     a.CreatedBy,
-                    a.CreatedAt
+                    a.CreatedAt,
+                    b.ItemName,
+                    c.FirstName,
+                    c.LastName
                 };
 
-            return Json(new { data = result.OrderByDescending(d => d.PawnedDate).ThenBy(s => s.IsReleased), noMoreData = result.Count() < pageSize, recordCount = result.Count() }, JsonRequestBehavior.AllowGet);
+            return Json(new { data = result.OrderByDescending(d => d.PawnedDate).ThenBy(s => s.IsReleased) }, JsonRequestBehavior.AllowGet);
         }
 
         public async Task<JsonResult> GetAppraisedItem()

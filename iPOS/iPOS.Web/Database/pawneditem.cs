@@ -33,10 +33,11 @@ namespace iPOS.Web.Database
         public Nullable<int> NoOfPayments { get; set; }
         public Nullable<System.DateTime> DueDateStart { get; set; }
         public Nullable<System.DateTime> DueDateEnd { get; set; }
-        public string CreatedBy { get; set; }
-        public Nullable<System.DateTime> CreatedAt { get; set; }
+        public string Status { get; set; }
         public Nullable<bool> IsReleased { get; set; }
         public string ReviewedBy { get; set; }
         public string ApprovedBy { get; set; }
+        public string CreatedBy { get; set; }
+        public Nullable<System.DateTime> CreatedAt { get; set; }
     }
 }

@@ -18,7 +18,8 @@
     // initializers
     function activate() {
         //setInfiteScrollGetItemList();
-        SetInitialDate();
+        loadList();
+        setInitialDate();
         getAppraisedItem();
         getCustomer();
     }
@@ -57,6 +58,53 @@
         allItems.valueHasMutated();
 
         return allItems();
+    }
+
+    function loadList() {
+        debugger;
+        $("#pawnedItemTable").dataTable().fnDestroy();
+        $('#pawnedItemTable').DataTable({
+            "ajax": {
+                "url": RootUrl + "/Administrator/Pawning/GetPawnedItems",
+                "type": "GET",
+                "datatype": "json"
+            },
+            "order": [[2, "desc"]],
+            "columns": [
+                { "data": "PawnedItemId", "className": "hide" },
+                { "data": "PawnedItemNo", "className": "text-left" },
+                { "data": "PawnedItemContractNo", "className": "text-left" },
+                { "data": "ItemName", "className": "text-left" },
+                { "data": "NetCashOut", "className": "text-right" },
+                { "data": "Status", "className": "text-right" },
+                {
+                    "data": "IsReleased",
+                    "className": "text-left",
+                    "render": function (data, type, row) {
+                        if (row.IsReleased === 1) {
+                            return "yes";
+                        } else {
+                            return "No";
+                        }
+
+                    }
+                },
+                {
+                    "render": function () {
+                        return '<ul class="icons-list text-center">' +
+                            '<li class="dropdown">' +
+                            '<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>' +
+                            '<ul class="dropdown-menu dropdown-menu-right">' +
+                            '<li><a href="#"><i class="icon-file-stats"></i> View pawned item</a></li>' +
+                            '<li><a href="#" ><i class="icon-file-stats"></i> Approve pawned item</a></li>' +
+                            '<li><a href="#"><i class="icon-file-stats"></i> Print</a></li>' +
+                            '</ul>' +
+                            '</li>' +
+                            '</ul>';
+                    }
+                }
+            ]
+        });
     }
 
     function clearControls() {
@@ -114,7 +162,7 @@
         });
     }
 
-    function SaveCustomer(firstname, lastname, middlename, address, contactno) {
+    function saveCustomer(firstname, lastname, middlename, address, contactno) {
         /*VALIDATIONS -START*/
 
         ccustomerModel.FirstName(firstname);
@@ -189,7 +237,7 @@
         });
     }
 
-    function SetInitialDate() {
+    function setInitialDate() {
         $('.daterange-single').daterangepicker({
             singleDatePicker: true
         });
@@ -217,7 +265,7 @@
         getAppraisedItemById: getAppraisedItemById,
         getCustomerById: getCustomerById,
 
-        SaveCustomer: SaveCustomer
+        saveCustomer: saveCustomer
     };
 
     return vm;
@@ -298,7 +346,7 @@ $(function () {
                         var address = $('#cFirstName').val();
                         var contactno = $('#cFirstName').val();
 
-                        app.vm.SaveCustomer(
+                        app.vm.saveCustomer(
                             firstname,
                             lastname,
                             middlename,

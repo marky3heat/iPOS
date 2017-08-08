@@ -78,6 +78,22 @@ namespace iPOS.Web.Service
                 throw new Exception(ex.Message);
             }
         }
+        public async Task<List<pawneditem>> GetNormalList()
+        {
+            try
+            {
+                using (var uow = _unitOfWorkFactory.Create())
+                {
+                    var customerlist = await uow.PawnedItemRepository.AllWithAsync();
+
+                    return customerlist.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public async Task<bool> Save(pawneditem model)
         {
             try

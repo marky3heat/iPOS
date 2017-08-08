@@ -78,6 +78,7 @@
           <Property Name="NoOfPayments" Type="int" />
           <Property Name="DueDateStart" Type="date" />
           <Property Name="DueDateEnd" Type="date" />
+          <Property Name="Status" Type="varchar" MaxLength="32" />
           <Property Name="IsReleased" Type="bool" />
           <Property Name="ReviewedBy" Type="varchar" MaxLength="32" />
           <Property Name="ApprovedBy" Type="varchar" MaxLength="32" />
@@ -175,8 +176,8 @@
           <EntitySet Name="itemcategories" EntityType="dbpawnshopModel.itemcategory" />
           <EntitySet Name="itemtypes" EntityType="dbpawnshopModel.itemtype" />
           <EntitySet Name="releaseditems" EntityType="dbpawnshopModel.releaseditem" />
-          <EntitySet Name="pawneditems" EntityType="dbpawnshopModel.pawneditem" />
           <EntitySet Name="appraiseditems" EntityType="dbpawnshopModel.appraiseditem" />
+          <EntitySet Name="pawneditems" EntityType="dbpawnshopModel.pawneditem" />
         </EntityContainer>
         <EntityType Name="itemcategory">
           <Key>
@@ -203,6 +204,25 @@
           </Key>
           <Property Name="ReleasedItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
+        <EntityType Name="appraiseditem">
+          <Key>
+            <PropertyRef Name="AppraiseId" />
+          </Key>
+          <Property Name="AppraiseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppraiseDate" Type="DateTime" />
+          <Property Name="AppraiseNo" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="ItemTypeId" Type="Int32" />
+          <Property Name="ItemCategoryId" Type="Int32" />
+          <Property Name="ItemName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Weight" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="AppraisedValue" Type="Decimal" />
+          <Property Name="Remarks" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerFirstName" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerLastName" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="IsPawned" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="DateTime" />
+        </EntityType>
         <EntityType Name="pawneditem">
           <Key>
             <PropertyRef Name="PawnedItemId" />
@@ -226,29 +246,11 @@
           <Property Name="NoOfPayments" Type="Int32" />
           <Property Name="DueDateStart" Type="DateTime" />
           <Property Name="DueDateEnd" Type="DateTime" />
-          <Property Name="CreatedBy" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedAt" Type="DateTime" />
+          <Property Name="Status" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
           <Property Name="IsReleased" Type="Boolean" />
           <Property Name="ReviewedBy" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
           <Property Name="ApprovedBy" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="appraiseditem">
-          <Key>
-            <PropertyRef Name="AppraiseId" />
-          </Key>
-          <Property Name="AppraiseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AppraiseDate" Type="DateTime" />
-          <Property Name="AppraiseNo" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="ItemTypeId" Type="Int32" />
-          <Property Name="ItemCategoryId" Type="Int32" />
-          <Property Name="ItemName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Name="Weight" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="AppraisedValue" Type="Decimal" />
-          <Property Name="Remarks" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
-          <Property Name="CustomerFirstName" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="CustomerLastName" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="IsPawned" Type="Boolean" />
-          <Property Name="CreatedBy" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
           <Property Name="CreatedAt" Type="DateTime" />
         </EntityType>
       </Schema>
@@ -326,14 +328,35 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="appraiseditems">
+            <EntityTypeMapping TypeName="dbpawnshopModel.appraiseditem">
+              <MappingFragment StoreEntitySet="appraiseditem">
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsPawned" ColumnName="IsPawned" />
+                <ScalarProperty Name="CustomerLastName" ColumnName="CustomerLastName" />
+                <ScalarProperty Name="CustomerFirstName" ColumnName="CustomerFirstName" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="AppraisedValue" ColumnName="AppraisedValue" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ItemCategoryId" ColumnName="ItemCategoryId" />
+                <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+                <ScalarProperty Name="AppraiseNo" ColumnName="AppraiseNo" />
+                <ScalarProperty Name="AppraiseDate" ColumnName="AppraiseDate" />
+                <ScalarProperty Name="AppraiseId" ColumnName="AppraiseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="pawneditems">
             <EntityTypeMapping TypeName="dbpawnshopModel.pawneditem">
               <MappingFragment StoreEntitySet="pawneditem">
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
                 <ScalarProperty Name="ReviewedBy" ColumnName="ReviewedBy" />
                 <ScalarProperty Name="IsReleased" ColumnName="IsReleased" />
-                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="DueDateEnd" ColumnName="DueDateEnd" />
                 <ScalarProperty Name="DueDateStart" ColumnName="DueDateStart" />
                 <ScalarProperty Name="NoOfPayments" ColumnName="NoOfPayments" />
@@ -353,26 +376,6 @@
                 <ScalarProperty Name="PawnedDate" ColumnName="PawnedDate" />
                 <ScalarProperty Name="PawnedItemNo" ColumnName="PawnedItemNo" />
                 <ScalarProperty Name="PawnedItemId" ColumnName="PawnedItemId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="appraiseditems">
-            <EntityTypeMapping TypeName="dbpawnshopModel.appraiseditem">
-              <MappingFragment StoreEntitySet="appraiseditem">
-                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="IsPawned" ColumnName="IsPawned" />
-                <ScalarProperty Name="CustomerLastName" ColumnName="CustomerLastName" />
-                <ScalarProperty Name="CustomerFirstName" ColumnName="CustomerFirstName" />
-                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-                <ScalarProperty Name="AppraisedValue" ColumnName="AppraisedValue" />
-                <ScalarProperty Name="Weight" ColumnName="Weight" />
-                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
-                <ScalarProperty Name="ItemCategoryId" ColumnName="ItemCategoryId" />
-                <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
-                <ScalarProperty Name="AppraiseNo" ColumnName="AppraiseNo" />
-                <ScalarProperty Name="AppraiseDate" ColumnName="AppraiseDate" />
-                <ScalarProperty Name="AppraiseId" ColumnName="AppraiseId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
