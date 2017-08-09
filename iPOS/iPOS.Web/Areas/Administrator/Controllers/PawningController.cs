@@ -240,6 +240,139 @@ namespace iPOS.Web.Areas.Administrator.Controllers
             }
         }
 
+        public async Task<JsonResult> SavePawnedItem(pawneditem list)
+        {
+            try
+            {
+                pawneditem model = null;
+
+                bool success = false;
+                string message = "";
+
+                if (string.IsNullOrEmpty(list.PawnedItemId.ToString()) || list.PawnedItemId.ToString() == "0")
+                {
+                    //DateTime dt = DateTime.ParseExact(item.AppraiseDate, "yyyy/MM/dd", CultureInfo.InvariantCulture);
+
+                    model = new pawneditem();
+                    model.PawnedItemId = list.PawnedItemId;
+                    model.PawnedItemNo = list.PawnedItemNo;
+                    model.PawnedDate = list.PawnedDate;
+                    model.AppraiseId = list.AppraiseId;
+                    model.CustomerId = list.CustomerId;
+                    model.PawnedItemContractNo = list.PawnedItemContractNo;
+                    model.LoanableAmount = list.LoanableAmount;
+                    model.InterestRate = list.InterestRate;
+                    model.InterestAmount = list.InterestAmount;
+                    model.InitialPayment = list.InitialPayment;
+                    model.ServiceCharge = list.ServiceCharge;
+                    model.Others = list.Others;
+                    model.IsInterestDeducted = list.IsInterestDeducted;
+                    model.NetCashOut = list.NetCashOut;
+                    model.TermsId = list.TermsId;
+                    model.ScheduleOfPayment = list.ScheduleOfPayment;
+                    model.NoOfPayments = list.NoOfPayments;
+                    model.DueDateStart = list.DueDateStart;
+                    model.DueDateEnd = list.DueDateEnd; //DateTime.Parse(list.DueDateEnd);
+                    model.Status = "Pending";
+                    model.IsReleased = false;
+                    model.ReviewedBy = "";
+                    model.ApprovedBy = "";
+                    model.CreatedBy = "";
+                    model.CreatedAt = DateTime.Now;
+
+                    var result = await _pawningService.Save(model);
+                    success = result;
+                    if (result)
+                    {
+                        message = "Successfully saved.";
+                    }
+                    else
+                    {
+                        message = "Error saving data. Duplicate entry.";
+                    }
+                }
+                else
+                {
+                    model = await _pawningService.FindById(list.PawnedItemId);
+                    model.LoanableAmount = list.LoanableAmount;
+                    model.InterestRate = list.InterestRate;
+                    model.InterestAmount = list.InterestAmount;
+                    model.InitialPayment = list.InitialPayment;
+                    model.ServiceCharge = list.ServiceCharge;
+                    model.Others = list.Others;
+                    model.IsInterestDeducted = list.IsInterestDeducted;
+                    model.NetCashOut = list.NetCashOut;
+                    model.TermsId = list.TermsId;
+                    model.ScheduleOfPayment = list.ScheduleOfPayment;
+                    model.NoOfPayments = list.NoOfPayments;
+                    model.DueDateStart = list.DueDateStart;
+                    model.DueDateEnd = list.DueDateEnd;
+                    model.Status = list.Status;
+                    model.IsReleased = list.IsReleased;
+
+                    var result = await _pawningService.Save(model);
+                    success = result;
+                    if (result)
+                    {
+                        message = "Successfully updated.";
+                    }
+                    else
+                        message = "Error saving data. Please contact administrator.";
+                }
+
+                return Json(new { success = success, message = message });
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public async Task<JsonResult> UpdatePawnedItem(pawneditem list)
+        {
+            try
+            {
+                bool success = false;
+                string message = "";
+
+                if (string.IsNullOrEmpty(list.PawnedItemId.ToString()) || list.PawnedItemId.ToString() == "0")
+                {
+                    message = "Error saving data. Please contact administrator.";
+                }
+                else
+                {
+                    pawneditem model = null;
+
+                    model = await _pawningService.FindById(list.PawnedItemId);
+                    model.Status = list.Status;
+                    model.IsReleased = list.IsReleased;
+                    model.ReviewedBy = list.ReviewedBy;
+                    model.ApprovedBy = list.ApprovedBy;
+
+                    var result = await _pawningService.Save(model);
+                    success = result;
+                    if (result)
+                    {
+                        appraiseditem modelAppraisal = null;
+
+                        modelAppraisal = await _appraisalService.FindById(list.AppraiseId.GetValueOrDefault());
+                        modelAppraisal.IsPawned = true;
+                        var update = await _appraisalService.Save(modelAppraisal);
+                        if (update)
+                        {
+                            message = "Successfully pawned.";
+                        }                
+                    }
+                    else
+                        message = "Error saving data. Please contact administrator.";
+                }
+
+                return Json(new { success = success, message = message });
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
     }
 }

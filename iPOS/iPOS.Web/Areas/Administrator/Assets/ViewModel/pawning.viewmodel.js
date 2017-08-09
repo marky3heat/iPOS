@@ -62,7 +62,6 @@
     }
 
     function loadList() {
-        debugger;
         $("#pawnedItemTable").dataTable().fnDestroy();
         $('#pawnedItemTable').DataTable({
             "ajax": {

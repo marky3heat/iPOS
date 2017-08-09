@@ -124,7 +124,7 @@
                     <div class="form-group">
                         <label class="control-label col-lg-3">Customer name<span class="text-danger"> *</span></label>
                         <div class="col-lg-6">
-                            <select name="location" data-bind="options: customer, optionsValue: 'Id', optionsText: 'FirstName', optionsCaption: '', event:{ change: getCustomerById}" data-placeholder="Select customer" class="select" id="CustomerId"></select>
+                            <select name="location" data-bind="options: customer, optionsValue: 'Id', optionsText: 'FirstName', optionsCaption: '', event:{ change: getCustomerById}" data-placeholder="Select customer" class="select required" id="CustomerId"></select>
                         </div>
                         <div class="col-lg-3">
                             <button type="button" class="btn bg-warning-400 access-open" id="mlgs_test_form">Create new customer</button>
@@ -276,7 +276,10 @@
                     </div>
                     <div class="col-md-4">
                         <label>Deduct interst?</label>
-                        <input type="text" data-bind="" class="form-control">
+                        <select name="deductInterest" class="form-control">
+                            <option value="opt1">No</option>
+                            <option value="opt2">Yes</option>
+                        </select>
                     </div>
                     <div class="col-md-4">
                         <label>Net cash out</label>
@@ -338,9 +341,41 @@
             </fieldset>
 
             <h6>Schedule of fees</h6>
-            <fieldset>
+        <fieldset>
+            <div class="form-group">
+                <div class="table-responsive">
+                    <table class="table text-nowrap" id="scheduleoffees">
+                        <thead>
+                        <tr>
+                            <th>Item No</th>
+                            <th>Term</th>
+                            <th>Due Date</th>
+                            <th>Principal</th>
+                            <th>Interest</th>
+                            <th>Balance</th>
+                            <th>Status[OR No.]</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div> 
 
-            </fieldset>
+            <div class="form-group">
+                <div class="col-md-4">
+                    <label>Prepared by:</label>
+                    <input type="text" data-bind="" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label>Reviewed by:</label>
+                    <input type="text" data-bind="" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label>Approved by:</label>
+                    <input type="text" data-bind="" class="form-control">
+                </div>
+            </div>
+        </fieldset>
         </form>
     </div>
 </div>
