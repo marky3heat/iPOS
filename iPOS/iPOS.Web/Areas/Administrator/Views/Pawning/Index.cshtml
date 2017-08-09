@@ -210,43 +210,50 @@
             <h6>Payment terms & Schedule</h6>
             <fieldset>
                 <div class="form-group">
-                    <div class="col-md-6">
-                        <label>Item code</label>
-                        <input type="text" data-bind="" class="form-control" id="">
+                    <div class="col-md-4">
+                        <label>Date</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="icon-calendar22"></i></span>
+                            <input type="text" id="PawnedDate" data-bind="value: pawnedItemModel.PawnedDate" class="form-control daterange-single">
+                        </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
+                        <label>Item code</label>
+                        <input type="text" id="PawnedItemNo" data-bind="textinput: pawnedItemModel.PawnedItemNo" class="form-control">
+                    </div>
+                    <div class="col-md-4">
                         <label>Item description</label>
-                        <input type="text" data-bind="" class="form-control" id="">
+                        <input type="text" id="" data-bind="value: appraisedItemModel.ItemName" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-6">
                         <label>Appraisal no</label>
-                        <input type="text" data-bind="" class="form-control" id="">
+                        <input type="text" id="" data-bind="value: appraisedItemModel.AppraiseId" class="form-control">
                     </div>
                     <div class="col-md-6">
                         <label>Contract no</label>
-                        <input type="text" data-bind="" class="form-control" id="">
+                        <input type="text" id="PawnedItemContractNo" data-bind="textinput: pawnedItemModel.PawnedItemContractNo" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-6">
                         <label>Appraised value</label>
-                        <input type="text" data-bind="" class="form-control" id="">
+                        <input type="text" id="" data-bind="value: appraisedItemModel.AppraisedValue" class="form-control">
                     </div>
                     <div class="col-md-6">
                         <label>Interest rate</label>
-                        <input type="text" data-bind="" class="form-control" id="">
+                        <input type="text" data-bind="" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-6">
                         <label>Loanable amount</label>
-                        <input type="text" data-bind="" class="form-control" id="">
+                        <input type="text" data-bind="" class="form-control">
                     </div>
                     <div class="col-md-6">
                         <label>Interest amount</label>
-                        <input type="text" data-bind="" class="form-control" id="">
+                        <input type="text" data-bind="" class="form-control">
                     </div>
                 </div>
                 
@@ -255,25 +262,25 @@
                 <div class="form-group">
                     <div class="col-md-6">
                         <label>Initial payment</label>
-                        <input type="text" data-bind="" class="form-control" id="">
+                        <input type="text" data-bind="" class="form-control">
                     </div>
                     <div class="col-md-6">
                         <label>Others</label>
-                        <input type="text" data-bind="" class="form-control" id="">
+                        <input type="text" data-bind="" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-4">
                         <label>Service charge</label>
-                        <input type="text" data-bind="" class="form-control" id="">
+                        <input type="text" data-bind="" class="form-control">
                     </div>
                     <div class="col-md-4">
                         <label>Deduct interst?</label>
-                        <input type="text" data-bind="" class="form-control" id="">
+                        <input type="text" data-bind="" class="form-control">
                     </div>
                     <div class="col-md-4">
                         <label>Net cash out</label>
-                        <input type="text" data-bind="" class="form-control" id="">
+                        <input type="text" data-bind="" class="form-control">
                     </div>
                 </div>               
              
@@ -282,25 +289,49 @@
                 <div class="form-group">
                     <div class="col-md-4">
                         <label>Terms</label>
-                        <input type="text" data-bind="" class="form-control" id="">
+                        <select name="select" class="form-control">
+                            <option value="opt1">1 month</option>
+                            <option value="opt2">2 months</option>
+                            <option value="opt3">3 months</option>
+                            <option value="opt3">4 months</option>
+                            <option value="opt3">5 months</option>
+                            <option value="opt3">6 months</option>
+                            <option value="opt3">7 months</option>
+                            <option value="opt3">8 months</option>
+                            <option value="opt3">9 months</option>
+                            <option value="opt3">10 months</option>
+                            <option value="opt3">11 months</option>
+                            <option value="opt3">12 months</option>
+                        </select>
                     </div>
                     <div class="col-md-4">
                         <label>Schedule of payment</label>
-                        <input type="text" data-bind="" class="form-control" id="">
+                        <select name="select" class="form-control">
+                            <option value="opt1">Monthly</option>
+                            <option value="opt2">Semi-Monthly</option>
+                            <option value="opt3">Weekly</option>
+                            <option value="opt3">Daily</option>
+                        </select>
                     </div>
                     <div class="col-md-4">
                         <label>No of payment</label>
-                        <input type="text" data-bind="" class="form-control" id="">
+                        <input type="text" data-bind="" class="form-control">
                     </div>
                 </div>             
                 <div class="form-group">
                     <div class="col-md-6">
                         <label>Due date start</label>
-                        <input type="text" data-bind="" class="form-control" id="">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="icon-calendar22"></i></span>
+                            <input type="text" class="form-control daterange-single">
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <label>Due date end</label>
-                        <input type="text" data-bind="" class="form-control" id="">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="icon-calendar22"></i></span>
+                            <input type="text" class="form-control daterange-single">
+                        </div>
                     </div>
                 </div>
 
@@ -325,9 +356,22 @@
 
     <!-- For Modals -->
     <script type="text/javascript" src="~/Assets/js/plugins/notifications/bootbox.min.js"></script>
-    @*<script type="text/javascript" src="~/Assets/js/plugins/notifications/sweet_alert.min.js"></script>*@
+
     <script type="text/javascript" src="~/Assets/js/pages/components_modals.js"></script>
     <!-- /For Modals -->
+
+    <!-- For Datetime picker-->
+    <script type="text/javascript" src="~/Assets/js/plugins/notifications/jgrowl.min.js"></script>
+    <script type="text/javascript" src="~/Assets/js/plugins/ui/moment/moment.min.js"></script>
+    <script type="text/javascript" src="~/Assets/js/plugins/pickers/daterangepicker.js"></script>
+    <script type="text/javascript" src="~/Assets/js/plugins/pickers/anytime.min.js"></script>
+    <script type="text/javascript" src="~/Assets/js/plugins/pickers/pickadate/picker.js"></script>
+    <script type="text/javascript" src="~/Assets/js/plugins/pickers/pickadate/picker.date.js"></script>
+    <script type="text/javascript" src="~/Assets/js/plugins/pickers/pickadate/picker.time.js"></script>
+    <script type="text/javascript" src="~/Assets/js/plugins/pickers/pickadate/legacy.js"></script>
+
+    <script type="text/javascript" src="~/Assets/js/pages/picker_date.js"></script>
+    <!-- /For Datetime picker-->
 
     <script src="~/Areas/Administrator/Assets/Model/pawning.model.js"></script>
     <script src="~/Areas/Administrator/Assets/ViewModel/pawning.viewmodel.js"></script>

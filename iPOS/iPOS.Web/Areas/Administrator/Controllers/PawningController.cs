@@ -146,7 +146,8 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                 c.ItemCategoryName,
                 a.Weight,
                 a.AppraisedValue,
-                a.Remarks
+                a.Remarks,
+                a.ItemName
             };
 
             return Json(new { data = result.ToList() }, JsonRequestBehavior.AllowGet);
@@ -173,6 +174,13 @@ namespace iPOS.Web.Areas.Administrator.Controllers
             return Json(result + 1, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult GetServerDate()
+        {
+            var serverDate = DateTime.Now.ToString("MM/dd/yyyy");
+
+            return Json(serverDate, JsonRequestBehavior.AllowGet);
+        }
+
         public async Task<JsonResult> SaveCustomer(customer list)
         {
             try
@@ -190,6 +198,7 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                     model.FirstName = list.FirstName;
                     model.LastName = list.LastName;
                     model.MiddleName = list.MiddleName;
+                    model.MiddleInitial = list.MiddleName[0].ToString();
                     model.Address = list.Address;
                     model.ContactNo = list.ContactNo;
 

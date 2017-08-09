@@ -22,7 +22,10 @@
         reviewedby,
         approvedby,
         createdby,
-        createdat
+        createdat,
+        itemname,
+        firstname,
+        lastname
         ) {
         "use strict";
 
@@ -53,6 +56,10 @@
         self.ApprovedBy = ko.observable(approvedby);
         self.CreatedBy = ko.observable(createdby);
         self.CreatedAt = ko.observable(createdat);
+
+        self.ItemName = ko.observable(approvedby);
+        self.FirstName = ko.observable(createdby);
+        self.LastName = ko.observable(createdat);
         // #endregion
     };
 app.appraisedItemModel =

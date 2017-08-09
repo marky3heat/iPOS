@@ -12,6 +12,9 @@
     var appraisedItem = ko.observableArray();
     var customer = ko.observableArray();
 
+    var ItemCode = ko.observableArray();
+    var ContractNo = ko.observableArray();
+
     // #endregion
 
     // #region BEHAVIORS
@@ -20,8 +23,6 @@
         //setInfiteScrollGetItemList();
         loadList();
         setInitialDate();
-        getAppraisedItem();
-        getCustomer();
     }
 
     function setInfiteScrollGetItemList() {
@@ -114,6 +115,13 @@
     function addItem() {
         isPawnedItemListShowed(false);
         isManagePawnedItemShowed(true);
+
+        getServerDate();
+        getAppraisedItem();
+        getCustomer();
+
+        GetItemCode();
+        GetContractNo();
     }
 
     function viewItem(arg) {
@@ -221,6 +229,7 @@
             appraisedItemModel.Weight(result.data[0].Weight)
             appraisedItemModel.AppraisedValue(result.data[0].AppraisedValue)
             appraisedItemModel.Remarks(result.data[0].Remarks)
+            appraisedItemModel.ItemName(result.data[0].ItemName)
         });
     }
 
@@ -234,6 +243,26 @@
             customerModel.MiddleInitial(result.MiddleInitial);
             customerModel.Address(result.Address);
             customerModel.ContactNo(result.ContactNo);
+        });
+    }
+
+    function GetContractNo() {
+        $.getJSON(RootUrl + "/Administrator/Pawning/GetContractNo", function (result) {
+            pawnedItemModel.PawnedItemContractNo(result);
+        });
+    }
+
+    function GetItemCode() {
+        $.getJSON(RootUrl + "/Administrator/Pawning/GetItemCode", function (result) {
+            pawnedItemModel.PawnedItemNo(result);
+        });
+    }
+
+    function getServerDate() {
+        $.getJSON(RootUrl + "/Administrator/Appraisal/GetServerDate", function (result) {
+            pawnedItemModel.PawnedDate(result);
+            pawnedItemModel.DueDateStart(result);
+            pawnedItemModel.DueDateEnd(result);
         });
     }
 
@@ -258,6 +287,7 @@
         appraisedItem: appraisedItem,
         customer: customer,
 
+        pawnedItemModel: pawnedItemModel,
         appraisedItemModel: appraisedItemModel,
         customerModel: customerModel,
         ccustomerModel: ccustomerModel,
