@@ -22,7 +22,10 @@
         reviewedby,
         approvedby,
         createdby,
-        createdat
+        createdat,
+        itemname,
+        firstname,
+        lastname
         ) {
         "use strict";
 
@@ -53,62 +56,67 @@
         self.ApprovedBy = ko.observable(approvedby);
         self.CreatedBy = ko.observable(createdby);
         self.CreatedAt = ko.observable(createdat);
+
+        self.ItemName = ko.observable(approvedby);
+        self.FirstName = ko.observable(createdby);
+        self.LastName = ko.observable(createdat);
         // #endregion
     };
 app.appraisedItemModel =
-    function (appraiseid,
-        appraisedate,
-        appraiseno,
-        itemtypeid,
-        itemcategoryid,
-        itemname,
-        weight,
-        appraisedvalue,
-        remarks,
-        customerfirstname,
-        customerlastname,
-        ispawned,
-        createdby,
-        createdat,
-        itemcategoryname,
-        itemtypename) {
+    function () {
         "use strict";
 
         var self = this;
 
         // #region MODEL TO BE MAP
-        self.AppraiseId = ko.observable(appraiseid);
-        self.AppraiseDate = ko.observable(appraisedate);
-        self.AppraiseNo = ko.observable(appraiseno);
-        self.ItemTypeId = ko.observable(itemtypeid);
-        self.ItemCategoryId = ko.observable(itemcategoryid);
-        self.ItemName = ko.observable(itemname);
-        self.Weight = ko.observable(weight);
-        self.AppraisedValue = ko.observable(appraisedvalue);
-        self.Remarks = ko.observable(remarks);
-        self.CustomerFirstName = ko.observable(customerfirstname);
-        self.CustomerLastName = ko.observable(customerlastname);
-        self.IsPawned = ko.observable(ispawned);
-        self.CreatedBy = ko.observable(createdby);
-        self.CreatedAt = ko.observable(createdat);
+        self.AppraiseId = ko.observable();
+        self.AppraiseDate = ko.observable();
+        self.AppraiseNo = ko.observable();
+        self.ItemTypeId = ko.observable();
+        self.ItemCategoryId = ko.observable();
+        self.ItemName = ko.observable();
+        self.Weight = ko.observable();
+        self.AppraisedValue = ko.observable();
+        self.Remarks = ko.observable();
+        self.CustomerFirstName = ko.observable();
+        self.CustomerLastName = ko.observable();
+        self.IsPawned = ko.observable();
+        self.CreatedBy = ko.observable();
+        self.CreatedAt = ko.observable();
 
-        self.ItemCategoryName = ko.observable(itemcategoryname);
-        self.ItemTypeName = ko.observable(itemtypename);
+        self.ItemCategoryName = ko.observable();
+        self.ItemTypeName = ko.observable();
         // #endregion
     };
-app.customerModel = function (id, firstname, lastname, middlename, middleinitial, address, contactno) {
+app.customerModel = function () {
     "use strict";
 
     var self = this;
 
     // #region MODEL TO BE MAP
-    self.Id = ko.observable(id);
-    self.FirstName = ko.observable(firstname);
-    self.LastName = ko.observable(lastname);
-    self.MiddleName = ko.observable(middlename);
-    self.MiddleInitial = ko.observable(middleinitial);
-    self.Address = ko.observable(address);
-    self.ContactNo = ko.observable(contactno);
+    self.Id = ko.observable();
+    self.FirstName = ko.observable();
+    self.LastName = ko.observable();
+    self.MiddleName = ko.observable();
+    self.MiddleInitial = ko.observable();
+    self.Address = ko.observable();
+    self.ContactNo = ko.observable();
+    // #endregion
+};
+
+app.createCustomerModel = function () {
+    "use strict";
+
+    var self = this;
+
+    // #region MODEL TO BE MAP
+    self.Id = ko.observable();
+    self.FirstName = ko.observable();
+    self.LastName = ko.observable();
+    self.MiddleName = ko.observable();
+    self.MiddleInitial = ko.observable();
+    self.Address = ko.observable();
+    self.ContactNo = ko.observable();
     // #endregion
 };
 
