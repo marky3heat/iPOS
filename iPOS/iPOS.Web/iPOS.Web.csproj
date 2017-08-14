@@ -217,6 +217,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administrator\AdministratorAreaRegistration.cs" />
+    <Compile Include="Areas\Administrator\Controllers\PawnshopTransactionsController.cs" />
     <Compile Include="Areas\Administrator\Controllers\AppraisalController.cs" />
     <Compile Include="Areas\Administrator\Controllers\BaseController.cs" />
     <Compile Include="Areas\Administrator\Controllers\CustomerController.cs" />
@@ -270,6 +271,9 @@
     <Compile Include="Database\tbluser.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Database\tbl_pawnshop_transactions.cs">
+      <DependentUpon>dbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -284,8 +288,10 @@
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Repository\UnitOfWork.cs" />
     <Compile Include="Repository\UnitOfWorkFactory.cs" />
+    <Compile Include="Service\PawnshopTransactionService.cs" />
     <Compile Include="Service\AppraisalService.cs" />
     <Compile Include="Service\CustomerService.cs" />
+    <Compile Include="Service\Interface\IPawnshopTransactionService.cs" />
     <Compile Include="Service\Interface\IAppraisalService.cs" />
     <Compile Include="Service\Interface\ICustomerService.cs" />
     <Compile Include="Service\Interface\IPawningService.cs" />
@@ -2791,6 +2797,7 @@
     <Content Include="Areas\Administrator\Views\Appraisal\Index.cshtml" />
     <Content Include="Areas\Administrator\Views\Reference\Index.cshtml" />
     <Content Include="Areas\Administrator\Views\Pawning\Index.cshtml" />
+    <Content Include="Areas\Administrator\Views\PawnshopTransactions\Index.cshtml" />
     <None Include="Properties\PublishProfiles\iPOS.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\inifiniteScroll.js" />
@@ -2865,6 +2872,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administrator\Models\" />
+    <Folder Include="Areas\Administrator\Views\Administrator\" />
     <Folder Include="Areas\Administrator\Views\Base\" />
     <Folder Include="Areas\Administrator\Views\Dashboard\" />
     <Folder Include="Areas\Administrator\Views\SalesAndCollection\" />

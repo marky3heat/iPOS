@@ -13,7 +13,8 @@
         <EntityTypeShape EntityType="dbpawnshopModel.itemtype" Width="1.5" PointX="9" PointY="0.5" />
         <EntityTypeShape EntityType="dbpawnshopModel.releaseditem" Width="1.5" PointX="3.75" PointY="0.5" />
         <EntityTypeShape EntityType="dbpawnshopModel.appraiseditem" Width="1.5" PointX="0.5" PointY="0.5" />
-        <EntityTypeShape EntityType="dbpawnshopModel.pawneditem" Width="1.5" PointX="2" PointY="0.5" />
+        <EntityTypeShape EntityType="dbpawnshopModel.pawneditem" Width="1.5" PointX="2.125" PointY="0.5" />
+        <EntityTypeShape EntityType="dbpawnshopModel.tbl_pawnshop_transactions" Width="1.5" PointX="3.75" PointY="2" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -14,6 +14,7 @@ namespace iPOS.Web.Repository.Interface
         IRepository<releaseditem> ReleasedItemRepository { get; }
         IRepository<itemcategory> ItemCategoryRepository { get; }
         IRepository<itemtype> ItemTypeRepository { get; }
+        IRepository<tbl_pawnshop_transactions> PawnshopTransactionsRepository { get; }
 
         void SaveChanges();
         Task SaveChangesAsync();

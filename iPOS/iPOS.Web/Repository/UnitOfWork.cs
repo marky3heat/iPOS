@@ -27,8 +27,18 @@ namespace iPOS.Web.Repository
         private Repository<itemcategory> _itemCategoryRepository;
         private Repository<itemtype> _itemTypeRepository;
 
+        private Repository<tbl_pawnshop_transactions> _pawnshopTransactionRepository;
 
         //#region PUBLIC MEMBER METHODS
+        public IRepository<tbl_pawnshop_transactions> PawnshopTransactionsRepository
+        {
+            get
+            {
+                if (_pawnshopTransactionRepository == null)
+                    _pawnshopTransactionRepository = new Repository<tbl_pawnshop_transactions>(_dbContext);
+                return _pawnshopTransactionRepository;
+            }
+        }
         public IRepository<customer> CustomerRepository
         {
             get
