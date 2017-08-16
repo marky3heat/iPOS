@@ -305,11 +305,13 @@
     <Content Include="Areas\Administrator\Assets\Model\customer.model.js" />
     <Content Include="Areas\Administrator\Assets\Model\model.js" />
     <Content Include="Areas\Administrator\Assets\Model\pawning.model.js" />
+    <Content Include="Areas\Administrator\Assets\Model\pawnshoptransactions.model.js" />
     <Content Include="Areas\Administrator\Assets\Model\reference.model.js" />
     <Content Include="Areas\Administrator\Assets\Model\release.model.js" />
     <Content Include="Areas\Administrator\Assets\ViewModel\appraisal.viewmodel.js" />
     <Content Include="Areas\Administrator\Assets\ViewModel\customer.viewmodel.js" />
     <Content Include="Areas\Administrator\Assets\ViewModel\pawning.viewmodel.js" />
+    <Content Include="Areas\Administrator\Assets\ViewModel\pawnshoptransactions.viewmodel.js" />
     <Content Include="Areas\Administrator\Assets\ViewModel\reference.viewmodel.js" />
     <Content Include="Areas\Administrator\Assets\ViewModel\release.viewmodel.js" />
     <Content Include="Areas\Administrator\Assets\ViewModel\viewmodel.js" />

@@ -47,6 +47,7 @@
     <EntitySet Name="releaseditems" EntityType="dbpawnshopModel.releaseditem" />
     <EntitySet Name="appraiseditems" EntityType="dbpawnshopModel.appraiseditem" />
     <EntitySet Name="pawneditems" EntityType="dbpawnshopModel.pawneditem" />
+    <EntitySet Name="tbl_pawnshop_transactions" EntityType="dbpawnshopModel.tbl_pawnshop_transactions" />
   </EntityContainer>
   <EntityType Name="itemcategory">
     <Key>
@@ -117,9 +118,25 @@
     <Property Name="DueDateEnd" Type="DateTime" />
     <Property Name="Status" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
     <Property Name="IsReleased" Type="Boolean" />
-    <Property Name="ReviewedBy" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-    <Property Name="ApprovedBy" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
     <Property Name="CreatedBy" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
     <Property Name="CreatedAt" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="tbl_pawnshop_transactions">
+    <Key>
+      <PropertyRef Name="TransactionId" />
+    </Key>
+    <Property Name="TransactionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TransactionDate" Type="DateTime" Nullable="false" />
+    <Property Name="TransactionType" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="ItemId" Type="Int32" Nullable="false" />
+    <Property Name="PawnId" Type="Int32" Nullable="false" />
+    <Property Name="SaleId" Type="Int32" Nullable="false" />
+    <Property Name="LayAwayId" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="ReviewedBy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="ApprovedBy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" />
   </EntityType>
 </Schema>

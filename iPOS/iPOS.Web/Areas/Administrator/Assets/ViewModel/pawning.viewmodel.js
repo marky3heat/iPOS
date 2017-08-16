@@ -1,4 +1,4 @@
-﻿app.vm = (function () {
+﻿+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++app.vm = (function () {
     //"use strict";
     var pawnedItemModel = new app.addPawnedItemModel();
     var appraisedItemModel = new app.appraisedItemModel();

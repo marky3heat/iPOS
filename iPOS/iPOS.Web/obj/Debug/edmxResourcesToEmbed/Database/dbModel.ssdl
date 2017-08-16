@@ -75,8 +75,6 @@
     <Property Name="DueDateEnd" Type="date" />
     <Property Name="Status" Type="varchar" MaxLength="32" />
     <Property Name="IsReleased" Type="bool" />
-    <Property Name="ReviewedBy" Type="varchar" MaxLength="32" />
-    <Property Name="ApprovedBy" Type="varchar" MaxLength="32" />
     <Property Name="CreatedBy" Type="varchar" MaxLength="32" />
     <Property Name="CreatedAt" Type="datetime" Precision="0" />
   </EntityType>
@@ -85,6 +83,24 @@
       <PropertyRef Name="ReleasedItemId" />
     </Key>
     <Property Name="ReleasedItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_pawnshop_transactions">
+    <Key>
+      <PropertyRef Name="TransactionId" />
+    </Key>
+    <Property Name="TransactionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TransactionDate" Type="date" Nullable="false" />
+    <Property Name="TransactionType" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
+    <Property Name="ItemId" Type="int" Nullable="false" />
+    <Property Name="PawnId" Type="int" Nullable="false" />
+    <Property Name="SaleId" Type="int" Nullable="false" />
+    <Property Name="LayAwayId" Type="int" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="ReviewedBy" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="ApprovedBy" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" Precision="0" Nullable="false" />
   </EntityType>
   <EntityType Name="tbldepartment">
     <Key>
@@ -118,6 +134,7 @@
     <EntitySet Name="itemtype" EntityType="Self.itemtype" Schema="dbpawnshop" store:Type="Tables" />
     <EntitySet Name="pawneditem" EntityType="Self.pawneditem" Schema="dbpawnshop" store:Type="Tables" />
     <EntitySet Name="releaseditem" EntityType="Self.releaseditem" Schema="dbpawnshop" store:Type="Tables" />
+    <EntitySet Name="tbl_pawnshop_transactions" EntityType="Self.tbl_pawnshop_transactions" Schema="dbpawnshop" store:Type="Tables" />
     <EntitySet Name="tbldepartment" EntityType="Self.tbldepartment" Schema="dbpawnshop" store:Type="Tables" />
     <EntitySet Name="tblrole" EntityType="Self.tblrole" Schema="dbpawnshop" store:Type="Tables" />
     <EntitySet Name="tbluser" EntityType="Self.tbluser" Schema="dbpawnshop" store:Type="Tables" />

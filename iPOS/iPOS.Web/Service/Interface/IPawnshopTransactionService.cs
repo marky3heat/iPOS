@@ -5,7 +5,7 @@ using iPOS.Web.Models;
 
 namespace iPOS.Web.Service.Interface
 {
-    interface IPawnshopTransactionService
+    public interface IPawnshopTransactionService
     {
         #region  PawnhopTransactions
 

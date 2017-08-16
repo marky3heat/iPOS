@@ -136,3 +136,6 @@ D:\MLGS\Work\Active Work\iPOS\iPOS\iPOS.Tests\bin\Debug\EntityFramework.xml
 D:\MLGS\Work\Active Work\iPOS\iPOS\iPOS.Tests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 D:\MLGS\Work\Active Work\iPOS\iPOS\iPOS.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.xml
 D:\MLGS\Work\Active Work\iPOS\iPOS\iPOS.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.xml
+D:\Work\Repository\iPOS\iPOS\iPOS.Tests\obj\Debug\iPOS.Tests.csprojResolveAssemblyReference.cache
+D:\Work\Repository\iPOS\iPOS\iPOS.Tests\obj\Debug\iPOS.Tests.dll
+D:\Work\Repository\iPOS\iPOS\iPOS.Tests\obj\Debug\iPOS.Tests.pdb

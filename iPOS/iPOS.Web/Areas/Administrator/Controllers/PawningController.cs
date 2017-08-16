@@ -89,8 +89,6 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                     a.DueDateEnd,
                     a.Status,
                     a.IsReleased,
-                    a.ReviewedBy,
-                    a.ApprovedBy,
                     a.CreatedBy,
                     a.CreatedAt,
                     b.ItemName,
@@ -275,8 +273,6 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                     model.DueDateEnd = list.DueDateEnd; //DateTime.Parse(list.DueDateEnd);
                     model.Status = "Pending";
                     model.IsReleased = false;
-                    model.ReviewedBy = "";
-                    model.ApprovedBy = "";
                     model.CreatedBy = "";
                     model.CreatedAt = DateTime.Now;
 
@@ -345,8 +341,6 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                     model = await _pawningService.FindById(list.PawnedItemId);
                     model.Status = list.Status;
                     model.IsReleased = list.IsReleased;
-                    model.ReviewedBy = list.ReviewedBy;
-                    model.ApprovedBy = list.ApprovedBy;
 
                     var result = await _pawningService.Save(model);
                     success = result;

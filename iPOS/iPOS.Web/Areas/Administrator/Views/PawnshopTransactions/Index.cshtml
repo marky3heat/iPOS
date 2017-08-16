@@ -3,4 +3,70 @@
     ViewBag.Title = "Pawnshop Transaction List";
 }
 
+<div data-bind="visible: isListShowed">
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h6 class="panel-title">Pawnshop transaction list</h6>
+            <div class="heading-elements">
+                <button data-bind="click: showCreateMode" type="submit" class="btn bg-orange-400 btn-labeled btn-labeled-right ml-10"><b><i class="icon-plus3"></i></b>New transaction</button>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table text-nowrap" id="pawnedItemTable">
+                <thead>
+                    <tr>
+                        <th>Transaction no.</th>
+                        <th>Date</th>
+                        <th>Customer Name</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
 
+<div data-bind="visible: isCreateModeShowed" class="panel panel-flat">
+    <div class="panel panel-heading">
+        <h6 class="panel-title">New transaction</h6>
+    </div>
+    <div class="panel-body">
+        <div class="form">
+
+            <div class="text-right">
+                <button data-bind="click: backToList" type="submit" class="btn btn-link"><i class="icon-arrow-left13 position-left"></i> Back to list</button>
+                <button type="submit" data-bind="click: save, visible: isSaveButtonShowed" class="btn bg-success btn-labeled btn-labeled-right ml-10" id="reset"><b><i class="icon-plus3"></i></b><!--ko text: saveButtonCaption--><!--/ko--></button>
+            </div>
+        </div>
+    </div>  
+</div>
+
+@section scripts{
+    <script type="text/javascript" src="~/Assets/js/core/libraries/jasny_bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Assets/js/plugins/forms/validation/validate.min.js"></script>
+    <script type="text/javascript" src="~/Assets/js/plugins/extensions/cookie.js"></script>
+    <script type="text/javascript" src="~/Assets/js/plugins/forms/wizards/steps.min.js"></script>
+    <script type="text/javascript" src="~/Assets/js/plugins/forms/selects/select2.min.js"></script>
+    <script type="text/javascript" src="~/Assets/js/pages/wizard_steps.js"></script>
+
+    <!-- For Modals -->
+    <script type="text/javascript" src="~/Assets/js/plugins/notifications/bootbox.min.js"></script>
+    <script type="text/javascript" src="~/Assets/js/pages/components_modals.js"></script>
+    <!-- /For Modals -->
+    <!-- For Datetime picker-->
+    <script type="text/javascript" src="~/Assets/js/plugins/notifications/jgrowl.min.js"></script>
+    <script type="text/javascript" src="~/Assets/js/plugins/ui/moment/moment.min.js"></script>
+    <script type="text/javascript" src="~/Assets/js/plugins/pickers/daterangepicker.js"></script>
+    <script type="text/javascript" src="~/Assets/js/plugins/pickers/anytime.min.js"></script>
+    <script type="text/javascript" src="~/Assets/js/plugins/pickers/pickadate/picker.js"></script>
+    <script type="text/javascript" src="~/Assets/js/plugins/pickers/pickadate/picker.date.js"></script>
+    <script type="text/javascript" src="~/Assets/js/plugins/pickers/pickadate/picker.time.js"></script>
+    <script type="text/javascript" src="~/Assets/js/plugins/pickers/pickadate/legacy.js"></script>
+
+    <script type="text/javascript" src="~/Assets/js/pages/picker_date.js"></script>
+    <!-- /For Datetime picker-->
+
+    <script src="~/Areas/Administrator/Assets/Model/pawnshoptransactions.model.js"></script>
+    <script src="~/Areas/Administrator/Assets/ViewModel/pawnshoptransactions.viewmodel.js"></script>
+}

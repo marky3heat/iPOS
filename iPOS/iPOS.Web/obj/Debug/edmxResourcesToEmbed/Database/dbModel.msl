@@ -95,8 +95,6 @@
         <MappingFragment StoreEntitySet="pawneditem">
           <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
           <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-          <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
-          <ScalarProperty Name="ReviewedBy" ColumnName="ReviewedBy" />
           <ScalarProperty Name="IsReleased" ColumnName="IsReleased" />
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="DueDateEnd" ColumnName="DueDateEnd" />
@@ -118,6 +116,25 @@
           <ScalarProperty Name="PawnedDate" ColumnName="PawnedDate" />
           <ScalarProperty Name="PawnedItemNo" ColumnName="PawnedItemNo" />
           <ScalarProperty Name="PawnedItemId" ColumnName="PawnedItemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_pawnshop_transactions">
+      <EntityTypeMapping TypeName="dbpawnshopModel.tbl_pawnshop_transactions">
+        <MappingFragment StoreEntitySet="tbl_pawnshop_transactions">
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+          <ScalarProperty Name="ReviewedBy" ColumnName="ReviewedBy" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="LayAwayId" ColumnName="LayAwayId" />
+          <ScalarProperty Name="SaleId" ColumnName="SaleId" />
+          <ScalarProperty Name="PawnId" ColumnName="PawnId" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
+          <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+          <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

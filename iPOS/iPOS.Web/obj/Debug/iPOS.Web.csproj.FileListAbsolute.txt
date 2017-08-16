@@ -117,9 +117,6 @@ D:\MLGS\Work\System\iPOS\iPOS.Web\bin\Microsoft.AspNet.Identity.Owin.xml
 D:\MLGS\Work\System\iPOS\iPOS.Web\bin\Microsoft.AspNet.Identity.EntityFramework.xml
 D:\MLGS\Work\System\iPOS\iPOS.Web\obj\Debug\iPOS.Web.dll
 D:\MLGS\Work\System\iPOS\iPOS.Web\obj\Debug\iPOS.Web.pdb
-D:\Work\Repository\iPOS\iPOS\iPOS.Web\obj\Debug\iPOS.Web.csprojResolveAssemblyReference.cache
-D:\Work\Repository\iPOS\iPOS\iPOS.Web\obj\Debug\iPOS.Web.dll
-D:\Work\Repository\iPOS\iPOS\iPOS.Web\obj\Debug\iPOS.Web.pdb
 D:\MLGS\Work\Active Work\iPOS\iPOS\iPOS.Web\bin\ApplicationInsights.config
 D:\MLGS\Work\Active Work\iPOS\iPOS\iPOS.Web\bin\roslyn\csc.exe
 D:\MLGS\Work\Active Work\iPOS\iPOS\iPOS.Web\bin\roslyn\csc.exe.config
@@ -239,6 +236,8 @@ D:\MLGS\Work\Active Work\iPOS\iPOS\iPOS.Web\bin\Microsoft.AspNet.Identity.Owin.x
 D:\MLGS\Work\Active Work\iPOS\iPOS\iPOS.Web\bin\Microsoft.AspNet.Identity.EntityFramework.xml
 D:\MLGS\Work\Active Work\iPOS\iPOS\iPOS.Web\obj\Debug\iPOS.Web.dll
 D:\MLGS\Work\Active Work\iPOS\iPOS\iPOS.Web\obj\Debug\iPOS.Web.pdb
+D:\MLGS\Work\Active Work\iPOS\iPOS\iPOS.Web\obj\Debug\iPOS.Web.csprojResolveAssemblyReference.cache
+D:\Work\Repository\iPOS\iPOS\iPOS.Web\obj\Debug\iPOS.Web.csprojResolveAssemblyReference.cache
 D:\Work\Repository\iPOS\iPOS\iPOS.Web\bin\ApplicationInsights.config
 D:\Work\Repository\iPOS\iPOS\iPOS.Web\bin\roslyn\csc.exe
 D:\Work\Repository\iPOS\iPOS\iPOS.Web\bin\roslyn\csc.exe.config
@@ -356,4 +355,5 @@ D:\Work\Repository\iPOS\iPOS\iPOS.Web\bin\EntityFramework.SqlServer.xml
 D:\Work\Repository\iPOS\iPOS\iPOS.Web\bin\Microsoft.AspNet.Identity.Core.xml
 D:\Work\Repository\iPOS\iPOS\iPOS.Web\bin\Microsoft.AspNet.Identity.Owin.xml
 D:\Work\Repository\iPOS\iPOS\iPOS.Web\bin\Microsoft.AspNet.Identity.EntityFramework.xml
-D:\MLGS\Work\Active Work\iPOS\iPOS\iPOS.Web\obj\Debug\iPOS.Web.csprojResolveAssemblyReference.cache
+D:\Work\Repository\iPOS\iPOS\iPOS.Web\obj\Debug\iPOS.Web.dll
+D:\Work\Repository\iPOS\iPOS\iPOS.Web\obj\Debug\iPOS.Web.pdb

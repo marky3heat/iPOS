@@ -49,10 +49,15 @@ namespace iPOS.Web.Areas.Administrator.Controllers
         // GET: Administrator/Administrator
         public ActionResult Index()
         {
+            ViewBag.Form = "Pawnshop Transaction";
+            ViewBag.Controller = "Pawnshop Transaction";
+            ViewBag.Action = "";
             return View();
         }
         #endregion
 
+        #region JSON REQUEST METHODS
 
+        #endregion
     }
 }

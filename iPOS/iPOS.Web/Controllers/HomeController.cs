@@ -12,7 +12,9 @@ namespace iPOS.Web.Controllers
         {
             ViewBag.Controller = "Home";
             ViewBag.Action = "Dashboard";
-            return View();
+
+            //return View();
+            return RedirectToAction("index", "PawnshopTransactions", new { area = "Administrator" });
         }
 
         public ActionResult About()
