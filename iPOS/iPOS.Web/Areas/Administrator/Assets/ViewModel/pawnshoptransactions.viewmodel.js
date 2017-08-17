@@ -22,7 +22,7 @@
      
     }
 
-    function showCreateMode() {
+    function showCreateModePawning() {
         isListShowed(false);
         isCreateModeShowed(true);
         isSaveButtonShowed(true);
@@ -36,7 +36,9 @@
     }
 
     function backToList() {
-
+        isListShowed(true);
+        isCreateModeShowed(false);
+        isSaveButtonShowed(false);
     }
 
     function save() {
@@ -97,7 +99,7 @@
         activate: activate,
         isListShowed: isListShowed,
         isCreateModeShowed: isCreateModeShowed,
-        showCreateMode: showCreateMode,
+        showCreateModePawning: showCreateModePawning,
         backToList: backToList,
         saveButtonCaption: saveButtonCaption,
         isSaveButtonShowed: isSaveButtonShowed,
@@ -109,17 +111,36 @@ $(function () {
     "use strict";
 
     app.vm.activate();
+    
+    // Custom bootbox dialog
+    $('#select_transaction').on('click', function () {
+        bootbox.dialog({
+            message: "Please select a transaction.",
+            title: "Transactions",
+            buttons: {
+                success: {
+                    label: "Sale",
+                    className: "btn-success",
+                    callback: function () {
 
-    // Success
-    $(".control-success").uniform({
-        radioClass: 'choice',
-        wrapperClass: 'border-success-600 text-success-800'
-    });
+                    }
+                },
+                danger: {
+                    label: "Pawn",
+                    className: "btn-danger",
+                    callback: function () {
+                        app.vm.showCreateModePawning();
+                    }
+                },
+                main: {
+                    label: "Lay-away",
+                    className: "btn-warning",
+                    callback: function () {
 
-    //Switchery
-    var switches = Array.prototype.slice.call(document.querySelectorAll('.switchery'));
-    switches.forEach(function (html) {
-        var switchery = new Switchery(html, { color: '#4CAF50' });
+                    }
+                }
+            }
+        });
     });
 
     ko.applyBindings(app.vm);

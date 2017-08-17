@@ -57,6 +57,22 @@ namespace iPOS.Web.Areas.Administrator.Controllers
         #endregion
 
         #region JSON REQUEST METHODS
+        public async Task<JsonResult> SaveTransactionPawning()
+        {
+            try
+            {
+                bool success = false;
+                string message = "";
+
+                return Json(new { success = success, message = message });
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+    
+        }
 
         #endregion
     }
