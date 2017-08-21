@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using iPOS.Web.Service.Interface;
 using iPOS.Web.Database;
 using iPOS.Web.Models;
+using iPOS.Web.Areas.Administrator.Models;
 using iPOS.Web.Repository;
 using iPOS.Web.Service;
 
@@ -52,12 +53,45 @@ namespace iPOS.Web.Areas.Administrator.Controllers
             ViewBag.Form = "Pawnshop Transaction";
             ViewBag.Controller = "Pawnshop Transaction";
             ViewBag.Action = "";
+
             return View();
         }
         #endregion
 
         #region JSON REQUEST METHODS
-        public async Task<JsonResult> SaveTransactionPawning()
+        public async Task<JsonResult> SaveTransactionSales(PawnshopTransactionModel model)
+        {
+            try
+            {
+                bool success = false;
+                string message = "";
+
+                if (string.IsNullOrEmpty(model.TransactionId.ToString()) || model.TransactionId.ToString() == "0")
+                {
+                    tbl_pawnshop_transactions model1 = new tbl_pawnshop_transactions();
+                    model1.TransactionDate = model.TransactionDate;
+                    model1.TransactionType = model.TransactionType;
+                    model1.TransactionDate = model.TransactionDate;
+                    model1.TransactionDate = model.TransactionDate;
+                    model1.TransactionDate = model.TransactionDate;
+                    model1.TransactionDate = model.TransactionDate;
+                    model1.TransactionDate = model.TransactionDate;
+                    model1.TransactionDate = model.TransactionDate;
+                    model1.TransactionDate = model.TransactionDate;
+                    model1.TransactionDate = model.TransactionDate;
+                    model1.TransactionDate = model.TransactionDate;
+                }
+
+
+                return Json(new { success = success, message = message });
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public async Task<JsonResult> SaveTransactionPawning(PawnshopTransactionModel model)
         {
             try
             {
@@ -70,9 +104,24 @@ namespace iPOS.Web.Areas.Administrator.Controllers
             {
                 throw new Exception(ex.Message);
             }
-
-    
         }
+        public async Task<JsonResult> SaveTransactionLayaway(PawnshopTransactionModel model)
+        {
+            try
+            {
+                bool success = false;
+                string message = "";
+
+
+
+                return Json(new { success = success, message = message });
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }  
+        }
+
 
         #endregion
     }

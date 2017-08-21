@@ -12,9 +12,10 @@ namespace iPOS.Web.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class tblrole
+    public partial class tbl_ipos_no_generator
     {
-        public int Id { get; set; }
-        public string Role { get; set; }
+        public int NoId { get; set; }
+        public string NoDescription { get; set; }
+        public int No { get; set; }
     }
 }

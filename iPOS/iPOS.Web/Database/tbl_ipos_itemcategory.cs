@@ -12,11 +12,12 @@ namespace iPOS.Web.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class itemtype
+    public partial class tbl_ipos_itemcategory
     {
+        public int ItemCategoryId { get; set; }
+        public string ItemCategoryName { get; set; }
         public int ItemTypeId { get; set; }
-        public string ItemTypeName { get; set; }
         public string CreatedBy { get; set; }
-        public Nullable<System.DateTime> CreatedAt { get; set; }
+        public System.DateTime CreatedAt { get; set; }
     }
 }

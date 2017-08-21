@@ -25,7 +25,7 @@ namespace iPOS.Web.Service
         #endregion
 
         #region PUBLIC MEMBER METHODS (APPRAISED ITEMS)
-        public async Task<appraiseditem> FindById(int id)
+        public async Task<tbl_ipos_appraiseditem> FindById(int id)
         {
             try
             {
@@ -40,7 +40,7 @@ namespace iPOS.Web.Service
             }
         }
         
-        public async Task<List<appraiseditem>> FindByIdList(int id)
+        public async Task<List<tbl_ipos_appraiseditem>> FindByIdList(int id)
         {
             try
             {
@@ -55,7 +55,7 @@ namespace iPOS.Web.Service
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<appraiseditem> FindByAppraiseNo(string appraiseNo)
+        public async Task<tbl_ipos_appraiseditem> FindByAppraiseNo(string appraiseNo)
         {
             try
             {
@@ -92,7 +92,7 @@ namespace iPOS.Web.Service
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<List<appraiseditem>> GetList(
+        public async Task<List<tbl_ipos_appraiseditem>> GetList(
             int pageIndex = 0,
             int pageSize = 100)
         {
@@ -117,7 +117,7 @@ namespace iPOS.Web.Service
             }
         }
 
-        public async Task<bool> Save(appraiseditem model)
+        public async Task<bool> Save(tbl_ipos_appraiseditem model)
         {
             try
             {
@@ -142,7 +142,7 @@ namespace iPOS.Web.Service
             }
         }
 
-        public async Task<bool> Update(appraiseditem model)
+        public async Task<bool> Update(tbl_ipos_appraiseditem model)
         {
             try
             {
@@ -193,7 +193,7 @@ namespace iPOS.Web.Service
         #endregion
 
         #region OTHERS
-        public async Task<List<itemtype>> GetItemTypeList()
+        public async Task<List<tbl_ipos_itemtype>> GetItemTypeList()
         {
             try
             {
@@ -208,7 +208,7 @@ namespace iPOS.Web.Service
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<List<itemcategory>> GetItemCategoryList()
+        public async Task<List<tbl_ipos_itemcategory>> GetItemCategoryList()
         {
             try
             {
@@ -223,7 +223,7 @@ namespace iPOS.Web.Service
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<List<itemcategory>> GetItemCategoryByItemTypeId(int ItemTypeId)
+        public async Task<List<tbl_ipos_itemcategory>> GetItemCategoryByItemTypeId(int ItemTypeId)
         {
             try
             {
@@ -238,7 +238,7 @@ namespace iPOS.Web.Service
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<List<customer>> GetCustomerList()
+        public async Task<List<tbl_ipos_customer>> GetCustomerList()
         {
             try
             {

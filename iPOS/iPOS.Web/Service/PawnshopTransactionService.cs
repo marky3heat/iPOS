@@ -25,7 +25,7 @@ namespace iPOS.Web.Service
         #endregion
 
         #region PUBLIC MEMBER METHODS (Pawnshop Transactions)
-        public async Task<bool> SavePawnshopTransactions(tbl_pawnshop_transactions model)
+        public async Task<bool> SavePawnshopTransactions(tbl_ipos_pawnshop_transactions model)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace iPOS.Web.Service
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<bool> UpdatePawnshopTransactions(tbl_pawnshop_transactions model)
+        public async Task<bool> UpdatePawnshopTransactions(tbl_ipos_pawnshop_transactions model)
         {
             try
             {
@@ -97,7 +97,7 @@ namespace iPOS.Web.Service
             }
         }
 
-        public async Task<tbl_pawnshop_transactions> FindByIdPawnshopTransactions(int id)
+        public async Task<tbl_ipos_pawnshop_transactions> FindByIdPawnshopTransactions(int id)
         {
             try
             {
@@ -111,7 +111,7 @@ namespace iPOS.Web.Service
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<List<tbl_pawnshop_transactions>> GetListPawnshopTransactions()
+        public async Task<List<tbl_ipos_pawnshop_transactions>> GetListPawnshopTransactions()
         {
             try
             {

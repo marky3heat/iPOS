@@ -12,8 +12,14 @@ namespace iPOS.Web.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class releaseditem
+    public partial class tbl_ipos_customer
     {
-        public int ReleasedItemId { get; set; }
+        public int CustomerId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string MiddleName { get; set; }
+        public string MiddleInitial { get; set; }
+        public string Address { get; set; }
+        public string ContactNo { get; set; }
     }
 }

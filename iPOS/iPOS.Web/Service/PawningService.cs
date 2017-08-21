@@ -25,7 +25,7 @@ namespace iPOS.Web.Service
         #endregion
 
         #region PUBLIC MEMBER METHODS (PAWNED ITEMS)
-        public async Task<pawneditem> FindById(int id)
+        public async Task<tbl_ipos_pawneditem> FindById(int id)
         {
             try
             {
@@ -39,7 +39,7 @@ namespace iPOS.Web.Service
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<pawneditem> FindByPawnNo(string pawnedItemNo)
+        public async Task<tbl_ipos_pawneditem> FindByPawnNo(string pawnedItemNo)
         {
             try
             {
@@ -54,7 +54,7 @@ namespace iPOS.Web.Service
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<List<pawneditem>> GetList(
+        public async Task<List<tbl_ipos_pawneditem>> GetList(
             int pageIndex = 0,
             int pageSize = 100)
         {
@@ -78,7 +78,7 @@ namespace iPOS.Web.Service
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<List<pawneditem>> GetNormalList()
+        public async Task<List<tbl_ipos_pawneditem>> GetNormalList()
         {
             try
             {
@@ -94,7 +94,7 @@ namespace iPOS.Web.Service
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<bool> Save(pawneditem model)
+        public async Task<bool> Save(tbl_ipos_pawneditem model)
         {
             try
             {
@@ -118,7 +118,7 @@ namespace iPOS.Web.Service
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<bool> Update(pawneditem model)
+        public async Task<bool> Update(tbl_ipos_pawneditem model)
         {
             try
             {

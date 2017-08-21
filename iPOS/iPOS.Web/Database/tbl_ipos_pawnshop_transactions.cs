@@ -12,12 +12,17 @@ namespace iPOS.Web.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class itemcategory
+    public partial class tbl_ipos_pawnshop_transactions
     {
-        public int ItemCategoryId { get; set; }
-        public string ItemCategoryName { get; set; }
-        public Nullable<int> ItemTypeId { get; set; }
+        public int TransactionId { get; set; }
+        public string TransactionNo { get; set; }
+        public System.DateTime TransactionDate { get; set; }
+        public string TransactionType { get; set; }
+        public string Terminal { get; set; }
+        public string Status { get; set; }
+        public string ReviewedBy { get; set; }
+        public string ApprovedBy { get; set; }
         public string CreatedBy { get; set; }
-        public Nullable<System.DateTime> CreatedAt { get; set; }
+        public System.DateTime CreatedAt { get; set; }
     }
 }

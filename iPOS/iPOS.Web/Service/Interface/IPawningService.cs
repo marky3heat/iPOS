@@ -9,12 +9,12 @@ namespace iPOS.Web.Service.Interface
     {
         #region Pawning
 
-        Task<pawneditem> FindById(int id);
-        Task<pawneditem> FindByPawnNo(string pawnedItemNo);
-        Task<List<pawneditem>> GetList(int pageIndex = 0, int pageSize = 100);
-        Task<List<pawneditem>> GetNormalList();
-        Task<bool> Save(pawneditem model);
-        Task<bool> Update(pawneditem model);
+        Task<tbl_ipos_pawneditem> FindById(int id);
+        Task<tbl_ipos_pawneditem> FindByPawnNo(string pawnedItemNo);
+        Task<List<tbl_ipos_pawneditem>> GetList(int pageIndex = 0, int pageSize = 100);
+        Task<List<tbl_ipos_pawneditem>> GetNormalList();
+        Task<bool> Save(tbl_ipos_pawneditem model);
+        Task<bool> Update(tbl_ipos_pawneditem model);
         Task<bool> Delete(string id);
         int GetItemCode();
         int GetContractNo();

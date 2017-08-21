@@ -12,96 +12,86 @@ namespace iPOS.Web.Repository
 
         public UnitOfWork()
         {
-            //_dbContext = new SagepmDBContext();
             _dbContext = new dbpawnshopEntities();
         }
 
-        //#region PRIVATE MEMBER VARIABLES
-        private Repository<customer> _customerRepository;
-        private Repository<AppraisalViewModel> _appraisalModelRepository;
+        //#region PRIVATE MEMBER VARIABLES      
+        private Repository<tbl_ipos_no_generator> _noGeneratorRepository;
+        public IRepository<tbl_ipos_no_generator> NoGeneratorRepository
+        {
+            get
+            {
+                if (_noGeneratorRepository == null)
+                    _noGeneratorRepository = new Repository<tbl_ipos_no_generator>(_dbContext);
+                return _noGeneratorRepository;
+            }
+        }
 
-        private Repository<appraiseditem> _appraisedItemsRepository;
-        private Repository<pawneditem> _pawnedItemRepository;
-        private Repository<releaseditem> _releasedItemRepository;
-
-        private Repository<itemcategory> _itemCategoryRepository;
-        private Repository<itemtype> _itemTypeRepository;
-
-        private Repository<tbl_pawnshop_transactions> _pawnshopTransactionRepository;
-
-        //#region PUBLIC MEMBER METHODS
-        public IRepository<tbl_pawnshop_transactions> PawnshopTransactionsRepository
+        private Repository<tbl_ipos_pawnshop_transactions> _pawnshopTransactionRepository;
+        public IRepository<tbl_ipos_pawnshop_transactions> PawnshopTransactionsRepository
         {
             get
             {
                 if (_pawnshopTransactionRepository == null)
-                    _pawnshopTransactionRepository = new Repository<tbl_pawnshop_transactions>(_dbContext);
+                    _pawnshopTransactionRepository = new Repository<tbl_ipos_pawnshop_transactions>(_dbContext);
                 return _pawnshopTransactionRepository;
             }
         }
-        public IRepository<customer> CustomerRepository
+
+        private Repository<tbl_ipos_customer> _customerRepository;
+        public IRepository<tbl_ipos_customer> CustomerRepository
         {
             get
             {
                 if (_customerRepository == null)
-                    _customerRepository = new Repository<customer>(_dbContext);
+                    _customerRepository = new Repository<tbl_ipos_customer>(_dbContext);
                 return _customerRepository;
             }
         }
-        public IRepository<AppraisalViewModel> AppraisalModelRepository
+
+        private Repository<tbl_ipos_appraiseditem> _appraisedItemRepository;
+        public IRepository<tbl_ipos_appraiseditem> AppraisedItemRepository
         {
             get
             {
-                if (_appraisalModelRepository == null)
-                    _appraisalModelRepository = new Repository<AppraisalViewModel>(_dbContext);
-                return _appraisalModelRepository;
+                if (_appraisedItemRepository == null)
+                    _appraisedItemRepository = new Repository<tbl_ipos_appraiseditem>(_dbContext);
+                return _appraisedItemRepository;
             }
         }
-        public IRepository<appraiseditem> AppraisedItemRepository
-        {
-            get
-            {
-                if (_appraisedItemsRepository == null)
-                    _appraisedItemsRepository = new Repository<appraiseditem>(_dbContext);
-                return _appraisedItemsRepository;
-            }
-        }
-        public IRepository<pawneditem> PawnedItemRepository
+        private Repository<tbl_ipos_pawneditem> _pawnedItemRepository;
+        public IRepository<tbl_ipos_pawneditem> PawnedItemRepository
         {
             get
             {
                 if (_pawnedItemRepository == null)
-                    _pawnedItemRepository = new Repository<pawneditem>(_dbContext);
+                    _pawnedItemRepository = new Repository<tbl_ipos_pawneditem>(_dbContext);
                 return _pawnedItemRepository;
             }
         }
-        public IRepository<releaseditem> ReleasedItemRepository
-        {
-            get
-            {
-                if (_releasedItemRepository == null)
-                    _releasedItemRepository = new Repository<releaseditem>(_dbContext);
-                return _releasedItemRepository;
-            }
-        }
-        public IRepository<itemcategory> ItemCategoryRepository
+
+        private Repository<tbl_ipos_itemcategory> _itemCategoryRepository;
+        public IRepository<tbl_ipos_itemcategory> ItemCategoryRepository
         {
             get
             {
                 if (_itemCategoryRepository == null)
-                    _itemCategoryRepository = new Repository<itemcategory>(_dbContext);
+                    _itemCategoryRepository = new Repository<tbl_ipos_itemcategory>(_dbContext);
                 return _itemCategoryRepository;
             }
         }
-        public IRepository<itemtype> ItemTypeRepository
+        private Repository<tbl_ipos_itemtype> _itemTypeRepository;
+        public IRepository<tbl_ipos_itemtype> ItemTypeRepository
         {
             get
             {
                 if (_itemTypeRepository == null)
-                    _itemTypeRepository = new Repository<itemtype>(_dbContext);
+                    _itemTypeRepository = new Repository<tbl_ipos_itemtype>(_dbContext);
                 return _itemTypeRepository;
             }
         }
+
+
         public void Dispose()
         {
             _dbContext.Dispose();
@@ -119,7 +109,7 @@ namespace iPOS.Web.Repository
 
         public System.Threading.Tasks.Task MaxAsync()
         {
-            return _dbContext.appraiseditems.MaxAsync(a => a.AppraiseId);
+            return _dbContext.tbl_ipos_appraiseditem.MaxAsync(a => a.AppraiseId);
         }
         //#endregion        
     }

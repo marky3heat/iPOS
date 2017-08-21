@@ -12,21 +12,22 @@ namespace iPOS.Web.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class appraiseditem
+    public partial class tbl_ipos_appraiseditem
     {
         public int AppraiseId { get; set; }
-        public Nullable<System.DateTime> AppraiseDate { get; set; }
+        public System.DateTime AppraiseDate { get; set; }
         public string AppraiseNo { get; set; }
-        public Nullable<int> ItemTypeId { get; set; }
-        public Nullable<int> ItemCategoryId { get; set; }
+        public string PawnshopTransactionNo { get; set; }
+        public int ItemTypeId { get; set; }
+        public int ItemCategoryId { get; set; }
         public string ItemName { get; set; }
         public string Weight { get; set; }
-        public Nullable<decimal> AppraisedValue { get; set; }
+        public decimal AppraisedValue { get; set; }
         public string Remarks { get; set; }
         public string CustomerFirstName { get; set; }
         public string CustomerLastName { get; set; }
-        public Nullable<bool> IsPawned { get; set; }
+        public bool IsPawned { get; set; }
         public string CreatedBy { get; set; }
-        public Nullable<System.DateTime> CreatedAt { get; set; }
+        public System.DateTime CreatedAt { get; set; }
     }
 }

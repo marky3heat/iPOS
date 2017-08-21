@@ -7,14 +7,17 @@ namespace iPOS.Web.Repository.Interface
 {
     public interface IUnitOfWork : IDisposable
     {
-        IRepository<customer> CustomerRepository { get; }
-        IRepository<AppraisalViewModel> AppraisalModelRepository { get; }
-        IRepository<appraiseditem> AppraisedItemRepository { get; }
-        IRepository<pawneditem> PawnedItemRepository { get; }
-        IRepository<releaseditem> ReleasedItemRepository { get; }
-        IRepository<itemcategory> ItemCategoryRepository { get; }
-        IRepository<itemtype> ItemTypeRepository { get; }
-        IRepository<tbl_pawnshop_transactions> PawnshopTransactionsRepository { get; }
+        IRepository<tbl_ipos_no_generator> NoGeneratorRepository { get; }
+
+        IRepository<tbl_ipos_pawnshop_transactions> PawnshopTransactionsRepository { get; }
+
+        IRepository<tbl_ipos_customer> CustomerRepository { get; }
+
+        IRepository<tbl_ipos_appraiseditem> AppraisedItemRepository { get; }
+        IRepository<tbl_ipos_pawneditem> PawnedItemRepository { get; }
+
+        IRepository<tbl_ipos_itemcategory> ItemCategoryRepository { get; }
+        IRepository<tbl_ipos_itemtype> ItemTypeRepository { get; }
 
         void SaveChanges();
         Task SaveChangesAsync();

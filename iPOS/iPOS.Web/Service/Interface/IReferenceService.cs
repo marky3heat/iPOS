@@ -8,25 +8,25 @@ namespace iPOS.Web.Service.Interface
     public interface IReferenceService
     {
         #region ItemCategory
-        Task<itemcategory> FindItemCategoryById(int id);
+        Task<tbl_ipos_itemcategory> FindItemCategoryById(int id);
 
-        Task<List<itemcategory>> GetItemCategoryList(int pageIndex = 0, int pageSize = 100);
+        Task<List<tbl_ipos_itemcategory>> GetItemCategoryList(int pageIndex = 0, int pageSize = 100);
 
-        Task<bool> SaveItemCategory(itemcategory model);
+        Task<bool> SaveItemCategory(tbl_ipos_itemcategory model);
 
-        Task<bool> UpdateItemCategory(itemcategory model);
+        Task<bool> UpdateItemCategory(tbl_ipos_itemcategory model);
 
         Task<bool> DeleteItemCategory(string id);
         #endregion
 
         #region ItemType
-        Task<itemtype> FindItemTypeById(int id);
+        Task<tbl_ipos_itemtype> FindItemTypeById(int id);
 
-        Task<List<itemtype>> GetItemTypeList(int pageIndex = 0, int pageSize = 100);
+        Task<List<tbl_ipos_itemtype>> GetItemTypeList(int pageIndex = 0, int pageSize = 100);
 
-        Task<bool> SaveItemType(itemtype model);
+        Task<bool> SaveItemType(tbl_ipos_itemtype model);
 
-        Task<bool> UpdateItemType(itemtype model);
+        Task<bool> UpdateItemType(tbl_ipos_itemtype model);
 
         Task<bool> DeleteItemType(string id);
         #endregion

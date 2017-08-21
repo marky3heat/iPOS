@@ -22,7 +22,7 @@ namespace iPOS.Web.Service
         #endregion
 
         #region PUBLIC MEMBER METHODS (ITEM CATEGORY)
-        public async Task<itemcategory> FindItemCategoryById(int id)
+        public async Task<tbl_ipos_itemcategory> FindItemCategoryById(int id)
         {
             try
             {
@@ -36,7 +36,7 @@ namespace iPOS.Web.Service
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<List<itemcategory>> GetItemCategoryList(
+        public async Task<List<tbl_ipos_itemcategory>> GetItemCategoryList(
             int pageIndex = 0,
             int pageSize = 100)
         {
@@ -61,7 +61,7 @@ namespace iPOS.Web.Service
             }
         }
 
-        public async Task<bool> SaveItemCategory(itemcategory model)
+        public async Task<bool> SaveItemCategory(tbl_ipos_itemcategory model)
         {
             try
             {
@@ -86,7 +86,7 @@ namespace iPOS.Web.Service
             }
         }
 
-        public async Task<bool> UpdateItemCategory(itemcategory model)
+        public async Task<bool> UpdateItemCategory(tbl_ipos_itemcategory model)
         {
             try
             {
@@ -137,7 +137,7 @@ namespace iPOS.Web.Service
         #endregion
 
         #region PUBLIC MEMBER METHODS (ITEM TYPE)
-        public async Task<itemtype> FindItemTypeById(int id)
+        public async Task<tbl_ipos_itemtype> FindItemTypeById(int id)
         {
             try
             {
@@ -151,7 +151,7 @@ namespace iPOS.Web.Service
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<List<itemtype>> GetItemTypeList(
+        public async Task<List<tbl_ipos_itemtype>> GetItemTypeList(
             int pageIndex = 0,
             int pageSize = 100)
         {
@@ -176,7 +176,7 @@ namespace iPOS.Web.Service
             }
         }
 
-        public async Task<bool> SaveItemType(itemtype model)
+        public async Task<bool> SaveItemType(tbl_ipos_itemtype model)
         {
             try
             {
@@ -201,7 +201,7 @@ namespace iPOS.Web.Service
             }
         }
 
-        public async Task<bool> UpdateItemType(itemtype model)
+        public async Task<bool> UpdateItemType(tbl_ipos_itemtype model)
         {
             try
             {
