@@ -114,8 +114,8 @@
     }
 
     function loadNoGeneratorList() {
-        $("#itemCategoryTable").dataTable().fnDestroy();
-        $('#itemCategoryTable').DataTable({
+        $("#noGeneratorTable").dataTable().fnDestroy();
+        $('#noGeneratorTable').DataTable({
             "ajax": {
                 "url": RootUrl + "/Administrator/Reference/LoadNoGeneratorList",
                 "type": "GET",
@@ -125,7 +125,7 @@
             "columns": [
                 { "data": "NoId", "className": "hide" },
                 { "data": "NoDescription", "className": "text-left" },
-                { "data": "No", "className": "hide" },
+                { "data": "No", "className": "text-center" },
                 { "data": "NoId", "className": "hide" },
                 { "data": "NoId", "className": "hide" },
                 { "data": "NoId", "className": "hide" }

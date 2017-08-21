@@ -96,7 +96,7 @@
     <Property Name="TransactionNo" Type="varchar" MaxLength="32" Nullable="false" />
     <Property Name="TransactionDate" Type="date" Nullable="false" />
     <Property Name="TransactionType" Type="varchar" MaxLength="32" Nullable="false" />
-    <Property Name="Terminal" Type="varchar" MaxLength="32" />
+    <Property Name="Terminal" Type="varchar" MaxLength="32" Nullable="false" />
     <Property Name="Status" Type="varchar" MaxLength="32" Nullable="false" />
     <Property Name="ReviewedBy" Type="varchar" MaxLength="32" Nullable="false" />
     <Property Name="ApprovedBy" Type="varchar" MaxLength="32" Nullable="false" />

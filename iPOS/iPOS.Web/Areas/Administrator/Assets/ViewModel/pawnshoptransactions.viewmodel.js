@@ -103,7 +103,9 @@
         backToList: backToList,
         saveButtonCaption: saveButtonCaption,
         isSaveButtonShowed: isSaveButtonShowed,
-        save: save
+        save: save,
+
+        model: model
     };
     return vm;
 })();

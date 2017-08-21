@@ -46,6 +46,11 @@ app.createModeModel = function () {
     self.CreatedBy = ko.observable();
     self.CreatedAt = ko.observable();
 
+    self.FirstName = ko.observable();
+    self.LastName = ko.observable();
+    self.Address = ko.observable();
+    self.ContactNo = ko.observable();
+
     self.ItemName = ko.observable();
     self.Weight = ko.observable();
     self.Remarks = ko.observable();
