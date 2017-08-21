@@ -53,9 +53,9 @@ namespace iPOS.Web.Areas.Administrator.Controllers
             //var result =
             //    from r in listCustomerProfile
             //    select r;
-            var result = listCustomerProfile.Select(i => new customer()
+            var result = listCustomerProfile.Select(i => new tbl_ipos_customer()
             {
-                Id = i.Id,
+                CustomerId = i.CustomerId,
                 FirstName = i.FirstName != null ? i.FirstName : string.Empty,
                 LastName = i.LastName != null ? i.LastName : string.Empty,
                 MiddleName = i.MiddleName != null ? i.MiddleName : string.Empty,
@@ -68,18 +68,18 @@ namespace iPOS.Web.Areas.Administrator.Controllers
         }
         // POST
         [HttpPost]
-        public async Task<JsonResult> SaveCustomer(customer customer)
+        public async Task<JsonResult> SaveCustomer(tbl_ipos_customer customer)
         {
             try
             {
-                customer modelCustomer = null;
+                tbl_ipos_customer modelCustomer = null;
 
                 bool success = false;
                 string message = "";
 
-                if (string.IsNullOrEmpty(customer.Id.ToString()) || customer.Id.ToString() == "0")
+                if (string.IsNullOrEmpty(customer.CustomerId.ToString()) || customer.CustomerId.ToString() == "0")
                 {
-                    modelCustomer = new customer();
+                    modelCustomer = new tbl_ipos_customer();
                     modelCustomer.FirstName = customer.FirstName;
                     modelCustomer.LastName = customer.LastName;
                     modelCustomer.MiddleName = customer.MiddleName;
@@ -100,7 +100,7 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                 }
                 else
                 {
-                    modelCustomer = await _customerService.FindByIdCustomer(customer.Id);
+                    modelCustomer = await _customerService.FindByIdCustomer(customer.CustomerId);
                     modelCustomer.FirstName = customer.FirstName;
                     modelCustomer.LastName = customer.LastName;
                     modelCustomer.MiddleName = customer.MiddleName;

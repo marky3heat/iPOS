@@ -30,5 +30,17 @@ namespace iPOS.Web.Service.Interface
 
         Task<bool> DeleteItemType(string id);
         #endregion
+
+        #region NoGenerator
+        Task<tbl_ipos_no_generator> FindByIdNoGenerator(int id);
+
+        Task<List<tbl_ipos_no_generator>> GetListNoGenerator(int pageIndex = 0, int pageSize = 100);
+
+        Task<bool> SaveNoGenerator(tbl_ipos_no_generator model);
+
+        Task<bool> UpdateNoGenerator(tbl_ipos_no_generator model);
+
+        Task<bool> DeleteNoGenerator(string id);
+        #endregion
     }
 }

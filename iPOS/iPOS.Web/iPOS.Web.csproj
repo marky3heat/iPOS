@@ -224,17 +224,10 @@
     <Compile Include="Areas\Administrator\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Administrator\Controllers\PawningController.cs" />
     <Compile Include="Areas\Administrator\Controllers\ReferenceController.cs" />
-    <Compile Include="Areas\Administrator\Controllers\SalesAndCollectionController.cs" />
-    <Compile Include="Areas\Administrator\Controllers\UserAccountController.cs" />
+    <Compile Include="Areas\Administrator\Models\PawnshopTransactionModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Database\appraiseditem.cs">
-      <DependentUpon>dbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\customer.cs">
-      <DependentUpon>dbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Database\dbModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -250,35 +243,31 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Database\itemcategory.cs">
+    <Compile Include="Database\tbl_ipos_appraiseditem.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\itemtype.cs">
+    <Compile Include="Database\tbl_ipos_customer.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\pawneditem.cs">
+    <Compile Include="Database\tbl_ipos_itemcategory.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\releaseditem.cs">
+    <Compile Include="Database\tbl_ipos_itemtype.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\tbldepartment.cs">
+    <Compile Include="Database\tbl_ipos_no_generator.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\tblrole.cs">
+    <Compile Include="Database\tbl_ipos_pawneditem.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\tbluser.cs">
-      <DependentUpon>dbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\tbl_pawnshop_transactions.cs">
+    <Compile Include="Database\tbl_ipos_pawnshop_transactions.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\AppraisalViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -2873,7 +2862,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Administrator\Models\" />
     <Folder Include="Areas\Administrator\Views\Administrator\" />
     <Folder Include="Areas\Administrator\Views\Base\" />
     <Folder Include="Areas\Administrator\Views\Dashboard\" />

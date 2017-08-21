@@ -1,142 +1,115 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="dbpawnshopModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="appraiseditem">
+  <EntityType Name="tbl_ipos_appraiseditem">
     <Key>
       <PropertyRef Name="AppraiseId" />
     </Key>
     <Property Name="AppraiseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="AppraiseDate" Type="date" />
-    <Property Name="AppraiseNo" Type="varchar" MaxLength="32" />
-    <Property Name="ItemTypeId" Type="int" />
-    <Property Name="ItemCategoryId" Type="int" />
-    <Property Name="ItemName" Type="varchar" MaxLength="64" />
-    <Property Name="Weight" Type="varchar" MaxLength="32" />
-    <Property Name="AppraisedValue" Type="decimal" Precision="15" Scale="2" />
-    <Property Name="Remarks" Type="varchar" MaxLength="128" />
-    <Property Name="CustomerFirstName" Type="varchar" MaxLength="32" />
-    <Property Name="CustomerLastName" Type="varchar" MaxLength="32" />
-    <Property Name="IsPawned" Type="bool" />
-    <Property Name="CreatedBy" Type="varchar" MaxLength="24" />
-    <Property Name="CreatedAt" Type="datetime" Precision="0" />
+    <Property Name="AppraiseDate" Type="date" Nullable="false" />
+    <Property Name="AppraiseNo" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="PawnshopTransactionNo" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="ItemTypeId" Type="int" Nullable="false" />
+    <Property Name="ItemCategoryId" Type="int" Nullable="false" />
+    <Property Name="ItemName" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="Weight" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="AppraisedValue" Type="decimal" Precision="15" Scale="2" Nullable="false" />
+    <Property Name="Remarks" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="CustomerFirstName" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="CustomerLastName" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="IsPawned" Type="bool" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="24" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" Precision="0" Nullable="false" />
   </EntityType>
-  <EntityType Name="customer">
+  <EntityType Name="tbl_ipos_customer">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="CustomerId" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FirstName" Type="varchar" MaxLength="50" />
-    <Property Name="LastName" Type="varchar" MaxLength="50" />
-    <Property Name="MiddleName" Type="varchar" MaxLength="50" />
-    <Property Name="MiddleInitial" Type="varchar" MaxLength="3" />
-    <Property Name="Address" Type="varchar" MaxLength="80" />
-    <Property Name="ContactNo" Type="varchar" MaxLength="30" />
+    <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MiddleInitial" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="ContactNo" Type="varchar" MaxLength="30" Nullable="false" />
   </EntityType>
-  <EntityType Name="itemcategory">
+  <EntityType Name="tbl_ipos_itemcategory">
     <Key>
       <PropertyRef Name="ItemCategoryId" />
     </Key>
     <Property Name="ItemCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ItemCategoryName" Type="varchar" MaxLength="50" />
-    <Property Name="ItemTypeId" Type="int" />
-    <Property Name="CreatedBy" Type="varchar" MaxLength="32" />
-    <Property Name="CreatedAt" Type="datetime" Precision="0" />
+    <Property Name="ItemCategoryName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ItemTypeId" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" Precision="0" Nullable="false" />
   </EntityType>
-  <EntityType Name="itemtype">
+  <EntityType Name="tbl_ipos_itemtype">
     <Key>
       <PropertyRef Name="ItemTypeId" />
     </Key>
     <Property Name="ItemTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ItemTypeName" Type="varchar" MaxLength="64" />
-    <Property Name="CreatedBy" Type="varchar" MaxLength="32" />
-    <Property Name="CreatedAt" Type="datetime" Precision="0" />
+    <Property Name="ItemTypeName" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" Precision="0" Nullable="false" />
   </EntityType>
-  <EntityType Name="pawneditem">
+  <EntityType Name="tbl_ipos_no_generator">
+    <Key>
+      <PropertyRef Name="NoId" />
+    </Key>
+    <Property Name="NoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NoDescription" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="No" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_ipos_pawneditem">
     <Key>
       <PropertyRef Name="PawnedItemId" />
     </Key>
     <Property Name="PawnedItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="PawnedItemNo" Type="varchar" MaxLength="32" />
-    <Property Name="PawnedDate" Type="date" />
-    <Property Name="AppraiseId" Type="int" />
-    <Property Name="CustomerId" Type="int" />
-    <Property Name="PawnedItemContractNo" Type="varchar" MaxLength="32" />
-    <Property Name="LoanableAmount" Type="decimal" Precision="15" Scale="2" />
-    <Property Name="InterestRate" Type="decimal" Precision="15" Scale="2" />
-    <Property Name="InterestAmount" Type="decimal" Precision="15" Scale="2" />
-    <Property Name="InitialPayment" Type="decimal" Precision="15" Scale="2" />
-    <Property Name="ServiceCharge" Type="decimal" Precision="15" Scale="2" />
-    <Property Name="Others" Type="decimal" Precision="15" Scale="2" />
-    <Property Name="IsInterestDeducted" Type="bool" />
-    <Property Name="NetCashOut" Type="decimal" Precision="15" Scale="2" />
-    <Property Name="TermsId" Type="varchar" MaxLength="64" />
-    <Property Name="ScheduleOfPayment" Type="varchar" MaxLength="64" />
-    <Property Name="NoOfPayments" Type="int" />
-    <Property Name="DueDateStart" Type="date" />
-    <Property Name="DueDateEnd" Type="date" />
-    <Property Name="Status" Type="varchar" MaxLength="32" />
-    <Property Name="IsReleased" Type="bool" />
-    <Property Name="CreatedBy" Type="varchar" MaxLength="32" />
-    <Property Name="CreatedAt" Type="datetime" Precision="0" />
+    <Property Name="PawnedItemNo" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="PawnedDate" Type="date" Nullable="false" />
+    <Property Name="PawnshopTransactionNo" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="AppraiseId" Type="int" Nullable="false" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
+    <Property Name="PawnedItemContractNo" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="LoanableAmount" Type="decimal" Precision="15" Scale="2" Nullable="false" />
+    <Property Name="InterestRate" Type="decimal" Precision="15" Scale="2" Nullable="false" />
+    <Property Name="InterestAmount" Type="decimal" Precision="15" Scale="2" Nullable="false" />
+    <Property Name="InitialPayment" Type="decimal" Precision="15" Scale="2" Nullable="false" />
+    <Property Name="ServiceCharge" Type="decimal" Precision="15" Scale="2" Nullable="false" />
+    <Property Name="Others" Type="decimal" Precision="15" Scale="2" Nullable="false" />
+    <Property Name="IsInterestDeducted" Type="bool" Nullable="false" />
+    <Property Name="NetCashOut" Type="decimal" Precision="15" Scale="2" Nullable="false" />
+    <Property Name="TermsId" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="ScheduleOfPayment" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="NoOfPayments" Type="int" Nullable="false" />
+    <Property Name="DueDateStart" Type="date" Nullable="false" />
+    <Property Name="DueDateEnd" Type="date" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="IsReleased" Type="bool" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" Precision="0" Nullable="false" />
   </EntityType>
-  <EntityType Name="releaseditem">
-    <Key>
-      <PropertyRef Name="ReleasedItemId" />
-    </Key>
-    <Property Name="ReleasedItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-  </EntityType>
-  <EntityType Name="tbl_pawnshop_transactions">
+  <EntityType Name="tbl_ipos_pawnshop_transactions">
     <Key>
       <PropertyRef Name="TransactionId" />
     </Key>
     <Property Name="TransactionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TransactionNo" Type="varchar" MaxLength="32" Nullable="false" />
     <Property Name="TransactionDate" Type="date" Nullable="false" />
     <Property Name="TransactionType" Type="varchar" MaxLength="32" Nullable="false" />
-    <Property Name="CustomerId" Type="int" Nullable="false" />
-    <Property Name="ItemId" Type="int" Nullable="false" />
-    <Property Name="PawnId" Type="int" Nullable="false" />
-    <Property Name="SaleId" Type="int" Nullable="false" />
-    <Property Name="LayAwayId" Type="int" Nullable="false" />
+    <Property Name="Terminal" Type="varchar" MaxLength="32" />
     <Property Name="Status" Type="varchar" MaxLength="32" Nullable="false" />
     <Property Name="ReviewedBy" Type="varchar" MaxLength="32" Nullable="false" />
     <Property Name="ApprovedBy" Type="varchar" MaxLength="32" Nullable="false" />
     <Property Name="CreatedBy" Type="varchar" MaxLength="32" Nullable="false" />
     <Property Name="CreatedAt" Type="datetime" Precision="0" Nullable="false" />
   </EntityType>
-  <EntityType Name="tbldepartment">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Department" Type="varchar" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="tblrole">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Role" Type="varchar" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="tbluser">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="UserName" Type="varchar" MaxLength="50" />
-    <Property Name="PassWord" Type="varchar" MaxLength="20" />
-    <Property Name="RoleId" Type="int" />
-    <Property Name="DepartmentId" Type="int" />
-    <Property Name="LockOut" Type="int" />
-  </EntityType>
   <EntityContainer Name="dbpawnshopModelStoreContainer">
-    <EntitySet Name="appraiseditem" EntityType="Self.appraiseditem" Schema="dbpawnshop" store:Type="Tables" />
-    <EntitySet Name="customer" EntityType="Self.customer" Schema="dbpawnshop" store:Type="Tables" />
-    <EntitySet Name="itemcategory" EntityType="Self.itemcategory" Schema="dbpawnshop" store:Type="Tables" />
-    <EntitySet Name="itemtype" EntityType="Self.itemtype" Schema="dbpawnshop" store:Type="Tables" />
-    <EntitySet Name="pawneditem" EntityType="Self.pawneditem" Schema="dbpawnshop" store:Type="Tables" />
-    <EntitySet Name="releaseditem" EntityType="Self.releaseditem" Schema="dbpawnshop" store:Type="Tables" />
-    <EntitySet Name="tbl_pawnshop_transactions" EntityType="Self.tbl_pawnshop_transactions" Schema="dbpawnshop" store:Type="Tables" />
-    <EntitySet Name="tbldepartment" EntityType="Self.tbldepartment" Schema="dbpawnshop" store:Type="Tables" />
-    <EntitySet Name="tblrole" EntityType="Self.tblrole" Schema="dbpawnshop" store:Type="Tables" />
-    <EntitySet Name="tbluser" EntityType="Self.tbluser" Schema="dbpawnshop" store:Type="Tables" />
+    <EntitySet Name="tbl_ipos_appraiseditem" EntityType="Self.tbl_ipos_appraiseditem" Schema="dbpawnshop" store:Type="Tables" />
+    <EntitySet Name="tbl_ipos_customer" EntityType="Self.tbl_ipos_customer" Schema="dbpawnshop" store:Type="Tables" />
+    <EntitySet Name="tbl_ipos_itemcategory" EntityType="Self.tbl_ipos_itemcategory" Schema="dbpawnshop" store:Type="Tables" />
+    <EntitySet Name="tbl_ipos_itemtype" EntityType="Self.tbl_ipos_itemtype" Schema="dbpawnshop" store:Type="Tables" />
+    <EntitySet Name="tbl_ipos_no_generator" EntityType="Self.tbl_ipos_no_generator" Schema="dbpawnshop" store:Type="Tables" />
+    <EntitySet Name="tbl_ipos_pawneditem" EntityType="Self.tbl_ipos_pawneditem" Schema="dbpawnshop" store:Type="Tables" />
+    <EntitySet Name="tbl_ipos_pawnshop_transactions" EntityType="Self.tbl_ipos_pawnshop_transactions" Schema="dbpawnshop" store:Type="Tables" />
   </EntityContainer>
 </Schema>

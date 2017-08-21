@@ -250,5 +250,120 @@ namespace iPOS.Web.Service
             }
         }
         #endregion
+
+        #region PUBLIC MEMBER METHODS (NO GENERATOR)
+        public async Task<tbl_ipos_no_generator> FindByIdNoGenerator(int id)
+        {
+            try
+            {
+                using (var uow = _unitOfWorkFactory.Create())
+                {
+                    return await uow.NoGeneratorRepository.FindAsync(id);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public async Task<List<tbl_ipos_no_generator>> GetListNoGenerator(
+            int pageIndex = 0,
+            int pageSize = 100)
+        {
+            try
+            {
+                using (var uow = _unitOfWorkFactory.Create())
+                {
+                    var ListNoGenerator = await uow.NoGeneratorRepository.AllWithAsync(null);
+
+                    ListNoGenerator = ListNoGenerator
+                        .Skip(pageSize * pageIndex)
+                        .Take(pageSize).ToList();
+
+                    return ListNoGenerator.ToList();
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<bool> SaveNoGenerator(tbl_ipos_no_generator model)
+        {
+            try
+            {
+                using (var uow = _unitOfWorkFactory.Create())
+                {
+                    var result = await FindByIdNoGenerator(model.NoId);
+                    if (result == null)
+                    {
+                        uow.NoGeneratorRepository.Insert(model);
+                        await uow.SaveChangesAsync();
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<bool> UpdateNoGenerator(tbl_ipos_no_generator model)
+        {
+            try
+            {
+                using (var uow = _unitOfWorkFactory.Create())
+                {
+                    var result = await FindByIdNoGenerator(model.NoId);
+                    if (result != null)
+                    {
+                        uow.NoGeneratorRepository.Update(model);
+                        await uow.SaveChangesAsync();
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<bool> DeleteNoGenerator(string id)
+        {
+            try
+            {
+                using (var uow = _unitOfWorkFactory.Create())
+                {
+                    if (!string.IsNullOrEmpty(id))
+                    {
+                        uow.NoGeneratorRepository.Delete(id);
+                        await uow.SaveChangesAsync();
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
     }
 }

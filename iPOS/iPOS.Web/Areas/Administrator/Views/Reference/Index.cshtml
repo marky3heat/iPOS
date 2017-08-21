@@ -3,57 +3,87 @@
     ViewBag.Title = "Reference";
 }
 
-<div data-bind="visible: isItemTypeShowedList" class="col-lg-6">
-    <div class="panel panel-flat">
-        <div class="panel-heading">
-            <h6 class="panel-title">Item type List</h6>
-            <div class="heading-elements">
-                <button data-bind="click: addItemType" type="submit" class="btn bg-orange-400 btn-labeled btn-labeled-right ml-10"><b><i class="icon-plus3"></i></b>Create new item type</button>
+
+<div class="row">
+    <div data-bind="visible: isItemTypeShowedList" class="col-lg-6">
+        <div class="panel panel-flat">
+            <div class="panel-heading">
+                <h6 class="panel-title">Item type List</h6>
+                <div class="heading-elements">
+                    <button data-bind="click: addItemType" type="submit" class="btn bg-orange-400 btn-labeled btn-labeled-right ml-10"><b><i class="icon-plus3"></i></b>Create new item type</button>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table text-nowrap" id="itemTypeTable">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Item Type</th>
+                        <th class="text-center"><i class="icon-arrow-down12"></i></th>
+                        <th>Id</th>
+                        <th>Id</th>
+                        <th>Id</th>
+                        <th>Id</th>
+                    </tr>
+                    </thead>
+                </table>
             </div>
         </div>
-        <div class="table-responsive">
-            <table class="table text-nowrap" id="itemTypeTable">
-                <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Item Type</th>
-                    <th class="text-center"><i class="icon-arrow-down12"></i></th>
-                    <th>Id</th>
-                    <th>Id</th>
-                    <th>Id</th>
-                    <th>Id</th>
-                </tr>
-                </thead>
-            </table>
+    </div>
+    <div data-bind="visible: isItemCategoryShowedList" class="col-lg-6">
+        <div class="panel panel-flat">
+            <div class="panel-heading">
+                <h6 class="panel-title">Item category List</h6>
+                <div class="heading-elements">
+                    <button data-bind="click: addItemCategory" type="submit" class="btn bg-orange-400 btn-labeled btn-labeled-right ml-10"><b><i class="icon-plus3"></i></b>Create new item category</button>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table text-nowrap" id="itemCategoryTable">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Item Type</th>
+                        <th>Item Category</th>
+                        <th class="text-center"><i class="icon-arrow-down12"></i></th>
+                        <th>Id</th>
+                        <th>Id</th>
+                        <th>Id</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div data-bind="visible: isItemTypeShowedList" class="col-lg-6">
+        <div class="panel panel-flat">
+            <div class="panel-heading">
+                <h6 class="panel-title">Item type List</h6>
+                <div class="heading-elements">
+                    <button data-bind="click: addItemType" type="submit" class="btn bg-orange-400 btn-labeled btn-labeled-right ml-10"><b><i class="icon-plus3"></i></b>Create new item type</button>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table text-nowrap" id="itemTypeTable">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Item Type</th>
+                            <th class="text-center"><i class="icon-arrow-down12"></i></th>
+                            <th>Id</th>
+                            <th>Id</th>
+                            <th>Id</th>
+                            <th>Id</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
     </div>
 </div>
 
-<div data-bind="visible: isItemCategoryShowedList" class="col-lg-6">
-    <div class="panel panel-flat">
-        <div class="panel-heading">
-            <h6 class="panel-title">Item category List</h6>
-            <div class="heading-elements">
-                <button data-bind="click: addItemCategory" type="submit" class="btn bg-orange-400 btn-labeled btn-labeled-right ml-10"><b><i class="icon-plus3"></i></b>Create new item category</button>
-            </div>
-        </div>
-        <div class="table-responsive">
-            <table class="table text-nowrap" id="itemCategoryTable">
-                <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Item Type</th>
-                    <th>Item Category</th>
-                    <th class="text-center"><i class="icon-arrow-down12"></i></th>
-                    <th>Id</th>
-                    <th>Id</th>
-                    <th>Id</th>
-                </tr>
-                </thead>
-            </table>
-        </div>
-    </div>
-</div>
 
 <div data-bind="visible: isItemTypeShowed" class="panel panel-flat">
     <div class="panel-heading">

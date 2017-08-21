@@ -1,12 +1,9 @@
 ﻿app.viewModeModel = function (
     transactionid,
+    transactionno,
     transactiondate,
     transactiontype,
-    customerid,
-    itemid,
-    pawnid,
-    saleid,
-    layawayid,
+    terminal,
     status,
     reviewedby,
     approvedby,
@@ -18,13 +15,10 @@
 
     // #region MODEL TO CREATE/UPDATE
     self.TransactionId = ko.observable(transactionid);
+    self.TransactionNo = ko.observable(transactionno);
     self.TransactionDate = ko.observable(transactiondate);
     self.TransactionType = ko.observable(transactiontype);
-    self.CustomerId = ko.observable(customerid);
-    self.ItemId = ko.observable(itemid);
-    self.PawnId = ko.observable(pawnid);
-    self.SaleId = ko.observable(saleid);
-    self.LayAwayId = ko.observable(layawayid);
+    self.Terminal = ko.observable(terminal);
     self.Status = ko.observable(status);
     self.ReviewedBy = ko.observable(reviewedby);
     self.ApprovedBy = ko.observable(approvedby);
@@ -42,18 +36,19 @@ app.createModeModel = function () {
 
     // #region MODEL TO CREATE/UPDATE
     self.TransactionId = ko.observable();
+    self.TransactionNo = ko.observable();
     self.TransactionDate = ko.observable();
     self.TransactionType = ko.observable();
-    self.CustomerId = ko.observable();
-    self.ItemId = ko.observable();
-    self.PawnId = ko.observable();
-    self.SaleId = ko.observable();
-    self.LayAwayId = ko.observable();
+    self.Terminal = ko.observable();
     self.Status = ko.observable();
     self.ReviewedBy = ko.observable();
     self.ApprovedBy = ko.observable();
     self.CreatedBy = ko.observable();
     self.CreatedAt = ko.observable();
+
+    self.ItemName = ko.observable();
+    self.Weight = ko.observable();
+    self.Remarks = ko.observable();
 
     // #endregion     
 

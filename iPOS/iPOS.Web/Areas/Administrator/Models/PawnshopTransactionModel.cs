@@ -8,13 +8,10 @@ namespace iPOS.Web.Areas.Administrator.Models
     public class PawnshopTransactionModel
     {
         public int TransactionId { get; set; }
+        public string TransactionNo { get; set; }
         public System.DateTime TransactionDate { get; set; }
         public string TransactionType { get; set; }
-        public int CustomerId { get; set; }
-        public int ItemId { get; set; }
-        public int PawnId { get; set; }
-        public int SaleId { get; set; }
-        public int LayAwayId { get; set; }
+        public string Terminal { get; set; }
         public string Status { get; set; }
         public string ReviewedBy { get; set; }
         public string ApprovedBy { get; set; }

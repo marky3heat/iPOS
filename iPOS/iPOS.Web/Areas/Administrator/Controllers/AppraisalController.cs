@@ -77,7 +77,7 @@ namespace iPOS.Web.Areas.Administrator.Controllers
         public async Task<JsonResult> GetItemType()
         {
             var list = await _appraisalService.GetItemTypeList();
-            var result = list.Select(item => new itemtype()
+            var result = list.Select(item => new tbl_ipos_itemtype()
             {
                 ItemTypeId = item.ItemTypeId,
                 ItemTypeName = item.ItemTypeName
@@ -88,7 +88,7 @@ namespace iPOS.Web.Areas.Administrator.Controllers
         public async Task<JsonResult> GetItemCategory(int ItemTypeId)
         {
             var list = await _appraisalService.GetItemCategoryByItemTypeId(ItemTypeId);
-            var result = list.Select(item => new itemcategory()
+            var result = list.Select(item => new tbl_ipos_itemcategory()
             {
                 ItemCategoryId = item.ItemCategoryId,
                 ItemCategoryName = item.ItemCategoryName,
@@ -111,11 +111,11 @@ namespace iPOS.Web.Areas.Administrator.Controllers
         }
         // POST
         [HttpPost]
-        public async Task<JsonResult> SaveAppraisedItem(AppraisalViewModel item)
+        public async Task<JsonResult> SaveAppraisedItem(tbl_ipos_appraiseditem item)
         {
             try
             {
-                appraiseditem model = null;
+                tbl_ipos_appraiseditem model = null;
 
                 bool success = false;
                 string message = "";
@@ -124,8 +124,8 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                 {
                     //DateTime dt = DateTime.ParseExact(item.AppraiseDate, "yyyy/MM/dd", CultureInfo.InvariantCulture);
 
-                    model = new appraiseditem();
-                    model.AppraiseDate = DateTime.Parse(item.AppraiseDate);
+                    model = new tbl_ipos_appraiseditem();
+                    model.AppraiseDate = item.AppraiseDate;
                     model.AppraiseNo = item.AppraiseNo;
                     model.ItemTypeId = item.ItemTypeId;
                     model.ItemCategoryId = item.ItemCategoryId;

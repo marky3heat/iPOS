@@ -68,20 +68,17 @@ namespace iPOS.Web.Areas.Administrator.Controllers
 
                 if (string.IsNullOrEmpty(model.TransactionId.ToString()) || model.TransactionId.ToString() == "0")
                 {
-                    tbl_pawnshop_transactions model1 = new tbl_pawnshop_transactions();
+                    tbl_ipos_pawnshop_transactions model1 = new tbl_ipos_pawnshop_transactions();
+                    model1.TransactionNo = model.TransactionNo;
                     model1.TransactionDate = model.TransactionDate;
                     model1.TransactionType = model.TransactionType;
-                    model1.TransactionDate = model.TransactionDate;
-                    model1.TransactionDate = model.TransactionDate;
-                    model1.TransactionDate = model.TransactionDate;
-                    model1.TransactionDate = model.TransactionDate;
-                    model1.TransactionDate = model.TransactionDate;
-                    model1.TransactionDate = model.TransactionDate;
-                    model1.TransactionDate = model.TransactionDate;
-                    model1.TransactionDate = model.TransactionDate;
-                    model1.TransactionDate = model.TransactionDate;
+                    model1.Terminal = model.Terminal;
+                    model1.Status = model.Status;
+                    model1.ReviewedBy = model.ReviewedBy;
+                    model1.ApprovedBy = model.ApprovedBy;
+                    model1.CreatedBy = "";
+                    model1.CreatedAt = DateTime.Now;
                 }
-
 
                 return Json(new { success = success, message = message });
 

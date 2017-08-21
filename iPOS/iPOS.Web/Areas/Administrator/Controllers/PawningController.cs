@@ -65,7 +65,7 @@ namespace iPOS.Web.Areas.Administrator.Controllers
             var result =
                 from a in listPawnedItem
                 join b in listAppraisedItem on a.AppraiseId equals b.AppraiseId
-                join c in listCustomer on a.CustomerId equals  c.Id
+                join c in listCustomer on a.CustomerId equals  c.CustomerId
                 select new
                 {
                     a.PawnedItemId,
@@ -117,9 +117,9 @@ namespace iPOS.Web.Areas.Administrator.Controllers
         public async Task<JsonResult> GetCustomer()
         {
             var listCustomer = await _customerService.GetCustomerList();
-            var result = listCustomer.Select(item => new customer()
+            var result = listCustomer.Select(item => new tbl_ipos_customer()
             {
-                Id = item.Id,
+                CustomerId = item.CustomerId,
                 FirstName = item.FirstName + " " + item.LastName,
                 LastName = item.LastName
             });
@@ -179,20 +179,20 @@ namespace iPOS.Web.Areas.Administrator.Controllers
             return Json(serverDate, JsonRequestBehavior.AllowGet);
         }
 
-        public async Task<JsonResult> SaveCustomer(customer list)
+        public async Task<JsonResult> SaveCustomer(tbl_ipos_customer list)
         {
             try
             {
-                customer model = null;
+                tbl_ipos_customer model = null;
 
                 bool success = false;
                 string message = "";
 
-                if (string.IsNullOrEmpty(list.Id.ToString()) || list.Id.ToString() == "0")
+                if (string.IsNullOrEmpty(list.CustomerId.ToString()) || list.CustomerId.ToString() == "0")
                 {
                     //DateTime dt = DateTime.ParseExact(item.AppraiseDate, "yyyy/MM/dd", CultureInfo.InvariantCulture);
 
-                    model = new customer();
+                    model = new tbl_ipos_customer();
                     model.FirstName = list.FirstName;
                     model.LastName = list.LastName;
                     model.MiddleName = list.MiddleName;
@@ -213,7 +213,7 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                 }
                 else
                 {
-                    model = await _customerService.FindByIdCustomer(list.Id);
+                    model = await _customerService.FindByIdCustomer(list.CustomerId);
                     model.FirstName = list.FirstName;
                     model.LastName = list.LastName;
                     model.MiddleName = list.MiddleName;
@@ -238,11 +238,11 @@ namespace iPOS.Web.Areas.Administrator.Controllers
             }
         }
 
-        public async Task<JsonResult> SavePawnedItem(pawneditem list)
+        public async Task<JsonResult> SavePawnedItem(tbl_ipos_pawneditem list)
         {
             try
             {
-                pawneditem model = null;
+                tbl_ipos_pawneditem model = null;
 
                 bool success = false;
                 string message = "";
@@ -251,7 +251,7 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                 {
                     //DateTime dt = DateTime.ParseExact(item.AppraiseDate, "yyyy/MM/dd", CultureInfo.InvariantCulture);
 
-                    model = new pawneditem();
+                    model = new tbl_ipos_pawneditem();
                     model.PawnedItemId = list.PawnedItemId;
                     model.PawnedItemNo = list.PawnedItemNo;
                     model.PawnedDate = list.PawnedDate;
@@ -323,7 +323,7 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<JsonResult> UpdatePawnedItem(pawneditem list)
+        public async Task<JsonResult> UpdatePawnedItem(tbl_ipos_pawneditem list)
         {
             try
             {
@@ -336,7 +336,7 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                 }
                 else
                 {
-                    pawneditem model = null;
+                    tbl_ipos_pawneditem model = null;
 
                     model = await _pawningService.FindById(list.PawnedItemId);
                     model.Status = list.Status;
@@ -346,9 +346,9 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                     success = result;
                     if (result)
                     {
-                        appraiseditem modelAppraisal = null;
+                        tbl_ipos_appraiseditem modelAppraisal = null;
 
-                        modelAppraisal = await _appraisalService.FindById(list.AppraiseId.GetValueOrDefault());
+                        modelAppraisal = await _appraisalService.FindById(list.AppraiseId);
                         modelAppraisal.IsPawned = true;
                         var update = await _appraisalService.Save(modelAppraisal);
                         if (update)

@@ -26,7 +26,7 @@
         isListShowed(false);
         isCreateModeShowed(true);
         isSaveButtonShowed(true);
-        saveButtonCaption("Save")
+        saveButtonCaption("Save");
     }
 
     function viewItem(arg) {

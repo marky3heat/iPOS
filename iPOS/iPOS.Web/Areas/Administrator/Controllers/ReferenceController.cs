@@ -74,10 +74,28 @@ namespace iPOS.Web.Areas.Administrator.Controllers
             return Json(new { data = result }, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpGet]
+        [Route("Administrator/Reference/LoadNoGeneratorList")]
+        public async Task<JsonResult> LoadNoGeneratorList()
+        {
+            var listNoGenerator = await _referenceService.GetListNoGenerator();
+
+            var result =
+                from a in listNoGenerator
+                select new
+                {
+                    a.NoId,
+                    a.NoDescription,
+                    a.No
+                };
+
+            return Json(new { data = result }, JsonRequestBehavior.AllowGet);
+        }
+
         public async Task<JsonResult> GetItemType()
         {
             var listItemCategory = await _referenceService.GetItemTypeList();
-            var result = listItemCategory.Select(item => new itemtype()
+            var result = listItemCategory.Select(item => new tbl_ipos_itemtype()
             {
                 ItemTypeId = item.ItemTypeId,
                 ItemTypeName = item.ItemTypeName,
@@ -88,18 +106,18 @@ namespace iPOS.Web.Areas.Administrator.Controllers
 
         // POST
         [HttpPost]
-        public async Task<JsonResult> SaveItemType(itemtype itemtype)
+        public async Task<JsonResult> SaveItemType(tbl_ipos_itemtype itemtype)
         {
             try
             {
-                itemtype itemTypeModel = null;
+                tbl_ipos_itemtype itemTypeModel = null;
 
                 bool success = false;
                 string message = "";
 
                 if (string.IsNullOrEmpty(itemtype.ItemTypeId.ToString()) || itemtype.ItemTypeId.ToString() == "0")
                 {
-                    itemTypeModel = new itemtype();
+                    itemTypeModel = new tbl_ipos_itemtype();
                     itemTypeModel.ItemTypeId = itemtype.ItemTypeId;
                     itemTypeModel.ItemTypeName = itemtype.ItemTypeName;
                     itemTypeModel.CreatedBy = "";
@@ -143,18 +161,18 @@ namespace iPOS.Web.Areas.Administrator.Controllers
         }
 
         [HttpPost]
-        public async Task<JsonResult> SaveItemCategory(itemcategory itemcategory)
+        public async Task<JsonResult> SaveItemCategory(tbl_ipos_itemcategory itemcategory)
         {
             try
             {
-                itemcategory itemCategoryModel = null;
+                tbl_ipos_itemcategory itemCategoryModel = null;
 
                 bool success = false;
                 string message = "";
 
                 if (string.IsNullOrEmpty(itemcategory.ItemCategoryId.ToString()) || itemcategory.ItemCategoryId.ToString() == "0")
                 {
-                    itemCategoryModel = new itemcategory();
+                    itemCategoryModel = new tbl_ipos_itemcategory();
                     itemCategoryModel.ItemTypeId = itemcategory.ItemTypeId;
                     itemCategoryModel.ItemCategoryName = itemcategory.ItemCategoryName;
                     itemCategoryModel.ItemTypeId = itemcategory.ItemTypeId;
@@ -198,6 +216,60 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                 throw new Exception(ex.Message);
             }
         }
+
+        [HttpPost]
+        public async Task<JsonResult> SaveNoGenerator(tbl_ipos_no_generator noGenerator)
+        {
+            try
+            {
+                tbl_ipos_no_generator noGeneratorModel = null;
+
+                bool success = false;
+                string message = "";
+
+                if (string.IsNullOrEmpty(noGenerator.NoId.ToString()) || noGenerator.NoId.ToString() == "0")
+                {
+                    noGeneratorModel = new tbl_ipos_no_generator();
+                    noGeneratorModel.NoId = noGenerator.NoId;
+                    noGeneratorModel.NoDescription = noGenerator.NoDescription;
+                    noGeneratorModel.No = noGenerator.No;
+
+                    var result = await _referenceService.SaveNoGenerator(noGeneratorModel);
+                    success = result;
+                    if (result)
+                    {
+                        message = "Successfully saved.";
+                    }
+                    else
+                    {
+                        message = "Error saving data. Please contact administrator.";
+                    }
+                }
+                else
+                {
+                    noGeneratorModel = await _referenceService.FindByIdNoGenerator(noGeneratorModel.NoId);
+                    noGeneratorModel.NoId = noGenerator.NoId;
+                    noGeneratorModel.NoDescription = noGenerator.NoDescription;
+                    noGeneratorModel.No = noGenerator.No;
+
+                    var result = await _referenceService.UpdateNoGenerator(noGeneratorModel);
+                    success = result;
+                    if (result)
+                    {
+                        message = "Successfully updated.";
+                    }
+                    else
+                        message = "Error saving data. Please contact administrator.";
+                }
+
+                return Json(new { success = success, message = message });
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         #endregion
     }
 }

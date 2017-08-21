@@ -1,138 +1,111 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="dbpawnshopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="customer">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="MiddleInitial" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
-    <Property Name="Address" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-    <Property Name="ContactNo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="tbldepartment">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Department" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="tblrole">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="tbluser">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="PassWord" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="RoleId" Type="Int32" />
-    <Property Name="DepartmentId" Type="Int32" />
-    <Property Name="LockOut" Type="Int32" />
-  </EntityType>
   <EntityContainer Name="dbpawnshopEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="customers" EntityType="Self.customer" />
-    <EntitySet Name="tbldepartments" EntityType="Self.tbldepartment" />
-    <EntitySet Name="tblroles" EntityType="Self.tblrole" />
-    <EntitySet Name="tblusers" EntityType="Self.tbluser" />
-    <EntitySet Name="itemcategories" EntityType="dbpawnshopModel.itemcategory" />
-    <EntitySet Name="itemtypes" EntityType="dbpawnshopModel.itemtype" />
-    <EntitySet Name="releaseditems" EntityType="dbpawnshopModel.releaseditem" />
-    <EntitySet Name="appraiseditems" EntityType="dbpawnshopModel.appraiseditem" />
-    <EntitySet Name="pawneditems" EntityType="dbpawnshopModel.pawneditem" />
-    <EntitySet Name="tbl_pawnshop_transactions" EntityType="dbpawnshopModel.tbl_pawnshop_transactions" />
+    <EntitySet Name="tbl_ipos_appraiseditem" EntityType="dbpawnshopModel.tbl_ipos_appraiseditem" />
+    <EntitySet Name="tbl_ipos_customer" EntityType="dbpawnshopModel.tbl_ipos_customer" />
+    <EntitySet Name="tbl_ipos_itemcategory" EntityType="dbpawnshopModel.tbl_ipos_itemcategory" />
+    <EntitySet Name="tbl_ipos_itemtype" EntityType="dbpawnshopModel.tbl_ipos_itemtype" />
+    <EntitySet Name="tbl_ipos_no_generator" EntityType="dbpawnshopModel.tbl_ipos_no_generator" />
+    <EntitySet Name="tbl_ipos_pawneditem" EntityType="dbpawnshopModel.tbl_ipos_pawneditem" />
+    <EntitySet Name="tbl_ipos_pawnshop_transactions" EntityType="dbpawnshopModel.tbl_ipos_pawnshop_transactions" />
   </EntityContainer>
-  <EntityType Name="itemcategory">
-    <Key>
-      <PropertyRef Name="ItemCategoryId" />
-    </Key>
-    <Property Name="ItemCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ItemCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ItemTypeId" Type="Int32" />
-    <Property Name="CreatedBy" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-    <Property Name="CreatedAt" Type="DateTime" />
-  </EntityType>
-  <EntityType Name="itemtype">
-    <Key>
-      <PropertyRef Name="ItemTypeId" />
-    </Key>
-    <Property Name="ItemTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ItemTypeName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
-    <Property Name="CreatedBy" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-    <Property Name="CreatedAt" Type="DateTime" />
-  </EntityType>
-  <EntityType Name="releaseditem">
-    <Key>
-      <PropertyRef Name="ReleasedItemId" />
-    </Key>
-    <Property Name="ReleasedItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-  </EntityType>
-  <EntityType Name="appraiseditem">
+  <EntityType Name="tbl_ipos_appraiseditem">
     <Key>
       <PropertyRef Name="AppraiseId" />
     </Key>
     <Property Name="AppraiseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="AppraiseDate" Type="DateTime" />
-    <Property Name="AppraiseNo" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-    <Property Name="ItemTypeId" Type="Int32" />
-    <Property Name="ItemCategoryId" Type="Int32" />
-    <Property Name="ItemName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
-    <Property Name="Weight" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-    <Property Name="AppraisedValue" Type="Decimal" />
-    <Property Name="Remarks" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
-    <Property Name="CustomerFirstName" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-    <Property Name="CustomerLastName" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-    <Property Name="IsPawned" Type="Boolean" />
-    <Property Name="CreatedBy" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
-    <Property Name="CreatedAt" Type="DateTime" />
+    <Property Name="AppraiseDate" Type="DateTime" Nullable="false" />
+    <Property Name="AppraiseNo" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="PawnshopTransactionNo" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="ItemTypeId" Type="Int32" Nullable="false" />
+    <Property Name="ItemCategoryId" Type="Int32" Nullable="false" />
+    <Property Name="ItemName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="Weight" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="AppraisedValue" Type="Decimal" Nullable="false" />
+    <Property Name="Remarks" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerFirstName" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerLastName" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="IsPawned" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="24" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" />
   </EntityType>
-  <EntityType Name="pawneditem">
+  <EntityType Name="tbl_ipos_customer">
+    <Key>
+      <PropertyRef Name="CustomerId" />
+    </Key>
+    <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MiddleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MiddleInitial" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="ContactNo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_ipos_itemcategory">
+    <Key>
+      <PropertyRef Name="ItemCategoryId" />
+    </Key>
+    <Property Name="ItemCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemCategoryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ItemTypeId" Type="Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_ipos_itemtype">
+    <Key>
+      <PropertyRef Name="ItemTypeId" />
+    </Key>
+    <Property Name="ItemTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemTypeName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_ipos_no_generator">
+    <Key>
+      <PropertyRef Name="NoId" />
+    </Key>
+    <Property Name="NoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NoDescription" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="No" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_ipos_pawneditem">
     <Key>
       <PropertyRef Name="PawnedItemId" />
     </Key>
     <Property Name="PawnedItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="PawnedItemNo" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-    <Property Name="PawnedDate" Type="DateTime" />
-    <Property Name="AppraiseId" Type="Int32" />
-    <Property Name="CustomerId" Type="Int32" />
-    <Property Name="PawnedItemContractNo" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-    <Property Name="LoanableAmount" Type="Decimal" />
-    <Property Name="InterestRate" Type="Decimal" />
-    <Property Name="InterestAmount" Type="Decimal" />
-    <Property Name="InitialPayment" Type="Decimal" />
-    <Property Name="ServiceCharge" Type="Decimal" />
-    <Property Name="Others" Type="Decimal" />
-    <Property Name="IsInterestDeducted" Type="Boolean" />
-    <Property Name="NetCashOut" Type="Decimal" />
-    <Property Name="TermsId" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
-    <Property Name="ScheduleOfPayment" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
-    <Property Name="NoOfPayments" Type="Int32" />
-    <Property Name="DueDateStart" Type="DateTime" />
-    <Property Name="DueDateEnd" Type="DateTime" />
-    <Property Name="Status" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-    <Property Name="IsReleased" Type="Boolean" />
-    <Property Name="CreatedBy" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-    <Property Name="CreatedAt" Type="DateTime" />
+    <Property Name="PawnedItemNo" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="PawnedDate" Type="DateTime" Nullable="false" />
+    <Property Name="PawnshopTransactionNo" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="AppraiseId" Type="Int32" Nullable="false" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="PawnedItemContractNo" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="LoanableAmount" Type="Decimal" Nullable="false" />
+    <Property Name="InterestRate" Type="Decimal" Nullable="false" />
+    <Property Name="InterestAmount" Type="Decimal" Nullable="false" />
+    <Property Name="InitialPayment" Type="Decimal" Nullable="false" />
+    <Property Name="ServiceCharge" Type="Decimal" Nullable="false" />
+    <Property Name="Others" Type="Decimal" Nullable="false" />
+    <Property Name="IsInterestDeducted" Type="Boolean" Nullable="false" />
+    <Property Name="NetCashOut" Type="Decimal" Nullable="false" />
+    <Property Name="TermsId" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="ScheduleOfPayment" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="NoOfPayments" Type="Int32" Nullable="false" />
+    <Property Name="DueDateStart" Type="DateTime" Nullable="false" />
+    <Property Name="DueDateEnd" Type="DateTime" Nullable="false" />
+    <Property Name="Status" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="IsReleased" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" />
   </EntityType>
-  <EntityType Name="tbl_pawnshop_transactions">
+  <EntityType Name="tbl_ipos_pawnshop_transactions">
     <Key>
       <PropertyRef Name="TransactionId" />
     </Key>
     <Property Name="TransactionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TransactionNo" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
     <Property Name="TransactionDate" Type="DateTime" Nullable="false" />
     <Property Name="TransactionType" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-    <Property Name="CustomerId" Type="Int32" Nullable="false" />
-    <Property Name="ItemId" Type="Int32" Nullable="false" />
-    <Property Name="PawnId" Type="Int32" Nullable="false" />
-    <Property Name="SaleId" Type="Int32" Nullable="false" />
-    <Property Name="LayAwayId" Type="Int32" Nullable="false" />
+    <Property Name="Terminal" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
     <Property Name="Status" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
     <Property Name="ReviewedBy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
     <Property Name="ApprovedBy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
