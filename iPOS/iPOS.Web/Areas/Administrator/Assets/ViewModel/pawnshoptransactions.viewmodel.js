@@ -27,6 +27,9 @@
         isCreateModeShowed(true);
         isSaveButtonShowed(true);
         saveButtonCaption("Save");
+
+        getServerDate();
+        getTransactionNo();
     }
 
     function viewItem(arg) {
@@ -41,21 +44,21 @@
         isSaveButtonShowed(false);
     }
 
-    function save() {
+    function saveTransactionPawn() {
 
         /*VALIDATIONS -START*/
-        if (appraisedItem.AppraiseDate().trim() === "") {
-            toastr.error("Date is required.");
-            appraisedItem.AppraiseDate("");
-            document.getElementById("AppraiseDate").focus();
-            return false;
-        }
+        //if (appraisedItem.AppraiseDate().trim() === "") {
+        //    toastr.error("Date is required.");
+        //    appraisedItem.AppraiseDate("");
+        //    document.getElementById("AppraiseDate").focus();
+        //    return false;
+        //}
 
         /*VALIDATIONS -END*/
 
         loaderApp.showPleaseWait();
-        var param = ko.toJS(appraisedItem);
-        var url = RootUrl + "/Administrator//";
+        var param = ko.toJS(model);
+        var url = RootUrl + "/Administrator/PawnshopTransactions/SaveTransactionPawning";
         $.ajax({
             type: 'POST',
             url: url,
@@ -84,8 +87,14 @@
     }
 
     function getServerDate() {
-        $.getJSON(RootUrl + "/Administrator/Appraisal/GetServerDate", function (result) {
+        $.getJSON(RootUrl + "/Administrator/Base/GetServerDate", function (result) {
+            model.TransactionDate(result);
+        });
+    }
 
+    function getTransactionNo() {
+        $.getJSON(RootUrl + "/Administrator/PawnshopTransactions/GetTransactionNo", function (result) {
+            model.TransactionNo(result);
         });
     }
     
@@ -103,7 +112,7 @@
         backToList: backToList,
         saveButtonCaption: saveButtonCaption,
         isSaveButtonShowed: isSaveButtonShowed,
-        save: save,
+        saveTransactionPawn: saveTransactionPawn,
 
         model: model
     };

@@ -67,6 +67,7 @@
     <Property Name="NoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="NoDescription" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
     <Property Name="No" Type="Int32" Nullable="false" />
+    <Property Name="Terminal" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="tbl_ipos_pawneditem">
     <Key>

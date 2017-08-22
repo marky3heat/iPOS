@@ -266,6 +266,22 @@ namespace iPOS.Web.Service
                 throw new Exception(ex.Message);
             }
         }
+        public async Task<tbl_ipos_no_generator> FindByIdAndTerminalNoGenerator(int id, string terminal)
+        {
+            try
+            {
+                using (var uow = _unitOfWorkFactory.Create())
+                {
+                    var result = await uow.NoGeneratorRepository.AllWithAsync(u => u.NoId == id && u.Terminal == terminal);
+                    return result.FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public async Task<List<tbl_ipos_no_generator>> GetListNoGenerator(
             int pageIndex = 0,
             int pageSize = 100)
@@ -322,7 +338,7 @@ namespace iPOS.Web.Service
             {
                 using (var uow = _unitOfWorkFactory.Create())
                 {
-                    var result = await FindByIdNoGenerator(model.NoId);
+                    var result = await FindByIdAndTerminalNoGenerator(model.NoId, model.Terminal);
                     if (result != null)
                     {
                         uow.NoGeneratorRepository.Update(model);
@@ -357,6 +373,25 @@ namespace iPOS.Web.Service
                     {
                         return false;
                     }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public string GetSelectedNoGenerator(int id, string terminal)
+        {
+            try
+            {
+                using (var uow = _unitOfWorkFactory.Create())
+                {
+                    var list = uow.NoGeneratorRepository.AllWithAsync(u => u.NoId == id && u.Terminal == terminal);
+                    var result = list.Result;
+
+
+                    return result[0].No.ToString();
                 }
             }
             catch (Exception ex)

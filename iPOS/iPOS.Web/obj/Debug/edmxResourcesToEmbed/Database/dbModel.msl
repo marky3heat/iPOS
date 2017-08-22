@@ -59,6 +59,7 @@
     <EntitySetMapping Name="tbl_ipos_no_generator">
       <EntityTypeMapping TypeName="dbpawnshopModel.tbl_ipos_no_generator">
         <MappingFragment StoreEntitySet="tbl_ipos_no_generator">
+          <ScalarProperty Name="Terminal" ColumnName="Terminal" />
           <ScalarProperty Name="No" ColumnName="No" />
           <ScalarProperty Name="NoDescription" ColumnName="NoDescription" />
           <ScalarProperty Name="NoId" ColumnName="NoId" />

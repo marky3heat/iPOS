@@ -63,6 +63,7 @@
           <Property Name="NoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NoDescription" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="No" Type="int" Nullable="false" />
+          <Property Name="Terminal" Type="varchar" MaxLength="32" Nullable="false" />
         </EntityType>
         <EntityType Name="tbl_ipos_pawneditem">
           <Key>
@@ -188,6 +189,7 @@
           <Property Name="NoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NoDescription" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="No" Type="Int32" Nullable="false" />
+          <Property Name="Terminal" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tbl_ipos_pawneditem">
           <Key>
@@ -297,6 +299,7 @@
           <EntitySetMapping Name="tbl_ipos_no_generator">
             <EntityTypeMapping TypeName="dbpawnshopModel.tbl_ipos_no_generator">
               <MappingFragment StoreEntitySet="tbl_ipos_no_generator">
+                <ScalarProperty Name="Terminal" ColumnName="Terminal" />
                 <ScalarProperty Name="No" ColumnName="No" />
                 <ScalarProperty Name="NoDescription" ColumnName="NoDescription" />
                 <ScalarProperty Name="NoId" ColumnName="NoId" />

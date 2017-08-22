@@ -38,11 +38,11 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label>Transaction no.</label>
-                        <input type="text" id="" data-bind="" class="form-control" >
+                        <input type="text" id="TransactionNo" data-bind="textinput: model.TransactionNo, value: model.TransactionNo" class="form-control" >
                     </div>
                     <div class="col-md-6">
                         <label>Date</label>
-                        <input type="text" id="" data-bind="" class="form-control">
+                        <input type="text" id="TransactionDate" data-bind="textinput: model.TransactionDate, value: model.TransactionDate" class="form-control daterange-single">
                     </div>
                 </div>
             </div>
@@ -53,11 +53,11 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label>Item name</label>
-                        <input type="text" id="" data-bind="" class="form-control">
+                        <input type="text" id="" data-bind="textinput: model.ItemName" class="form-control">
                     </div>
                     <div class="col-md-6">
                         <label>Weight</label>
-                        <input type="text" id="" data-bind="" class="form-control">
+                        <input type="text" id="" data-bind="textinput: model.Weight" class="form-control">
                     </div>
                 </div>
             </div>
@@ -66,7 +66,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <label>Remarks</label>
-                        <textarea id="" data-bind="" class="form-control" row="5" col="5"></textarea>
+                        <textarea id="" data-bind="textinput: model.Remarks" class="form-control" row="5" col="5"></textarea>
                     </div>
                 </div>
             </div>
@@ -77,11 +77,11 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label>First name</label>
-                        <input type="text" id="" data-bind="" class="form-control">
+                        <input type="text" id="" data-bind="textinput: model.FirstName" class="form-control">
                     </div>
                     <div class="col-md-6">
                         <label>Last name</label>
-                        <input type="text" id="" data-bind="" class="form-control">
+                        <input type="text" id="" data-bind="textinput: model.LastName" class="form-control">
                     </div>
                 </div>
             </div>
@@ -89,17 +89,17 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label>Address</label>
-                        <input type="text" id="" data-bind="" class="form-control">
+                        <input type="text" id="" data-bind="textinput: model.Address" class="form-control">
                     </div>
                     <div class="col-md-6">
                         <label>Contact no.</label>
-                        <input type="text" id="" data-bind="" class="form-control">
+                        <input type="text" id="" data-bind="textinput: model.ContactNo" class="form-control">
                     </div>
                 </div>
             </div>
                 <div class="text-right">
                     <button data-bind="click: backToList" type="submit" class="btn btn-link"><i class="icon-arrow-left13 position-left"></i> Back to list</button>
-                    <button type="submit" data-bind="click: save, visible: isSaveButtonShowed" class="btn bg-success btn-labeled btn-labeled-right ml-10" id="reset"><b><i class="icon-plus3"></i></b><!--ko text: saveButtonCaption--><!--/ko--></button>
+                    <button type="submit" data-bind="click: saveTransactionPawn, visible: isSaveButtonShowed" class="btn bg-success btn-labeled btn-labeled-right ml-10" id="reset"><b><i class="icon-plus3"></i></b><!--ko text: saveButtonCaption--><!--/ko--></button>
                 </div>
             </div>
     </div>  

@@ -86,29 +86,53 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                     tbl_ipos_pawnshop_transactions model1 = new tbl_ipos_pawnshop_transactions();
                     model1.TransactionNo = model.TransactionNo;
                     model1.TransactionDate = model.TransactionDate;
-                    model1.TransactionType = model.TransactionType;
-                    model1.Terminal = model.Terminal;
-                    model1.Status = model.Status;
-                    model1.ReviewedBy = model.ReviewedBy;
-                    model1.ApprovedBy = model.ApprovedBy;
+                    model1.TransactionType = "Pawning";
+                    model1.Terminal = "1";
+                    model1.Status = "On Process";
+                    model1.ReviewedBy = "";
+                    model1.ApprovedBy = "";
                     model1.CreatedBy = "";
                     model1.CreatedAt = DateTime.Now;
 
                     tbl_ipos_customer model2 = new tbl_ipos_customer();
                     model2.FirstName = model.FirstName;
                     model2.LastName = model.LastName;
+                    model2.MiddleName = "";
+                    model2.MiddleInitial = "";
                     model2.Address = model.Address;
                     model2.ContactNo = model.ContactNo;
 
                     tbl_ipos_appraiseditem model3 = new tbl_ipos_appraiseditem();
-                    model3.ItemName = model.LastName;
-                    model3.Weight = model.Address;
-                    model3.Remarks = model.ContactNo;
+                    model3.AppraiseDate = DateTime.Now;
+                    model3.AppraiseNo = "";
+                    model3.PawnshopTransactionNo = model.TransactionNo;
+                    model3.ItemTypeId = model.ItemTypeId;
+                    model3.ItemCategoryId = model.ItemCategoryId ;
+                    model3.ItemName = model.ItemName;
+                    model3.Weight = "";
+                    model3.AppraisedValue = 0;
+                    model3.Remarks = model.Remarks;
+                    model3.CustomerFirstName = model.FirstName;
+                    model3.CustomerLastName = model.LastName;
+                    model3.IsPawned = false;
+                    model3.CreatedAt = DateTime.Now;
+                    model3.CreatedBy = "";
 
                     var result = await _pawnshopTransactionService.SavePawnshopTransactions(model1);
+                    var result1 = await _customerService.SaveCustomer(model2);
+                    var result2 = await _appraisalService.Save(model3);
+
                     success = result;
+                    success = result1;
+                    success = result2;
+
                     if (result)
                     {
+                        tbl_ipos_no_generator noGenerator = new tbl_ipos_no_generator();
+                        noGenerator = await _referenceService.FindByIdAndTerminalNoGenerator(1,"1");
+                        noGenerator.No = Int32.Parse(model.TransactionNo)+1;
+                        await _referenceService.UpdateNoGenerator(noGenerator);
+
                         message = "Successfully saved.";
                     }
                     else
@@ -141,6 +165,12 @@ namespace iPOS.Web.Areas.Administrator.Controllers
             }  
         }
 
+        public ActionResult GetTransactionNo()
+        {
+            var result = _referenceService.GetSelectedNoGenerator(1,"1");
+
+            return Json(result.ToString(), JsonRequestBehavior.AllowGet);
+        }
 
         #endregion
     }

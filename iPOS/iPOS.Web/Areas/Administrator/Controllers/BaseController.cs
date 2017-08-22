@@ -13,6 +13,12 @@ namespace iPOS.Web.Areas.Administrator.Controllers
         {
             return View();
         }
+        public ActionResult GetServerDate()
+        {
+            var serverDate = DateTime.Now.ToString("MM/dd/yyyy");
+
+            return Json(serverDate, JsonRequestBehavior.AllowGet);
+        }
     }
 
 }

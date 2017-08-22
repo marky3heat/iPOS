@@ -17,5 +17,6 @@ namespace iPOS.Web.Database
         public int NoId { get; set; }
         public string NoDescription { get; set; }
         public int No { get; set; }
+        public string Terminal { get; set; }
     }
 }

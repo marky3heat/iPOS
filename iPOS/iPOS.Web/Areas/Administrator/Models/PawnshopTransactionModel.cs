@@ -17,7 +17,8 @@ namespace iPOS.Web.Areas.Administrator.Models
         public string ApprovedBy { get; set; }
 
         public string ItemName { get; set; }
-        public string Weight { get; set; }
+        public int ItemTypeId { get; set; }
+        public int ItemCategoryId { get; set; }
         public string Remarks { get; set; }
 
         public string FirstName { get; set; }

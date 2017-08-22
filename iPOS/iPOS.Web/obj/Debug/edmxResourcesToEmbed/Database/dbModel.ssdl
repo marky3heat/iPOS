@@ -58,6 +58,7 @@
     <Property Name="NoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="NoDescription" Type="varchar" MaxLength="64" Nullable="false" />
     <Property Name="No" Type="int" Nullable="false" />
+    <Property Name="Terminal" Type="varchar" MaxLength="32" Nullable="false" />
   </EntityType>
   <EntityType Name="tbl_ipos_pawneditem">
     <Key>
