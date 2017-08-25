@@ -80,6 +80,28 @@
         });
     }
 
+    function getItemType() {
+        $.getJSON(RootUrl + "/Administrator/Base/GetItemType", function (result) {
+            itemType.removeAll();
+            itemType(result);
+        });
+    }
+    function getItemCategory(arg) {
+        var itemTypeId = "";
+        if (arg !== "") {
+            itemTypeId = arg;
+        } else {
+            itemTypeId = appraisedItem.ItemTypeId();
+        }
+
+        if (itemTypeId !== "") {
+            $.getJSON(RootUrl + "/Administrator/Base/GetItemCategory?ItemTypeId=" + itemTypeId, function (result) {
+                itemCategory.removeAll();
+                itemCategory(result);
+            });
+        }
+    }
+
     function setInitialDate() {
         $('.daterange-single').daterangepicker({
             singleDatePicker: true
@@ -114,7 +136,10 @@
         isSaveButtonShowed: isSaveButtonShowed,
         saveTransactionPawn: saveTransactionPawn,
 
-        model: model
+        model: model,
+
+        getItemType: getItemType,
+        getItemCategory: getItemCategory
     };
     return vm;
 })();

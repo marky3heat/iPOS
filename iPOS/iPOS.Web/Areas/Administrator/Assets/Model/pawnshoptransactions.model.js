@@ -52,7 +52,8 @@ app.createModeModel = function () {
     self.ContactNo = ko.observable();
 
     self.ItemName = ko.observable();
-    self.Weight = ko.observable();
+    self.ItemTypeId = ko.observable();
+    self.ItemCategoryId = ko.observable();
     self.Remarks = ko.observable();
 
     // #endregion     

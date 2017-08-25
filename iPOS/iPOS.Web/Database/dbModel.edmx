@@ -127,9 +127,9 @@
           <EntitySet Name="tbl_ipos_customer" EntityType="dbpawnshopModel.tbl_ipos_customer" />
           <EntitySet Name="tbl_ipos_itemcategory" EntityType="dbpawnshopModel.tbl_ipos_itemcategory" />
           <EntitySet Name="tbl_ipos_itemtype" EntityType="dbpawnshopModel.tbl_ipos_itemtype" />
-          <EntitySet Name="tbl_ipos_no_generator" EntityType="dbpawnshopModel.tbl_ipos_no_generator" />
           <EntitySet Name="tbl_ipos_pawneditem" EntityType="dbpawnshopModel.tbl_ipos_pawneditem" />
           <EntitySet Name="tbl_ipos_pawnshop_transactions" EntityType="dbpawnshopModel.tbl_ipos_pawnshop_transactions" />
+          <EntitySet Name="tbl_ipos_no_generator" EntityType="dbpawnshopModel.tbl_ipos_no_generator" />
         </EntityContainer>
         <EntityType Name="tbl_ipos_appraiseditem">
           <Key>
@@ -182,15 +182,6 @@
           <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
           <Property Name="CreatedAt" Type="DateTime" Nullable="false" />
         </EntityType>
-        <EntityType Name="tbl_ipos_no_generator">
-          <Key>
-            <PropertyRef Name="NoId" />
-          </Key>
-          <Property Name="NoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NoDescription" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Name="No" Type="Int32" Nullable="false" />
-          <Property Name="Terminal" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="tbl_ipos_pawneditem">
           <Key>
             <PropertyRef Name="PawnedItemId" />
@@ -234,6 +225,15 @@
           <Property Name="ApprovedBy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
           <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
           <Property Name="CreatedAt" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_ipos_no_generator">
+          <Key>
+            <PropertyRef Name="NoId" />
+          </Key>
+          <Property Name="NoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NoDescription" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="No" Type="Int32" Nullable="false" />
+          <Property Name="Terminal" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -296,16 +296,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbl_ipos_no_generator">
-            <EntityTypeMapping TypeName="dbpawnshopModel.tbl_ipos_no_generator">
-              <MappingFragment StoreEntitySet="tbl_ipos_no_generator">
-                <ScalarProperty Name="Terminal" ColumnName="Terminal" />
-                <ScalarProperty Name="No" ColumnName="No" />
-                <ScalarProperty Name="NoDescription" ColumnName="NoDescription" />
-                <ScalarProperty Name="NoId" ColumnName="NoId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tbl_ipos_pawneditem">
             <EntityTypeMapping TypeName="dbpawnshopModel.tbl_ipos_pawneditem">
               <MappingFragment StoreEntitySet="tbl_ipos_pawneditem">
@@ -349,6 +339,16 @@
                 <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
                 <ScalarProperty Name="TransactionNo" ColumnName="TransactionNo" />
                 <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ipos_no_generator">
+            <EntityTypeMapping TypeName="dbpawnshopModel.tbl_ipos_no_generator">
+              <MappingFragment StoreEntitySet="tbl_ipos_no_generator">
+                <ScalarProperty Name="Terminal" ColumnName="Terminal" />
+                <ScalarProperty Name="No" ColumnName="No" />
+                <ScalarProperty Name="NoDescription" ColumnName="NoDescription" />
+                <ScalarProperty Name="NoId" ColumnName="NoId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

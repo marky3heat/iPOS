@@ -9,9 +9,9 @@
         <EntityTypeShape EntityType="dbpawnshopModel.tbl_ipos_customer" Width="1.5" PointX="3" PointY="0.5" />
         <EntityTypeShape EntityType="dbpawnshopModel.tbl_ipos_itemcategory" Width="1.5" PointX="0.5" PointY="6.75" />
         <EntityTypeShape EntityType="dbpawnshopModel.tbl_ipos_itemtype" Width="1.5" PointX="2.125" PointY="6.75" />
-        <EntityTypeShape EntityType="dbpawnshopModel.tbl_ipos_no_generator" Width="1.5" PointX="7.875" PointY="0.5" />
         <EntityTypeShape EntityType="dbpawnshopModel.tbl_ipos_pawneditem" Width="1.5" PointX="6.25" PointY="0.5" />
         <EntityTypeShape EntityType="dbpawnshopModel.tbl_ipos_pawnshop_transactions" Width="1.5" PointX="0.5" PointY="0.5" />
+        <EntityTypeShape EntityType="dbpawnshopModel.tbl_ipos_no_generator" Width="1.5" PointX="7.875" PointY="0.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
