@@ -64,14 +64,12 @@ namespace iPOS.Web.Areas.Administrator.Controllers
 
             var result =
                 from a in listPawnedItem
-                join b in listAppraisedItem on a.AppraiseId equals b.AppraiseId
                 join c in listCustomer on a.CustomerId equals  c.CustomerId
                 select new
                 {
                     a.PawnedItemId,
                     a.PawnedItemNo,
                     a.PawnedDate,
-                    a.AppraiseId,
                     a.CustomerId,
                     a.PawnedItemContractNo,
                     a.LoanableAmount,
@@ -91,7 +89,6 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                     a.IsReleased,
                     a.CreatedBy,
                     a.CreatedAt,
-                    b.ItemName,
                     c.FirstName,
                     c.LastName
                 };
@@ -255,7 +252,6 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                     model.PawnedItemId = list.PawnedItemId;
                     model.PawnedItemNo = list.PawnedItemNo;
                     model.PawnedDate = list.PawnedDate;
-                    model.AppraiseId = list.AppraiseId;
                     model.CustomerId = list.CustomerId;
                     model.PawnedItemContractNo = list.PawnedItemContractNo;
                     model.LoanableAmount = list.LoanableAmount;
@@ -346,15 +342,7 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                     success = result;
                     if (result)
                     {
-                        tbl_ipos_appraiseditem modelAppraisal = null;
-
-                        modelAppraisal = await _appraisalService.FindById(list.AppraiseId);
-                        modelAppraisal.IsPawned = true;
-                        var update = await _appraisalService.Save(modelAppraisal);
-                        if (update)
-                        {
-                            message = "Successfully pawned.";
-                        }                
+                        message = "Successfully pawned.";
                     }
                     else
                         message = "Error saving data. Please contact administrator.";

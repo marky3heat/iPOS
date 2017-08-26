@@ -11,6 +11,7 @@ namespace iPOS.Web.Areas.Administrator.Models
         public string TransactionNo { get; set; }
         public System.DateTime TransactionDate { get; set; }
         public string TransactionType { get; set; }
+        public string CustomerId { get; set; }
         public string Terminal { get; set; }
         public string Status { get; set; }
         public string ReviewedBy { get; set; }

@@ -17,7 +17,6 @@ namespace iPOS.Web.Database
         public int AppraiseId { get; set; }
         public System.DateTime AppraiseDate { get; set; }
         public string AppraiseNo { get; set; }
-        public string PawnshopTransactionNo { get; set; }
         public int ItemTypeId { get; set; }
         public int ItemCategoryId { get; set; }
         public string ItemName { get; set; }
@@ -29,5 +28,6 @@ namespace iPOS.Web.Database
         public bool IsPawned { get; set; }
         public string CreatedBy { get; set; }
         public System.DateTime CreatedAt { get; set; }
+        public string PawnshopTransactionId { get; set; }
     }
 }

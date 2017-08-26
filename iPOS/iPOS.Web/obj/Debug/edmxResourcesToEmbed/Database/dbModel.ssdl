@@ -7,7 +7,6 @@
     <Property Name="AppraiseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="AppraiseDate" Type="date" Nullable="false" />
     <Property Name="AppraiseNo" Type="varchar" MaxLength="32" Nullable="false" />
-    <Property Name="PawnshopTransactionNo" Type="varchar" MaxLength="32" Nullable="false" />
     <Property Name="ItemTypeId" Type="int" Nullable="false" />
     <Property Name="ItemCategoryId" Type="int" Nullable="false" />
     <Property Name="ItemName" Type="varchar" MaxLength="64" Nullable="false" />
@@ -67,8 +66,6 @@
     <Property Name="PawnedItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="PawnedItemNo" Type="varchar" MaxLength="32" Nullable="false" />
     <Property Name="PawnedDate" Type="date" Nullable="false" />
-    <Property Name="PawnshopTransactionNo" Type="varchar" MaxLength="32" Nullable="false" />
-    <Property Name="AppraiseId" Type="int" Nullable="false" />
     <Property Name="CustomerId" Type="int" Nullable="false" />
     <Property Name="PawnedItemContractNo" Type="varchar" MaxLength="32" Nullable="false" />
     <Property Name="LoanableAmount" Type="decimal" Precision="15" Scale="2" Nullable="false" />
@@ -97,6 +94,9 @@
     <Property Name="TransactionNo" Type="varchar" MaxLength="32" Nullable="false" />
     <Property Name="TransactionDate" Type="date" Nullable="false" />
     <Property Name="TransactionType" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="CustomerId" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="AppraisalId" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="PawnedId" Type="varchar" MaxLength="32" Nullable="false" />
     <Property Name="Terminal" Type="varchar" MaxLength="32" Nullable="false" />
     <Property Name="Status" Type="varchar" MaxLength="32" Nullable="false" />
     <Property Name="ReviewedBy" Type="varchar" MaxLength="32" Nullable="false" />

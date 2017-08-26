@@ -59,6 +59,29 @@ namespace iPOS.Web.Areas.Administrator.Controllers
         #endregion
 
         #region JSON REQUEST METHODS
+
+        [HttpGet]
+        public async Task<JsonResult> GetTransactions()
+        {
+            var listPawnedItems = await _pawningService.GetNormalList();
+            var listAppraisedItems = await _appraisalService.GetList();
+            var listCustomers = await _customerService.GetCustomerList();
+            var listPawnshopTransactions = await _pawnshopTransactionService.GetListPawnshopTransactions();
+
+            var result =
+                from a in listPawnshopTransactions
+                select new
+                {
+                    a.TransactionId,
+                    a.TransactionNo,
+                    a.TransactionType,
+                    a.TransactionDate,
+                    a.Status,
+                };
+
+            return Json(new { data = result.OrderByDescending(d => d.Status).ThenBy(s => s.TransactionType) }, JsonRequestBehavior.AllowGet);
+        }
+
         public async Task<JsonResult> SaveTransactionSales(PawnshopTransactionModel model)
         {
             try
@@ -87,6 +110,7 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                     model1.TransactionNo = model.TransactionNo;
                     model1.TransactionDate = model.TransactionDate;
                     model1.TransactionType = "Pawning";
+                    model1.CustomerId = model.CustomerId;
                     model1.Terminal = "1";
                     model1.Status = "On Process";
                     model1.ReviewedBy = "";
@@ -105,7 +129,6 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                     tbl_ipos_appraiseditem model3 = new tbl_ipos_appraiseditem();
                     model3.AppraiseDate = DateTime.Now;
                     model3.AppraiseNo = "";
-                    model3.PawnshopTransactionNo = model.TransactionNo;
                     model3.ItemTypeId = model.ItemTypeId;
                     model3.ItemCategoryId = model.ItemCategoryId ;
                     model3.ItemName = model.ItemName;
@@ -117,6 +140,7 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                     model3.IsPawned = false;
                     model3.CreatedAt = DateTime.Now;
                     model3.CreatedBy = "";
+                    model3.PawnshopTransactionId = model.TransactionNo;
 
                     var result = await _pawnshopTransactionService.SavePawnshopTransactions(model1);
                     var result1 = await _customerService.SaveCustomer(model2);

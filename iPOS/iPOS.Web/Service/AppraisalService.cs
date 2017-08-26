@@ -123,7 +123,7 @@ namespace iPOS.Web.Service
             {
                 using (var uow = _unitOfWorkFactory.Create())
                 {
-                    var result = await FindByAppraiseNo(model.AppraiseNo);
+                    var result = await FindById(model.AppraiseId);
                     if (result == null)
                     {
                         uow.AppraisedItemRepository.Insert(model);

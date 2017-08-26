@@ -17,8 +17,6 @@ namespace iPOS.Web.Database
         public int PawnedItemId { get; set; }
         public string PawnedItemNo { get; set; }
         public System.DateTime PawnedDate { get; set; }
-        public string PawnshopTransactionNo { get; set; }
-        public int AppraiseId { get; set; }
         public int CustomerId { get; set; }
         public string PawnedItemContractNo { get; set; }
         public decimal LoanableAmount { get; set; }

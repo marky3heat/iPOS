@@ -59,6 +59,19 @@ namespace iPOS.Web.Areas.Administrator.Controllers
 
         #region JSON REQUEST METHODS
 
+        public async Task<JsonResult> GetCustomer()
+        {
+            var listCustomer = await _customerService.GetCustomerList();
+            var result = listCustomer.Select(item => new tbl_ipos_customer()
+            {
+                CustomerId = item.CustomerId,
+                FirstName = item.FirstName + " " + item.LastName,
+                LastName = item.LastName
+            });
+
+            return Json(result.OrderBy(o => o.LastName), JsonRequestBehavior.AllowGet);
+        }
+
         public async Task<JsonResult> GetItemType()
         {
             var list = await _appraisalService.GetItemTypeList();

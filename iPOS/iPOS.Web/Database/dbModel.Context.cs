@@ -25,12 +25,12 @@ namespace iPOS.Web.Database
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<tbl_ipos_appraiseditem> tbl_ipos_appraiseditem { get; set; }
-        public virtual DbSet<tbl_ipos_customer> tbl_ipos_customer { get; set; }
         public virtual DbSet<tbl_ipos_itemcategory> tbl_ipos_itemcategory { get; set; }
         public virtual DbSet<tbl_ipos_itemtype> tbl_ipos_itemtype { get; set; }
-        public virtual DbSet<tbl_ipos_pawneditem> tbl_ipos_pawneditem { get; set; }
-        public virtual DbSet<tbl_ipos_pawnshop_transactions> tbl_ipos_pawnshop_transactions { get; set; }
         public virtual DbSet<tbl_ipos_no_generator> tbl_ipos_no_generator { get; set; }
+        public virtual DbSet<tbl_ipos_customer> tbl_ipos_customer { get; set; }
+        public virtual DbSet<tbl_ipos_pawneditem> tbl_ipos_pawneditem { get; set; }
+        public virtual DbSet<tbl_ipos_appraiseditem> tbl_ipos_appraiseditem { get; set; }
+        public virtual DbSet<tbl_ipos_pawnshop_transactions> tbl_ipos_pawnshop_transactions { get; set; }
     }
 }
