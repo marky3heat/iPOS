@@ -32,26 +32,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tbl_ipos_appraiseditem">
-      <EntityTypeMapping TypeName="dbpawnshopModel.tbl_ipos_appraiseditem">
-        <MappingFragment StoreEntitySet="tbl_ipos_appraiseditem">
-          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-          <ScalarProperty Name="IsPawned" ColumnName="IsPawned" />
-          <ScalarProperty Name="CustomerLastName" ColumnName="CustomerLastName" />
-          <ScalarProperty Name="CustomerFirstName" ColumnName="CustomerFirstName" />
-          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-          <ScalarProperty Name="AppraisedValue" ColumnName="AppraisedValue" />
-          <ScalarProperty Name="Weight" ColumnName="Weight" />
-          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
-          <ScalarProperty Name="ItemCategoryId" ColumnName="ItemCategoryId" />
-          <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
-          <ScalarProperty Name="AppraiseNo" ColumnName="AppraiseNo" />
-          <ScalarProperty Name="AppraiseDate" ColumnName="AppraiseDate" />
-          <ScalarProperty Name="AppraiseId" ColumnName="AppraiseId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tbl_ipos_customer">
       <EntityTypeMapping TypeName="dbpawnshopModel.tbl_ipos_customer">
         <MappingFragment StoreEntitySet="tbl_ipos_customer">
@@ -93,6 +73,27 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tbl_ipos_appraiseditem">
+      <EntityTypeMapping TypeName="dbpawnshopModel.tbl_ipos_appraiseditem">
+        <MappingFragment StoreEntitySet="tbl_ipos_appraiseditem">
+          <ScalarProperty Name="PawnshopTransactionId" ColumnName="PawnshopTransactionId" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsPawned" ColumnName="IsPawned" />
+          <ScalarProperty Name="CustomerLastName" ColumnName="CustomerLastName" />
+          <ScalarProperty Name="CustomerFirstName" ColumnName="CustomerFirstName" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="AppraisedValue" ColumnName="AppraisedValue" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ItemCategoryId" ColumnName="ItemCategoryId" />
+          <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+          <ScalarProperty Name="AppraiseNo" ColumnName="AppraiseNo" />
+          <ScalarProperty Name="AppraiseDate" ColumnName="AppraiseDate" />
+          <ScalarProperty Name="AppraiseId" ColumnName="AppraiseId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="tbl_ipos_pawnshop_transactions">
       <EntityTypeMapping TypeName="dbpawnshopModel.tbl_ipos_pawnshop_transactions">
         <MappingFragment StoreEntitySet="tbl_ipos_pawnshop_transactions">
@@ -102,8 +103,6 @@
           <ScalarProperty Name="ReviewedBy" ColumnName="ReviewedBy" />
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="Terminal" ColumnName="Terminal" />
-          <ScalarProperty Name="PawnedId" ColumnName="PawnedId" />
-          <ScalarProperty Name="AppraisalId" ColumnName="AppraisalId" />
           <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
           <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
           <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />

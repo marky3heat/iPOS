@@ -18,6 +18,7 @@
     <Property Name="IsPawned" Type="bool" Nullable="false" />
     <Property Name="CreatedBy" Type="varchar" MaxLength="24" Nullable="false" />
     <Property Name="CreatedAt" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="PawnshopTransactionId" Type="varchar" MaxLength="32" Nullable="false" />
   </EntityType>
   <EntityType Name="tbl_ipos_customer">
     <Key>
@@ -95,8 +96,6 @@
     <Property Name="TransactionDate" Type="date" Nullable="false" />
     <Property Name="TransactionType" Type="varchar" MaxLength="32" Nullable="false" />
     <Property Name="CustomerId" Type="varchar" MaxLength="32" Nullable="false" />
-    <Property Name="AppraisalId" Type="varchar" MaxLength="32" Nullable="false" />
-    <Property Name="PawnedId" Type="varchar" MaxLength="32" Nullable="false" />
     <Property Name="Terminal" Type="varchar" MaxLength="32" Nullable="false" />
     <Property Name="Status" Type="varchar" MaxLength="32" Nullable="false" />
     <Property Name="ReviewedBy" Type="varchar" MaxLength="32" Nullable="false" />

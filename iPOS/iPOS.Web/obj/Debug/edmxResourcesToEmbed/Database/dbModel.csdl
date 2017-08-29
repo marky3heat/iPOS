@@ -4,9 +4,9 @@
     <EntitySet Name="tbl_ipos_itemcategory" EntityType="dbpawnshopModel.tbl_ipos_itemcategory" />
     <EntitySet Name="tbl_ipos_itemtype" EntityType="dbpawnshopModel.tbl_ipos_itemtype" />
     <EntitySet Name="tbl_ipos_no_generator" EntityType="dbpawnshopModel.tbl_ipos_no_generator" />
-    <EntitySet Name="tbl_ipos_appraiseditem" EntityType="dbpawnshopModel.tbl_ipos_appraiseditem" />
     <EntitySet Name="tbl_ipos_customer" EntityType="dbpawnshopModel.tbl_ipos_customer" />
     <EntitySet Name="tbl_ipos_pawneditem" EntityType="dbpawnshopModel.tbl_ipos_pawneditem" />
+    <EntitySet Name="tbl_ipos_appraiseditem" EntityType="dbpawnshopModel.tbl_ipos_appraiseditem" />
     <EntitySet Name="tbl_ipos_pawnshop_transactions" EntityType="dbpawnshopModel.tbl_ipos_pawnshop_transactions" />
   </EntityContainer>
   <EntityType Name="tbl_ipos_itemcategory">
@@ -36,25 +36,6 @@
     <Property Name="NoDescription" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
     <Property Name="No" Type="Int32" Nullable="false" />
     <Property Name="Terminal" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="tbl_ipos_appraiseditem">
-    <Key>
-      <PropertyRef Name="AppraiseId" />
-    </Key>
-    <Property Name="AppraiseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="AppraiseDate" Type="DateTime" Nullable="false" />
-    <Property Name="AppraiseNo" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-    <Property Name="ItemTypeId" Type="Int32" Nullable="false" />
-    <Property Name="ItemCategoryId" Type="Int32" Nullable="false" />
-    <Property Name="ItemName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-    <Property Name="Weight" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-    <Property Name="AppraisedValue" Type="Decimal" Nullable="false" />
-    <Property Name="Remarks" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
-    <Property Name="CustomerFirstName" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-    <Property Name="CustomerLastName" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-    <Property Name="IsPawned" Type="Boolean" Nullable="false" />
-    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="24" FixedLength="false" Unicode="false" />
-    <Property Name="CreatedAt" Type="DateTime" Nullable="false" />
   </EntityType>
   <EntityType Name="tbl_ipos_customer">
     <Key>
@@ -95,6 +76,26 @@
     <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
     <Property Name="CreatedAt" Type="DateTime" Nullable="false" />
   </EntityType>
+  <EntityType Name="tbl_ipos_appraiseditem">
+    <Key>
+      <PropertyRef Name="AppraiseId" />
+    </Key>
+    <Property Name="AppraiseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AppraiseDate" Type="DateTime" Nullable="false" />
+    <Property Name="AppraiseNo" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="ItemTypeId" Type="Int32" Nullable="false" />
+    <Property Name="ItemCategoryId" Type="Int32" Nullable="false" />
+    <Property Name="ItemName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="Weight" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="AppraisedValue" Type="Decimal" Nullable="false" />
+    <Property Name="Remarks" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerFirstName" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerLastName" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="IsPawned" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="24" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" />
+    <Property Name="PawnshopTransactionId" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+  </EntityType>
   <EntityType Name="tbl_ipos_pawnshop_transactions">
     <Key>
       <PropertyRef Name="TransactionId" />
@@ -104,8 +105,6 @@
     <Property Name="TransactionDate" Type="DateTime" Nullable="false" />
     <Property Name="TransactionType" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
     <Property Name="CustomerId" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-    <Property Name="AppraisalId" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-    <Property Name="PawnedId" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
     <Property Name="Terminal" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
     <Property Name="Status" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
     <Property Name="ReviewedBy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />

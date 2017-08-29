@@ -48,15 +48,19 @@
             </div>
             
             <h6>Customer information</h6>
+
             <div class="form-group">
-                <label class="control-label col-lg-3">Customer name<span class="text-danger"> *</span></label>
-                <div class="col-lg-6">
-                    <select id="CustomerId" data-bind="options: customer, optionsValue: 'CustomerId', optionsText: 'FirstName', optionsCaption: '', event:{ change: getCustomerById}" data-placeholder="Select customer" class="select required" ></select>
-                </div>
-                <div class="col-lg-3">
-                    <button type="button" class="btn bg-warning-400 access-open" id="mlgs_test_form">Create new customer</button>
+                <div class="row">
+                    <div class="col-lg-9">
+                        <label>Customer name<span class="text-danger"> *</span></label>
+                        <select id="CustomerId" data-bind="options: customer, optionsValue: 'CustomerId', optionsText: 'FirstName', optionsCaption: ''" data-placeholder="Select customer" class="select required"></select>
+                    </div>
+                    <div class="col-lg-3">
+                        <button type="button" class="btn bg-warning-400 access-open" id="create_customer">Create new customer</button>
+                    </div>
                 </div>
             </div>
+
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-6">
