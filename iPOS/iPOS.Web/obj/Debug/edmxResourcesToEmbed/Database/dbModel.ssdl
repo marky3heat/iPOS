@@ -1,5 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="dbpawnshopModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_customer">
+    <Key>
+      <PropertyRef Name="autonum" />
+    </Key>
+    <Property Name="autonum" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_code" Type="uint" Nullable="false" />
+    <Property Name="trade_name" Type="varchar" MaxLength="150" />
+    <Property Name="customer_class" Type="varchar" MaxLength="15" />
+    <Property Name="last_name" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="first_name" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="middle_name" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="business_phone_no" Type="varchar" MaxLength="15" />
+    <Property Name="mobile_no" Type="varchar" MaxLength="15" />
+    <Property Name="fax_no" Type="varchar" MaxLength="15" />
+    <Property Name="st_address" Type="varchar" MaxLength="60" />
+    <Property Name="city_address" Type="varchar" MaxLength="30" />
+    <Property Name="zip_code" Type="int" />
+    <Property Name="vat" Type="char" MaxLength="1" />
+    <Property Name="bir_reg_no" Type="varchar" MaxLength="25" />
+    <Property Name="tax_id_no" Type="varchar" MaxLength="25" />
+    <Property Name="credit_terms" Type="smallint" />
+    <Property Name="credit_limit" Type="double" />
+    <Property Name="balance" Type="double" />
+    <Property Name="date_as_of" Type="date" />
+    <Property Name="active" Type="char" MaxLength="1" />
+    <Property Name="group_id" Type="int" />
+    <Property Name="group_name" Type="varchar" MaxLength="150" />
+    <Property Name="remarks" Type="varchar" MaxLength="100" />
+    <Property Name="customer_image" Type="longblob" />
+    <Property Name="date_entered" Type="date" />
+    <Property Name="ul_code" Type="int" />
+  </EntityType>
   <EntityType Name="tbl_ipos_appraiseditem">
     <Key>
       <PropertyRef Name="AppraiseId" />
@@ -104,6 +136,7 @@
     <Property Name="CreatedAt" Type="datetime" Precision="0" Nullable="false" />
   </EntityType>
   <EntityContainer Name="dbpawnshopModelStoreContainer">
+    <EntitySet Name="tbl_customer" EntityType="Self.tbl_customer" Schema="dbpawnshop" store:Type="Tables" />
     <EntitySet Name="tbl_ipos_appraiseditem" EntityType="Self.tbl_ipos_appraiseditem" Schema="dbpawnshop" store:Type="Tables" />
     <EntitySet Name="tbl_ipos_customer" EntityType="Self.tbl_ipos_customer" Schema="dbpawnshop" store:Type="Tables" />
     <EntitySet Name="tbl_ipos_itemcategory" EntityType="Self.tbl_ipos_itemcategory" Schema="dbpawnshop" store:Type="Tables" />

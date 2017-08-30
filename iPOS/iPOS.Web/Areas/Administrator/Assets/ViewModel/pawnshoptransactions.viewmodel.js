@@ -312,11 +312,11 @@ $(function () {
                             document.getElementById("FirstName").focus();
                             return false;
                         }
-                        var firstname = $('#cFirstName').val();
-                        var lastname = $('#cFirstName').val();
-                        var middlename = $('#cFirstName').val();
-                        var address = $('#cFirstName').val();
-                        var contactno = $('#cFirstName').val();
+                        var firstname = $('#FirstName').val();
+                        var lastname = $('#LastName').val();
+                        var middlename = $('#MiddleName').val();
+                        var address = $('#Address').val();
+                        var contactno = $('#ContactNo').val();
 
                         app.vm.saveCustomer(
                             firstname,

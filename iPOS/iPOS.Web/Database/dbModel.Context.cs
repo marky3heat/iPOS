@@ -32,5 +32,6 @@ namespace iPOS.Web.Database
         public virtual DbSet<tbl_ipos_pawneditem> tbl_ipos_pawneditem { get; set; }
         public virtual DbSet<tbl_ipos_appraiseditem> tbl_ipos_appraiseditem { get; set; }
         public virtual DbSet<tbl_ipos_pawnshop_transactions> tbl_ipos_pawnshop_transactions { get; set; }
+        public virtual DbSet<tbl_customer> tbl_customer { get; set; }
     }
 }

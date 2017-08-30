@@ -11,7 +11,7 @@ namespace iPOS.Web.Repository.Interface
 
         IRepository<tbl_ipos_pawnshop_transactions> PawnshopTransactionsRepository { get; }
 
-        IRepository<tbl_ipos_customer> CustomerRepository { get; }
+        IRepository<tbl_customer> CustomerRepository { get; }
 
         IRepository<tbl_ipos_appraiseditem> AppraisedItemRepository { get; }
         IRepository<tbl_ipos_pawneditem> PawnedItemRepository { get; }

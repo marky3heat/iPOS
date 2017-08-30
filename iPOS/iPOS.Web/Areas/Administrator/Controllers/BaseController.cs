@@ -64,9 +64,9 @@ namespace iPOS.Web.Areas.Administrator.Controllers
             var listCustomer = await _customerService.GetCustomerList();
             var result = listCustomer.Select(item => new tbl_ipos_customer()
             {
-                CustomerId = item.CustomerId,
-                FirstName = item.FirstName + " " + item.LastName,
-                LastName = item.LastName
+                CustomerId = item.autonum,
+                FirstName = item.first_name + " " + item.last_name,
+                LastName = item.last_name
             });
 
             return Json(result.OrderBy(o => o.LastName), JsonRequestBehavior.AllowGet);

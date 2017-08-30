@@ -64,7 +64,7 @@ namespace iPOS.Web.Areas.Administrator.Controllers
 
             var result =
                 from a in listPawnedItem
-                join c in listCustomer on a.CustomerId equals  c.CustomerId
+                join c in listCustomer on a.CustomerId equals  c.autonum
                 select new
                 {
                     a.PawnedItemId,
@@ -89,8 +89,8 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                     a.IsReleased,
                     a.CreatedBy,
                     a.CreatedAt,
-                    c.FirstName,
-                    c.LastName
+                    c.first_name,
+                    c.last_name
                 };
 
             return Json(new { data = result.OrderByDescending(d => d.PawnedDate).ThenBy(s => s.IsReleased) }, JsonRequestBehavior.AllowGet);
@@ -116,9 +116,9 @@ namespace iPOS.Web.Areas.Administrator.Controllers
             var listCustomer = await _customerService.GetCustomerList();
             var result = listCustomer.Select(item => new tbl_ipos_customer()
             {
-                CustomerId = item.CustomerId,
-                FirstName = item.FirstName + " " + item.LastName,
-                LastName = item.LastName
+                CustomerId = item.autonum,
+                FirstName = item.first_name + " " + item.last_name,
+                LastName = item.last_name
             });
 
             return Json(result.OrderBy(o => o.LastName), JsonRequestBehavior.AllowGet);
@@ -176,26 +176,26 @@ namespace iPOS.Web.Areas.Administrator.Controllers
             return Json(serverDate, JsonRequestBehavior.AllowGet);
         }
 
-        public async Task<JsonResult> SaveCustomer(tbl_ipos_customer list)
+        public async Task<JsonResult> SaveCustomer(tbl_customer list)
         {
             try
             {
-                tbl_ipos_customer model = null;
+                tbl_customer model = null;
 
                 bool success = false;
                 string message = "";
 
-                if (string.IsNullOrEmpty(list.CustomerId.ToString()) || list.CustomerId.ToString() == "0")
+                if (string.IsNullOrEmpty(list.autonum.ToString()) || list.autonum.ToString() == "0")
                 {
                     //DateTime dt = DateTime.ParseExact(item.AppraiseDate, "yyyy/MM/dd", CultureInfo.InvariantCulture);
 
-                    model = new tbl_ipos_customer();
-                    model.FirstName = list.FirstName;
-                    model.LastName = list.LastName;
-                    model.MiddleName = list.MiddleName;
-                    model.MiddleInitial = list.MiddleName[0].ToString();
-                    model.Address = list.Address;
-                    model.ContactNo = list.ContactNo;
+                    model = new tbl_customer();
+                    model.first_name = list.first_name;
+                    model.last_name = list.last_name;
+                    model.middle_name = list.middle_name;
+                    //model.MiddleInitial = list.MiddleName[0].ToString();
+                    model.st_address = list.st_address;
+                    model.mobile_no = list.mobile_no;
 
                     var result = await _customerService.SaveCustomer(model);
                     success = result;
@@ -210,12 +210,12 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                 }
                 else
                 {
-                    model = await _customerService.FindByIdCustomer(list.CustomerId);
-                    model.FirstName = list.FirstName;
-                    model.LastName = list.LastName;
-                    model.MiddleName = list.MiddleName;
-                    model.Address = list.Address;
-                    model.ContactNo = list.ContactNo;
+                    model = await _customerService.FindByIdCustomer(list.autonum);
+                    model.first_name = list.first_name;
+                    model.last_name = list.last_name;
+                    model.middle_name = list.middle_name;
+                    model.st_address = list.st_address;
+                    model.mobile_no = list.mobile_no;
 
                     var result = await _customerService.UpdateCustomer(model);
                     success = result;

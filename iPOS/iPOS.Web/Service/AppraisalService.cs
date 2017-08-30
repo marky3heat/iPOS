@@ -238,7 +238,7 @@ namespace iPOS.Web.Service
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<List<tbl_ipos_customer>> GetCustomerList()
+        public async Task<List<tbl_customer>> GetCustomerList()
         {
             try
             {

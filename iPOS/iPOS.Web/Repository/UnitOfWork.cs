@@ -38,13 +38,13 @@ namespace iPOS.Web.Repository
             }
         }
 
-        private Repository<tbl_ipos_customer> _customerRepository;
-        public IRepository<tbl_ipos_customer> CustomerRepository
+        private Repository<tbl_customer> _customerRepository;
+        public IRepository<tbl_customer> CustomerRepository
         {
             get
             {
                 if (_customerRepository == null)
-                    _customerRepository = new Repository<tbl_ipos_customer>(_dbContext);
+                    _customerRepository = new Repository<tbl_customer>(_dbContext);
                 return _customerRepository;
             }
         }

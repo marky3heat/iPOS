@@ -8,6 +8,7 @@
     <EntitySet Name="tbl_ipos_pawneditem" EntityType="dbpawnshopModel.tbl_ipos_pawneditem" />
     <EntitySet Name="tbl_ipos_appraiseditem" EntityType="dbpawnshopModel.tbl_ipos_appraiseditem" />
     <EntitySet Name="tbl_ipos_pawnshop_transactions" EntityType="dbpawnshopModel.tbl_ipos_pawnshop_transactions" />
+    <EntitySet Name="tbl_customer" EntityType="dbpawnshopModel.tbl_customer" />
   </EntityContainer>
   <EntityType Name="tbl_ipos_itemcategory">
     <Key>
@@ -111,5 +112,37 @@
     <Property Name="ApprovedBy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
     <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
     <Property Name="CreatedAt" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_customer">
+    <Key>
+      <PropertyRef Name="autonum" />
+    </Key>
+    <Property Name="autonum" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_code" Type="Int64" Nullable="false" />
+    <Property Name="trade_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="customer_class" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="last_name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="first_name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="middle_name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="business_phone_no" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="mobile_no" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="fax_no" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="st_address" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="city_address" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="zip_code" Type="Int32" />
+    <Property Name="vat" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="bir_reg_no" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="tax_id_no" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="credit_terms" Type="Int16" />
+    <Property Name="credit_limit" Type="Double" />
+    <Property Name="balance" Type="Double" />
+    <Property Name="date_as_of" Type="DateTime" />
+    <Property Name="active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="group_id" Type="Int32" />
+    <Property Name="group_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="remarks" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="customer_image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="date_entered" Type="DateTime" />
+    <Property Name="ul_code" Type="Int32" />
   </EntityType>
 </Schema>

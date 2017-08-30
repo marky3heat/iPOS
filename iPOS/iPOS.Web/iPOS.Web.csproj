@@ -243,6 +243,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Database\tbl_customer.cs">
+      <DependentUpon>dbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\tbl_ipos_appraiseditem.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>

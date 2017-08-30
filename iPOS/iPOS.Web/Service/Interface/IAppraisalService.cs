@@ -29,7 +29,7 @@ namespace iPOS.Web.Service.Interface
         Task<List<tbl_ipos_itemcategory>> GetItemCategoryList();
         Task<List<tbl_ipos_itemcategory>> GetItemCategoryByItemTypeId(int ItemTypeId);
 
-        Task<List<tbl_ipos_customer>> GetCustomerList();
+        Task<List<tbl_customer>> GetCustomerList();
         #endregion
 
     }

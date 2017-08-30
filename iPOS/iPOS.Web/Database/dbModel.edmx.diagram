@@ -12,6 +12,7 @@
         <EntityTypeShape EntityType="dbpawnshopModel.tbl_ipos_pawneditem" Width="1.5" PointX="6.125" PointY="0.5" />
         <EntityTypeShape EntityType="dbpawnshopModel.tbl_ipos_appraiseditem" Width="1.5" PointX="0.5" PointY="0.5" />
         <EntityTypeShape EntityType="dbpawnshopModel.tbl_ipos_pawnshop_transactions" Width="1.5" PointX="2" PointY="0.5" />
+        <EntityTypeShape EntityType="dbpawnshopModel.tbl_customer" Width="1.5" PointX="11.125" PointY="0.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

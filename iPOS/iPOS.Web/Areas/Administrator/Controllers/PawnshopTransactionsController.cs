@@ -118,13 +118,12 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                     model1.CreatedBy = "";
                     model1.CreatedAt = DateTime.Now;
 
-                    tbl_ipos_customer model2 = new tbl_ipos_customer();
-                    model2.FirstName = model.FirstName;
-                    model2.LastName = model.LastName;
-                    model2.MiddleName = "";
-                    model2.MiddleInitial = "";
-                    model2.Address = model.Address;
-                    model2.ContactNo = model.ContactNo;
+                    tbl_customer model2 = new tbl_customer();
+                    model2.first_name = model.first_name;
+                    model2.last_name = model.last_name;
+                    model2.middle_name = "";
+                    model2.st_address = model.st_address;
+                    model2.mobile_no = model.mobile_no;
 
                     tbl_ipos_appraiseditem model3 = new tbl_ipos_appraiseditem();
                     model3.AppraiseDate = DateTime.Now;
@@ -135,8 +134,8 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                     model3.Weight = "";
                     model3.AppraisedValue = 0;
                     model3.Remarks = model.Remarks;
-                    model3.CustomerFirstName = model.FirstName;
-                    model3.CustomerLastName = model.LastName;
+                    model3.CustomerFirstName = model.first_name;
+                    model3.CustomerLastName = model.last_name;
                     model3.IsPawned = false;
                     model3.CreatedAt = DateTime.Now;
                     model3.CreatedBy = "";

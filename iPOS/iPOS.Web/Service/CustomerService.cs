@@ -22,7 +22,7 @@ namespace iPOS.Web.Service
         #endregion
 
         #region PUBLIC MEMBER METHODS (CUSTOMER)
-        public async Task<tbl_ipos_customer> FindByIdCustomer(int id)
+        public async Task<tbl_customer> FindByIdCustomer(int id)
         {
             try
             {
@@ -36,13 +36,13 @@ namespace iPOS.Web.Service
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<tbl_ipos_customer> FindByFirstnameLastnameCustomer(string firstname, string lastname)
+        public async Task<tbl_customer> FindByFirstnameLastnameCustomer(string firstname, string lastname)
         {
             try
             {
                 using (var uow = _unitOfWorkFactory.Create())
                 {
-                    var result = await uow.CustomerRepository.AllWithAsync(u => u.FirstName == firstname && u.LastName == lastname);
+                    var result = await uow.CustomerRepository.AllWithAsync(u => u.first_name == firstname && u.last_name == lastname);
                     return result.FirstOrDefault();
                 }
             }
@@ -51,7 +51,7 @@ namespace iPOS.Web.Service
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<List<tbl_ipos_customer>> GetCustomerList(
+        public async Task<List<tbl_customer>> GetCustomerList(
             int pageIndex = 0,
             int pageSize = 100)
         {
@@ -76,13 +76,13 @@ namespace iPOS.Web.Service
             }
         }
 
-        public async Task<bool> SaveCustomer(tbl_ipos_customer model)
+        public async Task<bool> SaveCustomer(tbl_customer model)
         {
             try
             {
                 using (var uow = _unitOfWorkFactory.Create())
                 {
-                    var customer = await FindByFirstnameLastnameCustomer(model.FirstName, model.LastName);
+                    var customer = await FindByFirstnameLastnameCustomer(model.first_name, model.last_name);
                     if (customer == null)
                     {
                         uow.CustomerRepository.Insert(model);
@@ -101,13 +101,13 @@ namespace iPOS.Web.Service
             }
         }
 
-        public async Task<bool> UpdateCustomer(tbl_ipos_customer model)
+        public async Task<bool> UpdateCustomer(tbl_customer model)
         {
             try
             {
                 using (var uow = _unitOfWorkFactory.Create())
                 {
-                    var customer = await FindByIdCustomer(model.CustomerId);
+                    var customer = await FindByIdCustomer(model.autonum);
                     if (customer != null)
                     {
                         uow.CustomerRepository.Update(model);

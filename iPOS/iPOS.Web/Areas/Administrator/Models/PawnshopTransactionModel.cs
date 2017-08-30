@@ -22,9 +22,9 @@ namespace iPOS.Web.Areas.Administrator.Models
         public int ItemCategoryId { get; set; }
         public string Remarks { get; set; }
 
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Address { get; set; }
-        public string ContactNo { get; set; }
+        public string first_name { get; set; }
+        public string last_name { get; set; }
+        public string st_address { get; set; }
+        public string mobile_no { get; set; }
     }
 }
