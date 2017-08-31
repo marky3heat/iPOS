@@ -63,9 +63,6 @@ namespace iPOS.Web.Areas.Administrator.Controllers
         [HttpGet]
         public async Task<JsonResult> GetTransactions()
         {
-            var listPawnedItems = await _pawningService.GetNormalList();
-            var listAppraisedItems = await _appraisalService.GetList();
-            var listCustomers = await _customerService.GetCustomerList();
             var listPawnshopTransactions = await _pawnshopTransactionService.GetListPawnshopTransactions();
 
             var result =

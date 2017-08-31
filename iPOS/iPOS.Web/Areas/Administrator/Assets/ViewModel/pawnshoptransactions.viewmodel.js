@@ -60,7 +60,7 @@
                             '</ul>';
                     }
                 },
-                { "data": "TransactionId", "className": "hide" }
+                { "data": "TransactionId", "className": "hide" },{ "data": "TransactionId", "className": "hide" }
             ]
         });
     }
@@ -89,14 +89,15 @@
     }
 
     function showCreateModePawning() {
+        getServerDate();
+        getTransactionNo();
+        getItemType();
+        getCustomer();
+
         isListShowed(false);
         isCreateModeShowed(true);
         isSaveButtonShowed(true);
         saveButtonCaption("Save");
-
-        getServerDate();
-        getTransactionNo();
-        getItemType();
     }
 
     function viewItem(arg) {

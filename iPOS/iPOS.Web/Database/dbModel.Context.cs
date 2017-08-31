@@ -33,5 +33,14 @@ namespace iPOS.Web.Database
         public virtual DbSet<tbl_ipos_appraiseditem> tbl_ipos_appraiseditem { get; set; }
         public virtual DbSet<tbl_ipos_pawnshop_transactions> tbl_ipos_pawnshop_transactions { get; set; }
         public virtual DbSet<tbl_customer> tbl_customer { get; set; }
+        public virtual DbSet<tbl_product> tbl_product { get; set; }
+        public virtual DbSet<tbl_product_add_info> tbl_product_add_info { get; set; }
+        public virtual DbSet<tbl_product_brand_setup> tbl_product_brand_setup { get; set; }
+        public virtual DbSet<tbl_product_category_info> tbl_product_category_info { get; set; }
+        public virtual DbSet<tbl_product_category_setup> tbl_product_category_setup { get; set; }
+        public virtual DbSet<tbl_product_category_sub1> tbl_product_category_sub1 { get; set; }
+        public virtual DbSet<tbl_product_category_sub2> tbl_product_category_sub2 { get; set; }
+        public virtual DbSet<tbl_product_category_sub3> tbl_product_category_sub3 { get; set; }
+        public virtual DbSet<tbl_product_type> tbl_product_type { get; set; }
     }
 }
