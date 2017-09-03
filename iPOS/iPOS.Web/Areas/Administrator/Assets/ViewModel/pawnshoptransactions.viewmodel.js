@@ -1,10 +1,13 @@
 ﻿app.vm = (function () {
     //"use strict";
     var model = new app.createModeModel();
+    var customerModel = new app.createCustomerModel();
 
     // #region CONTROLS                
     var isListShowed = ko.observable(true);
-    var isCreateModeShowed = ko.observable(false);
+    var isCreateModeShowedSales = ko.observable(false);
+    var isCreateModeShowedPawning = ko.observable(false);
+    var isCreateModeShowedLayaway = ko.observable(false);
 
     var isSaveButtonShowed = ko.observable(false);
     var saveButtonCaption = ko.observable("");
@@ -88,6 +91,20 @@
         model.Remarks("");
     }
 
+    function showCreateModeSales() {
+        getServerDate();
+        getTransactionNo();
+        getItemType();
+        getCustomer();
+
+        isListShowed(false);
+        isCreateModeShowedSales(true);
+        isCreateModeShowedPawning(false);
+        isCreateModeShowedLayaway(false);
+
+        isSaveButtonShowed(true);
+        saveButtonCaption("Save");
+    }
     function showCreateModePawning() {
         getServerDate();
         getTransactionNo();
@@ -95,7 +112,24 @@
         getCustomer();
 
         isListShowed(false);
-        isCreateModeShowed(true);
+        isCreateModeShowedSales(false);
+        isCreateModeShowedPawning(true);
+        isCreateModeShowedLayaway(false);
+
+        isSaveButtonShowed(true);
+        saveButtonCaption("Save");
+    }
+    function showCreateModeLayaway() {
+        getServerDate();
+        getTransactionNo();
+        getItemType();
+        getCustomer();
+
+        isListShowed(false);
+        isCreateModeShowedSales(false);
+        isCreateModeShowedPawning(false);
+        isCreateModeShowedLayaway(true);
+
         isSaveButtonShowed(true);
         saveButtonCaption("Save");
     }
@@ -108,7 +142,10 @@
 
     function backToList() {
         isListShowed(true);
-        isCreateModeShowed(false);
+        isCreateModeShowedSales(false);
+        isCreateModeShowedPawning(true);
+        isCreateModeShowedLayaway(false);
+
         isSaveButtonShowed(false);
     }
 
@@ -155,6 +192,41 @@
         $.getJSON(RootUrl + "/Administrator/Base/GetCustomer", function (result) {
             customer.removeAll();
             customer(result);
+        });
+    }
+    function saveCustomer(firstname, lastname, middlename, address, contactno) {
+        /*VALIDATIONS -START*/
+
+        customerModel.FirstName(firstname);
+        customerModel.LastName(lastname);
+        customerModel.MiddleName(middlename);
+        customerModel.Address(address);
+        customerModel.ContactNo(contactno);
+
+        /*VALIDATIONS -END*/
+        debugger;
+        loaderApp.showPleaseWait();
+        var param = ko.toJS(ccustomerModel);
+        var url = RootUrl + "/Administrator/Pawning/SaveCustomer";
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: ko.utils.stringifyJson(param),
+            contentType: 'application/json; charset=utf-8',
+            success: function (result) {
+                if (result.success) {
+                    swal("Success", result.message, "success");
+                    getCustomer();
+
+                    loaderApp.hidePleaseWait();
+                } else {
+                    loaderApp.hidePleaseWait();
+
+                    swal("Error", result.message, "error");
+
+                    clearControls();
+                }
+            }
         });
     }
 
@@ -207,8 +279,14 @@
     var vm = {
         activate: activate,
         isListShowed: isListShowed,
-        isCreateModeShowed: isCreateModeShowed,
+        isCreateModeShowedSales: isCreateModeShowedSales,
+        isCreateModeShowedPawning: isCreateModeShowedPawning,
+        isCreateModeShowedLayaway: isCreateModeShowedLayaway,
+
+        showCreateModeSales: showCreateModeSales,
         showCreateModePawning: showCreateModePawning,
+        showCreateModeLayaway: showCreateModeLayaway,
+
         backToList: backToList,
         saveButtonCaption: saveButtonCaption,
         isSaveButtonShowed: isSaveButtonShowed,
@@ -224,7 +302,9 @@
         customer: customer
 
     };
+
     return vm;
+
 })();
 $(function () {
     "use strict";
@@ -241,7 +321,7 @@ $(function () {
                     label: "Sale",
                     className: "btn-success",
                     callback: function () {
-
+                        app.vm.showCreateModeSales();
                     }
                 },
                 danger: {
@@ -255,7 +335,7 @@ $(function () {
                     label: "Lay-away",
                     className: "btn-warning",
                     callback: function () {
-
+                        app.vm.showCreateModeLayaway();
                     }
                 }
             }

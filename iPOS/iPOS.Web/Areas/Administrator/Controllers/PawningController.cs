@@ -193,7 +193,6 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                     model.first_name = list.first_name;
                     model.last_name = list.last_name;
                     model.middle_name = list.middle_name;
-                    //model.MiddleInitial = list.MiddleName[0].ToString();
                     model.st_address = list.st_address;
                     model.mobile_no = list.mobile_no;
 

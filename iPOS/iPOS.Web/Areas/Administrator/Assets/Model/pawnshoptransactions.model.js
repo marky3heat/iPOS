@@ -60,3 +60,18 @@ app.createModeModel = function () {
 
     return self;
 };
+
+app.createCustomerModel = function () {
+    "use strict";
+
+    var self = this;
+
+    // #region MODEL TO BE MAP
+    self.autonum = ko.observable();
+    self.first_name = ko.observable();
+    self.last_name = ko.observable();
+    self.middle_name = ko.observable();
+    self.st_address = ko.observable();
+    self.mobile_no = ko.observable();
+    // #endregion
+};

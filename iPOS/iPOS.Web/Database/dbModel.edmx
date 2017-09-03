@@ -294,14 +294,14 @@
     <edmx:ConceptualModels>
       <Schema Namespace="dbpawnshopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="dbpawnshopEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_customer" EntityType="dbpawnshopModel.tbl_customer" />
+          <EntitySet Name="tbl_ipos_appraiseditem" EntityType="dbpawnshopModel.tbl_ipos_appraiseditem" />
+          <EntitySet Name="tbl_ipos_customer" EntityType="dbpawnshopModel.tbl_ipos_customer" />
           <EntitySet Name="tbl_ipos_itemcategory" EntityType="dbpawnshopModel.tbl_ipos_itemcategory" />
           <EntitySet Name="tbl_ipos_itemtype" EntityType="dbpawnshopModel.tbl_ipos_itemtype" />
           <EntitySet Name="tbl_ipos_no_generator" EntityType="dbpawnshopModel.tbl_ipos_no_generator" />
-          <EntitySet Name="tbl_ipos_customer" EntityType="dbpawnshopModel.tbl_ipos_customer" />
           <EntitySet Name="tbl_ipos_pawneditem" EntityType="dbpawnshopModel.tbl_ipos_pawneditem" />
-          <EntitySet Name="tbl_ipos_appraiseditem" EntityType="dbpawnshopModel.tbl_ipos_appraiseditem" />
           <EntitySet Name="tbl_ipos_pawnshop_transactions" EntityType="dbpawnshopModel.tbl_ipos_pawnshop_transactions" />
-          <EntitySet Name="tbl_customer" EntityType="dbpawnshopModel.tbl_customer" />
           <EntitySet Name="tbl_product" EntityType="dbpawnshopModel.tbl_product" />
           <EntitySet Name="tbl_product_add_info" EntityType="dbpawnshopModel.tbl_product_add_info" />
           <EntitySet Name="tbl_product_brand_setup" EntityType="dbpawnshopModel.tbl_product_brand_setup" />
@@ -312,109 +312,6 @@
           <EntitySet Name="tbl_product_category_sub3" EntityType="dbpawnshopModel.tbl_product_category_sub3" />
           <EntitySet Name="tbl_product_type" EntityType="dbpawnshopModel.tbl_product_type" />
         </EntityContainer>
-        <EntityType Name="tbl_ipos_itemcategory">
-          <Key>
-            <PropertyRef Name="ItemCategoryId" />
-          </Key>
-          <Property Name="ItemCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ItemCategoryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ItemTypeId" Type="Int32" Nullable="false" />
-          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedAt" Type="DateTime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="tbl_ipos_itemtype">
-          <Key>
-            <PropertyRef Name="ItemTypeId" />
-          </Key>
-          <Property Name="ItemTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ItemTypeName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedAt" Type="DateTime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="tbl_ipos_no_generator">
-          <Key>
-            <PropertyRef Name="NoId" />
-          </Key>
-          <Property Name="NoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NoDescription" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Name="No" Type="Int32" Nullable="false" />
-          <Property Name="Terminal" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="tbl_ipos_customer">
-          <Key>
-            <PropertyRef Name="CustomerId" />
-          </Key>
-          <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="MiddleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="MiddleInitial" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
-          <Property Name="Address" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="ContactNo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="tbl_ipos_pawneditem">
-          <Key>
-            <PropertyRef Name="PawnedItemId" />
-          </Key>
-          <Property Name="PawnedItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PawnedItemNo" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="PawnedDate" Type="DateTime" Nullable="false" />
-          <Property Name="CustomerId" Type="Int32" Nullable="false" />
-          <Property Name="PawnedItemContractNo" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="LoanableAmount" Type="Decimal" Nullable="false" />
-          <Property Name="InterestRate" Type="Decimal" Nullable="false" />
-          <Property Name="InterestAmount" Type="Decimal" Nullable="false" />
-          <Property Name="InitialPayment" Type="Decimal" Nullable="false" />
-          <Property Name="ServiceCharge" Type="Decimal" Nullable="false" />
-          <Property Name="Others" Type="Decimal" Nullable="false" />
-          <Property Name="IsInterestDeducted" Type="Boolean" Nullable="false" />
-          <Property Name="NetCashOut" Type="Decimal" Nullable="false" />
-          <Property Name="TermsId" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Name="ScheduleOfPayment" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Name="NoOfPayments" Type="Int32" Nullable="false" />
-          <Property Name="DueDateStart" Type="DateTime" Nullable="false" />
-          <Property Name="DueDateEnd" Type="DateTime" Nullable="false" />
-          <Property Name="Status" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="IsReleased" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedAt" Type="DateTime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="tbl_ipos_appraiseditem">
-          <Key>
-            <PropertyRef Name="AppraiseId" />
-          </Key>
-          <Property Name="AppraiseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AppraiseDate" Type="DateTime" Nullable="false" />
-          <Property Name="AppraiseNo" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="ItemTypeId" Type="Int32" Nullable="false" />
-          <Property Name="ItemCategoryId" Type="Int32" Nullable="false" />
-          <Property Name="ItemName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Name="Weight" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="AppraisedValue" Type="Decimal" Nullable="false" />
-          <Property Name="Remarks" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
-          <Property Name="CustomerFirstName" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="CustomerLastName" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="IsPawned" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="24" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedAt" Type="DateTime" Nullable="false" />
-          <Property Name="PawnshopTransactionId" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="tbl_ipos_pawnshop_transactions">
-          <Key>
-            <PropertyRef Name="TransactionId" />
-          </Key>
-          <Property Name="TransactionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TransactionNo" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="TransactionDate" Type="DateTime" Nullable="false" />
-          <Property Name="TransactionType" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="CustomerId" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="Terminal" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="Status" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="ReviewedBy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="ApprovedBy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedAt" Type="DateTime" Nullable="false" />
-        </EntityType>
         <EntityType Name="tbl_customer">
           <Key>
             <PropertyRef Name="autonum" />
@@ -446,6 +343,109 @@
           <Property Name="customer_image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="date_entered" Type="DateTime" />
           <Property Name="ul_code" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_ipos_appraiseditem">
+          <Key>
+            <PropertyRef Name="AppraiseId" />
+          </Key>
+          <Property Name="AppraiseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppraiseDate" Type="DateTime" Nullable="false" />
+          <Property Name="AppraiseNo" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="ItemTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ItemCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="ItemName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Weight" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="AppraisedValue" Type="Decimal" Nullable="false" />
+          <Property Name="Remarks" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerFirstName" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerLastName" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="IsPawned" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" />
+          <Property Name="PawnshopTransactionId" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_ipos_customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MiddleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MiddleInitial" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_ipos_itemcategory">
+          <Key>
+            <PropertyRef Name="ItemCategoryId" />
+          </Key>
+          <Property Name="ItemCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemCategoryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ItemTypeId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_ipos_itemtype">
+          <Key>
+            <PropertyRef Name="ItemTypeId" />
+          </Key>
+          <Property Name="ItemTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemTypeName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_ipos_no_generator">
+          <Key>
+            <PropertyRef Name="NoId" />
+          </Key>
+          <Property Name="NoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NoDescription" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="No" Type="Int32" Nullable="false" />
+          <Property Name="Terminal" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_ipos_pawneditem">
+          <Key>
+            <PropertyRef Name="PawnedItemId" />
+          </Key>
+          <Property Name="PawnedItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PawnedItemNo" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="PawnedDate" Type="DateTime" Nullable="false" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="PawnedItemContractNo" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="LoanableAmount" Type="Decimal" Nullable="false" />
+          <Property Name="InterestRate" Type="Decimal" Nullable="false" />
+          <Property Name="InterestAmount" Type="Decimal" Nullable="false" />
+          <Property Name="InitialPayment" Type="Decimal" Nullable="false" />
+          <Property Name="ServiceCharge" Type="Decimal" Nullable="false" />
+          <Property Name="Others" Type="Decimal" Nullable="false" />
+          <Property Name="IsInterestDeducted" Type="Boolean" Nullable="false" />
+          <Property Name="NetCashOut" Type="Decimal" Nullable="false" />
+          <Property Name="TermsId" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="ScheduleOfPayment" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="NoOfPayments" Type="Int32" Nullable="false" />
+          <Property Name="DueDateStart" Type="DateTime" Nullable="false" />
+          <Property Name="DueDateEnd" Type="DateTime" Nullable="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="IsReleased" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_ipos_pawnshop_transactions">
+          <Key>
+            <PropertyRef Name="TransactionId" />
+          </Key>
+          <Property Name="TransactionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TransactionNo" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="TransactionDate" Type="DateTime" Nullable="false" />
+          <Property Name="TransactionType" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerId" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Terminal" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="ReviewedBy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="ApprovedBy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" />
         </EntityType>
         <EntityType Name="tbl_product">
           <Key>
@@ -577,12 +577,79 @@
           <Property Name="item_code" Type="Int64" />
           <Property Name="item_desc" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
         </EntityType>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="dbpawnshopModelStoreContainer" CdmEntityContainer="dbpawnshopEntities">
+          <EntitySetMapping Name="tbl_customer">
+            <EntityTypeMapping TypeName="dbpawnshopModel.tbl_customer">
+              <MappingFragment StoreEntitySet="tbl_customer">
+                <ScalarProperty Name="ul_code" ColumnName="ul_code" />
+                <ScalarProperty Name="date_entered" ColumnName="date_entered" />
+                <ScalarProperty Name="customer_image" ColumnName="customer_image" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="group_name" ColumnName="group_name" />
+                <ScalarProperty Name="group_id" ColumnName="group_id" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="date_as_of" ColumnName="date_as_of" />
+                <ScalarProperty Name="balance" ColumnName="balance" />
+                <ScalarProperty Name="credit_limit" ColumnName="credit_limit" />
+                <ScalarProperty Name="credit_terms" ColumnName="credit_terms" />
+                <ScalarProperty Name="tax_id_no" ColumnName="tax_id_no" />
+                <ScalarProperty Name="bir_reg_no" ColumnName="bir_reg_no" />
+                <ScalarProperty Name="vat" ColumnName="vat" />
+                <ScalarProperty Name="zip_code" ColumnName="zip_code" />
+                <ScalarProperty Name="city_address" ColumnName="city_address" />
+                <ScalarProperty Name="st_address" ColumnName="st_address" />
+                <ScalarProperty Name="fax_no" ColumnName="fax_no" />
+                <ScalarProperty Name="mobile_no" ColumnName="mobile_no" />
+                <ScalarProperty Name="business_phone_no" ColumnName="business_phone_no" />
+                <ScalarProperty Name="middle_name" ColumnName="middle_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="customer_class" ColumnName="customer_class" />
+                <ScalarProperty Name="trade_name" ColumnName="trade_name" />
+                <ScalarProperty Name="id_code" ColumnName="id_code" />
+                <ScalarProperty Name="autonum" ColumnName="autonum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ipos_appraiseditem">
+            <EntityTypeMapping TypeName="dbpawnshopModel.tbl_ipos_appraiseditem">
+              <MappingFragment StoreEntitySet="tbl_ipos_appraiseditem">
+                <ScalarProperty Name="PawnshopTransactionId" ColumnName="PawnshopTransactionId" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsPawned" ColumnName="IsPawned" />
+                <ScalarProperty Name="CustomerLastName" ColumnName="CustomerLastName" />
+                <ScalarProperty Name="CustomerFirstName" ColumnName="CustomerFirstName" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="AppraisedValue" ColumnName="AppraisedValue" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ItemCategoryId" ColumnName="ItemCategoryId" />
+                <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+                <ScalarProperty Name="AppraiseNo" ColumnName="AppraiseNo" />
+                <ScalarProperty Name="AppraiseDate" ColumnName="AppraiseDate" />
+                <ScalarProperty Name="AppraiseId" ColumnName="AppraiseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ipos_customer">
+            <EntityTypeMapping TypeName="dbpawnshopModel.tbl_ipos_customer">
+              <MappingFragment StoreEntitySet="tbl_ipos_customer">
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="MiddleInitial" ColumnName="MiddleInitial" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tbl_ipos_itemcategory">
             <EntityTypeMapping TypeName="dbpawnshopModel.tbl_ipos_itemcategory">
               <MappingFragment StoreEntitySet="tbl_ipos_itemcategory">
@@ -614,19 +681,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbl_ipos_customer">
-            <EntityTypeMapping TypeName="dbpawnshopModel.tbl_ipos_customer">
-              <MappingFragment StoreEntitySet="tbl_ipos_customer">
-                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="MiddleInitial" ColumnName="MiddleInitial" />
-                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tbl_ipos_pawneditem">
             <EntityTypeMapping TypeName="dbpawnshopModel.tbl_ipos_pawneditem">
               <MappingFragment StoreEntitySet="tbl_ipos_pawneditem">
@@ -655,27 +709,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbl_ipos_appraiseditem">
-            <EntityTypeMapping TypeName="dbpawnshopModel.tbl_ipos_appraiseditem">
-              <MappingFragment StoreEntitySet="tbl_ipos_appraiseditem">
-                <ScalarProperty Name="PawnshopTransactionId" ColumnName="PawnshopTransactionId" />
-                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="IsPawned" ColumnName="IsPawned" />
-                <ScalarProperty Name="CustomerLastName" ColumnName="CustomerLastName" />
-                <ScalarProperty Name="CustomerFirstName" ColumnName="CustomerFirstName" />
-                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-                <ScalarProperty Name="AppraisedValue" ColumnName="AppraisedValue" />
-                <ScalarProperty Name="Weight" ColumnName="Weight" />
-                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
-                <ScalarProperty Name="ItemCategoryId" ColumnName="ItemCategoryId" />
-                <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
-                <ScalarProperty Name="AppraiseNo" ColumnName="AppraiseNo" />
-                <ScalarProperty Name="AppraiseDate" ColumnName="AppraiseDate" />
-                <ScalarProperty Name="AppraiseId" ColumnName="AppraiseId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tbl_ipos_pawnshop_transactions">
             <EntityTypeMapping TypeName="dbpawnshopModel.tbl_ipos_pawnshop_transactions">
               <MappingFragment StoreEntitySet="tbl_ipos_pawnshop_transactions">
@@ -690,39 +723,6 @@
                 <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
                 <ScalarProperty Name="TransactionNo" ColumnName="TransactionNo" />
                 <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_customer">
-            <EntityTypeMapping TypeName="dbpawnshopModel.tbl_customer">
-              <MappingFragment StoreEntitySet="tbl_customer">
-                <ScalarProperty Name="ul_code" ColumnName="ul_code" />
-                <ScalarProperty Name="date_entered" ColumnName="date_entered" />
-                <ScalarProperty Name="customer_image" ColumnName="customer_image" />
-                <ScalarProperty Name="remarks" ColumnName="remarks" />
-                <ScalarProperty Name="group_name" ColumnName="group_name" />
-                <ScalarProperty Name="group_id" ColumnName="group_id" />
-                <ScalarProperty Name="active" ColumnName="active" />
-                <ScalarProperty Name="date_as_of" ColumnName="date_as_of" />
-                <ScalarProperty Name="balance" ColumnName="balance" />
-                <ScalarProperty Name="credit_limit" ColumnName="credit_limit" />
-                <ScalarProperty Name="credit_terms" ColumnName="credit_terms" />
-                <ScalarProperty Name="tax_id_no" ColumnName="tax_id_no" />
-                <ScalarProperty Name="bir_reg_no" ColumnName="bir_reg_no" />
-                <ScalarProperty Name="vat" ColumnName="vat" />
-                <ScalarProperty Name="zip_code" ColumnName="zip_code" />
-                <ScalarProperty Name="city_address" ColumnName="city_address" />
-                <ScalarProperty Name="st_address" ColumnName="st_address" />
-                <ScalarProperty Name="fax_no" ColumnName="fax_no" />
-                <ScalarProperty Name="mobile_no" ColumnName="mobile_no" />
-                <ScalarProperty Name="business_phone_no" ColumnName="business_phone_no" />
-                <ScalarProperty Name="middle_name" ColumnName="middle_name" />
-                <ScalarProperty Name="first_name" ColumnName="first_name" />
-                <ScalarProperty Name="last_name" ColumnName="last_name" />
-                <ScalarProperty Name="customer_class" ColumnName="customer_class" />
-                <ScalarProperty Name="trade_name" ColumnName="trade_name" />
-                <ScalarProperty Name="id_code" ColumnName="id_code" />
-                <ScalarProperty Name="autonum" ColumnName="autonum" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -62,14 +62,70 @@ namespace iPOS.Web.Areas.Administrator.Controllers
         public async Task<JsonResult> GetCustomer()
         {
             var listCustomer = await _customerService.GetCustomerList();
-            var result = listCustomer.Select(item => new tbl_ipos_customer()
+            var result = listCustomer.Select(item => new tbl_customer()
             {
-                CustomerId = item.autonum,
-                FirstName = item.first_name + " " + item.last_name,
-                LastName = item.last_name
+                autonum = item.autonum,
+                first_name = item.first_name + " " + item.last_name,
+                last_name = item.last_name
             });
 
-            return Json(result.OrderBy(o => o.LastName), JsonRequestBehavior.AllowGet);
+            return Json(result.OrderBy(o => o.last_name), JsonRequestBehavior.AllowGet);
+        }
+
+        public async Task<JsonResult> SaveCustomer(tbl_customer list)
+        {
+            try
+            {
+                tbl_customer model = null;
+
+                bool success = false;
+                string message = "";
+
+                if (string.IsNullOrEmpty(list.autonum.ToString()) || list.autonum.ToString() == "0")
+                {
+                    model = new tbl_customer();
+                    model.first_name = list.first_name;
+                    model.last_name = list.last_name;
+                    model.middle_name = list.middle_name;
+                    model.st_address = list.st_address;
+                    model.mobile_no = list.mobile_no;
+
+                    var result = await _customerService.SaveCustomer(model);
+                    success = result;
+                    if (result)
+                    {
+                        message = "Successfully saved.";
+                    }
+                    else
+                    {
+                        message = "Error saving data. Duplicate entry.";
+                    }
+                }
+                else
+                {
+                    model = await _customerService.FindByIdCustomer(list.autonum);
+                    model.first_name = list.first_name;
+                    model.last_name = list.last_name;
+                    model.middle_name = list.middle_name;
+                    model.st_address = list.st_address;
+                    model.mobile_no = list.mobile_no;
+
+                    var result = await _customerService.UpdateCustomer(model);
+                    success = result;
+                    if (result)
+                    {
+                        message = "Successfully updated.";
+                    }
+                    else
+                        message = "Error saving data. Please contact administrator.";
+                }
+
+                return Json(new { success = success, message = message });
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public async Task<JsonResult> GetItemType()
