@@ -2825,6 +2825,11 @@
     <Content Include="Areas\Administrator\Views\Reference\Index.cshtml" />
     <Content Include="Areas\Administrator\Views\Pawning\Index.cshtml" />
     <Content Include="Areas\Administrator\Views\PawnshopTransactions\Index.cshtml" />
+    <Content Include="Areas\Administrator\Views\Reference\Itemtype.cshtml" />
+    <Content Include="Areas\Administrator\Views\Reference\Itemcategory.cshtml" />
+    <Content Include="Areas\Administrator\Views\Reference\Brand.cshtml" />
+    <Content Include="Areas\Administrator\Views\Reference\Karat.cshtml" />
+    <Content Include="Areas\Administrator\Views\Reference\NoGenerator.cshtml" />
     <None Include="Properties\PublishProfiles\iPOS.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\inifiniteScroll.js" />

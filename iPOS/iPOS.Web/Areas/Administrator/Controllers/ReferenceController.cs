@@ -31,9 +31,49 @@ namespace iPOS.Web.Areas.Administrator.Controllers
         // GET: Administrator/Reference
         public ActionResult Index()
         {
-            ViewBag.Form = "Adjustment";
-            ViewBag.Controller = "Adjustment";
-            ViewBag.Action = "Module";
+            ViewBag.Form = "Index";
+            ViewBag.Controller = "Reference";
+            ViewBag.Action = "Index";
+
+            return View();
+        }
+        public ActionResult Itemtype()
+        {
+            ViewBag.Form = "ItemType";
+            ViewBag.Controller = "Reference";
+            ViewBag.Action = "ItemType";
+
+            return View();
+        }
+        public ActionResult Itemcategory()
+        {
+            ViewBag.Form = "ItemCategory";
+            ViewBag.Controller = "Reference";
+            ViewBag.Action = "ItemCategory";
+
+            return View();
+        }
+        public ActionResult Brand()
+        {
+            ViewBag.Form = "Brand";
+            ViewBag.Controller = "Reference";
+            ViewBag.Action = "Brand";
+
+            return View();
+        }
+        public ActionResult Karat()
+        {
+            ViewBag.Form = "Karat";
+            ViewBag.Controller = "Reference";
+            ViewBag.Action = "Karat";
+
+            return View();
+        }
+        public ActionResult NoGenerator()
+        {
+            ViewBag.Form = "NoGenerator";
+            ViewBag.Controller = "Reference";
+            ViewBag.Action = "NoGenerator";
 
             return View();
         }

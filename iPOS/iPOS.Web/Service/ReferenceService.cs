@@ -600,7 +600,7 @@ namespace iPOS.Web.Service
             }
         }
 
-        public async Task<bool> SaveBrand(tbl_karat model)
+        public async Task<bool> SaveKarat(tbl_karat model)
         {
             try
             {
@@ -625,7 +625,7 @@ namespace iPOS.Web.Service
             }
         }
 
-        public async Task<bool> UpdateBrand(tbl_karat model)
+        public async Task<bool> UpdateKarat(tbl_karat model)
         {
             try
             {
