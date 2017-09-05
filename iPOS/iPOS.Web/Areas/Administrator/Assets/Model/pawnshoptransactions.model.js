@@ -39,6 +39,7 @@ app.createModeModel = function () {
     self.TransactionNo = ko.observable();
     self.TransactionDate = ko.observable();
     self.TransactionType = ko.observable();
+    self.CustomerId = ko.observable();
     self.Terminal = ko.observable();
     self.Status = ko.observable();
     self.ReviewedBy = ko.observable();
@@ -46,10 +47,10 @@ app.createModeModel = function () {
     self.CreatedBy = ko.observable();
     self.CreatedAt = ko.observable();
 
-    self.FirstName = ko.observable();
-    self.LastName = ko.observable();
-    self.Address = ko.observable();
-    self.ContactNo = ko.observable();
+    self.first_name = ko.observable();
+    self.last_name = ko.observable();
+    self.st_address = ko.observable();
+    self.mobile = ko.observable();
 
     self.ItemName = ko.observable();
     self.ItemTypeId = ko.observable();

@@ -128,6 +128,13 @@ namespace iPOS.Web.Areas.Administrator.Controllers
             }
         }
 
+        public async Task<JsonResult> GetCustomerById(int CustomerId)
+        {
+            var listCustomer = await _customerService.FindByIdCustomer(CustomerId);
+
+            return Json(listCustomer, JsonRequestBehavior.AllowGet);
+        }
+
         public async Task<JsonResult> GetItemType()
         {
             var list = await _appraisalService.GetItemTypeList();

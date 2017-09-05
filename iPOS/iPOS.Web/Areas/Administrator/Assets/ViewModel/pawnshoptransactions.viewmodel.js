@@ -197,17 +197,17 @@
     function saveCustomer(firstname, lastname, middlename, address, contactno) {
         /*VALIDATIONS -START*/
 
-        customerModel.FirstName(firstname);
-        customerModel.LastName(lastname);
-        customerModel.MiddleName(middlename);
-        customerModel.Address(address);
-        customerModel.ContactNo(contactno);
+        customerModel.first_name(firstname);
+        customerModel.last_name(lastname);
+        customerModel.middle_name(middlename);
+        customerModel.st_address(address);
+        customerModel.mobile_no(contactno);
 
         /*VALIDATIONS -END*/
         debugger;
         loaderApp.showPleaseWait();
-        var param = ko.toJS(ccustomerModel);
-        var url = RootUrl + "/Administrator/Pawning/SaveCustomer";
+        var param = ko.toJS(customerModel);
+        var url = RootUrl + "/Administrator/Base/SaveCustomer";
         $.ajax({
             type: 'POST',
             url: url,
@@ -227,6 +227,19 @@
                     clearControls();
                 }
             }
+        });
+    }
+
+    function getCustomerById() {
+        var CustomerId = $('#CustomerId').val();
+        $.getJSON(RootUrl + "/Administrator/Pawning/GetCustomerById?CustomerId=" + CustomerId, function (result) {
+            customerModel.autonum(result.autonum);
+            customerModel.first_name(result.first_name);
+            customerModel.last_name(result.last_name);
+            customerModel.middle_name(result.middle_name);
+            customerModel.st_address(result.st_address);
+            customerModel.mobile_no(result.mobile_no);
+            model.CustomerId(result.autonum);
         });
     }
 
@@ -293,13 +306,17 @@
         saveTransactionPawn: saveTransactionPawn,
 
         model: model,
+        customerModel: customerModel,
 
         getItemType: getItemType,
         getItemCategory: getItemCategory,
 
         itemType: itemType,
         itemCategory: itemCategory,
-        customer: customer
+
+        customer: customer,
+        saveCustomer: saveCustomer,
+        getCustomerById: getCustomerById
 
     };
 
@@ -352,31 +369,31 @@ $(function () {
                         '<div class="form-group">' +
                             '<label class="col-md-4 control-label">First name</label>' +
                             '<div class="col-md-8">' +
-                                '<input id="cFirstName" data-bind="textinput: ccustomerModel.FirstName" name="FirstName" type="text" placeholder="First name" class="form-control">' +
+                                '<input id="FirstName" data-bind="textinput: customerModel.first_name" name="FirstName" type="text" placeholder="First name" class="form-control">' +
                             '</div>' +
                         '</div>' +
                         '<div class="form-group">' +
                             '<label class="col-md-4 control-label">Last name</label>' +
                             '<div class="col-md-8">' +
-                                '<input id="cLastName" data-bind="textinput: ccustomerModel.LastName" name="LastName" type="text" placeholder="Last name" class="form-control">' +
+                                '<input id="LastName" data-bind="textinput: customerModel.last_name" name="LastName" type="text" placeholder="Last name" class="form-control">' +
                             '</div>' +
                         '</div>' +
                         '<div class="form-group">' +
                             '<label class="col-md-4 control-label">Middle name</label>' +
                             '<div class="col-md-8">' +
-                                '<input id="cMiddleName" data-bind="textinput: ccustomerModel.MiddleName" name="MiddleName" type="text" placeholder="Middle name" class="form-control">' +
+                                '<input id="MiddleName" data-bind="textinput: customerModel.middle_name" name="MiddleName" type="text" placeholder="Middle name" class="form-control">' +
                             '</div>' +
                         '</div>' +
                         '<div class="form-group">' +
                             '<label class="col-md-4 control-label">Address</label>' +
                             '<div class="col-md-8">' +
-                                '<input id="cAddress" data-bind="textinput: ccustomerModel.Address" name="Address" type="text" placeholder="Address" class="form-control">' +
+                                '<input id="Address" data-bind="textinput: customerModel.st_address" name="Address" type="text" placeholder="Address" class="form-control">' +
                             '</div>' +
                         '</div>' +
                         '<div class="form-group">' +
                             '<label class="col-md-4 control-label">Contact no.</label>' +
                             '<div class="col-md-8">' +
-                                '<input id="cContactNo" data-bind="textinput: ccustomerModel.ContactNo" name="ContactNo" type="text" placeholder="Contact no." class="form-control">' +
+                                '<input id="ContactNo" data-bind="textinput: customerModel.mobile_no" name="ContactNo" type="text" placeholder="Contact no." class="form-control">' +
                             '</div>' +
                         '</div>' +
                     '</form>' +
@@ -387,12 +404,7 @@ $(function () {
                     label: "Save",
                     className: "btn-success",
                     callback: function () {
-                        if ($('#cFirstName').val() === "") {
-                            toastr.error("First name is required.");
-                            app.vm.customerModel.FirstName("");
-                            document.getElementById("FirstName").focus();
-                            return false;
-                        }
+
                         var firstname = $('#FirstName').val();
                         var lastname = $('#LastName').val();
                         var middlename = $('#MiddleName').val();

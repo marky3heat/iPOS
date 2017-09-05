@@ -55,7 +55,7 @@
                 <div class="row">             
                     @*<label class="control-label col-lg-1">Customer name<span class="text-danger"> *</span></label>*@
                     <div class="col-md-4">
-                        <select id="CustomerId" data-bind="options: customer, optionsValue: 'autonum', optionsText: 'first_name', optionsCaption: ''" data-placeholder="Select customer" class="select required"></select>
+                        <select id="CustomerId" data-bind="options: customer, optionsValue: 'autonum', optionsText: 'first_name', optionsCaption: '',value: model.CustomerId , event:{ change: getCustomerById}" data-placeholder="Select customer" class="select required"></select>
                     </div>
                     <div class="col-md-1">
                         <button type="button" class="btn bg-warning-400 access-open" id="create_customer">New customer</button>
@@ -68,11 +68,11 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label>First name</label>
-                        <input type="text" id="" data-bind="textinput: model.FirstName" class="form-control">
+                        <input type="text" id="FirstName" data-bind="textinput: customerModel.first_name" class="form-control">
                     </div>
                     <div class="col-md-6">
                         <label>Last name</label>
-                        <input type="text" id="" data-bind="textinput: model.LastName" class="form-control">
+                        <input type="text" id="LastName" data-bind="textinput: customerModel.last_name" class="form-control">
                     </div>
                 </div>
             </div>
@@ -80,11 +80,11 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label>Address</label>
-                        <input type="text" id="" data-bind="textinput: model.Address" class="form-control">
+                        <input type="text" id="Address" data-bind="textinput: customerModel.st_address" class="form-control">
                     </div>
                     <div class="col-md-6">
                         <label>Contact no.</label>
-                        <input type="text" id="" data-bind="textinput: model.ContactNo" class="form-control">
+                        <input type="text" id="ContactNo" data-bind="textinput: customerModel.mobile_no" class="form-control">
                     </div>
                 </div>
             </div>
@@ -137,11 +137,11 @@
                 <div class="row">
                     <div class="col-md-3">
                         <label>Transaction no.</label>
-                        <input type="text" id="TransactionNo" data-bind="textinput: model.TransactionNo, value: model.TransactionNo" class="form-control" >
+                        <input type="text" id="" data-bind="textinput: model.TransactionNo, value: model.TransactionNo" class="form-control" >
                     </div>
                     <div class="col-md-3">
                         <label>Date</label>
-                        <input type="text" id="TransactionDate" data-bind="textinput: model.TransactionDate, value: model.TransactionDate" class="form-control daterange-single">
+                        <input type="text" id="" data-bind="textinput: model.TransactionDate, value: model.TransactionDate" class="form-control daterange-single">
                     </div>
                 </div>
             </div>
@@ -152,7 +152,7 @@
                 <div class="row">             
                     <label class="control-label col-lg-1">Customer name<span class="text-danger"> *</span></label>
                     <div class="col-md-4">
-                        <select id="CustomerId" data-bind="options: customer, optionsValue: 'autonum', optionsText: 'first_name', optionsCaption: ''" data-placeholder="Select customer" class="select required"></select>
+                        <select id="" data-bind="options: customer, optionsValue: 'autonum', optionsText: 'first_name', optionsCaption: ''" data-placeholder="Select customer" class="select required"></select>
                     </div>
                     <div class="col-md-1">
                         <button type="button" class="btn bg-warning-400 access-open" id="create_customer">New customer</button>
@@ -192,11 +192,11 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label>Item type<span class="text-danger">*</span></label>
-                        <select required id="ItemTypeId" data-bind="options: itemType, optionsValue: 'ItemTypeId', optionsText: 'ItemTypeName', optionsCaption: '--Select item type--', value: model.ItemTypeId, value: model.ItemTypeId, optionsSelected: model.ItemTypeId, event:{ change: getItemCategory('')}" class="form-control"></select>
+                        <select required id="" data-bind="options: itemType, optionsValue: 'ItemTypeId', optionsText: 'ItemTypeName', optionsCaption: '--Select item type--', value: model.ItemTypeId, value: model.ItemTypeId, optionsSelected: model.ItemTypeId, event:{ change: getItemCategory('')}" class="form-control"></select>
                     </div>
                     <div class="col-md-6">
                         <label>Item category<span class="text-danger">*</span></label>
-                        <select required id="ItemCategoryId" data-bind="options: itemCategory, optionsValue: 'ItemCategoryId', optionsText: 'ItemCategoryName', optionsCaption: '--Select item category--', value: model.ItemCategoryId" class="form-control"></select>
+                        <select required id="" data-bind="options: itemCategory, optionsValue: 'ItemCategoryId', optionsText: 'ItemCategoryName', optionsCaption: '--Select item category--', value: model.ItemCategoryId" class="form-control"></select>
                     </div>
                 </div>
             </div>
@@ -205,7 +205,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label>Item name</label>
-                        <input type="text" id="ItemName" data-bind="textinput: model.ItemName" class="form-control">
+                        <input type="text" id="" data-bind="textinput: model.ItemName" class="form-control">
                     </div>
                     <div class="col-md-6">
                         <label>Remarks</label>
@@ -234,11 +234,11 @@
                 <div class="row">
                     <div class="col-md-3">
                         <label>Transaction no.</label>
-                        <input type="text" id="TransactionNo" data-bind="textinput: model.TransactionNo, value: model.TransactionNo" class="form-control" >
+                        <input type="text" id="" data-bind="textinput: model.TransactionNo, value: model.TransactionNo" class="form-control" >
                     </div>
                     <div class="col-md-3">
                         <label>Date</label>
-                        <input type="text" id="TransactionDate" data-bind="textinput: model.TransactionDate, value: model.TransactionDate" class="form-control daterange-single">
+                        <input type="text" id="" data-bind="textinput: model.TransactionDate, value: model.TransactionDate" class="form-control daterange-single">
                     </div>
                 </div>
             </div>
@@ -249,7 +249,7 @@
                 <div class="row">             
                     <label class="control-label col-lg-1">Customer name<span class="text-danger"> *</span></label>
                     <div class="col-md-4">
-                        <select id="CustomerId" data-bind="options: customer, optionsValue: 'autonum', optionsText: 'first_name', optionsCaption: ''" data-placeholder="Select customer" class="select required"></select>
+                        <select id="" data-bind="options: customer, optionsValue: 'autonum', optionsText: 'first_name', optionsCaption: ''" data-placeholder="Select customer" class="select required"></select>
                     </div>
                     <div class="col-md-1">
                         <button type="button" class="btn bg-warning-400 access-open" id="create_customer">New customer</button>
@@ -289,11 +289,11 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label>Item type<span class="text-danger">*</span></label>
-                        <select required id="ItemTypeId" data-bind="options: itemType, optionsValue: 'ItemTypeId', optionsText: 'ItemTypeName', optionsCaption: '--Select item type--', value: model.ItemTypeId, value: model.ItemTypeId, optionsSelected: model.ItemTypeId, event:{ change: getItemCategory('')}" class="form-control"></select>
+                        <select required id="" data-bind="options: itemType, optionsValue: 'ItemTypeId', optionsText: 'ItemTypeName', optionsCaption: '--Select item type--', value: model.ItemTypeId, value: model.ItemTypeId, optionsSelected: model.ItemTypeId, event:{ change: getItemCategory('')}" class="form-control"></select>
                     </div>
                     <div class="col-md-6">
                         <label>Item category<span class="text-danger">*</span></label>
-                        <select required id="ItemCategoryId" data-bind="options: itemCategory, optionsValue: 'ItemCategoryId', optionsText: 'ItemCategoryName', optionsCaption: '--Select item category--', value: model.ItemCategoryId" class="form-control"></select>
+                        <select required id="" data-bind="options: itemCategory, optionsValue: 'ItemCategoryId', optionsText: 'ItemCategoryName', optionsCaption: '--Select item category--', value: model.ItemCategoryId" class="form-control"></select>
                     </div>
                 </div>
             </div>
@@ -302,7 +302,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label>Item name</label>
-                        <input type="text" id="ItemName" data-bind="textinput: model.ItemName" class="form-control">
+                        <input type="text" id="" data-bind="textinput: model.ItemName" class="form-control">
                     </div>
                     <div class="col-md-6">
                         <label>Remarks</label>
