@@ -2,7 +2,6 @@
 <Schema Namespace="dbpawnshopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="dbpawnshopEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="tbl_customer" EntityType="dbpawnshopModel.tbl_customer" />
-    <EntitySet Name="tbl_ipos_appraiseditem" EntityType="dbpawnshopModel.tbl_ipos_appraiseditem" />
     <EntitySet Name="tbl_ipos_customer" EntityType="dbpawnshopModel.tbl_ipos_customer" />
     <EntitySet Name="tbl_ipos_itemcategory" EntityType="dbpawnshopModel.tbl_ipos_itemcategory" />
     <EntitySet Name="tbl_ipos_itemtype" EntityType="dbpawnshopModel.tbl_ipos_itemtype" />
@@ -18,6 +17,9 @@
     <EntitySet Name="tbl_product_category_sub2" EntityType="dbpawnshopModel.tbl_product_category_sub2" />
     <EntitySet Name="tbl_product_category_sub3" EntityType="dbpawnshopModel.tbl_product_category_sub3" />
     <EntitySet Name="tbl_product_type" EntityType="dbpawnshopModel.tbl_product_type" />
+    <EntitySet Name="tbl_ipos_appraiseditem" EntityType="dbpawnshopModel.tbl_ipos_appraiseditem" />
+    <EntitySet Name="tbl_brand" EntityType="dbpawnshopModel.tbl_brand" />
+    <EntitySet Name="tbl_karat" EntityType="dbpawnshopModel.tbl_karat" />
   </EntityContainer>
   <EntityType Name="tbl_customer">
     <Key>
@@ -50,26 +52,6 @@
     <Property Name="customer_image" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="date_entered" Type="DateTime" />
     <Property Name="ul_code" Type="Int32" />
-  </EntityType>
-  <EntityType Name="tbl_ipos_appraiseditem">
-    <Key>
-      <PropertyRef Name="AppraiseId" />
-    </Key>
-    <Property Name="AppraiseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="AppraiseDate" Type="DateTime" Nullable="false" />
-    <Property Name="AppraiseNo" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-    <Property Name="ItemTypeId" Type="Int32" Nullable="false" />
-    <Property Name="ItemCategoryId" Type="Int32" Nullable="false" />
-    <Property Name="ItemName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-    <Property Name="Weight" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-    <Property Name="AppraisedValue" Type="Decimal" Nullable="false" />
-    <Property Name="Remarks" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
-    <Property Name="CustomerFirstName" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-    <Property Name="CustomerLastName" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-    <Property Name="IsPawned" Type="Boolean" Nullable="false" />
-    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="24" FixedLength="false" Unicode="false" />
-    <Property Name="CreatedAt" Type="DateTime" Nullable="false" />
-    <Property Name="PawnshopTransactionId" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="tbl_ipos_customer">
     <Key>
@@ -283,5 +265,41 @@
     <Property Name="autonum" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="item_code" Type="Int64" />
     <Property Name="item_desc" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_ipos_appraiseditem">
+    <Key>
+      <PropertyRef Name="AppraiseId" />
+    </Key>
+    <Property Name="AppraiseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AppraiseDate" Type="DateTime" />
+    <Property Name="AppraiseNo" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="ItemTypeId" Type="Int32" />
+    <Property Name="ItemCategoryId" Type="Int32" />
+    <Property Name="ItemName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="Weight" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="AppraisedValue" Type="Decimal" />
+    <Property Name="Remarks" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerFirstName" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerLastName" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="IsPawned" Type="Boolean" />
+    <Property Name="CreatedBy" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedAt" Type="DateTime" />
+    <Property Name="PawnshopTransactionId" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_brand">
+    <Key>
+      <PropertyRef Name="autonum" />
+    </Key>
+    <Property Name="autonum" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="brand_code" Type="Int32" />
+    <Property Name="brand_desc" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_karat">
+    <Key>
+      <PropertyRef Name="autonum" />
+    </Key>
+    <Property Name="autonum" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="karat_code" Type="Int32" />
+    <Property Name="karat_desc" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

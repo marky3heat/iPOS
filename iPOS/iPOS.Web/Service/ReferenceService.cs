@@ -400,5 +400,279 @@ namespace iPOS.Web.Service
             }
         }
         #endregion
+
+        #region PUBLIC MEMBER METHODS (BRAND)
+        public long GetItemCodeBrand()
+        {
+            try
+            {
+                using (var uow = _unitOfWorkFactory.Create())
+                {
+                    var result = uow.BrandRepository.All;
+                    if (result.Count() != 0)
+                    {
+                        return result.Max(a => a.autonum);
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public async Task<tbl_brand> FindByIdBrand(long id)
+        {
+            try
+            {
+                using (var uow = _unitOfWorkFactory.Create())
+                {
+                    return await uow.BrandRepository.FindAsync(id);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public async Task<List<tbl_brand>> GetListBrand(
+            int pageIndex = 0,
+            int pageSize = 100)
+        {
+            try
+            {
+                using (var uow = _unitOfWorkFactory.Create())
+                {
+                    var list = await uow.BrandRepository.AllWithAsync(null);
+
+                    list = list
+                        .Skip(pageSize * pageIndex)
+                        .Take(pageSize).ToList();
+
+                    return list.ToList();
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<bool> SaveBrand(tbl_brand model)
+        {
+            try
+            {
+                using (var uow = _unitOfWorkFactory.Create())
+                {
+                    var result = await FindByIdBrand(model.autonum);
+                    if (result == null)
+                    {
+                        uow.BrandRepository.Insert(model);
+                        await uow.SaveChangesAsync();
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<bool> UpdateBrand(tbl_brand model)
+        {
+            try
+            {
+                using (var uow = _unitOfWorkFactory.Create())
+                {
+                    var result = await FindByIdBrand(model.autonum);
+                    if (result != null)
+                    {
+                        uow.BrandRepository.Update(model);
+                        await uow.SaveChangesAsync();
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<bool> DeleteBrand(string id)
+        {
+            try
+            {
+                using (var uow = _unitOfWorkFactory.Create())
+                {
+                    if (!string.IsNullOrEmpty(id))
+                    {
+                        uow.BrandRepository.Delete(id);
+                        await uow.SaveChangesAsync();
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+
+        #region PUBLIC MEMBER METHODS (KARAT)
+        public long GetItemCodeKarat()
+        {
+            try
+            {
+                using (var uow = _unitOfWorkFactory.Create())
+                {
+                    var result = uow.KaratRepository.All;
+                    if (result.Count() != 0)
+                    {
+                        return result.Max(a => a.autonum);
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public async Task<tbl_karat> FindByIdKarat(long id)
+        {
+            try
+            {
+                using (var uow = _unitOfWorkFactory.Create())
+                {
+                    return await uow.KaratRepository.FindAsync(id);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public async Task<List<tbl_karat>> GetListKarat(
+            int pageIndex = 0,
+            int pageSize = 100)
+        {
+            try
+            {
+                using (var uow = _unitOfWorkFactory.Create())
+                {
+                    var list = await uow.KaratRepository.AllWithAsync(null);
+
+                    list = list
+                        .Skip(pageSize * pageIndex)
+                        .Take(pageSize).ToList();
+
+                    return list.ToList();
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<bool> SaveBrand(tbl_karat model)
+        {
+            try
+            {
+                using (var uow = _unitOfWorkFactory.Create())
+                {
+                    var result = await FindByIdKarat(model.autonum);
+                    if (result == null)
+                    {
+                        uow.KaratRepository.Insert(model);
+                        await uow.SaveChangesAsync();
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<bool> UpdateBrand(tbl_karat model)
+        {
+            try
+            {
+                using (var uow = _unitOfWorkFactory.Create())
+                {
+                    var result = await FindByIdKarat(model.autonum);
+                    if (result != null)
+                    {
+                        uow.KaratRepository.Update(model);
+                        await uow.SaveChangesAsync();
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<bool> DeleteKarat(string id)
+        {
+            try
+            {
+                using (var uow = _unitOfWorkFactory.Create())
+                {
+                    if (!string.IsNullOrEmpty(id))
+                    {
+                        uow.BrandRepository.Delete(id);
+                        await uow.SaveChangesAsync();
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
     }
 }

@@ -26,7 +26,6 @@ namespace iPOS.Web.Database
         }
     
         public virtual DbSet<tbl_customer> tbl_customer { get; set; }
-        public virtual DbSet<tbl_ipos_appraiseditem> tbl_ipos_appraiseditem { get; set; }
         public virtual DbSet<tbl_ipos_customer> tbl_ipos_customer { get; set; }
         public virtual DbSet<tbl_ipos_itemcategory> tbl_ipos_itemcategory { get; set; }
         public virtual DbSet<tbl_ipos_itemtype> tbl_ipos_itemtype { get; set; }
@@ -42,5 +41,8 @@ namespace iPOS.Web.Database
         public virtual DbSet<tbl_product_category_sub2> tbl_product_category_sub2 { get; set; }
         public virtual DbSet<tbl_product_category_sub3> tbl_product_category_sub3 { get; set; }
         public virtual DbSet<tbl_product_type> tbl_product_type { get; set; }
+        public virtual DbSet<tbl_ipos_appraiseditem> tbl_ipos_appraiseditem { get; set; }
+        public virtual DbSet<tbl_brand> tbl_brand { get; set; }
+        public virtual DbSet<tbl_karat> tbl_karat { get; set; }
     }
 }

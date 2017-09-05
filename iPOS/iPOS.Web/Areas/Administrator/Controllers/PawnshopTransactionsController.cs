@@ -115,36 +115,27 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                     model1.CreatedBy = "";
                     model1.CreatedAt = DateTime.Now;
 
-                    tbl_customer model2 = new tbl_customer();
-                    model2.first_name = model.first_name;
-                    model2.last_name = model.last_name;
-                    model2.middle_name = "";
-                    model2.st_address = model.st_address;
-                    model2.mobile_no = model.mobile_no;
-
-                    tbl_ipos_appraiseditem model3 = new tbl_ipos_appraiseditem();
-                    model3.AppraiseDate = DateTime.Now;
-                    model3.AppraiseNo = "";
-                    model3.ItemTypeId = model.ItemTypeId;
-                    model3.ItemCategoryId = model.ItemCategoryId ;
-                    model3.ItemName = model.ItemName;
-                    model3.Weight = "";
-                    model3.AppraisedValue = 0;
-                    model3.Remarks = model.Remarks;
-                    model3.CustomerFirstName = model.first_name;
-                    model3.CustomerLastName = model.last_name;
-                    model3.IsPawned = false;
-                    model3.CreatedAt = DateTime.Now;
-                    model3.CreatedBy = "";
-                    model3.PawnshopTransactionId = model.TransactionNo;
+                    tbl_ipos_appraiseditem model2 = new tbl_ipos_appraiseditem();
+                    model2.AppraiseDate = DateTime.Now;
+                    model2.AppraiseNo = "";
+                    model2.ItemTypeId = model.ItemTypeId;
+                    model2.ItemCategoryId = model.ItemCategoryId ;
+                    model2.ItemName = model.ItemName;
+                    model2.Weight = "";
+                    model2.AppraisedValue = 0;
+                    model2.Remarks = model.Remarks;
+                    model2.CustomerFirstName = model.first_name;
+                    model2.CustomerLastName = model.last_name;
+                    model2.IsPawned = false;
+                    model2.CreatedAt = DateTime.Now;
+                    model2.CreatedBy = "";
+                    model2.PawnshopTransactionId = model.TransactionNo;
 
                     var result = await _pawnshopTransactionService.SavePawnshopTransactions(model1);
-                    var result1 = await _customerService.SaveCustomer(model2);
-                    var result2 = await _appraisalService.Save(model3);
+                    var result1 = await _appraisalService.Save(model2);
 
                     success = result;
                     success = result1;
-                    success = result2;
 
                     if (result)
                     {

@@ -55,8 +55,7 @@
                             '<li class="dropdown">' +
                             '<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>' +
                             '<ul class="dropdown-menu dropdown-menu-right">' +
-                            '<li><a href="#"><i class="icon-file-stats"></i> View pawned item</a></li>' +
-                            '<li><a href="#" ><i class="icon-file-stats"></i> Approve pawned item</a></li>' +
+                            '<li><a href="#"><i class="icon-file-stats"></i> View transaction</a></li>' +
                             '<li><a href="#"><i class="icon-file-stats"></i> Print</a></li>' +
                             '</ul>' +
                             '</li>' +
@@ -73,6 +72,7 @@
         model.TransactionNo("");
         model.TransactionDate("");
         model.TransactionType("");
+        model.CustomerId("");
         model.Terminal("");
         model.Status("");
         model.ReviewedBy("");
@@ -80,15 +80,21 @@
         model.CreatedBy("");
         model.CreatedAt("");
 
-        model.FirstName("");
-        model.LastName("");
-        model.Address("");
-        model.ContactNo("");
+        model.first_name("");
+        model.last_name("");
+        model.st_address("");
+        model.mobile_no("");
 
         model.ItemName("");
         model.ItemTypeId("");
         model.ItemCategoryId("");
         model.Remarks("");
+
+        customerModel.first_name("");
+        customerModel.last_name("");
+        customerModel.middle_name("");
+        customerModel.st_address("");
+        customerModel.mobile_no("");
     }
 
     function showCreateModeSales() {
@@ -141,9 +147,10 @@
     }
 
     function backToList() {
+        loadTransactionList();
         isListShowed(true);
         isCreateModeShowedSales(false);
-        isCreateModeShowedPawning(true);
+        isCreateModeShowedPawning(false);
         isCreateModeShowedLayaway(false);
 
         isSaveButtonShowed(false);
@@ -160,6 +167,9 @@
         //}
 
         /*VALIDATIONS -END*/
+
+        model.first_name(customerModel.first_name);
+        model.last_name(customerModel.last_name)
 
         loaderApp.showPleaseWait();
         var param = ko.toJS(model);
@@ -239,7 +249,6 @@
             customerModel.middle_name(result.middle_name);
             customerModel.st_address(result.st_address);
             customerModel.mobile_no(result.mobile_no);
-            model.CustomerId(result.autonum);
         });
     }
 
@@ -319,6 +328,16 @@
         getCustomerById: getCustomerById
 
     };
+
+    var self = this;
+
+    self.isSubmiting = ko.observable(false);
+
+    self.clickFunc = function () {
+        if (!self.isSubmiting()) {
+            self.isSubmiting(true);
+        }
+    }
 
     return vm;
 
@@ -435,7 +454,6 @@ $(function () {
         }
         );
     });
-
 
     ko.applyBindings(app.vm);
 });

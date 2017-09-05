@@ -7,15 +7,17 @@ namespace iPOS.Web.Repository.Interface
 {
     public interface IUnitOfWork : IDisposable
     {
-        IRepository<tbl_ipos_no_generator> NoGeneratorRepository { get; }
-
-        IRepository<tbl_ipos_pawnshop_transactions> PawnshopTransactionsRepository { get; }
-
+        //General tables
         IRepository<tbl_customer> CustomerRepository { get; }
+        IRepository<tbl_karat> KaratRepository { get; }
+        IRepository<tbl_brand> BrandRepository { get; }
+        //
 
+        //Pawnshop tables
+        IRepository<tbl_ipos_no_generator> NoGeneratorRepository { get; }
+        IRepository<tbl_ipos_pawnshop_transactions> PawnshopTransactionsRepository { get; }
         IRepository<tbl_ipos_appraiseditem> AppraisedItemRepository { get; }
         IRepository<tbl_ipos_pawneditem> PawnedItemRepository { get; }
-
         IRepository<tbl_ipos_itemcategory> ItemCategoryRepository { get; }
         IRepository<tbl_ipos_itemtype> ItemTypeRepository { get; }
 

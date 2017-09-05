@@ -15,29 +15,7 @@ namespace iPOS.Web.Repository
             _dbContext = new dbpawnshopEntities();
         }
 
-        //#region PRIVATE MEMBER VARIABLES      
-        private Repository<tbl_ipos_no_generator> _noGeneratorRepository;
-        public IRepository<tbl_ipos_no_generator> NoGeneratorRepository
-        {
-            get
-            {
-                if (_noGeneratorRepository == null)
-                    _noGeneratorRepository = new Repository<tbl_ipos_no_generator>(_dbContext);
-                return _noGeneratorRepository;
-            }
-        }
-
-        private Repository<tbl_ipos_pawnshop_transactions> _pawnshopTransactionRepository;
-        public IRepository<tbl_ipos_pawnshop_transactions> PawnshopTransactionsRepository
-        {
-            get
-            {
-                if (_pawnshopTransactionRepository == null)
-                    _pawnshopTransactionRepository = new Repository<tbl_ipos_pawnshop_transactions>(_dbContext);
-                return _pawnshopTransactionRepository;
-            }
-        }
-
+        //General tables   
         private Repository<tbl_customer> _customerRepository;
         public IRepository<tbl_customer> CustomerRepository
         {
@@ -48,7 +26,48 @@ namespace iPOS.Web.Repository
                 return _customerRepository;
             }
         }
+        private Repository<tbl_brand> _brandRepository;
+        public IRepository<tbl_brand> BrandRepository
+        {
+            get
+            {
+                if (_brandRepository == null)
+                    _brandRepository = new Repository<tbl_brand>(_dbContext);
+                return _brandRepository;
+            }
+        }
+        private Repository<tbl_karat> _karatRepository;
+        public IRepository<tbl_karat> KaratRepository
+        {
+            get
+            {
+                if (_karatRepository == null)
+                    _karatRepository = new Repository<tbl_karat>(_dbContext);
+                return _karatRepository;
+            }
+        }
 
+        //Pawnshop tables
+        private Repository<tbl_ipos_no_generator> _noGeneratorRepository;
+        public IRepository<tbl_ipos_no_generator> NoGeneratorRepository
+        {
+            get
+            {
+                if (_noGeneratorRepository == null)
+                    _noGeneratorRepository = new Repository<tbl_ipos_no_generator>(_dbContext);
+                return _noGeneratorRepository;
+            }
+        }
+        private Repository<tbl_ipos_pawnshop_transactions> _pawnshopTransactionRepository;
+        public IRepository<tbl_ipos_pawnshop_transactions> PawnshopTransactionsRepository
+        {
+            get
+            {
+                if (_pawnshopTransactionRepository == null)
+                    _pawnshopTransactionRepository = new Repository<tbl_ipos_pawnshop_transactions>(_dbContext);
+                return _pawnshopTransactionRepository;
+            }
+        }
         private Repository<tbl_ipos_appraiseditem> _appraisedItemRepository;
         public IRepository<tbl_ipos_appraiseditem> AppraisedItemRepository
         {
@@ -69,7 +88,6 @@ namespace iPOS.Web.Repository
                 return _pawnedItemRepository;
             }
         }
-
         private Repository<tbl_ipos_itemcategory> _itemCategoryRepository;
         public IRepository<tbl_ipos_itemcategory> ItemCategoryRepository
         {

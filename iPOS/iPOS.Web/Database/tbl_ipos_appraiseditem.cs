@@ -15,19 +15,19 @@ namespace iPOS.Web.Database
     public partial class tbl_ipos_appraiseditem
     {
         public int AppraiseId { get; set; }
-        public System.DateTime AppraiseDate { get; set; }
+        public Nullable<System.DateTime> AppraiseDate { get; set; }
         public string AppraiseNo { get; set; }
-        public int ItemTypeId { get; set; }
-        public int ItemCategoryId { get; set; }
+        public Nullable<int> ItemTypeId { get; set; }
+        public Nullable<int> ItemCategoryId { get; set; }
         public string ItemName { get; set; }
         public string Weight { get; set; }
-        public decimal AppraisedValue { get; set; }
+        public Nullable<decimal> AppraisedValue { get; set; }
         public string Remarks { get; set; }
         public string CustomerFirstName { get; set; }
         public string CustomerLastName { get; set; }
-        public bool IsPawned { get; set; }
+        public Nullable<bool> IsPawned { get; set; }
         public string CreatedBy { get; set; }
-        public System.DateTime CreatedAt { get; set; }
+        public Nullable<System.DateTime> CreatedAt { get; set; }
         public string PawnshopTransactionId { get; set; }
     }
 }

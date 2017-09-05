@@ -34,27 +34,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tbl_ipos_appraiseditem">
-      <EntityTypeMapping TypeName="dbpawnshopModel.tbl_ipos_appraiseditem">
-        <MappingFragment StoreEntitySet="tbl_ipos_appraiseditem">
-          <ScalarProperty Name="PawnshopTransactionId" ColumnName="PawnshopTransactionId" />
-          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-          <ScalarProperty Name="IsPawned" ColumnName="IsPawned" />
-          <ScalarProperty Name="CustomerLastName" ColumnName="CustomerLastName" />
-          <ScalarProperty Name="CustomerFirstName" ColumnName="CustomerFirstName" />
-          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-          <ScalarProperty Name="AppraisedValue" ColumnName="AppraisedValue" />
-          <ScalarProperty Name="Weight" ColumnName="Weight" />
-          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
-          <ScalarProperty Name="ItemCategoryId" ColumnName="ItemCategoryId" />
-          <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
-          <ScalarProperty Name="AppraiseNo" ColumnName="AppraiseNo" />
-          <ScalarProperty Name="AppraiseDate" ColumnName="AppraiseDate" />
-          <ScalarProperty Name="AppraiseId" ColumnName="AppraiseId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tbl_ipos_customer">
       <EntityTypeMapping TypeName="dbpawnshopModel.tbl_ipos_customer">
         <MappingFragment StoreEntitySet="tbl_ipos_customer">
@@ -279,6 +258,45 @@
         <MappingFragment StoreEntitySet="tbl_product_type">
           <ScalarProperty Name="item_desc" ColumnName="item_desc" />
           <ScalarProperty Name="item_code" ColumnName="item_code" />
+          <ScalarProperty Name="autonum" ColumnName="autonum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_ipos_appraiseditem">
+      <EntityTypeMapping TypeName="dbpawnshopModel.tbl_ipos_appraiseditem">
+        <MappingFragment StoreEntitySet="tbl_ipos_appraiseditem">
+          <ScalarProperty Name="PawnshopTransactionId" ColumnName="PawnshopTransactionId" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsPawned" ColumnName="IsPawned" />
+          <ScalarProperty Name="CustomerLastName" ColumnName="CustomerLastName" />
+          <ScalarProperty Name="CustomerFirstName" ColumnName="CustomerFirstName" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="AppraisedValue" ColumnName="AppraisedValue" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ItemCategoryId" ColumnName="ItemCategoryId" />
+          <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+          <ScalarProperty Name="AppraiseNo" ColumnName="AppraiseNo" />
+          <ScalarProperty Name="AppraiseDate" ColumnName="AppraiseDate" />
+          <ScalarProperty Name="AppraiseId" ColumnName="AppraiseId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_brand">
+      <EntityTypeMapping TypeName="dbpawnshopModel.tbl_brand">
+        <MappingFragment StoreEntitySet="tbl_brand">
+          <ScalarProperty Name="brand_desc" ColumnName="brand_desc" />
+          <ScalarProperty Name="brand_code" ColumnName="brand_code" />
+          <ScalarProperty Name="autonum" ColumnName="autonum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_karat">
+      <EntityTypeMapping TypeName="dbpawnshopModel.tbl_karat">
+        <MappingFragment StoreEntitySet="tbl_karat">
+          <ScalarProperty Name="karat_desc" ColumnName="karat_desc" />
+          <ScalarProperty Name="karat_code" ColumnName="karat_code" />
           <ScalarProperty Name="autonum" ColumnName="autonum" />
         </MappingFragment>
       </EntityTypeMapping>
