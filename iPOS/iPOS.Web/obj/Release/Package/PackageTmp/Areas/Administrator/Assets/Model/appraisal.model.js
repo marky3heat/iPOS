@@ -2,6 +2,7 @@
     function (appraiseid,
         appraisedate,
         appraiseno,
+        pawnshoptransactionno,
         itemtypeid,
         itemcategoryid,
         itemname,
@@ -23,6 +24,7 @@
         self.AppraiseId = ko.observable(appraiseid);
         self.AppraiseDate = ko.observable(appraisedate);
         self.AppraiseNo = ko.observable(appraiseno);
+        self.PawnshopTransactionNo = ko.observable(pawnshoptransactionno);
         self.ItemTypeId = ko.observable(itemtypeid);
         self.ItemCategoryId = ko.observable(itemcategoryid);
         self.ItemName = ko.observable(itemname);

@@ -2,19 +2,24 @@
     //"use strict";
     var itemTypeModel = new app.ItemTypeModel();
     var itemCategoryModel = new app.ItemCategoryModel();
+    var noGeneratorModel = new app.NoGeneratorModel();
 
     // #region CONTROLS   
     var isItemTypeShowedList = ko.observable(true);
     var isItemCategoryShowedList = ko.observable(true);
+    var isNoGeneratorShowedList = ko.observable(true);
     
     var isItemTypeShowed = ko.observable(false);
     var isItemCategoryShowed = ko.observable(false);
+    var isNoGeneratorShowed = ko.observable(false);
 
     var buttonSaveItemTypeCaption = ko.observable("");
     var buttonSaveItemCategoryCaption = ko.observable("");
+    var buttonSaveNoGeneratorCaption = ko.observable("");
 
     var buttonSaveItemType = ko.observable(false);
     var buttonSaveItemCategory = ko.observable(false);
+    var buttonSaveNoGenerator = ko.observable(false);
 
     var itemTypeArray = ko.observableArray();
 
@@ -28,6 +33,11 @@
         return itemCategoryList();
     });
 
+    var noGeneratorList = ko.observableArray([]);
+    var noGenerator = ko.pureComputed(function () {
+        return noGeneratorList();
+    });
+
     // #endregion
 
     // #region BEHAVIORS
@@ -35,6 +45,7 @@
     function activate() {
         loadItemTypeList();
         loadItemCategoryList();
+        loadNoGeneratorList();
     }
 
     //Get Data
@@ -81,7 +92,7 @@
             //"order": [[2, "desc"]],
             "columns": [
                 { "data": "ItemCategoryId", "className": "hide" },
-                { "data": "ItemTypeName", "className": "ext-left" },
+                { "data": "ItemTypeName", "className": "text-left" },
                 { "data": "ItemCategoryName", "className": "text-left" },
                 {
                     "render": function (data, type, row) {
@@ -98,6 +109,26 @@
                 { "data": "ItemCategoryId", "className": "hide" },
                 { "data": "ItemCategoryId", "className": "hide" },
                 { "data": "ItemCategoryId", "className": "hide" }
+            ]
+        });
+    }
+
+    function loadNoGeneratorList() {
+        $("#noGeneratorTable").dataTable().fnDestroy();
+        $('#noGeneratorTable').DataTable({
+            "ajax": {
+                "url": RootUrl + "/Administrator/Reference/LoadNoGeneratorList",
+                "type": "GET",
+                "datatype": "json"
+            },
+            //"order": [[2, "desc"]],
+            "columns": [
+                { "data": "NoId", "className": "hide" },
+                { "data": "NoDescription", "className": "text-left" },
+                { "data": "No", "className": "text-center" },
+                { "data": "NoId", "className": "hide" },
+                { "data": "NoId", "className": "hide" },
+                { "data": "NoId", "className": "hide" }
             ]
         });
     }
@@ -264,6 +295,7 @@
 
         itemTypeModel: itemTypeModel,
         itemCategoryModel: itemCategoryModel,
+        noGeneratorModel: noGeneratorModel,
 
         itemTypeArray: itemTypeArray
     };

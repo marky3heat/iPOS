@@ -27,3 +27,18 @@ app.ItemCategoryModel = function () {
 
     return self;
 };
+
+app.NoGeneratorModel = function () {
+    "use strict";
+
+    var self = this;
+
+    // #region MODEL TO CREATE/UPDATE
+    self.NoId = ko.observable();
+    self.NoDescription = ko.observable();
+    self.No = ko.observable();
+
+    // #endregion     
+
+    return self;
+};
