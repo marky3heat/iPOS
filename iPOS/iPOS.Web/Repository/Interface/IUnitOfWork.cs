@@ -9,8 +9,6 @@ namespace iPOS.Web.Repository.Interface
     {
         //General tables
         IRepository<tbl_customer> CustomerRepository { get; }
-        IRepository<tbl_karat> KaratRepository { get; }
-        IRepository<tbl_brand> BrandRepository { get; }
         //
 
         //Pawnshop tables
@@ -20,6 +18,12 @@ namespace iPOS.Web.Repository.Interface
         IRepository<tbl_ipos_pawneditem> PawnedItemRepository { get; }
         IRepository<tbl_ipos_itemcategory> ItemCategoryRepository { get; }
         IRepository<tbl_ipos_itemtype> ItemTypeRepository { get; }
+        IRepository<tbl_ipos_karat> KaratRepository { get; }
+        //
+
+        //Inventory tables
+        IRepository<tbl_product_brand_setup> BrandRepository { get; }
+        //
 
         void SaveChanges();
         Task SaveChangesAsync();

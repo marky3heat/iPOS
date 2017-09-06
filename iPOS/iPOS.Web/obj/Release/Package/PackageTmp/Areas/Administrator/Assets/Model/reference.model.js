@@ -42,3 +42,33 @@ app.NoGeneratorModel = function () {
 
     return self;
 };
+
+app.addModelBrand = function () {
+    "use strict";
+
+    var self = this;
+
+    // #region MODEL TO CREATE/UPDATE
+    self.autonum = ko.observable();
+    self.brand_code = ko.observable();
+    self.brand_desc = ko.observable();
+
+    // #endregion     
+
+    return self;
+};
+
+app.addModelKarat = function () {
+    "use strict";
+
+    var self = this;
+
+    // #region MODEL TO CREATE/UPDATE
+    self.autonum = ko.observable();
+    self.karat_code = ko.observable();
+    self.karat_desc = ko.observable();
+
+    // #endregion     
+
+    return self;
+};

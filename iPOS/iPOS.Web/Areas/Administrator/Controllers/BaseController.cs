@@ -159,6 +159,32 @@ namespace iPOS.Web.Areas.Administrator.Controllers
             return Json(result.OrderBy(o => o.ItemCategoryName), JsonRequestBehavior.AllowGet);
         }
 
+        public async Task<JsonResult> GetBrand()
+        {
+            var list = await _referenceService.GetListBrand();
+            var result = list.Select(item => new tbl_product_brand_setup()
+            {
+                autonum = item.autonum,
+                brand_code = item.brand_code,
+                brand_desc = item.brand_desc
+            });
+
+            return Json(result.OrderBy(o => o.brand_desc), JsonRequestBehavior.AllowGet);
+        }
+
+        public async Task<JsonResult> GetKarat()
+        {
+            var list = await _referenceService.GetListKarat();
+            var result = list.Select(item => new tbl_ipos_karat()
+            {
+                autonum = item.autonum,
+                karat_code = item.karat_code,
+                karat_desc = item.karat_desc
+            });
+
+            return Json(result.OrderBy(o => o.karat_desc), JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult GetServerDate()
         {
             var serverDate = DateTime.Now.ToString("MM/dd/yyyy");

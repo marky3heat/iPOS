@@ -424,7 +424,7 @@ namespace iPOS.Web.Service
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<tbl_brand> FindByIdBrand(long id)
+        public async Task<tbl_product_brand_setup> FindByIdBrand(long id)
         {
             try
             {
@@ -438,7 +438,7 @@ namespace iPOS.Web.Service
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<List<tbl_brand>> GetListBrand(
+        public async Task<List<tbl_product_brand_setup>> GetListBrand(
             int pageIndex = 0,
             int pageSize = 100)
         {
@@ -463,7 +463,7 @@ namespace iPOS.Web.Service
             }
         }
 
-        public async Task<bool> SaveBrand(tbl_brand model)
+        public async Task<bool> SaveBrand(tbl_product_brand_setup model)
         {
             try
             {
@@ -488,7 +488,7 @@ namespace iPOS.Web.Service
             }
         }
 
-        public async Task<bool> UpdateBrand(tbl_brand model)
+        public async Task<bool> UpdateBrand(tbl_product_brand_setup model)
         {
             try
             {
@@ -561,7 +561,7 @@ namespace iPOS.Web.Service
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<tbl_karat> FindByIdKarat(long id)
+        public async Task<tbl_ipos_karat> FindByIdKarat(long id)
         {
             try
             {
@@ -575,7 +575,7 @@ namespace iPOS.Web.Service
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<List<tbl_karat>> GetListKarat(
+        public async Task<List<tbl_ipos_karat>> GetListKarat(
             int pageIndex = 0,
             int pageSize = 100)
         {
@@ -600,7 +600,7 @@ namespace iPOS.Web.Service
             }
         }
 
-        public async Task<bool> SaveKarat(tbl_karat model)
+        public async Task<bool> SaveKarat(tbl_ipos_karat model)
         {
             try
             {
@@ -625,7 +625,7 @@ namespace iPOS.Web.Service
             }
         }
 
-        public async Task<bool> UpdateKarat(tbl_karat model)
+        public async Task<bool> UpdateKarat(tbl_ipos_karat model)
         {
             try
             {

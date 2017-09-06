@@ -8,7 +8,7 @@
         <div class="panel-heading">
             <h6 class="panel-title">Karat List</h6>
             <div class="heading-elements">
-                <button data-bind="click: addKarat" type="submit" class="btn bg-orange-400 btn-labeled btn-labeled-right ml-10"><b><i class="icon-plus3"></i></b>Create new brand</button>
+                <button data-bind="click: addKarat" type="submit" class="btn bg-orange-400 btn-labeled btn-labeled-right ml-10"><b><i class="icon-plus3"></i></b>Create new karat</button>
             </div>
         </div>
         <div class="table-responsive">
@@ -31,9 +31,9 @@
 
 <div data-bind="visible: isShowedKarat" class="panel panel-flat col-md-6">
     <div class="panel-heading">
-        <h6 class="panel-title">New Brand</h6>
+        <h6 class="panel-title">New Karat</h6>
         <div class="heading-elements">
-            <button data-bind="click: backToListKarat" type="submit" class="btn btn-link"><i class="text-orange-600 icon-arrow-left13 position-left"></i> Back to list</button>
+            <button data-bind="click: backToList" type="submit" class="btn btn-link"><i class="text-orange-600 icon-arrow-left13 position-left"></i> Back to list</button>
         </div>
     </div>
     <div class="panel-body">
@@ -41,8 +41,8 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-12">
-                        <label>Brand description</label>
-                        <input type="text" data-bind="textinput: karatModel.karat_desc" class="form-control" id="karat_desc">
+                        <label>Karat description</label>
+                        <input type="text" data-bind="textinput: modelKarat.karat_desc" class="form-control" id="karat_desc">
                     </div>
                 </div>
             </div>

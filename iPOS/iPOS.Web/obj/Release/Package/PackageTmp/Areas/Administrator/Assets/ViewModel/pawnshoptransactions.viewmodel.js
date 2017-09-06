@@ -15,6 +15,7 @@
     var itemType = ko.observableArray();
     var itemCategory = ko.observableArray();
     var customer = ko.observableArray();
+    var isJewelry = ko.observable(true);
 
     // #endregion
 
@@ -170,6 +171,7 @@
 
         model.first_name(customerModel.first_name);
         model.last_name(customerModel.last_name)
+        model.ItemCategoryId(isJewelry.itemTypeId)
 
         loaderApp.showPleaseWait();
         var param = ko.toJS(model);
@@ -263,7 +265,7 @@
         if (arg !== "") {
             itemTypeId = arg;
         } else {
-            itemTypeId = model.ItemTypeId();
+            itemTypeId = model.ItemTypeId(isJewelry.itemTypeId);
         }
 
         if (itemTypeId !== "") {
@@ -325,7 +327,9 @@
 
         customer: customer,
         saveCustomer: saveCustomer,
-        getCustomerById: getCustomerById
+        getCustomerById: getCustomerById,
+
+        isJewelry: isJewelry
 
     };
 

@@ -28,6 +28,7 @@ namespace iPOS.Web.Areas.Administrator.Controllers
         }
         #endregion
 
+        #region VIEWS
         // GET: Administrator/Reference
         public ActionResult Index()
         {
@@ -77,6 +78,7 @@ namespace iPOS.Web.Areas.Administrator.Controllers
 
             return View();
         }
+        #endregion
 
         #region Json Methods
 
@@ -127,6 +129,42 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                     a.NoId,
                     a.NoDescription,
                     a.No
+                };
+
+            return Json(new { data = result }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        [Route("Administrator/Reference/LoadListBrand")]
+        public async Task<JsonResult> LoadListBrand()
+        {
+            var list = await _referenceService.GetListBrand();
+
+            var result =
+                from a in list
+                select new
+                {
+                    a.autonum,
+                    a.brand_code,
+                    a.brand_desc
+                };
+
+            return Json(new { data = result }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        [Route("Administrator/Reference/LoadListKarat")]
+        public async Task<JsonResult> LoadListKarat()
+        {
+            var list = await _referenceService.GetListKarat();
+
+            var result =
+                from a in list
+                select new
+                {
+                    a.autonum,
+                    a.karat_code,
+                    a.karat_desc
                 };
 
             return Json(new { data = result }, JsonRequestBehavior.AllowGet);
@@ -310,6 +348,109 @@ namespace iPOS.Web.Areas.Administrator.Controllers
             }
         }
 
+        [HttpPost]
+        public async Task<JsonResult> SaveBrand(tbl_product_brand_setup model)
+        {
+            try
+            {
+                tbl_product_brand_setup brandModel = null;
+
+                bool success = false;
+                string message = "";
+
+                if (string.IsNullOrEmpty(model.autonum.ToString()) || model.autonum.ToString() == "0")
+                {
+                    var code = _referenceService.GetItemCodeBrand();
+
+                    brandModel = new tbl_product_brand_setup();
+                    brandModel.brand_code = Convert.ToInt32(code + 1);
+                    brandModel.brand_desc = model.brand_desc.ToUpper();
+
+                    var result = await _referenceService.SaveBrand(brandModel);
+                    success = result;
+                    if (result)
+                    {
+                        message = "Successfully saved.";
+                    }
+                    else
+                    {
+                        message = "Error saving data. Please contact administrator.";
+                    }
+                }
+                else
+                {
+                    brandModel = await _referenceService.FindByIdBrand(brandModel.autonum);
+                    brandModel.brand_desc = model.brand_desc.ToUpper();
+
+                    var result = await _referenceService.UpdateBrand(brandModel);
+                    success = result;
+                    if (result)
+                    {
+                        message = "Successfully updated.";
+                    }
+                    else
+                        message = "Error saving data. Please contact administrator.";
+                }
+
+                return Json(new { success = success, message = message });
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> SaveKarat(tbl_ipos_karat model)
+        {
+            try
+            {
+                tbl_ipos_karat karatModel = null;
+
+                bool success = false;
+                string message = "";
+
+                if (string.IsNullOrEmpty(model.autonum.ToString()) || model.autonum.ToString() == "0")
+                {
+                    var code = _referenceService.GetItemCodeKarat();
+
+                    karatModel = new tbl_ipos_karat();
+                    karatModel.karat_code = Convert.ToInt32(code + 1);
+                    karatModel.karat_desc = model.karat_desc.ToUpper();
+
+                    var result = await _referenceService.SaveKarat(karatModel);
+                    success = result;
+                    if (result)
+                    {
+                        message = "Successfully saved.";
+                    }
+                    else
+                    {
+                        message = "Error saving data. Please contact administrator.";
+                    }
+                }
+                else
+                {
+                    karatModel = await _referenceService.FindByIdKarat(karatModel.autonum);
+                    karatModel.karat_desc = model.karat_desc.ToUpper();
+
+                    var result = await _referenceService.UpdateKarat(karatModel);
+                    success = result;
+                    if (result)
+                    {
+                        message = "Successfully updated.";
+                    }
+                    else
+                        message = "Error saving data. Please contact administrator.";
+                }
+
+                return Json(new { success = success, message = message });
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
     }
 }

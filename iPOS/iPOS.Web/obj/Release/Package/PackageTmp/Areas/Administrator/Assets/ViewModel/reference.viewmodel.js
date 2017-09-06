@@ -4,22 +4,27 @@
     var itemCategoryModel = new app.ItemCategoryModel();
     var noGeneratorModel = new app.NoGeneratorModel();
 
+    var modelBrand = new app.addModelBrand();
+    var modelKarat = new app.addModelKarat();
+
     // #region CONTROLS   
     var isItemTypeShowedList = ko.observable(true);
     var isItemCategoryShowedList = ko.observable(true);
     var isNoGeneratorShowedList = ko.observable(true);
+
+    var isShowedListBrand = ko.observable(true);
+    var isShowedListKarat = ko.observable(true);
     
     var isItemTypeShowed = ko.observable(false);
     var isItemCategoryShowed = ko.observable(false);
     var isNoGeneratorShowed = ko.observable(false);
 
-    var buttonSaveItemTypeCaption = ko.observable("");
-    var buttonSaveItemCategoryCaption = ko.observable("");
-    var buttonSaveNoGeneratorCaption = ko.observable("");
+    var isShowedBrand = ko.observable(false);
+    var isShowedKarat = ko.observable(false);
 
-    var buttonSaveItemType = ko.observable(false);
-    var buttonSaveItemCategory = ko.observable(false);
-    var buttonSaveNoGenerator = ko.observable(false);
+    var buttonSaveCaption = ko.observable("");
+
+    var buttonSave = ko.observable(false);
 
     var itemTypeArray = ko.observableArray();
 
@@ -46,6 +51,8 @@
         loadItemTypeList();
         loadItemCategoryList();
         loadNoGeneratorList();
+        loadListBrand();
+        loadListKarat();
     }
 
     //Get Data
@@ -67,7 +74,7 @@
                             '<li class="dropdown">' +
                             '<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>' +
                             '<ul class="dropdown-menu dropdown-menu-right">' +
-                            '<li><a href="#"><i class="icon-file-stats"></i> View item type</a></li>' +
+                            '<li><a href="#"><i class="icon-file-stats"></i> View</a></li>' +
                             '</ul>' +
                             '</li>' +
                             '</ul>';
@@ -100,7 +107,7 @@
                             '<li class="dropdown">' +
                             '<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>' +
                             '<ul class="dropdown-menu dropdown-menu-right">' +
-                            '<li><a href="#"><i class="icon-file-stats"></i> View item category</a></li>' +
+                            '<li><a href="#"><i class="icon-file-stats"></i> View</a></li>' +
                             '</ul>' +
                             '</li>' +
                             '</ul>';
@@ -109,6 +116,70 @@
                 { "data": "ItemCategoryId", "className": "hide" },
                 { "data": "ItemCategoryId", "className": "hide" },
                 { "data": "ItemCategoryId", "className": "hide" }
+            ]
+        });
+    }
+
+    function loadListBrand() {
+        $("#brandTable").dataTable().fnDestroy();
+        $('#brandTable').DataTable({
+            "ajax": {
+                "url": RootUrl + "/Administrator/Reference/LoadListBrand",
+                "type": "GET",
+                "datatype": "json"
+            },
+            //"order": [[2, "desc"]],
+            "columns": [
+                { "data": "autonum", "className": "hide" },
+                { "data": "brand_desc", "className": "text-left" },
+                {
+                    "render": function (data, type, row) {
+                        return '<ul class="icons-list">' +
+                            '<li class="dropdown">' +
+                            '<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>' +
+                            '<ul class="dropdown-menu dropdown-menu-right">' +
+                            '<li><a href="#"><i class="icon-file-stats"></i> View</a></li>' +
+                            '</ul>' +
+                            '</li>' +
+                            '</ul>';
+                    }
+                },
+                { "data": "autonum", "className": "hide" },
+                { "data": "autonum", "className": "hide" },
+                { "data": "autonum", "className": "hide" },
+                { "data": "autonum", "className": "hide" }
+            ]
+        });
+    }
+
+    function loadListKarat() {
+        $("#karatTable").dataTable().fnDestroy();
+        $('#karatTable').DataTable({
+            "ajax": {
+                "url": RootUrl + "/Administrator/Reference/LoadListKarat",
+                "type": "GET",
+                "datatype": "json"
+            },
+            //"order": [[2, "desc"]],
+            "columns": [
+                { "data": "autonum", "className": "hide" },
+                { "data": "karat_desc", "className": "text-left" },
+                {
+                    "render": function (data, type, row) {
+                        return '<ul class="icons-list">' +
+                            '<li class="dropdown">' +
+                            '<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>' +
+                            '<ul class="dropdown-menu dropdown-menu-right">' +
+                            '<li><a href="#"><i class="icon-file-stats"></i> View</a></li>' +
+                            '</ul>' +
+                            '</li>' +
+                            '</ul>';
+                    }
+                },
+                { "data": "autonum", "className": "hide" },
+                { "data": "autonum", "className": "hide" },
+                { "data": "autonum", "className": "hide" },
+                { "data": "autonum", "className": "hide" }
             ]
         });
     }
@@ -145,27 +216,49 @@
     }
 
     function addItemType() {
-        buttonSaveItemTypeCaption(" Save");
+        buttonSaveCaption(" Save");
         clearItemTypeControls();
 
         isItemTypeShowedList(false);
-        isItemCategoryShowedList(false);
         isItemTypeShowed(true);
 
-        buttonSaveItemType(true);
+        buttonSave(true);
     }
 
     function addItemCategory() {
-        buttonSaveItemCategoryCaption(" Save");
+        buttonSaveCaption(" Save");
         clearItemCategoryControls();
 
         getItemType();
 
-        isItemTypeShowedList(false);
         isItemCategoryShowedList(false);
         isItemCategoryShowed(true);
 
-        buttonSaveItemCategory(true);
+        buttonSave(true);
+    }
+
+    function addBrand() {
+        buttonSaveCaption(" Save");
+        //clearBrandControls();
+
+        getItemType();
+
+        isShowedListBrand(false);
+        isShowedBrand(true);
+
+        buttonSave(true);
+    }
+
+    function addKarat() {
+        buttonSaveCaption(" Save");
+        //clearKaratControls();
+
+        getItemType();
+
+        isShowedListKarat(false);
+        isShowedKarat(true);
+
+        buttonSave(true);
     }
 
     function viewItemType(arg) {
@@ -206,6 +299,12 @@
 
         isItemCategoryShowedList(true);
         isItemCategoryShowed(false);
+
+        isShowedListBrand(true);
+        isShowedBrand(false);
+
+        isShowedListKarat(true);
+        isShowedKarat(false);
     }
 
     function saveItemType() {
@@ -256,6 +355,54 @@
         });
     }
 
+    function saveBrand() {
+        loaderApp.showPleaseWait();
+        var param = ko.toJS(modelBrand);
+        var url = RootUrl + "/Administrator/Reference/SaveBrand";
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: ko.utils.stringifyJson(param),
+            contentType: 'application/json; charset=utf-8',
+            success: function (result) {
+                if (result.success) {
+
+                    swal({ title: "Success!", text: result.message, type: "success" }, function () { reloadPage(); });
+
+                    loaderApp.hidePleaseWait();
+                } else {
+                    loaderApp.hidePleaseWait();
+
+                    swal("Error", result.message, "error");
+                }
+            }
+        });
+    }
+
+    function saveKarat() {
+        loaderApp.showPleaseWait();
+        var param = ko.toJS(modelKarat);
+        var url = RootUrl + "/Administrator/Reference/SaveKarat";
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: ko.utils.stringifyJson(param),
+            contentType: 'application/json; charset=utf-8',
+            success: function (result) {
+                if (result.success) {
+
+                    swal({ title: "Success!", text: result.message, type: "success" }, function () { reloadPage(); });
+
+                    loaderApp.hidePleaseWait();
+                } else {
+                    loaderApp.hidePleaseWait();
+
+                    swal("Error", result.message, "error");
+                }
+            }
+        });
+    }
+
     function getItemType() {
         $.getJSON(RootUrl + "/Administrator/Reference/GetItemType", function (result) {
             itemTypeArray.removeAll();
@@ -273,12 +420,18 @@
 
         isItemTypeShowedList: isItemTypeShowedList,
         isItemCategoryShowedList: isItemCategoryShowedList,
+        isShowedListBrand: isShowedListBrand,
+        isShowedListKarat: isShowedListKarat,
 
         isItemTypeShowed: isItemTypeShowed,
         isItemCategoryShowed: isItemCategoryShowed,
+        isShowedBrand: isShowedBrand,
+        isShowedKarat: isShowedKarat,
 
         addItemType: addItemType,
         addItemCategory: addItemCategory,
+        addBrand: addBrand,
+        addKarat: addKarat,
 
         viewItemType: viewItemType,
         viewItemCategory: viewItemCategory,
@@ -287,15 +440,18 @@
 
         saveItemType: saveItemType,
         saveItemCategory: saveItemCategory,
+        saveBrand: saveBrand,
+        saveKarat: saveKarat,
 
         getItemType: getItemType,
 
-        buttonSaveItemTypeCaption: buttonSaveItemTypeCaption,
-        buttonSaveItemCategoryCaption: buttonSaveItemCategoryCaption,
+        buttonSaveCaption: buttonSaveCaption,
 
         itemTypeModel: itemTypeModel,
         itemCategoryModel: itemCategoryModel,
         noGeneratorModel: noGeneratorModel,
+        modelBrand: modelBrand,
+        modelKarat: modelKarat,
 
         itemTypeArray: itemTypeArray
     };

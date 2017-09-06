@@ -18,8 +18,7 @@
     <EntitySet Name="tbl_product_category_sub3" EntityType="dbpawnshopModel.tbl_product_category_sub3" />
     <EntitySet Name="tbl_product_type" EntityType="dbpawnshopModel.tbl_product_type" />
     <EntitySet Name="tbl_ipos_appraiseditem" EntityType="dbpawnshopModel.tbl_ipos_appraiseditem" />
-    <EntitySet Name="tbl_brand" EntityType="dbpawnshopModel.tbl_brand" />
-    <EntitySet Name="tbl_karat" EntityType="dbpawnshopModel.tbl_karat" />
+    <EntitySet Name="tbl_ipos_karat" EntityType="dbpawnshopModel.tbl_ipos_karat" />
   </EntityContainer>
   <EntityType Name="tbl_customer">
     <Key>
@@ -286,15 +285,7 @@
     <Property Name="CreatedAt" Type="DateTime" />
     <Property Name="PawnshopTransactionId" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityType Name="tbl_brand">
-    <Key>
-      <PropertyRef Name="autonum" />
-    </Key>
-    <Property Name="autonum" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="brand_code" Type="Int32" />
-    <Property Name="brand_desc" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="tbl_karat">
+  <EntityType Name="tbl_ipos_karat">
     <Key>
       <PropertyRef Name="autonum" />
     </Key>

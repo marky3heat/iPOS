@@ -95,7 +95,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label>Item type<span class="text-danger">*</span></label>
-                        <select required id="ItemTypeId" data-bind="options: itemType, optionsValue: 'ItemTypeId', optionsText: 'ItemTypeName', optionsCaption: '--Select item type--', value: model.ItemTypeId, value: model.ItemTypeId, optionsSelected: model.ItemTypeId, event:{ change: getItemCategory('')}" class="form-control"></select>
+                        <select required id="ItemTypeId" data-bind="options: itemType, optionsValue: 'ItemTypeId', optionsText: 'ItemTypeName', optionsCaption: '--Select item type--', value: isJewelry, optionsSelected: model.ItemTypeId, event:{ change: getItemCategory('')}" class="form-control"></select>
                     </div>
                 </div>
             </div>
@@ -107,6 +107,10 @@
                     </div>
                 </div>
             </div>
+
+            <!--ko if: isJewelry.ItemTypeName === "Jewelry"-->
+            <div>TEST</div>
+            <!--/ko-->
 
             <div class="form-group">
                 <div class="row">

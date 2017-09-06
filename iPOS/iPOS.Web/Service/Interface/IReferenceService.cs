@@ -49,19 +49,19 @@ namespace iPOS.Web.Service.Interface
 
         #region Brand
         long GetItemCodeBrand();
-        Task<tbl_brand> FindByIdBrand(long id);
-        Task<List<tbl_brand>> GetListBrand(int pageIndex = 0, int pageSize = 100);
-        Task<bool> SaveBrand(tbl_brand model);
-        Task<bool> UpdateBrand(tbl_brand model);
+        Task<tbl_product_brand_setup> FindByIdBrand(long id);
+        Task<List<tbl_product_brand_setup>> GetListBrand(int pageIndex = 0, int pageSize = 100);
+        Task<bool> SaveBrand(tbl_product_brand_setup model);
+        Task<bool> UpdateBrand(tbl_product_brand_setup model);
         Task<bool> DeleteBrand(string id);
         #endregion
 
         #region Karat
         long GetItemCodeKarat();
-        Task<tbl_karat> FindByIdKarat(long id);
-        Task<List<tbl_karat>> GetListKarat(int pageIndex = 0, int pageSize = 100);
-        Task<bool> SaveKarat(tbl_karat model);
-        Task<bool> UpdateKarat(tbl_karat model);
+        Task<tbl_ipos_karat> FindByIdKarat(long id);
+        Task<List<tbl_ipos_karat>> GetListKarat(int pageIndex = 0, int pageSize = 100);
+        Task<bool> SaveKarat(tbl_ipos_karat model);
+        Task<bool> UpdateKarat(tbl_ipos_karat model);
         Task<bool> DeleteKarat(string id);
         #endregion
 

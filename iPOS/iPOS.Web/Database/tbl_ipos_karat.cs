@@ -12,7 +12,7 @@ namespace iPOS.Web.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class tbl_karat
+    public partial class tbl_ipos_karat
     {
         public long autonum { get; set; }
         public Nullable<int> karat_code { get; set; }

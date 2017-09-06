@@ -243,9 +243,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Database\tbl_brand.cs">
-      <DependentUpon>dbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Database\tbl_customer.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
@@ -261,6 +258,9 @@
     <Compile Include="Database\tbl_ipos_itemtype.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Database\tbl_ipos_karat.cs">
+      <DependentUpon>dbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\tbl_ipos_no_generator.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
@@ -268,9 +268,6 @@
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\tbl_ipos_pawnshop_transactions.cs">
-      <DependentUpon>dbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\tbl_karat.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\tbl_product.cs">

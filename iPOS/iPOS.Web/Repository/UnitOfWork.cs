@@ -26,23 +26,23 @@ namespace iPOS.Web.Repository
                 return _customerRepository;
             }
         }
-        private Repository<tbl_brand> _brandRepository;
-        public IRepository<tbl_brand> BrandRepository
+        private Repository<tbl_product_brand_setup> _brandRepository;
+        public IRepository<tbl_product_brand_setup> BrandRepository
         {
             get
             {
                 if (_brandRepository == null)
-                    _brandRepository = new Repository<tbl_brand>(_dbContext);
+                    _brandRepository = new Repository<tbl_product_brand_setup>(_dbContext);
                 return _brandRepository;
             }
         }
-        private Repository<tbl_karat> _karatRepository;
-        public IRepository<tbl_karat> KaratRepository
+        private Repository<tbl_ipos_karat> _karatRepository;
+        public IRepository<tbl_ipos_karat> KaratRepository
         {
             get
             {
                 if (_karatRepository == null)
-                    _karatRepository = new Repository<tbl_karat>(_dbContext);
+                    _karatRepository = new Repository<tbl_ipos_karat>(_dbContext);
                 return _karatRepository;
             }
         }

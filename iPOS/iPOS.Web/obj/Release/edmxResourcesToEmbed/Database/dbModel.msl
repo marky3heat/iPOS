@@ -283,18 +283,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tbl_brand">
-      <EntityTypeMapping TypeName="dbpawnshopModel.tbl_brand">
-        <MappingFragment StoreEntitySet="tbl_brand">
-          <ScalarProperty Name="brand_desc" ColumnName="brand_desc" />
-          <ScalarProperty Name="brand_code" ColumnName="brand_code" />
-          <ScalarProperty Name="autonum" ColumnName="autonum" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tbl_karat">
-      <EntityTypeMapping TypeName="dbpawnshopModel.tbl_karat">
-        <MappingFragment StoreEntitySet="tbl_karat">
+    <EntitySetMapping Name="tbl_ipos_karat">
+      <EntityTypeMapping TypeName="dbpawnshopModel.tbl_ipos_karat">
+        <MappingFragment StoreEntitySet="tbl_ipos_karat">
           <ScalarProperty Name="karat_desc" ColumnName="karat_desc" />
           <ScalarProperty Name="karat_code" ColumnName="karat_code" />
           <ScalarProperty Name="autonum" ColumnName="autonum" />

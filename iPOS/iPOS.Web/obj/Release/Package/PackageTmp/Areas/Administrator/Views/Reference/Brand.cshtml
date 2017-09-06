@@ -18,10 +18,10 @@
                         <th>Id</th>
                         <th>Brand</th>
                         <th class="text-center"><i class="icon-arrow-down12"></i></th>
-                        <th>Id</th>
-                        <th>Id</th>
-                        <th>Id</th>
-                        <th>Id</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
             </table>
@@ -33,7 +33,7 @@
     <div class="panel-heading">
         <h6 class="panel-title">New Brand</h6>
         <div class="heading-elements">
-            <button data-bind="click: backToListBrand" type="submit" class="btn btn-link"><i class="text-orange-600 icon-arrow-left13 position-left"></i> Back to list</button>
+            <button data-bind="click: backToList" type="submit" class="btn btn-link"><i class="text-orange-600 icon-arrow-left13 position-left"></i> Back to list</button>
         </div>
     </div>
     <div class="panel-body">
@@ -42,7 +42,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <label>Brand description</label>
-                        <input type="text" data-bind="textinput: brandModel.brand_desc" class="form-control" id="brand_desc">
+                        <input type="text" data-bind="textinput: modelBrand.brand_desc" class="form-control" id="brand_desc">
                     </div>
                 </div>
             </div>
