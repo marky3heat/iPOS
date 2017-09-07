@@ -16,25 +16,25 @@ namespace iPOS.Web.Database
     {
         public int PawnedItemId { get; set; }
         public string PawnedItemNo { get; set; }
-        public System.DateTime PawnedDate { get; set; }
-        public int CustomerId { get; set; }
+        public Nullable<System.DateTime> PawnedDate { get; set; }
+        public Nullable<int> CustomerId { get; set; }
         public string PawnedItemContractNo { get; set; }
-        public decimal LoanableAmount { get; set; }
-        public decimal InterestRate { get; set; }
-        public decimal InterestAmount { get; set; }
-        public decimal InitialPayment { get; set; }
-        public decimal ServiceCharge { get; set; }
-        public decimal Others { get; set; }
-        public bool IsInterestDeducted { get; set; }
-        public decimal NetCashOut { get; set; }
+        public Nullable<decimal> LoanableAmount { get; set; }
+        public Nullable<decimal> InterestRate { get; set; }
+        public Nullable<decimal> InterestAmount { get; set; }
+        public Nullable<decimal> InitialPayment { get; set; }
+        public Nullable<decimal> ServiceCharge { get; set; }
+        public Nullable<decimal> Others { get; set; }
+        public Nullable<bool> IsInterestDeducted { get; set; }
+        public Nullable<decimal> NetCashOut { get; set; }
         public string TermsId { get; set; }
         public string ScheduleOfPayment { get; set; }
-        public int NoOfPayments { get; set; }
-        public System.DateTime DueDateStart { get; set; }
-        public System.DateTime DueDateEnd { get; set; }
+        public Nullable<int> NoOfPayments { get; set; }
+        public Nullable<System.DateTime> DueDateStart { get; set; }
+        public Nullable<System.DateTime> DueDateEnd { get; set; }
         public string Status { get; set; }
-        public bool IsReleased { get; set; }
+        public Nullable<bool> IsReleased { get; set; }
         public string CreatedBy { get; set; }
-        public System.DateTime CreatedAt { get; set; }
+        public Nullable<System.DateTime> CreatedAt { get; set; }
     }
 }

@@ -30,7 +30,6 @@ namespace iPOS.Web.Database
         public virtual DbSet<tbl_ipos_itemcategory> tbl_ipos_itemcategory { get; set; }
         public virtual DbSet<tbl_ipos_itemtype> tbl_ipos_itemtype { get; set; }
         public virtual DbSet<tbl_ipos_no_generator> tbl_ipos_no_generator { get; set; }
-        public virtual DbSet<tbl_ipos_pawneditem> tbl_ipos_pawneditem { get; set; }
         public virtual DbSet<tbl_ipos_pawnshop_transactions> tbl_ipos_pawnshop_transactions { get; set; }
         public virtual DbSet<tbl_product> tbl_product { get; set; }
         public virtual DbSet<tbl_product_add_info> tbl_product_add_info { get; set; }
@@ -43,5 +42,6 @@ namespace iPOS.Web.Database
         public virtual DbSet<tbl_product_type> tbl_product_type { get; set; }
         public virtual DbSet<tbl_ipos_appraiseditem> tbl_ipos_appraiseditem { get; set; }
         public virtual DbSet<tbl_ipos_karat> tbl_ipos_karat { get; set; }
+        public virtual DbSet<tbl_ipos_pawneditem> tbl_ipos_pawneditem { get; set; }
     }
 }

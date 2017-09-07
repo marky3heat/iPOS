@@ -131,6 +131,30 @@ namespace iPOS.Web.Areas.Administrator.Controllers
                     model2.CreatedBy = "";
                     model2.PawnshopTransactionId = model.TransactionNo;
 
+                    tbl_ipos_pawneditem model3 = new tbl_ipos_pawneditem();
+                    model3.PawnedItemNo = "";
+                    model3.PawnedDate = null;
+                    model3.PawnedDate = "";
+                    model3.CustomerId = "";
+                    model3.PawnedItemContractNo = "";
+                    model3.LoanableAmount = "";
+                    model3.InterestRate = "";
+                    model3.InterestAmount = "";
+                    model3.InitialPayment = "";
+                    model3.ServiceCharge = "";
+                    model3.Others = "";
+                    model3.IsInterestDeducted = "";
+                    model3.NetCashOut = "";
+                    model3.TermsId = "";
+                    model3.ScheduleOfPayment = "";
+                    model3.NoOfPayments = "";
+                    model3.DueDateStart = "";
+                    model3.DueDateEnd = "";
+                    model3.Status = "";
+                    model3.IsReleased = "";
+                    model3.CreatedBy = "";
+                    model3.CreatedAt = "";
+
                     var result = await _pawnshopTransactionService.SavePawnshopTransactions(model1);
                     var result1 = await _appraisalService.Save(model2);
 
